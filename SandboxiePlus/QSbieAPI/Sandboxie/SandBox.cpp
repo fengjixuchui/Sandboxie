@@ -23,7 +23,7 @@
 //{
 //};
 
-CSandBox::CSandBox(const QString& BoxName, class CSbieAPI* pAPI) : CIniSection(BoxName, pAPI)
+CSandBox::CSandBox(const QString& BoxName, class CSbieAPI* pAPI) : CSbieIni(BoxName, pAPI)
 {
 	//m = new SSandBox;
 
@@ -41,7 +41,7 @@ CSandBox::CSandBox(const QString& BoxName, class CSbieAPI* pAPI) : CIniSection(B
 	}
 	else
 	{
-		SetBool("AutoRecover", true);
+		SetBool("AutoRecover", false);
 		SetBool("BlockNetworkFiles", true);
 
 		//SetDefaultTemplates6(*this); // why 6?
@@ -58,6 +58,10 @@ CSandBox::CSandBox(const QString& BoxName, class CSbieAPI* pAPI) : CIniSection(B
 CSandBox::~CSandBox()
 {
 	//delete m;
+}
+
+void CSandBox::UpdateDetails()
+{
 }
 
 SB_STATUS CSandBox::RunStart(const QString& Command)
@@ -80,19 +84,30 @@ SB_STATUS CSandBox::CleanBox()
 	SB_STATUS Status = m_pAPI->TerminateAll(m_Name);
 	if (Status.IsError())
 		return Status;
-	return m_pAPI->CleanBox(m_Name);
+
+	QProcess* pProcess = new QProcess(this);
+	connect(pProcess, SIGNAL(finished(int, QProcess::ExitStatus)), this, SIGNAL(BoxCleaned()));
+
+	// ToDo-later: do that manually
+	Status = m_pAPI->RunStart(m_Name, "delete_sandbox", pProcess);
+	
+	return Status;
 }
 
 SB_STATUS CSandBox::RenameBox(const QString& NewName)
 {
-	if (QDir(m_pAPI->Nt2DosPath(m_FilePath)).exists())
-		return SB_ERR("A sandbox must be emptied before it can be renamed.");
-	return m_pAPI->RenameBox(m_Name, NewName);
+	if (QDir(m_FilePath).exists())
+		return SB_ERR(tr("A sandbox must be emptied before it can be renamed."));
+	if(NewName.length() > 32)
+		return SB_ERR(tr("The sandbox name can not be longer than 32 charakters."));
+	
+	return RenameSection(QString(NewName).replace(" ", "_"));
 }
 
 SB_STATUS CSandBox::RemoveBox()
 {
-	if (QDir(m_pAPI->Nt2DosPath(m_FilePath)).exists())
-		return SB_ERR("A sandbox must be emptied before it can be deleted.");
-	return m_pAPI->RemoveBox(m_Name);
+	if (QDir(m_FilePath).exists())
+		return SB_ERR(tr("A sandbox must be emptied before it can be deleted."));
+
+	return RemoveSection();
 }

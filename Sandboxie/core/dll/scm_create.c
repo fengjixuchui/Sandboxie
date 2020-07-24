@@ -1304,8 +1304,9 @@ _FX BOOL Scm_StartServiceCtrlDispatcherX(
         args[2] = NULL;
     }
 
-    if (_wcsicmp(ServiceName, Scm_MsiServer) == 0)
-        Scm_IsMsiServer = TRUE;
+	if (_wcsicmp(ServiceName, Scm_MsiServer) == 0) {
+		Scm_IsMsiServer = TRUE;
+	}
 
     if (! CreateThread(NULL, 0, Scm_ServiceMainThread, args, 0, &ThreadId))
         Scm_Stopped = TRUE;

@@ -18,17 +18,23 @@
 #pragma once
 #include <qobject.h>
 
-#include "BoxedProcess.h"
-#include "IniSection.h"
+#include "../qsbieapi_global.h"
 
-class CSandBox : public CIniSection
+#include "BoxedProcess.h"
+#include "SbieIni.h"
+
+class QSBIEAPI_EXPORT CSandBox : public CSbieIni
 {
 	Q_OBJECT
 public:
 	CSandBox(const QString& BoxName, class CSbieAPI* pAPI);
 	virtual ~CSandBox();
 
-	virtual QString					GetName() const { return m_Name; }
+	virtual void					UpdateDetails();
+
+	virtual QString					GetFileRoot() const { return m_FilePath; }
+	virtual QString					GetRegRoot() const { return m_RegPath; }
+	virtual QString					GetIpcRoot() const { return m_IpcPath; }
 
 	virtual QMap<quint64, CBoxedProcessPtr>	GetProcessList() const { return m_ProcessList; }
 
@@ -41,6 +47,9 @@ public:
 	virtual SB_STATUS				RemoveBox();
 
 	class CSbieAPI*					Api() { return m_pAPI; }
+
+signals:
+	void							BoxCleaned();
 
 protected:
 	friend class CSbieAPI;

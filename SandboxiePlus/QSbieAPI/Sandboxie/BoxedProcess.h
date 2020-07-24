@@ -18,17 +18,18 @@
 #pragma once
 #include <qobject.h>
 
+#include "../qsbieapi_global.h"
 
 #include "../SbieError.h"
 
-class CBoxedProcess : public QObject
+class QSBIEAPI_EXPORT CBoxedProcess : public QObject
 {
 	Q_OBJECT
 public:
 	CBoxedProcess(quint64 ProcessId, class CSandBox* pBox);
 	virtual ~CBoxedProcess();
 
-	virtual void			UpdateProcessInfo();
+	virtual void			InitProcessInfo();
 
 	virtual quint64			GetProcessId() const { return m_ProcessId; }
 	virtual quint64			GetParendPID() const  { return m_ParendPID; }
@@ -43,6 +44,8 @@ public:
 
 	virtual SB_STATUS		SetSuspend(bool bSet);
 	virtual bool			IsSuspended() const;
+
+	virtual QString			GetBoxName() const;
 
 protected:
 	friend class CSbieAPI;

@@ -123,8 +123,8 @@ QVariant CResMonModel::headerData(int section, Qt::Orientation orientation, int 
 		switch(section)
 		{
 			case eProcess:			return tr("Process");
-			case eTimeStamp:		return tr("TimeStamp");
-			case eType:				return tr("Time");
+			case eTimeStamp:		return tr("Time Stamp");
+			case eType:				return tr("Type");
 			case eValue:			return tr("Value");
 		}
 	}

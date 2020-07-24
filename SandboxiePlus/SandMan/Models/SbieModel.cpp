@@ -7,8 +7,11 @@
 CSbieModel::CSbieModel(QObject *parent)
 :CTreeItemModel(parent)
 {
-	m_BoxEmpty = QIcon(":/BoxEmpty");
-	m_BoxInUse = QIcon(":/BoxInUse");
+	for (int i = 0; i < eMaxColor; i++)
+		m_BoxIcons[(EBoxColors)i] = qMakePair(QIcon(QString(":/Boxes/Empty%1").arg(i)), QIcon(QString(":/Boxes/Full%1").arg(i)));
+
+	//m_BoxEmpty = QIcon(":/BoxEmpty");
+	//m_BoxInUse = QIcon(":/BoxInUse");
 	m_ExeIcon = QIcon(":/exeIcon32");
 
 	m_Root = MkNode(QVariant());
@@ -91,6 +94,8 @@ QList<QVariant> CSbieModel::Sync(const QMap<QString, CSandBoxPtr>& BoxList)
 			Index = Find(m_Root, pNode);
 		}
 
+		CSandBoxPlus* pBoxEx = qobject_cast<CSandBoxPlus*>(pBox.data());
+
 		int Col = 0;
 		bool State = false;
 		int Changed = 0;
@@ -98,11 +103,21 @@ QList<QVariant> CSbieModel::Sync(const QMap<QString, CSandBoxPtr>& BoxList)
 		QMap<quint64, CBoxedProcessPtr> ProcessList = pBox->GetProcessList();
 
 		bool HasActive = Sync(pBox, ProcessList, New, Old, Added);
+		int inUse = (HasActive ? 1 : 0);
+		int boxType = eYelow;
+		if(pBoxEx->HasLogApi())
+			boxType = eRed;
+		if (pBoxEx->IsUnsecureDebugging())
+			boxType = eMagenta;
+		else if (pBoxEx->IsSecurityRestricted())
+			boxType = eOrang;
 
-		if (pNode->inUse != (HasActive ? 1 : 0))
+		if (pNode->inUse != inUse || pNode->boxType != boxType)
 		{
-			pNode->inUse = (HasActive ? 1 : 0);
-			pNode->Icon = pNode->inUse ? m_BoxInUse : m_BoxEmpty;
+			pNode->inUse = inUse;
+			pNode->boxType = boxType;
+			//pNode->Icon = pNode->inUse ? m_BoxInUse : m_BoxEmpty;
+			pNode->Icon = pNode->inUse ? m_BoxIcons[(EBoxColors)boxType].second : m_BoxIcons[(EBoxColors)boxType].first;
 			Changed = 1; // set change for first column
 		}
 
@@ -115,6 +130,8 @@ QList<QVariant> CSbieModel::Sync(const QMap<QString, CSandBoxPtr>& BoxList)
 			switch(section)
 			{
 				case eName:				Value = pBox->GetName(); break;
+				case eStatus:			Value = pBox.objectCast<CSandBoxPlus>()->GetStatusStr(); break;
+				case ePath:				Value = pBox->GetFileRoot(); break;
 			}
 
 			SSandBoxNode::SValue& ColValue = pNode->Values[section];
@@ -125,10 +142,10 @@ QList<QVariant> CSbieModel::Sync(const QMap<QString, CSandBoxPtr>& BoxList)
 					Changed = 1;
 				ColValue.Raw = Value;
 
-				/*switch (section)
+				switch (section)
 				{
-
-				}*/
+				case eName:				ColValue.Formated = Value.toString().replace("_", " "); break;
+				}
 			}
 
 			if(State != (Changed != 0))
@@ -220,6 +237,7 @@ bool CSbieModel::Sync(const CSandBoxPtr& pBox, const QMap<quint64, CBoxedProcess
 			//case eTitle:			break; // todo
 			//case eLogCount:			break; // todo Value = pProcess->GetResourceLog().count(); break;
 			case eTimeStamp:		Value = pProcess->GetTimeStamp(); break;
+			case ePath:				Value = pProcess->GetFileName(); break;
 			}
 
 			SSandBoxNode::SValue& ColValue = pNode->Values[section];
@@ -294,6 +312,7 @@ QVariant CSbieModel::headerData(int section, Qt::Orientation orientation, int ro
 			//case eTitle:			return tr("Title");
 			//case eLogCount:			return tr("Log Count");
 			case eTimeStamp:		return tr("Start Time");
+			case ePath:				return tr("Path");
 		}
 	}
     return QVariant();

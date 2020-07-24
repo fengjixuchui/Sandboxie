@@ -1,6 +1,6 @@
 #pragma once
 #include <qwidget.h>
-#include "../../QSbieAPI/Sandboxie/SandBox.h"
+#include "../SbiePlusAPI.h"
 #include "../../MiscHelpers/Common/TreeItemModel.h"
 
 
@@ -28,6 +28,7 @@ public:
 		//eTitle,
 		//eLogCount,
 		eTimeStamp,
+		ePath,
 		eCount
 	};
 
@@ -36,10 +37,11 @@ protected:
 
 	struct SSandBoxNode: STreeNode
 	{
-		SSandBoxNode(const QVariant& Id) : STreeNode(Id) { inUse = -1; }
+		SSandBoxNode(const QVariant& Id) : STreeNode(Id) { inUse = -1; boxType = -1; }
 
 		CSandBoxPtr	pBox;
 		int			inUse;
+		int			boxType;
 
 		CBoxedProcessPtr pProcess;
 	};
@@ -53,7 +55,21 @@ protected:
 	//virtual QVariant		GetDefaultIcon() const;
 
 private:
-	QIcon m_BoxEmpty;
-	QIcon m_BoxInUse;
+	enum EBoxColors
+	{
+		eYelow = 0,
+		eRed,
+		eGreen,
+		eBlue,
+		eCyan,
+		eMagenta,
+		eOrang,
+		eMaxColor
+	};
+
+	QMap<EBoxColors, QPair<QIcon, QIcon> > m_BoxIcons;
+
+	//QIcon m_BoxEmpty;
+	//QIcon m_BoxInUse;
 	QIcon m_ExeIcon;
 };
