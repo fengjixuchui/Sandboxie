@@ -5,6 +5,11 @@
 #include "../../MiscHelpers/Common/SortFilterProxyModel.h"
 #include "../../MiscHelpers/Common/Settings.h"
 #include "../Windows/OptionsWindow.h"
+#include "../Windows/SnapshotsWindow.h"
+
+#include "qt_windows.h"
+#include "qwindowdefs_win.h"
+#include <shellapi.h>
 
 CSbieView::CSbieView(QWidget* parent) : CPanelView(parent)
 {
@@ -53,6 +58,9 @@ CSbieView::CSbieView(QWidget* parent) : CPanelView(parent)
 		m_pMenuRunCmd = m_pMenuRun->addAction(tr("Run Cmd.exe"), this, SLOT(OnSandBoxAction()));
 	m_pMenuEmptyBox = m_pMenu->addAction(tr("Terminate All Programs"), this, SLOT(OnSandBoxAction()));
 	m_pMenu->addSeparator();
+	m_pMenuExplore = m_pMenu->addAction(tr("Explore Content"), this, SLOT(OnSandBoxAction()));
+	m_pMenu->addSeparator();
+	m_pMenuSnapshots = m_pMenu->addAction(tr("Snapshots Manager"), this, SLOT(OnSandBoxAction()));
 	m_pMenuCleanUp = m_pMenu->addAction(tr("Delete Content"), this, SLOT(OnSandBoxAction()));
 	m_pMenu->addSeparator();
 	m_pMenuPresets = m_pMenu->addMenu(tr("Sandbox Presets"));
@@ -171,6 +179,7 @@ void CSbieView::OnMenu(const QPoint& Point)
 	m_pMenuPresetsNoAdmin->setChecked(pBox && pBox.objectCast<CSandBoxPlus>()->IsDropRights());
 
 	m_pMenuOptions->setEnabled(iSandBoxeCount == 1);
+	m_pMenuSnapshots->setEnabled(iSandBoxeCount == 1);
 
 	for (int i = m_iMenuBox; i < m_iMenuProc; i++)
 		MenuActions[i]->setVisible(iProcessCount > 0 && iSandBoxeCount == 0);
@@ -215,6 +224,16 @@ void CSbieView::OnSandBoxAction()
 		COptionsWindow* pOptionsWindow = new COptionsWindow(SandBoxes.first(), SandBoxes.first()->GetName(), this);
 		pOptionsWindow->show();
 	}
+	else if (Action == m_pMenuExplore)
+	{
+		::ShellExecute(NULL, NULL, SandBoxes.first()->GetFileRoot().toStdWString().c_str(), NULL, NULL, SW_SHOWNORMAL);
+		// if (ret <= 32) error
+	}
+	else if (Action == m_pMenuSnapshots)
+	{
+		CSnapshotsWindow* pSnapshotsWindow = new CSnapshotsWindow(SandBoxes.first(), this);
+		pSnapshotsWindow->show();
+	}
 	else if (Action == m_pMenuRename)
 	{
 		QString OldValue = SandBoxes.first()->GetName().replace("_", " ");
@@ -236,14 +255,13 @@ void CSbieView::OnSandBoxAction()
 		if (QMessageBox("Sandboxie-Plus", tr("Do you really want delete the content of the selected sandbox(es)?"), QMessageBox::Warning, QMessageBox::Yes, QMessageBox::No | QMessageBox::Default | QMessageBox::Escape, QMessageBox::NoButton).exec() != QMessageBox::Yes)
 			return;
 
-		theGUI->GetProgressDialog()->show();
-
-		m_BoxesToClean = 0;
 		foreach(const CSandBoxPtr& pBox, SandBoxes)
 		{
-			m_BoxesToClean++;
-			Results.append(pBox->CleanBox());
-			connect(pBox.data(), SIGNAL(BoxCleaned()), this, SLOT(OnBoxCleaned()));
+			SB_PROGRESS Status = pBox->CleanBox();
+			if (Status.GetStatus() == OP_ASYNC)
+				theGUI->AddAsyncOp(Status.GetValue());
+			else if(Status.IsError())
+				Results.append(Status);
 		}
 	}
 	else if (Action == m_pMenuEmptyBox)
@@ -253,14 +271,6 @@ void CSbieView::OnSandBoxAction()
 	}
 
 	CSandMan::CheckResults(Results);
-}
-
-void CSbieView::OnBoxCleaned()
-{
-	disconnect(sender(), SIGNAL(BoxCleaned()), this, SLOT(OnBoxCleaned()));
-
-	if(--m_BoxesToClean <= 0)
-		theGUI->GetProgressDialog()->hide();
 }
 
 void CSbieView::OnProcessAction()

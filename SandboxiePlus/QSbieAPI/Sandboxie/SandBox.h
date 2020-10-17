@@ -23,6 +23,16 @@
 #include "BoxedProcess.h"
 #include "SbieIni.h"
 
+struct QSBIEAPI_EXPORT SBoxSnapshot
+{
+	QString ID;
+	QString Parent;
+
+	QString NameStr;
+	QString InfoStr;
+	QDateTime SnapDate;
+};
+
 class QSBIEAPI_EXPORT CSandBox : public CSbieIni
 {
 	Q_OBJECT
@@ -38,27 +48,39 @@ public:
 
 	virtual QMap<quint64, CBoxedProcessPtr>	GetProcessList() const { return m_ProcessList; }
 
+	virtual int						GetActiveProcessCount() const { return m_ActiveProcessCount; }
+
 	virtual SB_STATUS				RunStart(const QString& Command);
 	virtual SB_STATUS				RunCommand(const QString& Command);
 	virtual SB_STATUS				TerminateAll();
 
-	virtual SB_STATUS				CleanBox();
+	virtual SB_PROGRESS				CleanBox();
 	virtual SB_STATUS				RenameBox(const QString& NewName);
 	virtual SB_STATUS				RemoveBox();
 
-	class CSbieAPI*					Api() { return m_pAPI; }
+	virtual QList<SBoxSnapshot>		GetSnapshots(QString* pCurrent = NULL) const;
+	virtual SB_PROGRESS				TakeSnapshot(const QString& Name);
+	virtual SB_PROGRESS				RemoveSnapshot(const QString& ID);
+	virtual SB_PROGRESS				SelectSnapshot(const QString& ID);
+	virtual SB_STATUS				SetSnapshotInfo(const QString& ID, const QString& Name, const QString& Description = QString());
 
-signals:
-	void							BoxCleaned();
+	class CSbieAPI*					Api() { return m_pAPI; }
 
 protected:
 	friend class CSbieAPI;
+
+	SB_PROGRESS						CleanBoxFolders(const QStringList& BoxFolders);
+
+	static SB_STATUS				RenameForDelete(const QString& BoxPath, QString& TempPath);
+
+	static bool						CleanBoxAsync(const CSbieProgressPtr& pProgress, const QStringList& BoxFolders, const QString& DeleteCommand);
 
 	QString							m_FilePath;
 	QString							m_RegPath;
 	QString							m_IpcPath;
 
 	QMap<quint64, CBoxedProcessPtr>	m_ProcessList;
+	int								m_ActiveProcessCount;
 
 //private:
 //	struct SSandBox* m;

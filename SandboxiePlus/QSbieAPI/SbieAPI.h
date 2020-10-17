@@ -22,7 +22,7 @@
 
 #include "qsbieapi_global.h"
 
-#include "SbieError.h"
+#include "SbieStatus.h"
 
 #include "./Sandboxie/SandBox.h"
 #include "./Sandboxie/BoxedProcess.h"
@@ -36,6 +36,9 @@ public:
 	QDateTime			GetTimeStamp() const { return m_TimeStamp; }
 	QString				GetType() const { return m_Type; }
 	QString				GetValue() const { return m_Name; }
+	QString				GetStautsStr()const;
+	void				IncrCounter() { m_Counter++; }
+	int					GetCount() const { return m_Counter; }
 
 	quint64				GetUID() const { return m_uid; }
 
@@ -48,6 +51,7 @@ protected:
 	bool m_Deny;
 	//bool m_Verbose;
 	//bool m_User;
+	int m_Counter;
 
 	quint64 m_uid;
 };
@@ -132,6 +136,7 @@ signals:
 	void					StatusChanged();
 	void					LogMessage(const QString& Message, bool bNotify = true);
 	void					FileToRecover(const QString& BoxName, const QString& FilePath);
+	void					BoxClosed(const QString& BoxName);
 	void					NotAuthorized(bool bLoginRequired, bool &bRetry);
 
 private slots:
@@ -150,6 +155,8 @@ protected:
 	virtual QString			GetIniPath(bool* IsHome) const;
 
 	virtual SB_STATUS		RunStart(const QString& BoxName, const QString& Command, QProcess* pProcess = NULL);
+
+	virtual bool			HasProcesses(const QString& BoxName);
 
 	virtual bool			GetLog();
 	virtual bool			GetMonitor();
