@@ -1,5 +1,6 @@
 /*
  * Copyright 2004-2020 Sandboxie Holdings, LLC 
+ * Copyright 2020 David Xanatos, xanasoft.com
  *
  * This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -1681,7 +1682,7 @@ MSG_HEADER *SbieIniServer::RunSbieCtrl(HANDLE idProcess, bool isSandboxed)
             ch = towlower(buf[0]);
         }
 
-        if (ch == L'n') {
+        if (ch != L'y') {
             status = STATUS_LOGON_NOT_GRANTED;
             ok = FALSE;
         }

@@ -1,5 +1,6 @@
 /*
  * Copyright 2004-2020 Sandboxie Holdings, LLC 
+ * Copyright 2020 David Xanatos, xanasoft.com
  *
  * This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -718,6 +719,27 @@ HANDLE ProcessServer::RunSandboxedGetToken(
             LastError = GetLastError();
 
             CloseHandle(ThreadHandle);
+
+			// OriginalToken BEGIN
+			if (!ok)
+			{
+				WCHAR boxname[48];
+				ULONG status = SbieApi_QueryProcessEx2((HANDLE)PipeServer::GetCallerProcessId(), 0,
+					boxname, NULL, NULL, NULL, NULL);
+
+				if (status == 0 && SbieApi_QueryConfBool(boxname, L"OriginalToken", FALSE))
+				{
+
+					ThreadHandle = OpenProcess(PROCESS_QUERY_INFORMATION, FALSE,
+						PipeServer::GetCallerProcessId());
+
+					ok = OpenProcessToken(
+						ThreadHandle, TOKEN_RIGHTS, &OldTokenHandle);
+
+					CloseHandle(ThreadHandle);
+				}
+			}
+			// OriginalToken END
 
             if (! ok) {
                 SetLastError(LastError);

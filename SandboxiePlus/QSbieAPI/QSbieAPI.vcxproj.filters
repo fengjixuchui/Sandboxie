@@ -25,6 +25,14 @@
     <Filter Include="Sandboxie">
       <UniqueIdentifier>{a34e523b-19e3-4951-b7f2-d0bcd66886d6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Helpers">
+      <UniqueIdentifier>{de0b69a3-8110-4776-abb6-e1930c0f8385}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -51,6 +59,9 @@
     <ClCompile Include="Sandboxie\SbieTemplates.cpp">
       <Filter>Sandboxie</Filter>
     </ClCompile>
+    <ClCompile Include="Helpers\NtIO.cpp">
+      <Filter>Helpers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -64,6 +75,9 @@
     </ClInclude>
     <ClInclude Include="SbieUtils.h">
       <Filter>SbieAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="Helpers\NtIO.h">
+      <Filter>Helpers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -93,5 +107,10 @@
     <QtMoc Include="Sandboxie\SbieTemplates.h">
       <Filter>Sandboxie</Filter>
     </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="qsbieapi_de.ts">
+      <Filter>Translation Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

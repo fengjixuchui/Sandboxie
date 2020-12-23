@@ -1,5 +1,6 @@
 /*
  * Copyright 2004-2020 Sandboxie Holdings, LLC 
+ * Copyright 2020 David Xanatos, xanasoft.com
  *
  * This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -371,6 +372,9 @@ _FX BOOLEAN Proc_Init(void)
 			SBIEDLL_HOOK(Proc_, UpdateProcThreadAttribute);
 	}
 
+	// OriginalToken BEGIN
+	if (!SbieApi_QueryConfBool(NULL, L"OriginalToken", FALSE))
+	// OriginalToken END
     if(Dll_OsBuild < 17677) {
     
         SBIEDLL_HOOK(Proc_,CreateProcessInternalW);
@@ -795,6 +799,9 @@ _FX BOOL Proc_CreateProcessInternalW(
             err = GetLastError();
         }
 
+		// OriginalToken BEGIN
+		if (!SbieApi_QueryConfBool(NULL, L"OriginalToken", FALSE))
+		// OriginalToken END
         if (ok) {
 
             //
@@ -949,6 +956,19 @@ _FX BOOL Proc_UpdateProcThreadAttribute(
 	if (Attribute == 0x0002000d) //PROC_THREAD_ATTRIBUTE_JOB_LIST
 		return TRUE;
 
+	// some mitigation flags break SbieDll.dll Injection, so we disable them
+	if (Attribute == 0x00020007) //PROC_THREAD_ATTRIBUTE_MITIGATION_POLICY
+	{
+		DWORD64* policy_value_1 = cbSize >= sizeof(DWORD64) ? lpValue : NULL;
+		//DWORD64* policy_value_2 = cbSize >= sizeof(DWORD64) * 2 ? &((DWORD64*)lpValue)[1] : NULL;
+
+		if (policy_value_1 != NULL)
+		{
+			*policy_value_1 &= ~(0x00000001ui64 << 44); // PROCESS_CREATION_MITIGATION_POLICY_BLOCK_NON_MICROSOFT_BINARIES_ALWAYS_ON;
+			//*policy_value_1 |= (0x00000002ui64 << 44); // PROCESS_CREATION_MITIGATION_POLICY_BLOCK_NON_MICROSOFT_BINARIES_ALWAYS_OFF
+		}
+	}
+
 	return __sys_UpdateProcThreadAttribute(lpAttributeList, dwFlags, Attribute, lpValue, cbSize, lpPreviousValue, lpReturnSize);
 }
 
@@ -995,17 +1015,6 @@ void *Proc_GetImageFullPath(const WCHAR *lpApplicationName, const WCHAR *lpComma
 
     return mybuf;
 }
-
-#ifndef STARTUPINFOEXW
-typedef struct _STARTUPINFOEXA {
-	STARTUPINFOA StartupInfo;
-	LPPROC_THREAD_ATTRIBUTE_LIST lpAttributeList;
-} STARTUPINFOEXA, *LPSTARTUPINFOEXA;
-typedef struct _STARTUPINFOEXW {
-	STARTUPINFOW StartupInfo;
-	LPPROC_THREAD_ATTRIBUTE_LIST lpAttributeList;
-} STARTUPINFOEXW, *LPSTARTUPINFOEXW;
-#endif
 
 // Processes in Windows 10 RS5 will start with the Sandboxie restricted token.  
 // Thus the expected failure of the original call to CreateProcessInternalW doesn't 
@@ -1194,6 +1203,9 @@ _FX BOOL Proc_CreateProcessInternalW_RS5(
             err = GetLastError();
         }
 
+		// OriginalToken BEGIN
+		if (!SbieApi_QueryConfBool(NULL, L"OriginalToken", FALSE))
+		// OriginalToken END
         if (ok) {
 
             //

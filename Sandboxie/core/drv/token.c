@@ -1,5 +1,6 @@
 /*
  * Copyright 2004-2020 Sandboxie Holdings, LLC 
+ * Copyright 2020 David Xanatos, xanasoft.com
  *
  * This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -100,7 +101,7 @@ typedef NTSTATUS(__fastcall *P_SepFilterToken_W81)(
     ULONG_PTR VariableLengthIncrease,
     void **NewTokenObject);
 
-static P_SepFilterToken Token_SepFilterToken = NULL;
+P_SepFilterToken Token_SepFilterToken = NULL;
 //---------------------------------------------------------------------------
 
 
@@ -500,7 +501,7 @@ _FX void *Token_FilterPrimary(PROCESS *proc, void *ProcessObject)
 _FX void *Token_Filter(void *TokenObject, ULONG DropRights, ULONG SessionId)
 {
     TOKEN_GROUPS *groups;
-    void *ReturnToken;
+    void *ReturnToken = NULL;
     NTSTATUS status;
     ULONG i, j;
     BOOLEAN ShouldFilterToken = FALSE;
@@ -872,6 +873,9 @@ _FX BOOLEAN Token_ResetPrimary(PROCESS *proc)
     BOOLEAN ok = FALSE;
     ULONG UserAndGroups_offset = 0;
 
+	if (!proc->primary_token)
+		return TRUE;
+
 #ifdef _WIN64
 
     if (Driver_OsVersion <= DRIVER_WINDOWS_7) {
@@ -1011,7 +1015,7 @@ _FX BOOLEAN Token_IsSharedSid_W8(void *TokenObject)
 _FX void *Token_RestrictHelper1(
     void *TokenObject, ULONG *OutIntegrityLevel, PROCESS *proc)
 {
-    void *NewTokenObject;
+    void *NewTokenObject = NULL;
     SID_AND_ATTRIBUTES *SidAndAttrsInToken = NULL;
     ULONG RestrictedSidCount_offset = 0;
     ULONG RestrictedSids_offset = 0;
@@ -1501,7 +1505,7 @@ _FX NTSTATUS Token_AssignPrimaryHandle(
 {
     NTSTATUS status;
     HANDLE ProcessHandle;
-    ULONG *PtrPrimaryTokenFrozen;
+    ULONG *PtrPrimaryTokenFrozen = NULL;
     ULONG SavePrimaryTokenFrozen;
 
     //
@@ -1727,6 +1731,11 @@ _FX BOOLEAN Token_ReplacePrimary(PROCESS *proc)
     NTSTATUS status;
     BOOLEAN ok = FALSE;
 
+	// OriginalToken BEGIN
+	if (Conf_Get_Boolean(proc->box->name, L"OriginalToken", 0, FALSE))
+		return TRUE;
+	// OriginalToken END
+
     //
     // lookup the process object to get the old primary token
     //
@@ -1944,6 +1953,8 @@ _FX NTSTATUS Sbie_SepFilterToken_KernelMode(
     return statusRet;
 }
 
+_FX NTSTATUS Sbie_SepFilterTokenHandler_asm(void* TokenObject, ULONG_PTR   SidCount, ULONG_PTR   SidPtr, ULONG_PTR   LengthIncrease, void** NewToken);
+
 _FX NTSTATUS Sbie_SepFilterTokenHandler(void *TokenObject,
     ULONG_PTR   SidCount,
     ULONG_PTR   SidPtr,
@@ -1952,6 +1963,15 @@ _FX NTSTATUS Sbie_SepFilterTokenHandler(void *TokenObject,
 {
     NTSTATUS status = 0;
 
+#ifdef _WIN64
+    //
+    // When built with VS2019 on systems with enabled "Core Isolation" we get a BSOD pointing to _chkstk,
+    // this is a function added by the compiler under certain conditions.
+    // We work around this issue by providing a hand crafter wrapper function that performs the call.
+    //
+
+    status = Sbie_SepFilterTokenHandler_asm(TokenObject, SidCount, SidPtr, LengthIncrease, NewToken);
+#else
     if (Driver_OsVersion >= DRIVER_WINDOWS_81) {
 
         status = ((P_SepFilterToken_W81)Token_SepFilterToken)(
@@ -1965,10 +1985,10 @@ _FX NTSTATUS Sbie_SepFilterTokenHandler(void *TokenObject,
             TokenObject, 0, 0, 0, 0, 0, 0, SidCount, SidPtr, LengthIncrease,
             NewToken);
     }
+#endif
 
     return status;
 }
-
 
 ULONG GetThreadTokenOwnerPid()
 {

@@ -1,5 +1,6 @@
 /*
  * Copyright 2004-2020 Sandboxie Holdings, LLC 
+ * Copyright 2020 David Xanatos, xanasoft.com
  *
  * This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -430,7 +431,7 @@ _FX BOOLEAN File_InitDrives(ULONG DriveMask)
 
         path_len = 16;
         path = Dll_Alloc(path_len);
-        Sbie_swprintf(path, L"\\??\\%c:", L'A' + drive);
+        Sbie_snwprintf(path, 8, L"\\??\\%c:", L'A' + drive);
 
         RtlInitUnicodeString(&objname, path);
 
@@ -483,7 +484,7 @@ _FX BOOLEAN File_InitDrives(ULONG DriveMask)
                 status != STATUS_OBJECT_TYPE_MISMATCH &&
                 status != STATUS_ACCESS_DENIED) {
 
-                Sbie_swprintf(error_str, L"%c [%08X]", L'A' + drive, status);
+                Sbie_snwprintf(error_str, 16, L"%c [%08X]", L'A' + drive, status);
                 SbieApi_Log(2307, error_str);
             }
 
@@ -578,7 +579,7 @@ _FX BOOLEAN File_InitDrives(ULONG DriveMask)
 
         if (! NT_SUCCESS(status)) {
 
-            Sbie_swprintf(error_str, L"%c [%08X]", L'A' + drive, status);
+            Sbie_snwprintf(error_str, 16, L"%c [%08X]", L'A' + drive, status);
             SbieApi_Log(2307, error_str);
         }
     }
@@ -1015,7 +1016,7 @@ _FX BOOLEAN File_InitUsers(void)
 
     if (errlvl) {
         WCHAR error_str[16];
-        Sbie_swprintf(error_str, L"[%08X / %02X]", status, errlvl);
+        Sbie_snwprintf(error_str, 16, L"[%08X / %02X]", status, errlvl);
         SbieApi_Log(2306, error_str);
         return FALSE;
     }
@@ -1517,7 +1518,7 @@ _FX void File_InitCopyLimit(void)
 
     if (SetMaxCopyLimit) {
 
-        File_CopyLimitKb     = 99999999;
+        File_CopyLimitKb     = -1;
         File_CopyLimitSilent = FALSE;
         return;
     }
@@ -1529,9 +1530,9 @@ _FX void File_InitCopyLimit(void)
     status = SbieApi_QueryConfAsIs(
         NULL, _CopyLimitKb, 0, str, sizeof(str) - sizeof(WCHAR));
     if (NT_SUCCESS(status)) {
-        ULONG num = _wtoi(str);
+        ULONGLONG num = _wtoi64(str);
         if (num)
-            File_CopyLimitKb = num;
+            File_CopyLimitKb = (num > 0x000000007fffffff) ? -1 : (ULONG)num;
         else
             SbieApi_Log(2207, _CopyLimitKb);
     }

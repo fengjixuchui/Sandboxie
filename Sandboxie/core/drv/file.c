@@ -1,5 +1,6 @@
 /*
  * Copyright 2004-2020 Sandboxie Holdings, LLC 
+ * Copyright 2020 David Xanatos, xanasoft.com
  *
  * This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -633,7 +634,7 @@ _FX BOOLEAN File_InitPaths(PROCESS *proc,
         return FALSE;
     }
 
-    if (! proc->image_copy) {
+    if (! proc->image_from_box) {
 
         ok = Process_GetPaths(proc, open_file_paths, _OpenFile, TRUE);
 
@@ -749,6 +750,13 @@ _FX BOOLEAN File_BlockInternetAccess(PROCESS *proc)
 {
     BOOLEAN is_open, is_closed;
     BOOLEAN ok;
+
+    //
+    // is this process excempted from the blocade
+    //
+
+	if (proc->AllowInternetAccess)
+		return TRUE;
 
     //
     // should we warn on access to internet resources
@@ -984,7 +992,7 @@ _FX NTSTATUS File_Generic_MyParseProc(
                     L"(FI) %08X %s", device_type, device_name_ptr);
 
                 if (proc->file_trace & TRACE_IGNORE)
-                    Log_Debug_Msg(ignore_str, Driver_Empty);
+                    Log_Debug_Msg(MONITOR_IGNORE, ignore_str, Driver_Empty);
 
                 if (Session_MonitorCount &&
                         device_type != FILE_DEVICE_PHYSICAL_NETCARD)
@@ -1487,7 +1495,7 @@ skip_due_to_home_folder:
             swprintf(access_str, L"(F%c) %08X.%02X.%08X",
                 letter, DesiredAccess,
                 CreateDisposition & 0x0F, CreateOptions);
-            Log_Debug_Msg(access_str, Name->Name.Buffer);
+            Log_Debug_Msg(IsPipeDevice ? MONITOR_PIPE : MONITOR_FILE_OR_KEY, access_str, Name->Name.Buffer);
         }
     }
 
@@ -1833,9 +1841,27 @@ _FX NTSTATUS File_Api_Rename(PROCESS *proc, ULONG64 *parms)
         info->FileNameLength = name_len;
         memcpy(info->FileName, name, name_len);
 
-        status = NtSetInformationFile(
-            args->file_handle.val, &IoStatusBlock,
-            info, info_len, FileRenameInformation);
+
+		FILE_OBJECT *object;
+		status = ObReferenceObjectByHandle(args->file_handle.val, 0L, *IoFileObjectType, UserMode, (PVOID)&object, NULL);
+
+		if (NT_SUCCESS(status)) {
+
+			HANDLE handle;
+			status = ObOpenObjectByPointer((PVOID)object, OBJ_FORCE_ACCESS_CHECK |
+				OBJ_KERNEL_HANDLE, NULL, GENERIC_ALL, *IoFileObjectType, KernelMode, &handle);
+
+			if (NT_SUCCESS(status)) {
+
+				status = ZwSetInformationFile(
+					handle, &IoStatusBlock, //args->file_handle.val, &IoStatusBlock,
+					info, info_len, FileRenameInformation);
+
+				ZwClose(handle);
+			}
+
+			ObDereferenceObject(object);
+		}
 
         // FIXME, we may get STATUS_NOT_SAME_DEVICE, however, in most cases,
         // this API call is used to rename a file inside a folder, rather
@@ -2080,6 +2106,16 @@ _FX NTSTATUS File_Api_RefreshPathList(PROCESS *proc, ULONG64 *parms)
         memcpy(&proc->closed_file_paths,  &closed_paths,    sizeof(LIST));
         memcpy(&proc->read_file_paths,    &read_paths,      sizeof(LIST));
         memcpy(&proc->write_file_paths,   &write_paths,     sizeof(LIST));
+	}
+
+	//
+	// now we need to re block the internet access
+	//
+
+	if (ok)
+		ok = File_BlockInternetAccess(proc);
+
+	if (ok) {
 
         status = STATUS_SUCCESS;
 

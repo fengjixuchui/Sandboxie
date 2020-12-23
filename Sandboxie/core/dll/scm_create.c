@@ -1,5 +1,6 @@
 /*
  * Copyright 2004-2020 Sandboxie Holdings, LLC 
+ * Copyright 2020 David Xanatos, xanasoft.com
  *
  * This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -825,7 +826,7 @@ _FX BOOL SbieDll_StartBoxedService(const WCHAR *ServiceName, BOOLEAN WithAdd)
     ULONG retries, error;
 
 	//WCHAR text[130];
-	//Sbie_swprintf(text, L"StartBoxedService; name: '%s'", ServiceName); // fix-me: pottential buffer overflow
+	//Sbie_snwprintf(text, 130, L"StartBoxedService; name: '%s'", ServiceName); 
     //SbieApi_MonitorPut(MONITOR_OTHER, text);
 
     //
@@ -1095,9 +1096,9 @@ _FX BOOL Scm_StartServiceW(
     if (! ServiceName)
         return FALSE;
 
-    WCHAR text[130];
-	Sbie_swprintf(text, L"StartService: %s", ServiceName); // fix-me: pottential buffer overflow
-    SbieApi_MonitorPut(MONITOR_OTHER, text);
+    //WCHAR text[130];
+	//Sbie_snwprintf(text, 130, L"StartService: %s", ServiceName);
+    //SbieApi_MonitorPut(MONITOR_OTHER, text);
 
     if (Scm_IsBoxedService(ServiceName))
         return SbieDll_StartBoxedService(ServiceName, FALSE);
@@ -1263,7 +1264,7 @@ _FX BOOL Scm_StartServiceCtrlDispatcherX(
     }
 
     //WCHAR text[130];
-	//Sbie_swprintf(text, L"StartServiceCtrlDispatcher; name: '%s'", ServiceName); // fix-me: pottential buffer overflow
+	//Sbie_snwprintf(text, 130, L"StartServiceCtrlDispatcher; name: '%s'", ServiceName);
     //SbieApi_MonitorPut(MONITOR_OTHER, text);
 
     //

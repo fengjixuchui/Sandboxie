@@ -6,12 +6,14 @@
 #include "../MiscHelpers/Common/TreeViewEx.h"
 #include "../MiscHelpers/Common/PanelView.h"
 #include "../MiscHelpers/Common/ProgressDialog.h"
+#include "../MiscHelpers/Common/NetworkAccessManager.h"
 #include "Models/ResMonModel.h"
 #include "Models/ApiMonModel.h"
 #include <QTranslator>
+#include "Windows/PopUpWindow.h"
 
 #define VERSION_MJR		0
-#define VERSION_MIN 	4
+#define VERSION_MIN 	5
 #define VERSION_REV 	2
 #define VERSION_UPD 	0
 
@@ -36,14 +38,20 @@ public:
 
 	static QString		GetVersion();
 
+	SB_PROGRESS			RecoverFiles(const QList<QPair<QString, QString>>& FileList);
+
 	void				AddAsyncOp(const CSbieProgressPtr& pProgress);
 	static void			CheckResults(QList<SB_STATUS> Results);
+
+	static QIcon		GetIcon(const QString& Name);
 
 protected:
 	SB_STATUS			ConnectSbie();
 	SB_STATUS			ConnectSbieImpl();
 	SB_STATUS			DisconnectSbie();
 	SB_STATUS			StopSbie(bool andRemove = false);
+
+	static void			RecoverFilesAsync(const CSbieProgressPtr& pProgress, const QList<QPair<QString, QString>>& FileList);
 
 	bool				IsFullyPortable();
 
@@ -59,22 +67,35 @@ protected:
 	
 	QMap<CSbieProgress*, CSbieProgressPtr> m_pAsyncProgress;
 
+	CNetworkAccessManager*	m_RequestManager;
+	CSbieProgressPtr	m_pUpdateProgress;
+
 public slots:
 	void				OnMessage(const QString&);
 
 	void				OnStatusChanged();
 	void				OnLogMessage(const QString& Message, bool bNotify = false);
+	void				OnLogSbieMessage(quint32 MsgCode, const QStringList& MsgData, quint32 ProcessId);
 
 	void				OnNotAuthorized(bool bLoginRequired, bool& bRetry);
 
+	void				OnQueuedRequest(quint32 ClientPid, quint32 ClientTid, quint32 RequestId, const QVariantMap& Data);
+	void				OnFileToRecover(const QString& BoxName, const QString& FilePath, quint32 ProcessId);
+
+	void				OpenRecovery(const QString& BoxName);
+
 	void				UpdateSettings();
+	void				OnIniReloaded();
 
 	void				OnAsyncFinished();
 	void				OnAsyncFinished(CSbieProgress* pProgress);
 	void				OnAsyncMessage(const QString& Text);
+	void				OnAsyncProgress(int Progress);
 	void				OnCancelAsync();
 
 	void				OnBoxClosed(const QString& BoxName);
+
+	void				CheckForUpdates(bool bManual = true);
 
 private slots:
 	void				OnSelectionChanged();
@@ -83,8 +104,11 @@ private slots:
 
 	void				OnNewBox();
 	void				OnEmptyAll();
+	void				OnDisableForce();
+	void				OnDisableForce2();
 	void				OnMaintenance();
 
+	void				OnViewMode(QAction* action);
 	void				OnCleanUp();
 	void				OnSetKeep();
 
@@ -95,11 +119,25 @@ private slots:
 	void				OnSetLogging();
 
 	void				OnExit();
+	void				OnHelp();
 	void				OnAbout();
 
+	void				OnShowHide();
 	void				OnSysTray(QSystemTrayIcon::ActivationReason Reason);
 
+	void				OnUpdateCheck();
+	void				OnUpdateProgress(qint64 bytes, qint64 bytesTotal);
+	void				OnUpdateDownload();
+
 private:
+	void				CreateMenus();
+	void				CreateToolBar();
+
+	void				SetViewMode(bool bAdvanced);
+
+	void				LoadState();
+	void				StoreState();
+
 	QWidget*			m_pMainWidget;
 	QVBoxLayout*		m_pMainLayout;
 
@@ -124,6 +162,8 @@ private:
 	QMenu*				m_pMenuFile;
 	QAction*			m_pNew;
 	QAction*			m_pEmptyAll;
+	QAction*			m_pDisableForce;
+	QAction*			m_pDisableForce2;
 	QMenu*				m_pMaintenance;
 	QAction*			m_pConnect;
 	QAction*			m_pDisconnect;
@@ -140,6 +180,8 @@ private:
 	QAction*			m_pExit;
 
 	QMenu*				m_pMenuView;
+	QActionGroup*		m_pViewMode;
+	int					m_iMenuViewPos;
 	QMenu*				m_pCleanUpMenu;
 	QAction*			m_pCleanUpProcesses;
 	QAction*			m_pCleanUpMsgLog;
@@ -156,17 +198,22 @@ private:
 	QAction*			m_pEnableLogging;
 
 	QMenu*				m_pMenuHelp;
-	QAction*			m_pAbout;
 	QAction*			m_pSupport;
+	QAction*			m_pForum;
+	QAction*			m_pManual;
+	QAction*			m_pUpdate;
+	QAction*			m_pAbout;
 	QAction*			m_pAboutQt;
 
 	QSystemTrayIcon*	m_pTrayIcon;
 	QMenu*				m_pTrayMenu;
 	bool				m_bIconEmpty;
+	bool				m_bIconDisabled;
 
 	bool				m_bExit;
 
 	CProgressDialog*	m_pProgressDialog;
+	CPopUpWindow*		m_pPopUpWindow;
 
 	void				SetDarkTheme(bool bDark);
 	QString				m_DefaultStyle;
@@ -175,6 +222,8 @@ private:
 	void				LoadLanguage();
 	QTranslator			m_Translator;
 	QByteArray			m_Translation;
+public:
+	quint32				m_LanguageId;
 };
 
 extern CSandMan* theGUI;

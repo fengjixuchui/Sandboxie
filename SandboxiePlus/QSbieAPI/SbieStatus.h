@@ -125,21 +125,19 @@ public:
 	CSbieProgress() : m_Status(OP_ASYNC), m_Canceled(false) {}
 
 	void Cancel() { m_Canceled = true; }
-	bool IsCancel() { return m_Canceled; }
+	bool IsCanceled() { return m_Canceled; }
 
-	void ShowMessage(const QString& text) { emit Message(text);
-#ifdef _DEBUG
-		QThread::sleep(3);
-#endif
-	}
+	void ShowMessage(const QString& text) { emit Message(text);}
+	void SetProgress(int value) { emit Progress(value); }
 	void Finish(SB_STATUS status) { m_Status = m_Canceled ? SB_ERR(OP_CANCELED) : status; emit Finished(); }
 
-	long GetStatus() { return m_Status.GetStatus(); }
-	bool IsFinished() { return GetStatus() != OP_ASYNC; }
+	SB_STATUS GetStatus() { return m_Status; }
+	bool IsFinished() { return m_Status.GetStatus() != OP_ASYNC; }
 
 signals:
 	//void Progress(int procent);
 	void Message(const QString& text);
+	void Progress(int value);
 	void Finished();
 
 protected:

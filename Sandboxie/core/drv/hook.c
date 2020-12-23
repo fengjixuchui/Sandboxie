@@ -1,5 +1,6 @@
 /*
  * Copyright 2004-2020 Sandboxie Holdings, LLC 
+ * Copyright 2020 David Xanatos, xanasoft.com
  *
  * This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -24,6 +25,10 @@
 #include "hook.h"
 #include "dll.h"
 
+#include "util.h"
+#define KERNEL_MODE
+#include "../dll/hook_inst.c"
+#include "../dll/hook_tramp.c"
 
 //---------------------------------------------------------------------------
 // Defines

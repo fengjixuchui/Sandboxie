@@ -1,5 +1,6 @@
 /*
  * Copyright 2004-2020 Sandboxie Holdings, LLC 
+ * Copyright 2020 David Xanatos, xanasoft.com
  *
  * This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -399,7 +400,7 @@ _FX NTSTATUS SysInfo_NtCreateJobObject(
     while (1) {
 
         InterlockedIncrement(&_JobCounter);
-        Sbie_swprintf(jobname, L"%s\\%s_DummyJob_%s_%d",
+        Sbie_snwprintf(jobname, jobname_len, L"%s\\%s_DummyJob_%s_%d",
                         Dll_BoxIpcPath, SBIE, Dll_ImageName, _JobCounter);
         RtlInitUnicodeString(&objname, jobname);
 

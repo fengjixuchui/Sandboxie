@@ -28,6 +28,13 @@ CSettingsWindow::CSettingsWindow(QWidget *parent)
 
 	ui.chkAutoStart->setChecked(IsAutorunEnabled());
 
+	switch (theConf->GetInt("Options/CheckForUpdates", 2)) {
+	case 0: ui.chkAutoUpdate->setCheckState(Qt::Unchecked); break;
+	case 1: ui.chkAutoUpdate->setCheckState(Qt::Checked); break;
+	case 2: ui.chkAutoUpdate->setCheckState(Qt::PartiallyChecked); break;
+	}
+
+
 	ui.chkShellMenu->setCheckState((Qt::CheckState)CSbieUtils::IsContextMenu());
 
 	ui.chkDarkTheme->setChecked(theConf->GetBool("Options/DarkTheme", false));
@@ -60,15 +67,19 @@ CSettingsWindow::CSettingsWindow(QWidget *parent)
 		ui.chkAdminOnlyFP->setChecked(theAPI->GetGlobalSettings()->GetBool("ForceDisableAdminOnly", false));
 		ui.chkClearPass->setChecked(theAPI->GetGlobalSettings()->GetBool("ForgetPassword", false));
 
+		ui.chkStartBlock->setChecked(theAPI->GetGlobalSettings()->GetBool("StartRunAlertDenied", false));
+		connect(ui.chkStartBlock, SIGNAL(stateChanged(int)), this, SLOT(OnWarnChanged()));
+		ui.chkStartBlockMsg->setChecked(theAPI->GetGlobalSettings()->GetBool("NotifyStartRunAccessDenied", true));
+		connect(ui.chkStartBlockMsg, SIGNAL(stateChanged(int)), this, SLOT(OnWarnChanged()));
 		connect(ui.btnAddWarnProg, SIGNAL(pressed()), this, SLOT(OnAddWarnProg()));
+		connect(ui.btnAddWarnFolder, SIGNAL(pressed()), this, SLOT(OnAddWarnFolder()));
 		connect(ui.btnDelWarnProg, SIGNAL(pressed()), this, SLOT(OnDelWarnProg()));
 
-		QStringList WarnProgs = theAPI->GetGlobalSettings()->GetTextList("AlertProcess");
-		foreach(const QString& Value, WarnProgs) {
-			QTreeWidgetItem* pItem = new QTreeWidgetItem();
-			pItem->setText(0, Value);
-			ui.treeWarnProgs->addTopLevelItem(pItem);
-		}
+		foreach(const QString& Value, theAPI->GetGlobalSettings()->GetTextList("AlertProcess", false))
+			AddWarnEntry(Value, 1);
+		
+		foreach(const QString& Value, theAPI->GetGlobalSettings()->GetTextList("AlertFolder", false))
+			AddWarnEntry(Value, 2);
 	}
 	else
 	{
@@ -136,6 +147,12 @@ void CSettingsWindow::apply()
 
 	AutorunEnable(ui.chkAutoStart->isChecked());
 
+	switch (ui.chkAutoUpdate->checkState()) {
+	case Qt::Unchecked: theConf->SetValue("Options/CheckForUpdates", 0); break;
+	case Qt::PartiallyChecked: theConf->SetValue("Options/CheckForUpdates", 2); break;
+	case Qt::Checked: theConf->SetValue("Options/CheckForUpdates", 1); break;
+	}
+
 	if (ui.chkShellMenu->checkState() != CSbieUtils::IsContextMenu())
 	{
 		if (ui.chkShellMenu->isChecked())
@@ -175,7 +192,7 @@ void CSettingsWindow::apply()
 		if (ui.chkPassRequired->isChecked())
 		{
 			if (!isPassSet && m_NewPassword.isEmpty())
-				OnSetPassword(); // request password entry if it wasn't already
+				OnSetPassword(); // request password entry if it wasn't entered already
 			if (!m_NewPassword.isEmpty()) {
 				theAPI->LockConfig(m_NewPassword); // set new/changed password
 				m_NewPassword.clear();
@@ -189,13 +206,24 @@ void CSettingsWindow::apply()
 
 		if (m_WarnProgsChanged)
 		{
-			QStringList WarnProgs;
-			for (int i = 0; i < ui.treeWarnProgs->topLevelItemCount(); i++) {
+			theAPI->GetGlobalSettings()->SetBool("StartRunAlertDenied", ui.chkStartBlock->isChecked());
+			theAPI->GetGlobalSettings()->SetBool("NotifyStartRunAccessDenied", ui.chkStartBlockMsg->isChecked());
+
+			QStringList AlertProcess;
+			QStringList AlertFolder;
+			for (int i = 0; i < ui.treeWarnProgs->topLevelItemCount(); i++)
+			{
 				QTreeWidgetItem* pItem = ui.treeWarnProgs->topLevelItem(i);
-				WarnProgs.append(pItem->text(0));
+				int Type = pItem->data(0, Qt::UserRole).toInt();
+				switch (Type)
+				{
+				case 1:	AlertProcess.append(pItem->data(1, Qt::UserRole).toString()); break;
+				case 2: AlertFolder.append(pItem->data(1, Qt::UserRole).toString()); break;
+				}
 			}
 
-			theAPI->GetGlobalSettings()->UpdateTextList("AlertProcess", WarnProgs);
+			theAPI->GetGlobalSettings()->UpdateTextList("AlertProcess", AlertProcess, false);
+			theAPI->GetGlobalSettings()->UpdateTextList("AlertFolder", AlertFolder, false);
 			m_WarnProgsChanged = false;
 		}
 
@@ -206,13 +234,13 @@ void CSettingsWindow::apply()
 			for (int i = 0; i < ui.treeCompat->topLevelItemCount(); i++) {
 				QTreeWidgetItem* pItem = ui.treeCompat->topLevelItem(i);
 				if (pItem->checkState(0) == Qt::Checked)
-					Used.append(pItem->text(0));
+					Used.append(pItem->data(0, Qt::UserRole).toString());
 				else
-					Rejected.append(pItem->text(0));
+					Rejected.append(pItem->data(0, Qt::UserRole).toString());
 			}
 
-			theAPI->GetGlobalSettings()->UpdateTextList("Template", Used);
-			theAPI->GetGlobalSettings()->UpdateTextList("TemplateReject", Rejected);
+			theAPI->GetGlobalSettings()->UpdateTextList("Template", Used, false);
+			theAPI->GetGlobalSettings()->UpdateTextList("TemplateReject", Rejected, false);
 			m_CompatChanged = false;
 		}
 	}
@@ -260,8 +288,11 @@ void CSettingsWindow::OnTab()
 			if (I.value() == CSbieTemplates::eNone)
 				continue;
 
+			QSharedPointer<CSbieIni> pTemplate = QSharedPointer<CSbieIni>(new CSbieIni("Template_" + I.key(), theAPI));
+
 			QTreeWidgetItem* pItem = new QTreeWidgetItem();
-			pItem->setText(0, I.key());
+			pItem->setText(0, pTemplate->GetText("Tmpl.Title"));
+			pItem->setData(0, Qt::UserRole, I.key());
 			pItem->setCheckState(0, (I.value() & CSbieTemplates::eEnabled) ? Qt::Checked : Qt::Unchecked);
 			ui.treeCompat->addTopLevelItem(pItem);
 		}
@@ -278,7 +309,7 @@ retry:
 	if (Value1.isEmpty())
 		return;
 
-	QString Value2 = QInputDialog::getText(this, "Sandboxie-Plus", tr("Please re enter the new configuration password."), QLineEdit::Password);
+	QString Value2 = QInputDialog::getText(this, "Sandboxie-Plus", tr("Please re-enter the new configuration password."), QLineEdit::Password);
 	if (Value2.isEmpty())
 		return;
 
@@ -290,16 +321,32 @@ retry:
 	m_NewPassword = Value1;
 }
 
+void CSettingsWindow::AddWarnEntry(const QString& Name, int type)
+{
+	QTreeWidgetItem* pItem = new QTreeWidgetItem();
+	pItem->setText(0, (type == 1 ? tr("Process") : tr("Folder")));
+	pItem->setData(0, Qt::UserRole, type);
+
+	pItem->setData(1, Qt::UserRole, Name);
+	pItem->setText(1, Name);
+	ui.treeWarnProgs->addTopLevelItem(pItem);
+}
+
 void CSettingsWindow::OnAddWarnProg()
 {
-	QString Value = QInputDialog::getText(this, "Sandboxie-Plus", tr("Please a program file name"));
+	QString Value = QInputDialog::getText(this, "Sandboxie-Plus", tr("Please enter a program file name"));
 	if (Value.isEmpty())
 		return;
+	AddWarnEntry(Value, 1);
+	m_WarnProgsChanged = true;
+}
 
-	QTreeWidgetItem* pItem = new QTreeWidgetItem();
-	pItem->setText(0, Value);
-	ui.treeWarnProgs->addTopLevelItem(pItem);
-
+void CSettingsWindow::OnAddWarnFolder()
+{
+	QString Value = QFileDialog::getExistingDirectory(this, tr("Select Directory")).replace("/", "\\");
+	if (Value.isEmpty())
+		return;
+	AddWarnEntry(Value, 2);
 	m_WarnProgsChanged = true;
 }
 

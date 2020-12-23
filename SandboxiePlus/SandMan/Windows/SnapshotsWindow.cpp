@@ -22,7 +22,7 @@ CSnapshotsWindow::CSnapshotsWindow(const CSandBoxPtr& pBox, QWidget *parent)
 #endif
 
 	m_pSnapshotModel = new CSimpleTreeModel();
-	m_pSnapshotModel->setHeaderLabels(tr("Snapshot").split("|"));
+	m_pSnapshotModel->AddColumn(tr("Snapshot"), "Name");
 
 	/*m_pSortProxy = new CSortFilterProxyModel(false, this);
 	m_pSortProxy->setSortRole(Qt::EditRole);
@@ -56,7 +56,6 @@ CSnapshotsWindow::CSnapshotsWindow(const CSandBoxPtr& pBox, QWidget *parent)
 	QModelIndex CurIndex = m_pSnapshotModel->FindIndex(m_CurSnapshot);
 	if (CurIndex.isValid()) {
 		ui.treeSnapshots->selectionModel()->select(CurIndex, QItemSelectionModel::ClearAndSelect);
-		UpdateSnapshot(CurIndex);
 	}
 }
 
@@ -82,9 +81,6 @@ void CSnapshotsWindow::UpdateSnapshots()
 		BoxSnapshot["Name"] = Snapshot.NameStr;
 		BoxSnapshot["Info"] = Snapshot.InfoStr;
 		BoxSnapshot["Date"] = Snapshot.SnapDate;
-		QVariantMap Values;
-		Values["0"] = Snapshot.NameStr;
-		BoxSnapshot["Values"] = Values;
 		if(m_CurSnapshot == Snapshot.ID)
 			BoxSnapshot["IsBold"] = true;
 		m_SnapshotMap.insert(Snapshot.ID, BoxSnapshot);
@@ -160,7 +156,7 @@ void CSnapshotsWindow::OnRemoveSnapshot()
 	//QVariant ID = m_pSnapshotModel->GetItemID(ModelIndex);
 	QVariant ID = m_pSnapshotModel->GetItemID(Index);
 
-	if (QMessageBox("Sandboxie-Plus", tr("Do you really want delete the sellected snapshot?"), QMessageBox::Warning, QMessageBox::Yes, QMessageBox::No | QMessageBox::Default | QMessageBox::Escape, QMessageBox::NoButton).exec() != QMessageBox::Yes)
+	if (QMessageBox("Sandboxie-Plus", tr("Do you really want to delete the selected snapshot?"), QMessageBox::Warning, QMessageBox::Yes, QMessageBox::No | QMessageBox::Default | QMessageBox::Escape, QMessageBox::NoButton).exec() != QMessageBox::Yes)
 		return;
 
 	HandleResult(m_pBox->RemoveSnapshot(ID.toString()));

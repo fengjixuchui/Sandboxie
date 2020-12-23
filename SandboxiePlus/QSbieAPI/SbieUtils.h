@@ -30,6 +30,9 @@ public:
 	static void				AddContextMenu(const QString& StartPath);
 	static void				RemoveContextMenu();
 
+	static bool				CreateShortcut(class CSbieAPI* pApi, const QString &LinkPath, const QString &LinkName, const QString &boxname, const QString &arguments, const QString &iconPath, int iconIndex, const QString &workdir, bool bRunElevated = false);
+	static bool				GetStartMenuShortcut(class CSbieAPI* pApi, QString &BoxName, QString &LinkPath, QString &IconPath, quint32& IconIndex, QString &WorkDir);
+
 private:
 	static SB_STATUS		ElevateOps(const QStringList& Ops);
 	static SB_STATUS		ExecOps(const QStringList& Ops);

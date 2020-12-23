@@ -21,16 +21,16 @@ CSbieModel::~CSbieModel()
 {
 }
 
-QList<QVariant> CSbieModel::MakeProcPath(const QString& BoxName, const CBoxedProcessPtr& pProcess, const QMap<quint64, CBoxedProcessPtr>& ProcessList)
+QList<QVariant> CSbieModel::MakeProcPath(const QString& BoxName, const CBoxedProcessPtr& pProcess, const QMap<quint32, CBoxedProcessPtr>& ProcessList)
 {
 	QList<QVariant> Path = MakeProcPath(pProcess, ProcessList);
 	Path.prepend(BoxName);
 	return Path;
 }
 
-QList<QVariant> CSbieModel::MakeProcPath(const CBoxedProcessPtr& pProcess, const QMap<quint64, CBoxedProcessPtr>& ProcessList)
+QList<QVariant> CSbieModel::MakeProcPath(const CBoxedProcessPtr& pProcess, const QMap<quint32, CBoxedProcessPtr>& ProcessList)
 {
-	quint64 ParentID = pProcess->GetParendPID();
+	quint32 ParentID = pProcess->GetParendPID();
 	CBoxedProcessPtr pParent = ProcessList.value(ParentID);
 
 	QList<QVariant> Path;
@@ -42,7 +42,7 @@ QList<QVariant> CSbieModel::MakeProcPath(const CBoxedProcessPtr& pProcess, const
 	return Path;
 }
 
-bool CSbieModel::TestProcPath(const QList<QVariant>& Path, const QString& BoxName, const CBoxedProcessPtr& pProcess, const QMap<quint64, CBoxedProcessPtr>& ProcessList, int Index)
+bool CSbieModel::TestProcPath(const QList<QVariant>& Path, const QString& BoxName, const CBoxedProcessPtr& pProcess, const QMap<quint32, CBoxedProcessPtr>& ProcessList, int Index)
 {
 	if (Index == 0)
 	{
@@ -52,7 +52,7 @@ bool CSbieModel::TestProcPath(const QList<QVariant>& Path, const QString& BoxNam
 		return TestProcPath(Path, BoxName, pProcess, ProcessList, 1);
 	}
 
-	quint64 ParentID = pProcess->GetParendPID();
+	quint32 ParentID = pProcess->GetParendPID();
 	CBoxedProcessPtr pParent = ProcessList.value(ParentID);
 
 	if (!pParent.isNull() && ParentID != pProcess->GetProcessId())
@@ -66,11 +66,64 @@ bool CSbieModel::TestProcPath(const QList<QVariant>& Path, const QString& BoxNam
 	return Path.size() == Index;
 }
 
-QList<QVariant> CSbieModel::Sync(const QMap<QString, CSandBoxPtr>& BoxList)
+QString CSbieModel::FindParent(const QVariant& Name, const QMap<QString, QStringList>& Groups)
+{
+	for(auto I = Groups.begin(); I != Groups.end(); ++I)
+	{
+		if (I.value().contains(Name.toString(), Qt::CaseInsensitive))
+			return I.key();
+	}
+	return QString();
+}
+
+QList<QVariant>	CSbieModel::MakeBoxPath(const QVariant& Name, const QMap<QString, QStringList>& Groups)
+{
+	QString ParentID = FindParent(Name, Groups);
+
+	QList<QVariant> Path;
+	if (!ParentID.isEmpty() && ParentID != Name)
+	{
+		Path = MakeBoxPath(ParentID, Groups);
+		Path.append(ParentID);
+	}
+	return Path;
+}
+
+QList<QVariant> CSbieModel::Sync(const QMap<QString, CSandBoxPtr>& BoxList, const QMap<QString, QStringList>& Groups)
 {
 	QList<QVariant> Added;
 	QMap<QList<QVariant>, QList<STreeNode*> > New;
 	QHash<QVariant, STreeNode*> Old = m_Map;
+
+	foreach(const QString& Group, Groups.keys())
+	{
+		if (Group.isEmpty())
+			continue;
+		QVariant ID = Group;
+
+		QHash<QVariant, STreeNode*>::iterator I = Old.find(ID);
+		SSandBoxNode* pNode = I != Old.end() ? static_cast<SSandBoxNode*>(I.value()) : NULL;
+		if (!pNode)
+		{
+			pNode = static_cast<SSandBoxNode*>(MkNode(ID));
+			pNode->Values.resize(columnCount());
+			if (m_bTree)
+				pNode->Path = MakeBoxPath(ID, Groups);
+			pNode->pBox = NULL;
+			New[pNode->Path].append(pNode);
+			Added.append(ID);
+
+			pNode->Icon = m_BoxIcons[eYelow].first;
+			pNode->IsBold = true;
+
+			pNode->Values[eName].Raw = Group;
+			pNode->Values[eStatus].Raw = tr("Box Groupe");
+		}
+		else
+		{
+			I.value() = NULL;
+		}
+	}
 
 	foreach (const CSandBoxPtr& pBox, BoxList)
 	{
@@ -84,6 +137,8 @@ QList<QVariant> CSbieModel::Sync(const QMap<QString, CSandBoxPtr>& BoxList)
 		{
 			pNode = static_cast<SSandBoxNode*>(MkNode(ID));
 			pNode->Values.resize(columnCount());
+			if (m_bTree)
+				pNode->Path = MakeBoxPath(ID, Groups);
 			pNode->pBox = pBox;
 			New[pNode->Path].append(pNode);
 			Added.append(ID);
@@ -100,9 +155,9 @@ QList<QVariant> CSbieModel::Sync(const QMap<QString, CSandBoxPtr>& BoxList)
 		bool State = false;
 		int Changed = 0;
 
-		QMap<quint64, CBoxedProcessPtr> ProcessList = pBox->GetProcessList();
+		QMap<quint32, CBoxedProcessPtr> ProcessList = pBox->GetProcessList();
 
-		bool HasActive = Sync(pBox, ProcessList, New, Old, Added);
+		bool HasActive = Sync(pBox, pNode->Path, ProcessList, New, Old, Added);
 		int inUse = (HasActive ? 1 : 0);
 		int boxType = eYelow;
 		if(pBoxEx->HasLogApi())
@@ -166,7 +221,7 @@ QList<QVariant> CSbieModel::Sync(const QMap<QString, CSandBoxPtr>& BoxList)
 	return Added;
 }
 
-bool CSbieModel::Sync(const CSandBoxPtr& pBox, const QMap<quint64, CBoxedProcessPtr>& ProcessList, QMap<QList<QVariant>, QList<STreeNode*> >& New, QHash<QVariant, STreeNode*>& Old, QList<QVariant>& Added)
+bool CSbieModel::Sync(const CSandBoxPtr& pBox, const QList<QVariant>& Path, const QMap<quint32, CBoxedProcessPtr>& ProcessList, QMap<QList<QVariant>, QList<STreeNode*> >& New, QHash<QVariant, STreeNode*>& Old, QList<QVariant>& Added)
 {
 	QString BoxName = pBox->GetName();
 
@@ -180,12 +235,12 @@ bool CSbieModel::Sync(const CSandBoxPtr& pBox, const QMap<quint64, CBoxedProcess
 
 		QHash<QVariant, STreeNode*>::iterator I = Old.find(ID);
 		SSandBoxNode* pNode = I != Old.end() ? static_cast<SSandBoxNode*>(I.value()) : NULL;
-		if (!pNode || (m_bTree ? !TestProcPath(pNode->Path, BoxName, pProcess, ProcessList) : !pNode->Path.isEmpty()))
+		if (!pNode || (m_bTree ? !TestProcPath(pNode->Path.mid(Path.length()), BoxName, pProcess, ProcessList) : !pNode->Path.isEmpty())) // todo: improve that
 		{
 			pNode = static_cast<SSandBoxNode*>(MkNode(ID));
 			pNode->Values.resize(columnCount());
-			if(m_bTree)
-				pNode->Path = MakeProcPath(BoxName, pProcess, ProcessList);
+			if (m_bTree)
+				pNode->Path = Path + MakeProcPath(BoxName, pProcess, ProcessList);
 			pNode->pBox = pBox;
 			pNode->pProcess = pProcess;
 			New[pNode->Path].append(pNode);
@@ -293,6 +348,32 @@ CBoxedProcessPtr CSbieModel::GetProcess(const QModelIndex &index) const
 	ASSERT(pNode);
 
 	return pNode->pProcess;
+}
+
+QVariant CSbieModel::GetID(const QModelIndex &index) const
+{
+	if (!index.isValid())
+		return QVariant();
+
+	SSandBoxNode* pNode = static_cast<SSandBoxNode*>(index.internalPointer());
+	ASSERT(pNode);
+
+	return pNode->ID;
+}
+
+CSbieModel::ETypes CSbieModel::GetType(const QModelIndex &index) const
+{
+	if (!index.isValid())
+		return eNone;
+
+	SSandBoxNode* pNode = static_cast<SSandBoxNode*>(index.internalPointer());
+	ASSERT(pNode);
+
+	if (pNode->pProcess)
+		return eProcess;
+	if (pNode->pBox)
+		return eBox;
+	return eGroup;
 }
 
 int CSbieModel::columnCount(const QModelIndex &parent) const

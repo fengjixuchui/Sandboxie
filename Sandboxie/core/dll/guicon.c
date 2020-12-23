@@ -1,5 +1,6 @@
 /*
  * Copyright 2004-2020 Sandboxie Holdings, LLC 
+ * Copyright 2020 David Xanatos, xanasoft.com
  *
  * This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -143,6 +144,16 @@ _FX BOOL Gui_ConnectConsole(ULONG ShowFlag)
     HANDLE ProcessToken;
     NTSTATUS status;
 
+	// NoSbieDesk BEGIN
+	if (SbieApi_QueryConfBool(NULL, L"NoSandboxieDesktop", FALSE)) {
+
+		typedef BOOL(*P_AllocConsole)();
+		P_AllocConsole AllocConsole = (P_AllocConsole)
+			GetProcAddress(Dll_Kernel32, "AllocConsole");
+		return AllocConsole();
+	}
+	// NoSbieDesk END
+
     //
     // on Windows 7, a console process tries to launch conhost.exe through
     // csrss.exe during initialization of kernel32.dll in the function
@@ -216,7 +227,7 @@ _FX BOOL Gui_ConnectConsole(ULONG ShowFlag)
 
     if (! NT_SUCCESS(status)) {
         WCHAR errtxt[48];
-        Sbie_swprintf(errtxt, L"ConsoleInit (%08X)", status);
+        Sbie_snwprintf(errtxt, 48, L"ConsoleInit (%08X)", status);
         SbieApi_Log(2205, errtxt);
         return FALSE;
     }

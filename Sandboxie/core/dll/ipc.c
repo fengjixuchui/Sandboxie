@@ -1,5 +1,6 @@
 /*
  * Copyright 2004-2020 Sandboxie Holdings, LLC 
+ * Copyright 2020 David Xanatos, xanasoft.com
  *
  * This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -402,7 +403,7 @@ _FX void Ipc_CreateObjects(void)
     // the last path component (the dummy name itself)
     //
 
-    Sbie_swprintf(str, SBIE_BOXED_ L"DummyEvent_%d", Dll_ProcessId);
+    Sbie_snwprintf(str, 64, SBIE_BOXED_ L"DummyEvent_%d", Dll_ProcessId);
     handle = CreateEvent(NULL, FALSE, FALSE, str);
     if (! handle) {
         errlvl = 11;
