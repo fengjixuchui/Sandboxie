@@ -1769,6 +1769,7 @@ CBoxedProcessPtr CSbieAPI::OnProcessBoxed(quint32 ProcessId, const QString& Path
 		pBox->m_ProcessList.insert(ProcessId, pProcess);
 		m_BoxedProxesses.insert(ProcessId, pProcess);
 
+		UpdateProcessInfo(pProcess);
 		pProcess->InitProcessInfo();
 	}
 
@@ -1853,7 +1854,7 @@ bool CSbieAPI::IsMonitoring()
 
 bool CSbieAPI::GetMonitor()
 {
-	const int max_len = 256; // versions prioir to 5.44.1 check for max_len <= 256 increase this later
+	const int max_len = 1024;
 
 	USHORT type;
 	ULONG64 pid;
@@ -1943,6 +1944,7 @@ QString CResLogEntry::GetTypeStr() const
 {
 	switch (m_Type.Type)
 	{
+	case MONITOR_SYSCALL:		return "SysCall";
 	case MONITOR_PIPE:			return "Pipe"; 
 	case MONITOR_IPC:			return "Ipc"; 
 	case MONITOR_WINCLASS:		return "WinClass"; 
@@ -1950,7 +1952,8 @@ QString CResLogEntry::GetTypeStr() const
 	case MONITOR_COMCLASS:		return "ComClass"; 
 	case MONITOR_IGNORE:		return "Ignore"; 
 	case MONITOR_IMAGE:			return "Image"; 
-	case MONITOR_FILE_OR_KEY:	return "File/Key"; 
+	case MONITOR_FILE:			return "File"; 
+	case MONITOR_KEY:			return "Key";
 	case MONITOR_OTHER:			return "Debug"; 
 	default:					return "Unknown: " + QString::number(m_Type.Type);
 	}
