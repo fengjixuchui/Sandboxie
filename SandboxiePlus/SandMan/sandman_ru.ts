@@ -217,6 +217,18 @@
         <source>Please enter an auto exec command</source>
         <translation>Пожалуйста, введите команду auto exec</translation>
     </message>
+    <message>
+        <source>This sandbox has been deleted hence configuration can not be saved.</source>
+        <translation>Эта песочница была удалена, поэтому сохранить конфигурацию невозможно.</translation>
+    </message>
+    <message>
+        <source>Some changes haven&apos;t been saved yet, do you really want to close this options window?</source>
+        <translation>Некоторые изменения еще не были сохранены, вы действительно хотите закрыть окно параметров?</translation>
+    </message>
+    <message>
+        <source>Executables (*.exe *.cmd);;All files (*.*)</source>
+        <translation>Исполняемые файлы (*.exe *.cmd);;Все файлы (*.*)</translation>
+    </message>
 </context>
 <context>
     <name>CPopUpMessage</name>
@@ -281,6 +293,10 @@
     <message>
         <source>Request timed out</source>
         <translation>Срок действия запроса истек</translation>
+    </message>
+    <message>
+        <source>Yes and add to allowed programs</source>
+        <translation>Да и добавить в разрешенные программы</translation>
     </message>
 </context>
 <context>
@@ -363,46 +379,26 @@
     <message>
         <source>Do you want to allow %4 (%5) to copy a %1 large file into sandbox: %2?
 File name: %3</source>
-        <translation type="vanished">Разрешить%4 (%5) копировать большой файл %1 в песочницу:%2?
+        <translation>Разрешить%4 (%5) копировать большой файл %1 в песочницу:%2?
 Имя файла:%3</translation>
     </message>
     <message>
         <source>Do you want to allow %1 (%2) access to the internet?
 Full path: %3</source>
-        <translation type="vanished">Вы хотите разрешить %1 (%2) доступ к Интернету?
+        <translation>Вы хотите разрешить %1 (%2) доступ к Интернету?
 Полный путь: %3</translation>
     </message>
     <message>
         <source>%1 is eligible for quick recovery from %2.
 The file was written by: %3</source>
-        <translation type="vanished">%1 имеет право на быстрое восстановление с %2.
+        <translation>%1 имеет право на быстрое восстановление с %2.
 Файл был записан: %3</translation>
     </message>
     <message>
         <source>Migrating a large file %1 into the sandbox %2, %3 left.
 Full path: %4</source>
-        <translation type="vanished">Перенос большого файла %1 в песочницу %2, осталось %3.
+        <translation>Перенос большого файла %1 в песочницу %2, осталось %3.
 Полный путь: %4</translation>
-    </message>
-    <message>
-        <source>Do you want to allow %4 (%5) to copy a %1 large file into sandbox: %2?
-File name: %3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Do you want to allow %1 (%2) access to the internet?
-Full path: %3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1 is eligible for quick recovery from %2.
-The file was written by: %3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Migrating a large file %1 into the sandbox %2, %3 left.
-Full path: %4</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -426,6 +422,14 @@ Full path: %4</source>
     <message>
         <source>%1 - File Recovery</source>
         <translation>%1 - Восстановление файла</translation>
+    </message>
+    <message>
+        <source>One or more selected files are located on a network share, and must be recovered to a local drive, please select a folder to recover all selected files to.</source>
+        <translation>Один или несколько выбранных файлов находятся в общей сетевой папке и должны быть восстановлены на локальный диск. Выберите папку для восстановления всех выбранных файлов.</translation>
+    </message>
+    <message>
+        <source>There are %1 files and %2 folders in the sandbox, occupying %3 bytes of disk space.</source>
+        <translation>В песочнице %1 файлов и %2 папок, которые занимают %3 байт дискового пространства.</translation>
     </message>
 </context>
 <context>
@@ -1016,6 +1020,30 @@ Please download the latest release and set it up with the Sandboxie.ini as instr
         <source>&lt;p&gt;Sandboxie-Plus is an open source continuation of Sandboxie.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Visit &lt;a href=&quot;https://sandboxie-plus.com&quot;&gt;sandboxie-plus.com&lt;/a&gt; for more information.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Icons from &lt;a href=&quot;https://icons8.com&quot;&gt;icons8.com&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;</source>
         <translation>&lt;p&gt;Sandboxie-Plus - это продолжение Sandboxie с открытым исходным кодом.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Посетите &lt;a href=&quot;https://sandboxie-plus.com&quot;&gt;sandboxie-plus.com&lt;/a&gt; для дополнительной информации.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Иконки из &lt;a href=&quot;https://icons8.com&quot;&gt;icons8.com&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;</translation>
     </message>
+    <message>
+        <source>Always on Top</source>
+        <translation>Поверх всех окон</translation>
+    </message>
+    <message>
+        <source>Sellect box:</source>
+        <translation>Выберите песочницу:</translation>
+    </message>
+    <message>
+        <source>Some compatybility templates (%1) are missing, probably deleted, do you want to remove them from all boxes?</source>
+        <translation>Некоторые шаблоны совместимости (%1) отсутствуют, вероятно, удалены. Удалить их из всех песочниц?</translation>
+    </message>
+    <message>
+        <source>Cleaned up removed templates...</source>
+        <translation>Убраны удаленные шаблоны...</translation>
+    </message>
+    <message>
+        <source>Can not create snapshot of an empty sandbox</source>
+        <translation>Невозможно создать снимок пустой песочницы</translation>
+    </message>
+    <message>
+        <source>A sandbox with that name already exists</source>
+        <translation>Песочница с таким именем уже существует</translation>
+    </message>
 </context>
 <context>
     <name>CSbieModel</name>
@@ -1070,10 +1098,6 @@ Please download the latest release and set it up with the Sandboxie.ini as instr
     </source>
         <translation>Опции:
     </translation>
-    </message>
-    <message>
-        <source>Do you really want to delete the content of the selected sandbox(es)?</source>
-        <translation>Вы действительно хотите удалить содержимое выбранных песочниц?</translation>
     </message>
     <message>
         <source>Drop Admin Rights</source>
@@ -1250,6 +1274,22 @@ Please download the latest release and set it up with the Sandboxie.ini as instr
         <source>This box does not have Internet restrictions in place, do you want to enable them?</source>
         <translation>В этой песочнице нет ограничений на доступ к Интернет, вы хотите их включить?</translation>
     </message>
+    <message>
+        <source>Don&apos;t show this message again.</source>
+        <translation>Больше не показывать это сообщение.</translation>
+    </message>
+    <message>
+        <source>This Sandbox is already empty.</source>
+        <translation>Эта песочница уже пуста.</translation>
+    </message>
+    <message>
+        <source>Do you want to delete the content of the selected sandbox?</source>
+        <translation>Вы хотите удалить содержимое выбранной песочницы?</translation>
+    </message>
+    <message>
+        <source>Do you really want to delete the content of multiple sandboxes?</source>
+        <translation>Вы действительно хотите удалить содержимое нескольких песочниц?</translation>
+    </message>
 </context>
 <context>
     <name>CSettingsWindow</name>
@@ -1311,10 +1351,6 @@ Please download the latest release and set it up with the Sandboxie.ini as instr
     <message>
         <source>Snapshot</source>
         <translation>Снимок</translation>
-    </message>
-    <message>
-        <source>Snapshot: %1 taken: %2</source>
-        <translation>Снимок: %1 сделан: %2</translation>
     </message>
     <message>
         <source>Do you really want to switch the active snapshot? Doing so will delete the current state!</source>
@@ -1836,10 +1872,6 @@ Note:  Forced Programs and Force Folders settings for a sandbox do not apply to 
         <translation>Запретить изменение параметров сети и брандмауэра</translation>
     </message>
     <message>
-        <source>Start the sandboxed RpcSs as a SYSTEM process (breaks some compatibility)</source>
-        <translation type="vanished">Запускать RpcSs в песочнице как СИСТЕМНЫЙ процесс (нарушает некоторую совместимость)</translation>
-    </message>
-    <message>
         <source>COM Class Trace</source>
         <translation>Трассировка COM класса</translation>
     </message>
@@ -1922,23 +1954,23 @@ Note:  Forced Programs and Force Folders settings for a sandbox do not apply to 
     <name>QPlatformTheme</name>
     <message>
         <source>Cancel</source>
-        <translation type="vanished">Отмена</translation>
+        <translation>Отмена</translation>
     </message>
     <message>
         <source>Apply</source>
-        <translation type="vanished">Применить</translation>
+        <translation>Применить</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation type="vanished">ОК</translation>
+        <translation>ОК</translation>
     </message>
     <message>
         <source>&amp;Yes</source>
-        <translation type="vanished">&amp;Да</translation>
+        <translation>&amp;Да</translation>
     </message>
     <message>
         <source>&amp;No</source>
-        <translation type="vanished">&amp;Нет</translation>
+        <translation>&amp;Нет</translation>
     </message>
 </context>
 <context>
@@ -1970,6 +2002,14 @@ Note:  Forced Programs and Force Folders settings for a sandbox do not apply to 
     <message>
         <source>Delete all</source>
         <translation>Удалить все</translation>
+    </message>
+    <message>
+        <source>Show All Files</source>
+        <translation>Показать все файлы</translation>
+    </message>
+    <message>
+        <source>TextLabel</source>
+        <translation>Текстовая метка</translation>
     </message>
 </context>
 <context>
@@ -2111,28 +2151,44 @@ Note:  Forced Programs and Force Folders settings for a sandbox do not apply to 
         <translation>Показать уведомления для соответствующих сообщений журнала</translation>
     </message>
     <message>
-        <source>Start with Windows</source>
-        <translation>Запускать с Windows</translation>
-    </message>
-    <message>
         <source>Open urls from this ui sandboxed</source>
         <translation>Открывать URL-адреса из этого пользовательского интерфейса в песочнице</translation>
     </message>
     <message>
         <source>Sandbox &lt;a href=&quot;sbie://docs/filerootpath&quot;&gt;file system root&lt;/a&gt;: </source>
-        <translation>Sandbox &lt;a href=&quot;sbie://docs/filerootpath&quot;&gt;корень файловой системы&lt;/a&gt;: </translation>
+        <translation>Песочница &lt;a href=&quot;sbie://docs/filerootpath&quot;&gt;корень файловой системы&lt;/a&gt;: </translation>
     </message>
     <message>
         <source>Sandbox &lt;a href=&quot;sbie://docs/ipcrootpath&quot;&gt;ipc root&lt;/a&gt;: </source>
-        <translation>Sandbox &lt;a href=&quot;sbie://docs/ipcrootpath&quot;&gt;корень ipc&lt;/a&gt;: </translation>
+        <translation>Песочница &lt;a href=&quot;sbie://docs/ipcrootpath&quot;&gt;корень ipc&lt;/a&gt;: </translation>
     </message>
     <message>
         <source>Sandbox &lt;a href=&quot;sbie://docs/keyrootpath&quot;&gt;registry root&lt;/a&gt;: </source>
-        <translation>Sandbox &lt;a href=&quot;sbie://docs/keyrootpath&quot;&gt;корень реестра&lt;/a&gt;: </translation>
+        <translation>Песочница &lt;a href=&quot;sbie://docs/keyrootpath&quot;&gt;корень реестра&lt;/a&gt;: </translation>
     </message>
     <message>
         <source>Portable root folder</source>
         <translation>Корневая папка портативной версии</translation>
+    </message>
+    <message>
+        <source>Start UI with Windows</source>
+        <translation>Запуск пользовательского интерфейса с Windows</translation>
+    </message>
+    <message>
+        <source>Start UI when a sandboxed process is started</source>
+        <translation>Запуск пользовательского интерфейса при запуске изолированного процесса</translation>
+    </message>
+    <message>
+        <source>Show first recovery window when emptying sandboxes</source>
+        <translation>Показывать первое окно восстановления при очистке песочницы</translation>
+    </message>
+    <message>
+        <source>...</source>
+        <translation>...</translation>
+    </message>
+    <message>
+        <source>Other settings</source>
+        <translation>Другие настройки</translation>
     </message>
 </context>
 <context>
@@ -2158,12 +2214,16 @@ Note:  Forced Programs and Force Folders settings for a sandbox do not apply to 
         <translation>Перейти к снимку</translation>
     </message>
     <message>
-        <source>Snapshot Details</source>
-        <translation>Детали снимка</translation>
-    </message>
-    <message>
         <source>Take Snapshot</source>
         <translation>Сделать снимок</translation>
+    </message>
+    <message>
+        <source>Selected Snapshot Details</source>
+        <translation>Сведения о выбранном снимке</translation>
+    </message>
+    <message>
+        <source>Snapshot Actions</source>
+        <translation>Действия со снимками</translation>
     </message>
 </context>
 </TS>
