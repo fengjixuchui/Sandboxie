@@ -42,8 +42,12 @@
         <translation>默认</translation>
     </message>
     <message>
-        <source>Legacy (old sbie behaviour)</source>
-        <translation>遗留 (旧沙盒行为)</translation>
+        <source>Sandboxie-Plus - Create New Box</source>
+        <translation>Sandboxie-Plus - 创建新沙盒</translation>
+    </message>
+    <message>
+        <source>Legacy Sandboxie Behaviour</source>
+        <translation>保留沙盒行为</translation>
     </message>
 </context>
 <context>
@@ -228,6 +232,54 @@
         <source>Executables (*.exe *.cmd);;All files (*.*)</source>
         <translation>可执行文件 (*.exe *.cmd);;所有文件 (*.*)</translation>
     </message>
+    <message>
+        <source>Direct</source>
+        <translation>直接访问</translation>
+    </message>
+    <message>
+        <source>Direct All</source>
+        <translation>直接访问全部</translation>
+    </message>
+    <message>
+        <source>Closed</source>
+        <translation>关闭</translation>
+    </message>
+    <message>
+        <source>Closed RT</source>
+        <translation>关闭RT</translation>
+    </message>
+    <message>
+        <source>Read Only</source>
+        <translation>只读</translation>
+    </message>
+    <message>
+        <source>Hidden</source>
+        <translation>隐藏</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>未知</translation>
+    </message>
+    <message>
+        <source>File/Folder</source>
+        <translation>文件/文件夹</translation>
+    </message>
+    <message>
+        <source>Registry</source>
+        <translation>注册表</translation>
+    </message>
+    <message>
+        <source>IPC Path</source>
+        <translation>IPC路径</translation>
+    </message>
+    <message>
+        <source>Wnd Class</source>
+        <translation>窗口类</translation>
+    </message>
+    <message>
+        <source>COM Object</source>
+        <translation>COM组件</translation>
+    </message>
 </context>
 <context>
     <name>CPopUpMessage</name>
@@ -396,8 +448,28 @@ The file was written by: %3</source>
     <message>
         <source>Migrating a large file %1 into the sandbox %2, %3 left.
 Full path: %4</source>
-        <translation>移动大文件 %1 到沙盒 %2, %3 遗留.
+        <translation>移动大文件 %1 到沙盒 %2, %3 剩余.
 完整路径: %4</translation>
+    </message>
+    <message>
+        <source>Do you want to allow %4 (%5) to copy a %1 large file into sandbox: %2?
+File name: %3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do you want to allow %1 (%2) access to the internet?
+Full path: %3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 is eligible for quick recovery from %2.
+The file was written by: %3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Migrating a large file %1 into the sandbox %2, %3 left.
+Full path: %4</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -491,6 +563,10 @@ Full path: %4</source>
     <message>
         <source>Reduced Isolation</source>
         <translation>减弱隔离</translation>
+    </message>
+    <message>
+        <source>Disabled</source>
+        <translation>禁用</translation>
     </message>
 </context>
 <context>
@@ -687,7 +763,7 @@ Full path: %4</source>
     </message>
     <message>
         <source>Ignore this update, notify me about the next one.</source>
-        <translation>忽略此升级,下一个再提示我.</translation>
+        <translation type="vanished">忽略此升级,下一个再提示我.</translation>
     </message>
     <message>
         <source>Please enter the duration for disabling forced programs.</source>
@@ -947,7 +1023,7 @@ Full path: %4</source>
     </message>
     <message>
         <source>No sandboxes found; creating: %1</source>
-        <translation>没找到沙盒;创建: %1</translation>
+        <translation type="vanished">没找到沙盒;创建: %1</translation>
     </message>
     <message>
         <source>Cleanup Resource Log</source>
@@ -1024,14 +1100,6 @@ Please download the latest release and set it up with the Sandboxie.ini as instr
         <translation>保持窗口最前</translation>
     </message>
     <message>
-        <source>Sellect box:</source>
-        <translation>选择沙盒</translation>
-    </message>
-    <message>
-        <source>Some compatybility templates (%1) are missing, probably deleted, do you want to remove them from all boxes?</source>
-        <translation>一些兼容性模板 (%1) 丢失, 可能被删除, 您确定在所有沙盒中删除它们?</translation>
-    </message>
-    <message>
         <source>Cleaned up removed templates...</source>
         <translation>清理已删除的模板...</translation>
     </message>
@@ -1042,6 +1110,62 @@ Please download the latest release and set it up with the Sandboxie.ini as instr
     <message>
         <source>A sandbox with that name already exists</source>
         <translation>已存在同名沙盒</translation>
+    </message>
+    <message>
+        <source>Reset Columns</source>
+        <translation>重置菜单</translation>
+    </message>
+    <message>
+        <source>Window Finder</source>
+        <translation>窗口查找器</translation>
+    </message>
+    <message>
+        <source>Show Hidden Boxes</source>
+        <translation>显示隐藏沙盒</translation>
+    </message>
+    <message>
+        <source>Select box:</source>
+        <translation>选择沙盒</translation>
+    </message>
+    <message>
+        <source>Some compatibility templates (%1) are missing, probably deleted, do you want to remove them from all boxes?</source>
+        <translation>一些兼容性模板 (%1) 丢失, 可能被删除, 您确定在所有沙盒中删除它们?</translation>
+    </message>
+    <message>
+        <source>Do you want to terminate all processes in all sandboxes?</source>
+        <translation>您确定要终止所有沙盒中的所有进程吗?</translation>
+    </message>
+    <message>
+        <source>Terminate all without asking</source>
+        <translation>不询问终止所有</translation>
+    </message>
+    <message>
+        <source>The selected window is running as part of program %1 in sandbox %2</source>
+        <translation>选择的窗口正作为程序 %1 一部分运行在 %2 中</translation>
+    </message>
+    <message>
+        <source>The selected window is not running as part of any sandboxed program.</source>
+        <translation>选择的窗口没有作为任何沙盒化程序的一部分运行</translation>
+    </message>
+    <message>
+        <source>Drag the Finder Tool over a window to select it, then release the mouse to check if the window is sandboxed.</source>
+        <translation>拖动查找工具到一个窗口上去选择，然后松开鼠标检查窗口是否沙盒化</translation>
+    </message>
+    <message>
+        <source>Sandboxie-Plus - Window Finder</source>
+        <translation>Sandboxie-Plus - 窗口查找器</translation>
+    </message>
+    <message>
+        <source>Default sandbox not found; creating: %1</source>
+        <translation>默认沙盒未发现，正在创建: %1</translation>
+    </message>
+    <message>
+        <source>&lt;p&gt;Do you want to go to the &lt;a href=&quot;%1&quot;&gt;info page&lt;/a&gt;?&lt;/p&gt;</source>
+        <translation>&lt;p&gt;您确定前往 &lt; &quot;%1&quot;&gt;信息页&lt;/a&gt;?&lt;/p&gt;</translation>
+    </message>
+    <message>
+        <source>Don&apos;t show this message anymore.</source>
+        <translation>不再显示此信息</translation>
     </message>
 </context>
 <context>
@@ -1069,6 +1193,10 @@ Please download the latest release and set it up with the Sandboxie.ini as instr
     <message>
         <source>Process ID</source>
         <translation>进程ID</translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation>标题</translation>
     </message>
 </context>
 <context>
@@ -1274,7 +1402,7 @@ Please download the latest release and set it up with the Sandboxie.ini as instr
     </message>
     <message>
         <source>Don&apos;t show this message again.</source>
-        <translation >不再显示此消息</translation>
+        <translation>不再显示此消息</translation>
     </message>
     <message>
         <source>This Sandbox is already empty.</source>
@@ -1287,6 +1415,22 @@ Please download the latest release and set it up with the Sandboxie.ini as instr
     <message>
         <source>Do you really want to delete the content of multiple sandboxes?</source>
         <translation>您确定要删除多个沙盒的内容?</translation>
+    </message>
+    <message>
+        <source>Do you want to terminate all processes in the selected sandbox(es)?</source>
+        <translation>您确定终止所选沙盒中的所有进程吗?</translation>
+    </message>
+    <message>
+        <source>This sandbox is disabled, do you want to enable it?</source>
+        <translation>此沙盒被禁用，您确定启用吗?</translation>
+    </message>
+    <message>
+        <source>A group can not be its own parent.</source>
+        <translation>组不能是自己的父级</translation>
+    </message>
+    <message>
+        <source>This Sandbox is empty.</source>
+        <translation>此沙盒是空的</translation>
     </message>
 </context>
 <context>
@@ -1335,6 +1479,10 @@ Please download the latest release and set it up with the Sandboxie.ini as instr
         <source>Passwords did not match, please retry.</source>
         <translation>密码不正确,请重新输入.</translation>
     </message>
+    <message>
+        <source>Auto Detection</source>
+        <translation>自动检测</translation>
+    </message>
 </context>
 <context>
     <name>CSnapshotsWindow</name>
@@ -1382,8 +1530,8 @@ Please download the latest release and set it up with the Sandboxie.ini as instr
         <translation>SandboxiePlus新沙盒</translation>
     </message>
     <message>
-        <source>Enter a name for the new box:</source>
-        <translation>输入新沙盒名称:</translation>
+        <source>Sandbox Name:</source>
+        <translation>沙盒名称:</translation>
     </message>
 </context>
 <context>
@@ -1932,6 +2080,10 @@ instead of &quot;*&quot;.</source>
 &quot;I&quot; - 忽略拒绝请求
 代替 &quot;*&quot;.</translation>
     </message>
+    <message>
+        <source>Allow access to Bluetooth</source>
+        <translation>允许访问蓝牙</translation>
+    </message>
 </context>
 <context>
     <name>PopUpWindow</name>
@@ -1951,23 +2103,23 @@ instead of &quot;*&quot;.</source>
     <name>QPlatformTheme</name>
     <message>
         <source>OK</source>
-        <translation type="vanished">确定</translation>
+        <translation>确定</translation>
     </message>
     <message>
         <source>Apply</source>
-        <translation type="vanished">应用</translation>
+        <translation>应用</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="vanished">取消</translation>
+        <translation>取消</translation>
     </message>
     <message>
         <source>&amp;Yes</source>
-        <translation type="vanished">&amp;是</translation>
+        <translation>&amp;是</translation>
     </message>
     <message>
         <source>&amp;No</source>
-        <translation type="vanished">&amp;否</translation>
+        <translation>&amp;否</translation>
     </message>
 </context>
 <context>
@@ -2007,6 +2159,10 @@ instead of &quot;*&quot;.</source>
     <message>
         <source>TextLabel</source>
         <translation>文本标签</translation>
+    </message>
+    <message>
+        <source>SandboxiePlus - Recovery</source>
+        <translation>SandboxiePlus - 恢复</translation>
     </message>
 </context>
 <context>
@@ -2200,7 +2356,7 @@ instead of &quot;*&quot;.</source>
     </message>
     <message>
         <source>SandboxiePlus Settings</source>
-        <translation>SandboxiePlus设置</translation>
+        <translation type="vanished">SandboxiePlus设置</translation>
     </message>
     <message>
         <source>Description:</source>
@@ -2221,6 +2377,10 @@ instead of &quot;*&quot;.</source>
     <message>
         <source>Snapshot Actions</source>
         <translation>快照行为</translation>
+    </message>
+    <message>
+        <source>SandboxiePlus - Snapshots</source>
+        <translation>SandboxiePlus - 快照</translation>
     </message>
 </context>
 </TS>
