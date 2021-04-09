@@ -156,9 +156,9 @@ static void Com_Trace(
 
 static void Com_Trace2(
     const WCHAR* TraceType, REFCLSID rclsid, REFIID riid,
-    ULONG ProcNum, HRESULT hr, USHORT monflag);
+    ULONG ProcNum, ULONG clsctx, HRESULT hr, ULONG monflag);
 
-static void Com_Monitor(REFCLSID rclsid, USHORT monflag);
+static void Com_Monitor(REFCLSID rclsid, ULONG monflag);
 
 #define HSTRING void*
 static HRESULT Com_RoGetActivationFactory(HSTRING activatableClassId, REFIID  iid, void** factory);
@@ -569,7 +569,7 @@ _FX HRESULT Com_CoGetClassObject(
 {
     static const WCHAR *TraceType = L"GETCLS";
     HRESULT hr;
-    USHORT monflag = 0;
+    ULONG monflag = 0;
 
     // debug tip. You can stop the debugger on a COM object load (instantiation) by uncommenting lines below.
 
@@ -599,8 +599,8 @@ _FX HRESULT Com_CoGetClassObject(
         hr = __sys_CoGetClassObject(rclsid, clsctx, pServerInfo, riid, ppv);
     }
 
+    Com_Trace2(TraceType, rclsid, riid, 0, clsctx, hr, monflag);
     if (clsctx & CLSCTX_LOCAL_SERVER) {
-        Com_Trace2(TraceType, rclsid, riid, 0, hr, monflag);
         if(!Com_TraceFlag) Com_Monitor(rclsid, monflag);
     }
 
@@ -620,7 +620,7 @@ _FX HRESULT Com_CoGetObject(
     GUID clsid;
     HRESULT hr;
     IClassFactory *pFactory;
-    USHORT monflag = 0;
+    ULONG monflag = 0;
     BOOLEAN IsOpenClsid = FALSE;
 
     if (_wcsnicmp(pszName, L"Elevation:Administrator!new:", 28) == 0) {
@@ -646,13 +646,13 @@ _FX HRESULT Com_CoGetObject(
         else
             monflag |= MONITOR_DENY;
 
-        Com_Trace2(TraceType, &clsid, riid, 0, hr, monflag);
-        if (!Com_TraceFlag) Com_Monitor(&clsid, monflag);
-
     } else {
 
         hr = __sys_CoGetObject(pszName, pBindOptions, riid, ppv);
     }
+
+    Com_Trace2(TraceType, &clsid, riid, 0, 0, hr, monflag);
+    if (!Com_TraceFlag) Com_Monitor(&clsid, monflag);
 
     return hr;
 }
@@ -669,7 +669,7 @@ _FX HRESULT Com_CoCreateInstance(
     static const WCHAR *TraceType = L"CRE-IN";
     HRESULT hr;
     IClassFactory *pFactory;
-    USHORT monflag = 0;
+    ULONG monflag = 0;
 
     if (Com_IsClosedClsid(rclsid)) {
         *ppv = NULL;
@@ -699,8 +699,8 @@ _FX HRESULT Com_CoCreateInstance(
         hr = __sys_CoCreateInstance(rclsid, pUnkOuter, clsctx, riid, ppv);
     }
 
+    Com_Trace2(TraceType, rclsid, riid, 0, clsctx, hr, monflag);
     if (clsctx & CLSCTX_LOCAL_SERVER) {
-        Com_Trace2(TraceType, rclsid, riid, 0, hr, monflag);
         if (!Com_TraceFlag) Com_Monitor(rclsid, monflag);
     }
 
@@ -739,7 +739,7 @@ _FX HRESULT Com_CoCreateInstanceEx(
     HRESULT hr;
     IClassFactory *pFactory;
     ULONG i;
-    USHORT monflag = 0;
+    ULONG monflag = 0;
 
     //
     // special cases
@@ -808,11 +808,11 @@ _FX HRESULT Com_CoCreateInstanceEx(
                             rclsid, pUnkOuter, clsctx, pServerInfo, cmq, pmqs);
     }
 
-    if (clsctx & CLSCTX_LOCAL_SERVER) {
-
-        for (i = 0; i < cmq; ++i) {
-            MULTI_QI *mqi = &pmqs[i];
-            Com_Trace2(TraceType, rclsid, mqi->pIID, 0, mqi->hr, monflag);
+    
+    for (i = 0; i < cmq; ++i) {
+        MULTI_QI *mqi = &pmqs[i];
+        Com_Trace2(TraceType, rclsid, mqi->pIID, 0, clsctx, mqi->hr, monflag);
+        if (clsctx & CLSCTX_LOCAL_SERVER) {
             if (!Com_TraceFlag) Com_Monitor(rclsid, monflag);
         }
     }
@@ -3311,12 +3311,12 @@ _FX void Com_Trace(
     const WCHAR* TraceType, REFCLSID rclsid, REFIID riid,
     ULONG ProcNum, HRESULT hr)
 {
-    Com_Trace2(TraceType, rclsid, riid, ProcNum, hr, MONITOR_TRACE);
+    Com_Trace2(TraceType, rclsid, riid, ProcNum, 0, hr, MONITOR_TRACE);
 }
 
 _FX void Com_Trace2(
     const WCHAR* TraceType, REFCLSID rclsid, REFIID riid,
-    ULONG ProcNum, HRESULT hr, USHORT monflag)
+    ULONG ProcNum, ULONG clsctx, HRESULT hr, ULONG monflag)
 {
     WCHAR *text;
     WCHAR *ptr;
@@ -3325,7 +3325,7 @@ _FX void Com_Trace2(
         return;
 
     text = Com_Alloc(1024 * sizeof(WCHAR));
-    ptr = text + Sbie_snwprintf(text, 1024, L"COM %s <%08X> ", TraceType, hr);
+    ptr = text + Sbie_snwprintf(text, 1024, L"COM <%08X> %s <%08X> ", clsctx, TraceType, hr);
 
     if (rclsid) {
         Com_Trace_Guid(ptr, rclsid, L"CLSID");
@@ -3363,7 +3363,7 @@ _FX void Com_Trace2(
 //---------------------------------------------------------------------------
 
 
-_FX void Com_Monitor(REFCLSID rclsid, USHORT monflag)
+_FX void Com_Monitor(REFCLSID rclsid, ULONG monflag)
 {
     if (Dll_BoxName) {
 
@@ -3465,12 +3465,17 @@ _FX BOOLEAN Com_IsClosedRT(const wchar_t* strClassId)
             return TRUE;
     }
 
+    //
+    // this seams to be broken as well
+    //if (wcscmp(strClassId, L"Windows.UI.Notifications.ToastNotificationManager") == 0)
+    //    return TRUE;
+
     static const WCHAR* setting = L"ClosedRT";
     Com_LoadRTList(setting, &Com_ClosedRT);
 
     for (const WCHAR* pName = Com_ClosedRT; pName && *pName; pName += wcslen(pName) + 1) {
 
-        if (wcscmp(strClassId, pName) == 0) 
+        if (wcscmp(strClassId, pName) == 0 || wcscmp(pName, L"*") == 0)
             return TRUE; 
     }
 

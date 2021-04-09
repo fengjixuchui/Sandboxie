@@ -115,9 +115,10 @@ void CMonitorDialog::OnIdle()
     while (1) {
 
 		ULONG seq_num = m_last_entry_seq_num;
-        USHORT type;
-		ULONG64 pid;
-        ULONG status = SbieApi_MonitorGetEx(&seq_num, &type, &pid, &name[12]);
+        ULONG type;
+        ULONG pid;
+        ULONG tid;
+        ULONG status = SbieApi_MonitorGetEx(&seq_num, &type, &pid, &tid, &name[12]);
 		if (status != 0)
 			break; // error or no more entries
 
@@ -145,7 +146,7 @@ void CMonitorDialog::OnIdle()
         } else if (type & MONITOR_DENY) {
             name[9] = L'X';
         }
-		type &= 0x0FFF;
+		type &= MONITOR_TYPE_MASK;
 
         const WCHAR *PrefixPtr = _Unknown;
         if (type == MONITOR_SYSCALL)
@@ -170,7 +171,7 @@ void CMonitorDialog::OnIdle()
             PrefixPtr = _Other;
         wcsncpy(name, PrefixPtr, 9);
 
-		wsprintf(&name[wcslen(name)], L"; PID: %I64u", pid);
+		wsprintf(&name[wcslen(name)], L"; PID: %d", pid);
 
         int index = listbox->AddString(name);
 

@@ -80,6 +80,9 @@
 #define FGN_REPARSED_CLOSED_PATH    0x0200
 #define FGN_REPARSED_WRITE_PATH     0x0400
 
+#define PATH_IS_BOXED(f)     (((f) & FGN_IS_BOXED_PATH) != 0)
+#define PATH_NOT_BOXED(f)    (((f) & FGN_IS_BOXED_PATH) == 0)
+
 
 #ifndef  _WIN64
 #define WOW64_FS_REDIR
@@ -260,7 +263,7 @@ static NTSTATUS File_SetAttributes(
 
 static NTSTATUS File_SetDisposition(
     HANDLE FileHandle, IO_STATUS_BLOCK *IoStatusBlock,
-    void *FileInformation, ULONG Length);
+    void *FileInformation, ULONG Length, FILE_INFORMATION_CLASS FileInformationClass);
 
 static NTSTATUS File_NtDeleteFile(OBJECT_ATTRIBUTES *ObjectAttributes);
 
@@ -2229,7 +2232,7 @@ _FX BOOLEAN File_FindSnapshotPath(WCHAR** CopyPath)
 	RtlInitUnicodeString(&objname, *CopyPath);
 	status = File_GetFileType(&objattrs, FALSE, &FileType, NULL);
 	if (!(status == STATUS_OBJECT_NAME_NOT_FOUND || status == STATUS_OBJECT_PATH_NOT_FOUND))
-		return TRUE; // file is present directly in copy path
+		return FALSE; // file is present directly in copy path
 
 	for (FILE_SNAPSHOT* Cur_Snapshot = File_Snapshot; Cur_Snapshot != NULL; Cur_Snapshot = Cur_Snapshot->Parent)
 	{
@@ -2246,7 +2249,7 @@ _FX BOOLEAN File_FindSnapshotPath(WCHAR** CopyPath)
 		}
 	}
 
-	return FALSE;
+	return FALSE; // this file is not sandboxed
 }
 
 
@@ -2306,6 +2309,40 @@ _FX NTSTATUS File_NtCreateFile(
 // File_NtCreateFileImpl
 //---------------------------------------------------------------------------
 
+/*
+static P_NtCreateFile               __sys_NtCreateFile_ = NULL;
+
+_FX NTSTATUS File_MyCreateFile(
+    HANDLE* FileHandle,
+    ACCESS_MASK DesiredAccess,
+    OBJECT_ATTRIBUTES* ObjectAttributes,
+    IO_STATUS_BLOCK* IoStatusBlock,
+    LARGE_INTEGER* AllocationSize,
+    ULONG FileAttributes,
+    ULONG ShareAccess,
+    ULONG CreateDisposition,
+    ULONG CreateOptions,
+    void* EaBuffer,
+    ULONG EaLength)
+{
+    NTSTATUS status = __sys_NtCreateFile_(
+        FileHandle, DesiredAccess, ObjectAttributes, IoStatusBlock,
+        AllocationSize, FileAttributes, ShareAccess, CreateDisposition,
+        CreateOptions, EaBuffer, EaLength);
+
+    if (ObjectAttributes && ObjectAttributes->ObjectName && ObjectAttributes->ObjectName->Buffer
+        && _wcsicmp(ObjectAttributes->ObjectName->Buffer, L"\\??\\PhysicalDrive0") == 0)
+    {
+        WCHAR text[1024];
+        Sbie_snwprintf(text, 1024, L"%s <%08X>", ObjectAttributes->ObjectName->Buffer, status);
+        SbieApi_MonitorPut(MONITOR_OTHER, text);
+    }
+
+    status = StopTailCallOptimization(status);
+
+    return status;
+}*/
+
 
 _FX NTSTATUS File_NtCreateFileImpl(
     HANDLE *FileHandle,
@@ -2344,6 +2381,21 @@ _FX NTSTATUS File_NtCreateFileImpl(
     //  //while (! IsDebuggerPresent()) { OutputDebugString(L"BREAK\n"); Sleep(500); }
     //  //   __debugbreak();
     //}
+
+    /*if (__sys_NtCreateFile_ == NULL)
+    {
+        __sys_NtCreateFile_ = __sys_NtCreateFile;
+        __sys_NtCreateFile = File_MyCreateFile;
+    }
+
+    if (ObjectAttributes && ObjectAttributes->ObjectName && ObjectAttributes->ObjectName->Buffer
+        && _wcsicmp(ObjectAttributes->ObjectName->Buffer, L"\\??\\PhysicalDrive0") == 0)
+    {
+        return __sys_NtCreateFile(
+            FileHandle, DesiredAccess, ObjectAttributes, IoStatusBlock,
+            AllocationSize, FileAttributes, ShareAccess, CreateDisposition,
+            CreateOptions, EaBuffer, EaLength);
+    }*/
 
     //
     // if this is a recursive invocation of NtCreateFile,
@@ -2470,6 +2522,23 @@ ReparseLoop:
                     CreateDisposition = FILE_OPEN;
                     CreateOptions &= ~FILE_DELETE_ON_CLOSE;
                     DesiredAccess &= ~FILE_DENIED_ACCESS;
+
+                    //
+                    // If this is an access on a raw disk device, adapt the requested permissions to what the drivers permits
+                    //
+
+                    if (ObjectAttributes->ObjectName && &ObjectAttributes->ObjectName->Buffer != NULL && ObjectAttributes->ObjectName->Length > (4 * sizeof(WCHAR))
+                        && wcsncmp(ObjectAttributes->ObjectName->Buffer, L"\\??\\", 4) == 0
+                        && (DesiredAccess & ~(SYNCHRONIZE | READ_CONTROL | FILE_READ_EA | FILE_READ_ATTRIBUTES)) != 0)
+                    {
+                        if (!SbieApi_QueryConfBool(NULL, L"AllowRawDiskRead", FALSE))
+                        if ((ObjectAttributes->ObjectName->Length == (6 * sizeof(WCHAR)) && ObjectAttributes->ObjectName->Buffer[5] == L':') // \??\C:
+                            || wcsncmp(&ObjectAttributes->ObjectName->Buffer[4], L"PhysicalDrive", 13) == 0 // \??\PhysicalDrive1
+                            || wcsncmp(&ObjectAttributes->ObjectName->Buffer[4], L"Volume", 6) == 0) // \??\Volume{2b985816-4b6f-11ea-bd33-48a4725d5bbe}
+                        {
+                            DesiredAccess &= (SYNCHRONIZE | READ_CONTROL | FILE_READ_EA | FILE_READ_ATTRIBUTES);
+                        }
+                    }
 
                     status = __sys_NtCreateFile(
                         FileHandle, DesiredAccess, ObjectAttributes,
@@ -5466,7 +5535,7 @@ _FX NTSTATUS File_NtSetInformationFile(
             status = STATUS_INFO_LENGTH_MISMATCH;
         else
             status = File_SetDisposition(
-                FileHandle, IoStatusBlock, FileInformation, Length);
+                FileHandle, IoStatusBlock, FileInformation, Length, FileInformationClass);
 
     //
     // rename request
@@ -5747,7 +5816,7 @@ has_copy_path:
 
 _FX NTSTATUS File_SetDisposition(
     HANDLE FileHandle, IO_STATUS_BLOCK *IoStatusBlock,
-    void *FileInformation, ULONG Length)
+    void *FileInformation, ULONG Length, FILE_INFORMATION_CLASS FileInformationClass)
 {
     ULONG LastError;
     THREAD_DATA *TlsData = Dll_GetTlsData(&LastError);
@@ -5756,6 +5825,7 @@ _FX NTSTATUS File_SetDisposition(
     WCHAR *DosPath;
     NTSTATUS status;
     ULONG mp_flags;
+    BOOLEAN is_direct_file;
 
     //
     // check if the specified path is an open or closed path
@@ -5765,6 +5835,7 @@ _FX NTSTATUS File_SetDisposition(
 
     mp_flags = 0;
     DosPath = NULL;
+    is_direct_file = FALSE;
 
     Dll_PushTlsNameBuffer(TlsData);
 
@@ -5783,7 +5854,22 @@ _FX NTSTATUS File_SetDisposition(
             if (PATH_IS_CLOSED(mp_flags))
                 status = STATUS_ACCESS_DENIED;
 
-            else if (PATH_NOT_OPEN(mp_flags)) {
+            else if (PATH_IS_OPEN(mp_flags)) {
+
+                is_direct_file = TRUE; // file is open
+            }
+            else {
+
+		        WCHAR* TmplPath = CopyPath;
+
+		        File_FindSnapshotPath(&TmplPath); // if file is in a snapshot this updates TmplPath to point to it
+
+		        if (PATH_IS_BOXED(FileFlags) && TmplPath == CopyPath)
+                    is_direct_file = TRUE; // file is boxed and not located in a snapshot
+            }
+             
+
+            if (!is_direct_file) {
 
                 status = File_DeleteDirectory(CopyPath, TRUE);
 
@@ -5823,11 +5909,11 @@ _FX NTSTATUS File_SetDisposition(
     // handle the request appropriately
     //
 
-    if (PATH_IS_OPEN(mp_flags)) {
+    if (is_direct_file) {
 
         status = __sys_NtSetInformationFile(
             FileHandle, IoStatusBlock,
-            FileInformation, Length, FileDispositionInformation);
+            FileInformation, Length, FileInformationClass); // FileDispositionInformation
 
     } else if (NT_SUCCESS(status)) {
 

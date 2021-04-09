@@ -25,6 +25,7 @@
 #include "obj.h"
 #include "api.h"
 #include "thread.h"
+#include "session.h"
 
 
 //---------------------------------------------------------------------------
@@ -122,6 +123,9 @@ NTSTATUS Ipc_CheckPortRequest_Lsa(
 NTSTATUS Ipc_CheckPortRequest_LsaEP(
     PROCESS* proc, OBJECT_NAME_INFORMATION* Name, PORT_MESSAGE* msg);
 
+NTSTATUS Ipc_CheckPortRequest_Sam(
+    PROCESS* proc, OBJECT_NAME_INFORMATION* Name, PORT_MESSAGE* msg);
+
 NTSTATUS Ipc_CheckPortRequest_PowerManagement(
     PROCESS *proc, OBJECT_NAME_INFORMATION *Name, PORT_MESSAGE *msg);
 
@@ -138,7 +142,7 @@ static NTSTATUS Ipc_Api_GetRpcPortName_2(
 //---------------------------------------------------------------------------
 
 
-IPC_DYNAMIC_PORTS Ipc_Dynamic_Ports[NUM_DYNAMIC_PORTS];
+IPC_DYNAMIC_PORTS Ipc_Dynamic_Ports;
 
 static const WCHAR* _rpc_control = L"\\RPC Control";
 
@@ -236,6 +240,8 @@ _FX NTSTATUS Ipc_CheckPortRequest(
     if (status == STATUS_BAD_INITIAL_PC)
         status = Ipc_CheckPortRequest_LsaEP(proc, Name, msg);
     if (status == STATUS_BAD_INITIAL_PC)
+        status = Ipc_CheckPortRequest_Sam(proc, Name, msg);
+    if (status == STATUS_BAD_INITIAL_PC)
         status = Ipc_CheckPortRequest_PowerManagement(proc, Name, msg);
     if (status == STATUS_BAD_INITIAL_PC)
         status = Ipc_CheckPortRequest_SpoolerPort(proc, Name, msg);
@@ -246,6 +252,13 @@ _FX NTSTATUS Ipc_CheckPortRequest(
     //if (SearchUnicodeString(Name, L"spool", FALSE))
         //DbgPrint("Status <%08X> on Port <%*.*S>\n", status, Name->Name.Length/sizeof(WCHAR), Name->Name.Length/sizeof(WCHAR), Name->Name.Buffer);
     //}
+
+    /*if (Session_MonitorCount)// && (proc->ipc_trace & (TRACE_ALLOW | TRACE_DENY))) 
+    {
+        WCHAR msg_str[256];
+        swprintf(msg_str, L"CheckPortRequest, Status <%08X> on Port <%*.*s>\n", status, Name->Name.Length / sizeof(WCHAR), Name->Name.Length / sizeof(WCHAR), Name->Name.Buffer);
+        Log_Debug_Msg(MONITOR_IPC, msg_str, NULL);
+    }*/
 
     //
     // finish
@@ -573,7 +586,7 @@ _FX NTSTATUS Ipc_AlpcSendWaitReceivePort(
 
 // Param 1 is dynamic port name (e.g. "\RPC Control\LRPC-f760d5b40689a98168"), WCHAR[DYNAMIC_PORT_NAME_CHARS]
 // Param 2 is the process PID for which to open the port, can be 0 when port is special
-// Param 3 is the port type/identifier, can be -1 indicating non special port
+// Param 3 is the port type/identifier
 
 _FX NTSTATUS Ipc_Api_OpenDynamicPort(PROCESS* proc, ULONG64* parms)
 {
@@ -581,6 +594,7 @@ _FX NTSTATUS Ipc_Api_OpenDynamicPort(PROCESS* proc, ULONG64* parms)
     //KIRQL irql;
     API_OPEN_DYNAMIC_PORT_ARGS* pArgs = (API_OPEN_DYNAMIC_PORT_ARGS*)parms;
     WCHAR portName[DYNAMIC_PORT_NAME_CHARS];
+    WCHAR portId[DYNAMIC_PORT_ID_CHARS];
 
     if (proc) // is caller sandboxed?
         return STATUS_ACCESS_DENIED;
@@ -588,21 +602,18 @@ _FX NTSTATUS Ipc_Api_OpenDynamicPort(PROCESS* proc, ULONG64* parms)
     //if (PsGetCurrentProcessId() != Api_ServiceProcessId)
     //    return STATUS_ACCESS_DENIED;
 
-    ENUM_DYNAMIC_PORT_TYPE ePortType = NUM_DYNAMIC_PORTS;
-    //if (pArgs->port_type.val == -1)
-    //    ePortType = NUM_DYNAMIC_PORTS;
-    //else 
-    if (pArgs->port_type.val <= NUM_DYNAMIC_PORTS)
-        ePortType = (ENUM_DYNAMIC_PORT_TYPE)pArgs->port_type.val;
-    //else
-    //    return STATUS_INVALID_PARAMETER;
-
     if (pArgs->port_name.val == NULL)
         return STATUS_INVALID_PARAMETER;
     try {
         ProbeForRead(pArgs->port_name.val, sizeof(WCHAR) * DYNAMIC_PORT_NAME_CHARS, sizeof(WCHAR));
         wmemcpy(portName, pArgs->port_name.val, DYNAMIC_PORT_NAME_CHARS - 1);
         portName[DYNAMIC_PORT_NAME_CHARS - 1] = L'\0';
+
+        if (pArgs->port_id.val == NULL)
+            __leave;
+        ProbeForRead(pArgs->port_id.val, sizeof(WCHAR) * DYNAMIC_PORT_ID_CHARS, sizeof(WCHAR));
+        wmemcpy(portId, pArgs->port_id.val, DYNAMIC_PORT_ID_CHARS - 1);
+        portId[DYNAMIC_PORT_ID_CHARS - 1] = L'\0';
     }
     __except (EXCEPTION_EXECUTE_HANDLER) {
         status = GetExceptionCode();
@@ -614,14 +625,41 @@ _FX NTSTATUS Ipc_Api_OpenDynamicPort(PROCESS* proc, ULONG64* parms)
     // When this is a special port save it our global Ipc_Dynamic_Ports structure
     //
 
-    if (ePortType != NUM_DYNAMIC_PORTS && Ipc_Dynamic_Ports[ePortType].pPortLock)
+    if (pArgs->port_id.val != NULL && Ipc_Dynamic_Ports.pPortLock)
     {
         KeEnterCriticalRegion();
-        ExAcquireResourceExclusiveLite(Ipc_Dynamic_Ports[ePortType].pPortLock, TRUE);
+        ExAcquireResourceExclusiveLite(Ipc_Dynamic_Ports.pPortLock, TRUE);
 
-        wmemcpy(Ipc_Dynamic_Ports[ePortType].wstrPortName, portName, DYNAMIC_PORT_NAME_CHARS);
+        IPC_DYNAMIC_PORT* port = List_Head(&Ipc_Dynamic_Ports.Ports);
+        while (port) 
+        {    
+            if (_wcsicmp(portId, port->wstrPortId) == 0)
+            {
+                wmemcpy(port->wstrPortName, portName, DYNAMIC_PORT_NAME_CHARS);
+                break;
+            }
 
-        ExReleaseResourceLite(Ipc_Dynamic_Ports[ePortType].pPortLock);
+            port = List_Next(port);
+        }
+
+        if (port == NULL) 
+        {
+            port = Mem_AllocEx(Driver_Pool, sizeof(IPC_DYNAMIC_PORT), TRUE);
+            if (!port)
+                Log_Msg0(MSG_1104);
+            else
+            {
+                wmemcpy(port->wstrPortId, portId, DYNAMIC_PORT_ID_CHARS);
+                wmemcpy(port->wstrPortName, portName, DYNAMIC_PORT_NAME_CHARS);
+
+                if (_wcsicmp(port->wstrPortId, L"spooler") == 0)
+                    Ipc_Dynamic_Ports.pSpoolerPort = port;
+
+                List_Insert_After(&Ipc_Dynamic_Ports.Ports, NULL, port);
+            }
+        }
+
+        ExReleaseResourceLite(Ipc_Dynamic_Ports.pPortLock);
         KeLeaveCriticalRegion();
     }
 

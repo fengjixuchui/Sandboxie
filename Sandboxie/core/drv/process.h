@@ -136,6 +136,7 @@ struct _PROCESS {
     BOOLEAN file_warn_internet;
     BOOLEAN file_warn_direct_access;
 	BOOLEAN AllowInternetAccess;
+    BOOLEAN file_open_devapi_cmapi;
 
     // key-related
 
@@ -156,6 +157,7 @@ struct _PROCESS {
     BOOLEAN ipc_warn_startrun;
     BOOLEAN ipc_block_password;
     BOOLEAN ipc_open_lsa_endpoint;
+    BOOLEAN ipc_open_sam_endpoint;
     BOOLEAN ipc_allowSpoolerPrintToFile;
     BOOLEAN ipc_openPrintSpooler;
 
@@ -197,7 +199,7 @@ PROCESS *Process_FindSandboxed(HANDLE ProcessId, KIRQL *out_irql);
 // Start supervising a new process
 
 void Process_NotifyProcess_Create(
-    HANDLE ProcessId, HANDLE ParentId, BOX *box);
+    HANDLE ProcessId, HANDLE ParentId, HANDLE CallerId, BOX *box);
 
 
 // Process_IsSameBox returns TRUE if the other process identified by
@@ -353,7 +355,7 @@ void Process_LogMessage(PROCESS *proc, ULONG msgid);
 
 // Track process limit
 
-void Process_TrackProcessLimit(PROCESS *proc);
+//void Process_TrackProcessLimit(PROCESS *proc);
 
 
 // Cancel process through SbieSvc

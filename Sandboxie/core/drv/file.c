@@ -610,7 +610,7 @@ _FX BOOLEAN File_InitPaths(PROCESS *proc,
         L"\\Device\\NamedPipe\\XTIERRPCPIPE",       // Novell NetIdentity
         NULL
     };
-    static const WCHAR *strClosedFiles[] = {
+    static const WCHAR *strWinRMFiles[] = {
         // Windows Remote Management (WinRM) is a large security hole.  A sandboxed app running in an elevated cmd shell can send any admin command to the host.
         // Block the WinRS.exe and the automation dlls to make it very difficult for someone to use.
         // See ICD-10136 "Sandboxie security hole allows guest to run any command in host as admin"
@@ -618,6 +618,11 @@ _FX BOOLEAN File_InitPaths(PROCESS *proc,
         L"%SystemRoot%\\System32\\wsmsvc.dll",
         L"%SystemRoot%\\System32\\wsmauto.dll",
         L"%SystemRoot%\\System32\\winrs.exe",
+        // Don't forget the WoW64 files
+        L"%SystemRoot%\\SysWoW64\\wsmsvc.dll",
+        L"%SystemRoot%\\SysWoW64\\wsmauto.dll",
+        L"%SystemRoot%\\SysWoW64\\winrs.exe",
+        // Note: This is not a proper fix its just a cheap mitidation!!! 
         NULL
     };
 
@@ -676,8 +681,9 @@ _FX BOOLEAN File_InitPaths(PROCESS *proc,
         }
     }
 
-    for (i = 0; strClosedFiles[i] && ok; ++i) {
-        ok = Process_AddPath(proc, closed_file_paths, _ClosedPath, TRUE, strClosedFiles[i], FALSE);
+    if(Conf_Get_Boolean(proc->box->name, L"BlockWinRM", 0, TRUE))
+    for (i = 0; strWinRMFiles[i] && ok; ++i) {
+        ok = Process_AddPath(proc, closed_file_paths, _ClosedPath, TRUE, strWinRMFiles[i], FALSE);
     }
 
     if (! ok) {
@@ -878,6 +884,8 @@ _FX BOOLEAN File_InitProcess(PROCESS *proc)
         proc->file_warn_direct_access = Conf_Get_Boolean(
                     proc->box->name, L"NotifyDirectDiskAccess", 0, FALSE);
     }
+
+    proc->file_open_devapi_cmapi = Conf_Get_Boolean(proc->box->name, L"OpenDevCMApi", 0, FALSE);
 
     if (ok && proc->image_path && (! proc->image_sbie)) {
 
@@ -1493,7 +1501,7 @@ skip_due_to_home_folder:
 
         if (letter) {
 
-            USHORT mon_type = IsPipeDevice ? MONITOR_PIPE : MONITOR_FILE;
+            ULONG mon_type = IsPipeDevice ? MONITOR_PIPE : MONITOR_FILE;
             if (!IsBoxedPath) {
                 if (ShouldMonitorAccess == TRUE)
                     mon_type |= MONITOR_DENY;
@@ -1512,7 +1520,7 @@ skip_due_to_home_folder:
 
     else if (IsPipeDevice && Session_MonitorCount) {
 
-        USHORT mon_type = MONITOR_PIPE;
+        ULONG mon_type = MONITOR_PIPE;
         WCHAR *mon_name = Name->Name.Buffer;
 
         if (MonitorPrefixLen && MonitorSuffixPtr) {
@@ -2221,6 +2229,35 @@ _FX NTSTATUS File_Api_Open(PROCESS *proc, ULONG64 *parms)
         DesiredAccess  = FILE_READ_ATTRIBUTES | SYNCHRONIZE;
         CreateOptions |= FILE_DIRECTORY_FILE;
     }
+
+    if (proc->file_trace & (TRACE_ALLOW | TRACE_DENY)) {
+
+        WCHAR access_str[48];
+        WCHAR letter;
+
+        if (is_closed && (proc->file_trace & TRACE_DENY))
+            letter = L'D';
+        else if (proc->file_trace & TRACE_ALLOW)
+            letter = L'A';
+        else
+            letter = 0;
+
+        if (letter) {
+
+            ULONG mon_type = MONITOR_FILE;
+            mon_type |= MONITOR_TRACE;
+
+            swprintf(access_str, L"(F%c) %08X.%02X.%08X",
+                letter, DesiredAccess,
+                0 & 0x0F, CreateOptions);
+            Log_Debug_Msg(mon_type, access_str, path);
+        }
+    }
+    else if (is_closed) {
+
+        Session_MonitorPut(MONITOR_FILE | MONITOR_DENY, path, proc->pid);
+    }
+
 
     //
     // for a named pipe in the sandbox, use other parameters for the

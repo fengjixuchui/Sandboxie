@@ -85,6 +85,8 @@ public:
 	virtual QTreeView*			GetView()	{ return m_pTreeList; }
 	virtual QAbstractItemModel* GetModel()	{ return m_pTreeList->model(); }
 
+	virtual QVBoxLayout*		GetLayout()	{ return m_pMainLayout; }
+
 protected:
 	QVBoxLayout*			m_pMainLayout;
 
@@ -152,6 +154,8 @@ public:
 		m_pSortProxy->setDynamicSortFilter(true);
 
 		m_pTreeList->setModel(m_pSortProxy);
+		((CSortFilterProxyModel*)m_pSortProxy)->setView(m_pTreeList);
+		
 
 		m_pTreeList->setSelectionMode(QAbstractItemView::ExtendedSelection);
 #ifdef WIN32

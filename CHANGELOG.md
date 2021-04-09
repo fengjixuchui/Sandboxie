@@ -9,6 +9,128 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
+
+
+
+
+
+
+
+
+## [0.7.3 / 5.49.5] - 2021-03-27
+
+### Added
+- added "UseSbieWndStation=y" to emulate CreateDesktop for selected processes, not only for Firefox and Chrome
+- added option to drop the console host process integrity, now you can use "DropConHostIntegrity=y"
+- added option to easily add local templates
+
+### Changed
+- reworked window hooking mechanism to improve performance
+-- resolves issues with file save dialogs taking 30+ sec to open
+-- this fix greatly improves the win32 GUI performance of sandboxed processes
+- reworked RPC resolver to be ini configurable
+-- the following options are now deprecated:
+--- "UseRpcMgmtSetComTimeout=some.dll,n", so use "RpcPortBinding=some.dll,*,TimeOut=y"
+--- "OpenUPnP=y", "OpenBluetooth=y", "OpenSmartCard=n" use the new templates instead
+-- See the Templates.ini for usage examples
+
+### Fixed
+- fixed process-specific hooks being applied to all processes in a given sandbox
+- fixed issue with messages and templates sometimes not being properly displayed in the SandMan UI
+- fixed issue with compatibility settings not being applied properly
+- fixed auto delete issue that got introduced with 0.7.1
+- fixed issue with NtSetInformationFile, FileDispositionInformation resulting in Opera installer failing
+- fixed issue with MacType introduced in the 0.7.2 build
+- fixed global sandboxed windows hooks not working when window rename option is disabled
+- fixed issue with saving local templates
+- fixed issue when using runas to start a process that was created outside of the Sandboxie supervision
+-- since the runas facility is not accessible by default, this did not constitute a security issue
+-- to enable runas functionality, add "OpenIpcPath=\RPC Control\SECLOGON" to your Sandboxie.ini
+-- please take note that doing so may open other yet unknown issues
+- fixed a driver compatibility issue with Windows 10 32 bit Insider Preview Build 21337
+- fixed issues with driver signature for windows 7
+
+
+
+## [0.7.2 / 5.49.0] - 2021-03-04
+
+### Added
+- added option to alter reported Windows version "OverrideOsBuild=7601" for Windows 7 SP1
+- the trace log can now be structured like a tree with processes as root items and threads as branches
+
+### Changed
+- SandboxieCrypto now always migrates the CatRoot2 files in order to prevent locking of real files
+- greatly improved trace log performance
+- MSI Server can now run with the "FakeAdminRights=y" and "DropAdminRights=y" options
+-- special service allowance for the MSI Server can be disabled with "MsiInstallerExemptions=n"
+- changed SCM access check behaviour; non elevated users can now start services with a user token
+-- elevation is now only required to start services with a system token
+- reworked the trace log mechanism to be more verbose
+- reworked RPC mechanism to be more flexible
+
+### Fixed
+- fixed issues with some installers introduced in 5.48.0
+- fixed "add user to sandbox" in the Plus UI
+- FIXED SECURITY ISSUE: the HostInjectDll mechanism allowed for local privilege escalation (thanks hg421)
+- Classic UI no longer allows to create a sandbox with an invalid or reserved device name
+
+
+
+## [0.7.1 / 5.48.5] - 2021-02-21
+
+### Added
+- enhanced RpcMgmtSetComTimeout handling with "UseRpcMgmtSetComTimeout=some.dll,n"
+-- this option allows to specify if RpcMgmtSetComTimeout should be used or not for each individual dll
+-- this setting takes precedence over hard-coded and per-process presets
+-- "UseRpcMgmtSetComTimeout=some.dll" and "UseRpcMgmtSetComTimeout=some.dll,y" are equivalent
+- added "FakeAdminRights=y" option that makes processes think they have admin permissions in a given box
+-- this option is recommended to be used in combination with "DropAdminRights=y" to improve security
+-- with "FakeAdminRights=y" and "DropAdminRights=y" installers should still work
+- added RPC support for SSDP API (the Simple Service Discovery Protocol), you can enable it with "OpenUPnP=y"
+
+
+### Changed
+- SbieCrypto no longer triggers message 1313
+- changed enum process API; now more than 511 processes per box can be enumerated (no limit)
+- reorganized box settings a bit
+- made COM tracing more verbose
+- "RpcMgmtSetComTimeout=y" is now again the default behaviour, it seems to cause less issues overall
+
+### Fixed
+- fixed issues with webcam access when the DevCMApi filtering is in place
+- fixed issue with free download manager for 'AppXDeploymentClient.dll', so RpcMgmtSetComTimeout=y will be used by default for this one
+- fixed not all WinRM files were blocked by the driver, with "BlockWinRM=n" this file block can be disabled
+
+
+
+
+## [0.7.0 / 5.48.0] - 2021-02-14
+
+### Added
+- sandboxed indicator for tray icons, the tooltip now contains [#] if enabled
+- the trace log buffer can now be adjusted with "TraceBufferPages=2560"
+-- the value denotes the count of 4K large pages to be used; here for a total of 10 MB
+- new functionality for the list finder
+
+### Changed
+- improved RPC debugging
+- improved IPC handling around RpcMgmtSetComTimeout; "RpcMgmtSetComTimeout=n" is now the default behaviour
+-- required exceptions have been hard-coded for specific calling DLLs
+- the LogApi dll is now using Sbie's tracing facility to log events instead of its own pipe server
+
+### Fixed
+- FIXED SECURITY ISSUE: elevated sandboxed processes could access volumes/disks for reading (thanks hg421)
+-- this protection option can be disabled by using "AllowRawDiskRead=y"
+- fixed crash issue around SetCurrentProcessExplicitAppUserModelID observed with GoogleUpdate.exe
+- fixed issue with Resource Monitor sort by timestamp
+- FIXED SECURITY ISSUE: a race condition in the driver allowed to obtain an elevated rights handle to a process (thanks typpos)
+- FIXED SECURITY ISSUE: "\RPC Control\samss lpc" is now filtered by the driver (thanks hg421)
+-- this allowed elevated processes to change passwords, delete users and alike; to disable filtering use "OpenSamEndpoint=y"
+- FIXED SECURITY ISSUE: "\Device\DeviceApi\CMApi" is now filtered by the driver (thanks hg421)
+-- this allowed elevated processes to change hardware configuration; to disable filtering use "OpenDevCMApi=y"
+
+
+
 ## [0.6.7 / 5.47.1] - 2021-02-01
 
 ### Added
@@ -123,7 +245,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - refactored some IPC code in the driver
 
 ### Fixed
-- fixed issue allowing to bypass the registry isolation, present since Windows 10 Creators Update 
+- FIXED SECURITY ISSUE: the registry isolation could be bypassed, present since Windows 10 Creators Update
 - fixed creation time not always being properly updated in the SandMan UI
 
 
@@ -163,12 +285,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [0.5.4 / 5.46.0] - 2021-01-06
 
 ### Added
-- Sandboxie now strips particularly problematic privileges from sandboxed system tokens
+- FIXED SECURITY ISSUE: Sandboxie now strips particularly problematic privileges from sandboxed system tokens
 -- with those a process could attempt to bypass the sandbox isolation (thanks Diversenok)
 -- old legacy behaviour can be enabled with "StripSystemPrivileges=n" (absolutely NOT Recommended) 
 - added new isolation options "ClosePrintSpooler=y" and "OpenSmartCard=n" 
 -- those resources are open by default but for a hardened box it’s desired to close them
-- added print spooler filter to prevent printers from being set up outside the sandbox
+- FIXED SECURITY ISSUE: added print spooler filter to prevent printers from being set up outside the sandbox
 -- the filter can be disabled with "OpenPrintSpooler=y"
 - added overwrite prompt when recovering an already existing file
 - added "StartProgram=", "StartService=" and "AutoExec=" options to the SandMan UI
@@ -180,14 +302,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 -- Note: sandboxed services with a system token are still sandboxed and restricted 
 -- However not granting them a system token in the first place removes possible exploit vectors
 -- Note: this option is not compatible with "ProtectRpcSs=y" and takes precedence!
-- Reworked dynamic IPC port handling
-- Improved Resource Monitor status strings
+- reworked dynamic IPC port handling
+- improved Resource Monitor status strings
 
 ### Fixed
-- fixed a critical issue that allowed to create processes outside the sandbox (thanks Diversenok)
-- fixed issues with dynamic IPC port handling that allowed to bypass IPC isolation
+- FIXED SECURITY ISSUE: processes could spawn processes outside the sandbox (thanks Diversenok)
+- FIXED SECURITY ISSUE: bug in the dynamic IPC port handling allowed to bypass IPC isolation
 - fixed issue with IPC tracing
-- fixed CVE-2019-13502 "\RPC Control\LSARPC_ENDPOINT" is now filtered by the driver (thanks Diversenok)
+- FIXED SECURITY ISSUE: CVE-2019-13502 "\RPC Control\LSARPC_ENDPOINT" is now filtered by the driver (thanks Diversenok)
 -- this allowed some system options to be changed, to disable filtering use "OpenLsaEndpoint=y"
 - fixed hooking issues SBIE2303 with Chrome, Edge and possibly others
 - fixed failed check for running processes when performing snapshot operations
@@ -211,7 +333,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - fixed a few issues with group handling
 - fixed issue with GetRawInputDeviceInfo when running a 32 bit program on a 64 bit system
 - fixed issue when pressing apply in the "Resource Access" tab; the last edited value was not always applied
-- fixed issue merging entries in resource access monitor
+- fixed issue merging entries in Resource Access Monitor
 
 
 
@@ -389,10 +511,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 -- Note: without an unrestricted token with this option applications won't be able to start
 - added debug option "NoSysCallHooks=y" it disables the sys call processing by the driver
 -- Note: without an unrestricted token with this option applications won't be able to start
-- added ability to record verbose access traces to the resource monitor
+- added ability to record verbose access traces to the Resource Monitor
 -- use ini options "FileTrace=*", "PipeTrace=*", "KeyTrace=*", "IpcTrace=*", "GuiTrace=*" to record all events
 -- replace "*" to log only: "A" - allowed, "D" - denied, or "I" - ignore events
-- added ability to record debug output strings to the resource monitor,
+- added ability to record debug output strings to the Resource Monitor
 -- use ini option DebugTrace=y to enable
 
 ### Changed
@@ -479,7 +601,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 -- filesystem is saved incrementally, the snapshots built upon each other
 -- each snapshot gets a full copy of the box registry for now
 -- each snapshot can have multiple children snapshots
-- added access status to resource monitor
+- added access status to Resource Monitor
 - added setting to change border width
 - added snapshot manager UI to SandMan
 - added template to enable authentication with an Yubikey or comparable 2FA device
@@ -503,7 +625,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [0.3.5 / 5.42.1] - 2020-07-19
 
 ### Added
-- Added settings window
+- added settings window
 - added translation support
 - added dark theme
 - added auto start option
@@ -527,34 +649,34 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - API_QUERY_PROCESS_INFO can be now used to get the original process token of sandboxed processes
 -- Note: this capability is used by TaskExplorer to allow inspecting sandbox internal tokens
-- Added option "KeepTokenIntegrity=y" to make the Sbie token keep its initial integrity level (debug option)
+- added option "KeepTokenIntegrity=y" to make the Sbie token keep its initial integrity level (debug option)
 -- Note: Do NOT USE Debug Options if you don't know their security implications (!)
-- Added process id to log messages very useful for debugging
-- Added finder to resource log
-- Added option to hide host processes "HideHostProcess=[name]"
+- added process id to log messages very useful for debugging
+- added finder to resource log
+- added option to hide host processes "HideHostProcess=[name]"
 -- Note: Sbie hides by default processes from other boxes, this behaviour can now be controlled with "HideOtherBoxes=n"
 - Sandboxed RpcSs and DcomLaunch can now be run as system with the option "ProtectRpcSs=y" however this breaks sandboxed explorer and other
 - Built In Clsid whitelist can now be disabled with "OpenDefaultClsid=n"
 - Processes can be now terminated with the del key, and require a confirmation
-- Added sandboxed window border display to SandMan.exe
-- Added notification for Sbie log messages
-- Added Sandbox Presets sub menu allowing to quickly change some settings
+- added sandboxed window border display to SandMan.exe
+- added notification for Sbie log messages
+- added Sandbox Presets sub menu allowing to quickly change some settings
 -- Enable/Disable API logging, logapi_dll's are now distributed with SbiePlus
 -- And other: Drop admin rights; Block/Allow internet access; Block/Allow access to files on the network
-- Added more info to the sandbox status column
-- Added path column to SbieModel
-- Added info tooltips in SbieView
+- added more info to the sandbox status column
+- added path column to SbieModel
+- added info tooltips in SbieView
 
 ### Changed
-- Reworked ApiLog, added PID and PID filter
-- Auto config reload on in change is now delayed by 500ms to not reload multiple times on incremental changes
+- reworked ApiLog, added PID and PID filter
+- auto config reload on in change is now delayed by 500ms to not reload multiple times on incremental changes
 - Sandbox names now replace "_" with " " for display allowing to use names that are made of separated words
 
 ### Fixed
 - added missing PreferExternalManifest initialization to portable mode
-- fixed permission issues with sandboxed system processes
+- FIXED SECURITY ISSUE: fixed permission issues with sandboxed system processes
 -- Note: you can use "ExposeBoxedSystem=y" for the old behaviour (debug option)
-- fixed missing SCM access check for sandboxed services
+- FIXED SECURITY ISSUE: fixed missing SCM access check for sandboxed services (thanks Diversenok)
 -- Note: to disable the access check use "UnrestrictedSCM=y" (debug option)
 - fixed missing initialization in service server that caused sandboxed programs to crash when querying service status
 - fixed many bugs that caused the SbieDrv.sys to BSOD when run with MSFT Driver Verifier active
@@ -583,8 +705,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - added different sandbox icons for different types
 -- Red LogAPI/BSA enabled
--- More to come :D
-- Added progress window for async operations that take time
+-- more to come :D
+- added progress window for async operations that take time
 - added DPI awareness
 - the driver file is now obfuscated to avoid false positives
 - additional debug options to Sandboxie.ini OpenToken=y that combines UnrestrictedToken=y and UnfilteredToken=y
@@ -605,16 +727,17 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 - IniWatcher, no more clicking reload, the ini is now reloaded automatically every time it changes
-- Added Maintenance menu to the Sandbox menu, allowing to install/uninstall and start/stop Sandboxie driver, service
+- added Maintenance menu to the Sandbox menu, allowing to install/uninstall and start/stop Sandboxie driver, service
 - SandMan.exe now is packed with Sbie files and when no Sbie is installed acts as a portable installation
-- Added option to clean up logs
+- added option to clean up logs
 
 ### Changed
 - Sbie driver now first checks the home path for the Sbie ini before checking SystemRoot
 
 ### Fixed
-- Fixed a resource leak when running sandboxed
-- Fixed issue boxed services not starting when the path contained a space
+- FIXED SECURITY ISSUE: sandboxed processes could obtain a write handle on non sandboxed processes (thanks Diversenok)
+-- this allowed to inject code in non sandboxed processes
+- fixed issue boxed services not starting when the path contained a space
 - NtQueryInformationProcess now returns the proper sandboxed path for sandboxed processes
 
 
@@ -622,13 +745,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [0.1 / 5.40.2] - 2020-06-01
 
 ### Added
-- Created a new Qt based UI names SandMan (Sandboxie Manager)
-- Resource monitor now shows the PID
-- Added basic API call log using updated BSA LogApiDll
+- created a new Qt based UI names SandMan (Sandboxie Manager)
+- Resource Monitor now shows the PID
+- added basic API call log using updated BSA LogApiDll
 
 
 ### Changed
-- reworked resource monitor to work with multiple event consumers
+- reworked Resource Monitor to work with multiple event consumers
 - reworked log to work with multiple event consumers
 
 

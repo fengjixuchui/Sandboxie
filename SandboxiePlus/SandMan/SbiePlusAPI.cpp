@@ -89,7 +89,16 @@ CSandBoxPlus::~CSandBoxPlus()
 
 void CSandBoxPlus::UpdateDetails()
 {
-	m_bLogApiFound = GetTextList("OpenPipePath", false).contains("\\Device\\NamedPipe\\LogAPI");
+	//m_bLogApiFound = GetTextList("OpenPipePath", false).contains("\\Device\\NamedPipe\\LogAPI");
+	m_bLogApiFound = false;
+	QStringList InjectDlls = GetTextList("InjectDll", false);
+	foreach(const QString & InjectDll, InjectDlls)
+	{
+		if (InjectDll.contains("logapi", Qt::CaseInsensitive)) {
+			m_bLogApiFound = true;
+			break;
+		}
+	}
 
 	m_bINetBlocked = false;
 	foreach(const QString& Entry, GetTextList("ClosedFilePath", false))
@@ -106,7 +115,7 @@ void CSandBoxPlus::UpdateDetails()
 
 	if (CheckOpenToken() || GetBool("StripSystemPrivileges", false))
 		m_iUnsecureDebugging = 1;
-	else if(GetBool("ExposeBoxedSystem", false) || GetBool("UnrestrictedSCM", false) || GetBool("RunServicesAsSystem", false))
+	else if(GetBool("ExposeBoxedSystem", false) || GetBool("UnrestrictedSCM", false) /*|| GetBool("RunServicesAsSystem", false)*/)
 		m_iUnsecureDebugging = 2;
 	else
 		m_iUnsecureDebugging = 0;
@@ -131,6 +140,9 @@ QString CSandBoxPlus::GetStatusStr() const
 		return tr("Disabled");
 
 	QStringList Status;
+
+	if (IsEmpty())
+		Status.append(tr("Empty"));
 
 	if (m_iUnsecureDebugging == 1)
 		Status.append(tr("NOT SECURE (Debug Config)"));
@@ -168,16 +180,17 @@ void CSandBoxPlus::SetLogApi(bool bEnable)
 {
 	if (bEnable)
 	{
-		InsertText("OpenPipePath", "\\Device\\NamedPipe\\LogAPI");
+		//InsertText("OpenPipePath", "\\Device\\NamedPipe\\LogAPI");
 		InsertText("InjectDll", "\\LogAPI\\logapi32.dll");
 		InsertText("InjectDll64", "\\LogAPI\\logapi64.dll");
 	}
 	else
 	{
-		DelValue("OpenPipePath", "\\Device\\NamedPipe\\LogAPI");
+		//DelValue("OpenPipePath", "\\Device\\NamedPipe\\LogAPI");
 		DelValue("InjectDll", "\\LogAPI\\logapi32.dll");
 		DelValue("InjectDll64", "\\LogAPI\\logapi64.dll");
 	}
+	m_bLogApiFound = bEnable;
 }
 
 void CSandBoxPlus::SetINetBlock(bool bEnable)

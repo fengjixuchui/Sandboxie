@@ -206,6 +206,8 @@ typedef struct _THREAD_DATA {
 
     ULONG           gui_create_window;
 
+    BOOLEAN         gui_hooks_installed;
+
     BOOL            gui_should_suppress_msgbox;
 
     //
@@ -217,6 +219,11 @@ typedef struct _THREAD_DATA {
     ULONG           SizeofPortMsg;
     BOOLEAN         bOperaFileDlgThread;
 
+    //
+    // rpc module
+    //
+
+    ULONG_PTR       rpc_caller;
 
 } THREAD_DATA;
 
@@ -643,6 +650,7 @@ BOOLEAN Ole_Init(HMODULE);
 BOOLEAN Pst_Init(HMODULE);
 
 BOOLEAN Lsa_Init_Secur32(HMODULE);
+
 BOOLEAN Lsa_Init_SspiCli(HMODULE);
 
 BOOLEAN Setup_Init_SetupApi(HMODULE);
@@ -690,6 +698,8 @@ BOOLEAN RpcRt_Init(HMODULE);
 BOOLEAN Secure_Init_Elevation(HMODULE);
 
 BOOLEAN UserEnv_Init(HMODULE);
+
+BOOLEAN UserEnv_InitVer(HMODULE);
 
 BOOLEAN Scm_OsppcDll(HMODULE);
 
@@ -740,13 +750,28 @@ BOOLEAN ComDlg32_Init(HMODULE);
 // Functions (Config)
 //---------------------------------------------------------------------------
 
+BOOLEAN Config_MatchImageGroup(
+    const WCHAR* group, ULONG group_len, const WCHAR* test_str,
+    ULONG depth);
+
+BOOLEAN Config_MatchImage(
+    const WCHAR* pat_str, ULONG pat_len, const WCHAR* test_str,
+    ULONG depth);
+
+WCHAR* Config_MatchImageAndGetValue(WCHAR* value, const WCHAR* ImageName, ULONG* pMode);
 
 BOOLEAN Config_InitPatternList(const WCHAR* setting, LIST* list);
 
 NTSTATUS Config_GetSettingsForImageName(
     const WCHAR* setting, WCHAR* value, ULONG value_size, const WCHAR* deftext);
 
+BOOLEAN Config_String2Bool(const WCHAR* value, BOOLEAN defval);
+
 BOOLEAN Config_GetSettingsForImageName_bool(const WCHAR* setting, BOOLEAN defval);
+
+WCHAR* Config_GetTagValue(WCHAR* str, WCHAR** value, ULONG* len, WCHAR sep);
+
+BOOLEAN Config_FindTagValue(WCHAR* string, const WCHAR* name, WCHAR* value, ULONG value_size, const WCHAR* deftext, WCHAR sep);
 
 //---------------------------------------------------------------------------
 

@@ -395,9 +395,6 @@ _FX BOOLEAN Proc_Init(void)
             SBIEDLL_HOOK(Proc_, SetProcessMitigationPolicy);
     }
 
-	// OriginalToken BEGIN
-	if (!SbieApi_QueryConfBool(NULL, L"OriginalToken", FALSE))
-	// OriginalToken END
     if(Dll_OsBuild < 17677) {
     
         SBIEDLL_HOOK(Proc_,CreateProcessInternalW);
@@ -752,6 +749,21 @@ _FX BOOL Proc_CreateProcessInternalW(
         }
     }
 
+    // OriginalToken BEGIN
+    if (SbieApi_QueryConfBool(NULL, L"OriginalToken", FALSE))
+    {
+        ok = __sys_CreateProcessInternalW(
+            hToken, lpApplicationName, lpCommandLine,
+            lpProcessAttributes, lpThreadAttributes, bInheritHandles, dwCreationFlags,
+            lpEnvironment, lpCurrentDirectory,
+            lpStartupInfo, lpProcessInformation, hNewToken);
+
+        err = GetLastError();
+
+        goto finish;
+    }
+    // OriginalToken END
+
     //
     // create the new process
     //
@@ -956,6 +968,12 @@ finish:
     if (TlsData->proc_command_line) {
         Dll_Free(TlsData->proc_command_line);
         TlsData->proc_command_line = NULL;
+    }
+
+    {
+        WCHAR msg[1024];
+        Sbie_snwprintf(msg, 1024, L"CreateProcess: %s (%s); err=%d", lpApplicationName ? lpApplicationName : L"[noName]", lpCommandLine ? lpCommandLine : L"[noCmd]", ok ? 0 : err);
+        SbieApi_MonitorPut2(MONITOR_OTHER | MONITOR_TRACE, msg, FALSE);
     }
 
     SetLastError(err);
@@ -1208,6 +1226,21 @@ _FX BOOL Proc_CreateProcessInternalW_RS5(
         }
     }
 
+    // OriginalToken BEGIN
+    if (SbieApi_QueryConfBool(NULL, L"OriginalToken", FALSE))
+    {
+        ok = __sys_CreateProcessInternalW_RS5(
+            hToken, lpApplicationName, lpCommandLine,
+            lpProcessAttributes, lpThreadAttributes, bInheritHandles,
+            dwCreationFlags, lpEnvironment, lpCurrentDirectory,
+            lpStartupInfo, lpProcessInformation, hNewToken);
+
+        err = GetLastError();
+
+        goto finish;
+    }
+    // OriginalToken END
+
     if (!(dwCreationFlags & CREATE_SUSPENDED))
         resume_thread = TRUE;
     dwCreationFlags |= CREATE_SUSPENDED;
@@ -1338,6 +1371,8 @@ _FX BOOL Proc_CreateProcessInternalW_RS5(
     // handle CreateProcessInternal returning ERROR_ELEVATION_REQUIRED
     //
 
+finish:
+
     --TlsData->proc_create_process;
 
     if ((!ok) && (err == ERROR_ELEVATION_REQUIRED)) {
@@ -1366,6 +1401,12 @@ _FX BOOL Proc_CreateProcessInternalW_RS5(
     if (TlsData->proc_command_line) {
         Dll_Free(TlsData->proc_command_line);
         TlsData->proc_command_line = NULL;
+    }
+
+    {
+        WCHAR msg[1024];
+        Sbie_snwprintf(msg, 1024, L"CreateProcess: %s (%s); err=%d", lpApplicationName ? lpApplicationName : L"[noName]", lpCommandLine ? lpCommandLine : L"[noCmd]", ok ? 0 : err);
+        SbieApi_MonitorPut2(MONITOR_OTHER | MONITOR_TRACE, msg, FALSE);
     }
 
     SetLastError(err);

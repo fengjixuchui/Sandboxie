@@ -1,3 +1,4 @@
+#pragma once
 
 #include "../../MiscHelpers/Common/PanelView.h"
 #include "../../MiscHelpers/Common/TreeviewEx.h"
@@ -36,6 +37,7 @@ private slots:
 
 	void						OnGroupAction();
 	void						OnSandBoxAction();
+	void						OnSandBoxAction(QAction* pAction);
 	void						OnProcessAction();
 
 protected:
@@ -50,6 +52,9 @@ protected:
 private:
 
 	void					UpdateGroupMenu();
+
+	QString					FindParent(const QString& Name);
+	bool					IsParentOf(const QString& Name, const QString& Group);
 
 	QVBoxLayout*			m_pMainLayout;
 
@@ -68,12 +73,15 @@ private:
 	QAction*				m_pMenuRunMailer;
 	QAction*				m_pMenuRunExplorer;
 	QAction*				m_pMenuRunCmd;
+	QAction*				m_pMenuRunCmdAdmin;
 	QAction*				m_pMenuMkLink;
 	QMenu*					m_pMenuPresets;
-	QAction*				m_pMenuPresetsLogApi;
+	QActionGroup*			m_pMenuPresetsAdmin;
+	QAction*				m_pMenuPresetsShowUAC;
+	QAction*				m_pMenuPresetsNoAdmin;
+	QAction*				m_pMenuPresetsFakeAdmin;
 	QAction*				m_pMenuPresetsINet;
 	QAction*				m_pMenuPresetsShares;
-	QAction*				m_pMenuPresetsNoAdmin;
 	QAction*				m_pMenuOptions;
 	QAction*				m_pMenuSnapshots;
 	QAction*				m_pMenuEmptyBox;
