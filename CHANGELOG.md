@@ -3,18 +3,44 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [0.8.1 / 5.50.1] - 2021-06-14
+
+### Fixed
+- fixed an issue with driver verifyer and user handles
+- fixed driver memory leak of FLT_FILE_NAME_INFORMATION objects
+- fixed broken clipboard introduced in 5.50.0
+- fixed dcom launch issue on windows 7 32 bit introduced in 5.50.0
 
 
 
+## [0.8.0 / 5.50.0] - 2021-06-13
 
+### Added
+- Sandboxie now applies by default "Close...=!<program>,..." directives to non-excluded images if they are located in a sandbox
+-- added 'AlwaysCloseForBoxed=n' to disable this behaviour as it may not be always desired, and it doesn't provide extra security
+- added process image information to Sandman UI
+- localized template categories in the Plus UI
+- added "DisableResourceMonitor=y" to disable resource access monitor for selected boxes
+- added option to show trace entries only for the selected sandbox
+- added "UseVolumeSerialNumbers=y" that allows drive letters to be suffixed with the volume SN in the \drive\ sandbox location
+-- it helps to avoid files mixed together on multiple pendrives using the same letter
+-- note: this option is not compatible with the recovery function of the Classic UI, only SandMan UI is fully compatible
 
+### Changed
+- portable cleanup message now has y/n/c options
+- consolidated Proc_CreateProcessInternalW and Proc_CreateProcessInternalW_RS5 to remove duplicate code
+- the ElevateCreateProcess fix, as sometimes applied by the Program Compatibility Assistant, will no longer be emulated by default
+-- use 'ApplyElevateCreateProcessFix=y' or 'ApplyElevateCreateProcessFix=program.exe,y' to enable it
+- trace log gets disabled only when it has no entries and the logging is stopped
 
-
-
-
-
-
-
+### Fixed
+- fixed APC issue with the new global hook emulation mechanism and WoW64 processes
+- fixed IPv6 issues with BlockPort options
+- fixed an issue with CheatEngine when "OpenWinClass=*" was specified
+- fixed memory corruption in SbieDrv
+- fixed crash issue with process elevation on CreateProcess calls
+- fixed process elevation when running in the built-in administrator account
+- fixed template preview resetting unsaved entries in box options window
 
 
 
