@@ -40,6 +40,7 @@ public slots:
 	void						Clear();
 	void						Refresh();
 	void						ReloadUserConfig();
+	void						ClearUserUIConfig(const QMap<QString, CSandBoxPtr> AllBoxes = QMap<QString, CSandBoxPtr>());
 	void						SaveUserConfig();
 
 private slots:
