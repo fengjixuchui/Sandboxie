@@ -575,7 +575,7 @@ Note: The update check is often behind the latest GitHub release to ensure that 
     <message>
         <location filename="Windows/OptionsAccess.cpp" line="242"/>
         <source>No Rename</source>
-        <translation type="unfinished"></translation>
+        <translation>禁止重命名</translation>
     </message>
     <message>
         <location filename="Windows/OptionsAccess.cpp" line="246"/>
@@ -655,7 +655,7 @@ Note: The update check is often behind the latest GitHub release to ensure that 
     <message>
         <location filename="Windows/OptionsAccess.cpp" line="464"/>
         <source>&apos;OpenWinClass=program.exe,#&apos; is not supported, use &apos;NoRenameWinClass=program.exe,*&apos; instead</source>
-        <translation type="unfinished"></translation>
+        <translation>不支持 &apos;OpenWinClass=program.exe,#&apos; 配置格式，请使用 &apos;NoRenameWinClass=program.exe,*&apos; 替换</translation>
     </message>
     <message>
         <location filename="Windows/OptionsAccess.cpp" line="505"/>
@@ -663,7 +663,7 @@ Note: The update check is often behind the latest GitHub release to ensure that 
         <location filename="Windows/OptionsGrouping.cpp" line="302"/>
         <location filename="Windows/OptionsNetwork.cpp" line="507"/>
         <source>Template values can not be edited.</source>
-        <translation>模板值无法被编辑</translation>
+        <translation>模板值不能被编辑</translation>
     </message>
     <message>
         <location filename="Windows/OptionsAccess.cpp" line="571"/>
@@ -1110,7 +1110,7 @@ Full path: %4</source>
     <message>
         <location filename="Windows/RecoveryWindow.cpp" line="174"/>
         <location filename="Windows/RecoveryWindow.cpp" line="195"/>
-        <location filename="Windows/RecoveryWindow.cpp" line="482"/>
+        <location filename="Windows/RecoveryWindow.cpp" line="543"/>
         <source>Select Directory</source>
         <translation>选择目录</translation>
     </message>
@@ -1135,7 +1135,7 @@ Full path: %4</source>
         <translation>有 %1 个新文件可供恢复</translation>
     </message>
     <message>
-        <location filename="Windows/RecoveryWindow.cpp" line="518"/>
+        <location filename="Windows/RecoveryWindow.cpp" line="579"/>
         <source>There are %1 files and %2 folders in the sandbox, occupying %3 of disk space.</source>
         <oldsource>There are %1 files and %2 folders in the sandbox, occupying %3 bytes of disk space.</oldsource>
         <translation>此沙盒中共有 %1 个文件和 %2 个文件夹，占用了 %3 磁盘空间</translation>
@@ -1837,7 +1837,7 @@ This box prevents access to all user data locations, except explicitly granted i
     <message>
         <location filename="SandMan.cpp" line="1842"/>
         <source>The selected feature set is only available to project supporters. Processes started in a box with this feature set enabled without a supporter certificate will be terminated after 5 minutes.&lt;br /&gt;&lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-get-cert&quot;&gt;Become a project supporter&lt;/a&gt;, and receive a &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-cert&quot;&gt;supporter certificate&lt;/a&gt;</source>
-        <translation>选定的特性只对项目赞助者可用。如果没有赞助者凭据，在启用该特性的沙盒里启动的进程，将在 5 分钟后将被终止。&lt;br /&gt;&lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-get-cert&quot;&gt;成为项目赞助者&lt;/a&gt;，以获得&lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-cert&quot;&gt;赞助者凭据&lt;/a&gt;</translation>
+        <translation>选定的特性只对项目赞助者可用。如果没有赞助者凭据，在启用该特性的沙盒里启动的进程，将在 5 分钟后被终止。&lt;br /&gt;&lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-get-cert&quot;&gt;成为项目赞助者&lt;/a&gt;，以获得&lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-cert&quot;&gt;赞助者凭据&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="2592"/>
@@ -2973,7 +2973,7 @@ No will choose: %2</source>
     <message>
         <location filename="Views/SbieView.cpp" line="972"/>
         <source>The Sandbox name and Box Group name cannot use the &apos;,()&apos; symbol.</source>
-        <translation type="unfinished"></translation>
+        <translation>⌈沙盒/组⌋名称不能使用 &apos;,()&apos; 等符号</translation>
     </message>
     <message>
         <location filename="Views/SbieView.cpp" line="977"/>
@@ -3201,113 +3201,115 @@ No will choose: %2</source>
         <translation>搜索设置</translation>
     </message>
     <message>
-        <location filename="Windows/SettingsWindow.cpp" line="376"/>
+        <location filename="Windows/SettingsWindow.cpp" line="370"/>
+        <location filename="Windows/SettingsWindow.cpp" line="371"/>
+        <location filename="Windows/SettingsWindow.cpp" line="381"/>
         <source>Run &amp;Sandboxed</source>
         <translation>在沙盒中运行(&amp;S)</translation>
     </message>
     <message>
-        <location filename="Windows/SettingsWindow.cpp" line="397"/>
+        <location filename="Windows/SettingsWindow.cpp" line="402"/>
         <source>Sandboxed Web Browser</source>
         <translation>浏览器(沙盒)</translation>
     </message>
     <message>
-        <location filename="Windows/SettingsWindow.cpp" line="557"/>
+        <location filename="Windows/SettingsWindow.cpp" line="562"/>
         <source>This supporter certificate has expired, please &lt;a href=&quot;sbie://update/cert&quot;&gt;get an updated certificate&lt;/a&gt;.</source>
         <translation>此赞助者凭据已过期，请&lt;a href=&quot;sbie://update/cert&quot;&gt;获取新凭据&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="Windows/SettingsWindow.cpp" line="562"/>
+        <location filename="Windows/SettingsWindow.cpp" line="567"/>
         <source>This supporter certificate will &lt;font color=&apos;red&apos;&gt;expire in %1 days&lt;/font&gt;, please &lt;a href=&quot;sbie://update/cert&quot;&gt;get an updated certificate&lt;/a&gt;.</source>
         <translation>此赞助者凭据将&lt;font color=&apos;red&apos;&gt;在 %1 天后过期&lt;/font&gt;，请&lt;a href=&quot;sbie://update/cert&quot;&gt;获取新凭据&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="Windows/SettingsWindow.cpp" line="669"/>
+        <location filename="Windows/SettingsWindow.cpp" line="674"/>
         <source>Run &amp;Un-Sandboxed</source>
         <translation>在沙盒外运行(&amp;U)</translation>
     </message>
     <message>
-        <location filename="Windows/SettingsWindow.cpp" line="865"/>
+        <location filename="Windows/SettingsWindow.cpp" line="870"/>
         <source>This does not look like a certificate. Please enter the entire certificate, not just a portion of it.</source>
         <translation>这看起来不像是一份凭据。请输入完整的凭据，而不仅仅是其中的一部分</translation>
     </message>
     <message>
-        <location filename="Windows/SettingsWindow.cpp" line="883"/>
+        <location filename="Windows/SettingsWindow.cpp" line="888"/>
         <source>This certificate is unfortunately expired.</source>
         <translation>很不幸此凭据已过期</translation>
     </message>
     <message>
-        <location filename="Windows/SettingsWindow.cpp" line="885"/>
+        <location filename="Windows/SettingsWindow.cpp" line="890"/>
         <source>This certificate is unfortunately outdated.</source>
         <translation>很不幸此凭据已过时</translation>
     </message>
     <message>
-        <location filename="Windows/SettingsWindow.cpp" line="888"/>
+        <location filename="Windows/SettingsWindow.cpp" line="893"/>
         <source>Thank you for supporting the development of Sandboxie-Plus.</source>
         <translation>感谢您对 Sandboxie-Plus 开发工作的支持</translation>
     </message>
     <message>
-        <location filename="Windows/SettingsWindow.cpp" line="896"/>
+        <location filename="Windows/SettingsWindow.cpp" line="901"/>
         <source>This support certificate is not valid.</source>
         <translation>此赞助者凭据无效</translation>
     </message>
     <message>
-        <location filename="Windows/SettingsWindow.cpp" line="927"/>
-        <location filename="Windows/SettingsWindow.cpp" line="1046"/>
+        <location filename="Windows/SettingsWindow.cpp" line="932"/>
+        <location filename="Windows/SettingsWindow.cpp" line="1051"/>
         <source>Select Directory</source>
         <translation>选择目录</translation>
     </message>
     <message>
-        <location filename="Windows/SettingsWindow.cpp" line="955"/>
+        <location filename="Windows/SettingsWindow.cpp" line="960"/>
         <source>&lt;a href=&quot;check&quot;&gt;Check Now&lt;/a&gt;</source>
         <translation>&lt;a href=&quot;check&quot;&gt;立即检查&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="Windows/SettingsWindow.cpp" line="1008"/>
+        <location filename="Windows/SettingsWindow.cpp" line="1013"/>
         <source>Please enter the new configuration password.</source>
         <translation>请输入新的配置保护密码</translation>
     </message>
     <message>
-        <location filename="Windows/SettingsWindow.cpp" line="1012"/>
+        <location filename="Windows/SettingsWindow.cpp" line="1017"/>
         <source>Please re-enter the new configuration password.</source>
         <translation>请再次输入新的配置保护密码</translation>
     </message>
     <message>
-        <location filename="Windows/SettingsWindow.cpp" line="1017"/>
+        <location filename="Windows/SettingsWindow.cpp" line="1022"/>
         <source>Passwords did not match, please retry.</source>
         <translation>输入的密码不一致，请重新输入</translation>
     </message>
     <message>
-        <location filename="Windows/SettingsWindow.cpp" line="1027"/>
+        <location filename="Windows/SettingsWindow.cpp" line="1032"/>
         <source>Process</source>
         <translation>进程</translation>
     </message>
     <message>
-        <location filename="Windows/SettingsWindow.cpp" line="1027"/>
+        <location filename="Windows/SettingsWindow.cpp" line="1032"/>
         <source>Folder</source>
         <translation>文件夹</translation>
     </message>
     <message>
-        <location filename="Windows/SettingsWindow.cpp" line="1037"/>
+        <location filename="Windows/SettingsWindow.cpp" line="1042"/>
         <source>Please enter a program file name</source>
         <translation>请输入一个程序文件名</translation>
     </message>
     <message>
-        <location filename="Windows/SettingsWindow.cpp" line="1174"/>
+        <location filename="Windows/SettingsWindow.cpp" line="1179"/>
         <source>%1 (Current)</source>
         <translation>%1 (当前)</translation>
     </message>
     <message>
-        <location filename="Windows/SettingsWindow.cpp" line="1175"/>
+        <location filename="Windows/SettingsWindow.cpp" line="1180"/>
         <source>&lt;a href=&quot;0&quot;&gt;%1&lt;/a&gt;</source>
         <translation>&lt;a href=&quot;0&quot;&gt;%1&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="Windows/SettingsWindow.cpp" line="1176"/>
+        <location filename="Windows/SettingsWindow.cpp" line="1181"/>
         <source>&lt;a href=&quot;1&quot;&gt;%1&lt;/a&gt;</source>
         <translation>&lt;a href=&quot;1&quot;&gt;%1&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="Windows/SettingsWindow.cpp" line="1198"/>
+        <location filename="Windows/SettingsWindow.cpp" line="1203"/>
         <source>Do you want to download the version %1?</source>
         <translation>是否下载此版本 %1?</translation>
     </message>
@@ -5401,7 +5403,7 @@ Please note that this values are currently user specific and saved globally for 
     <message>
         <location filename="Forms/SettingsWindow.ui" line="449"/>
         <source>Don&apos;t show icons in menus *</source>
-        <translation>不在菜单中显示图标 *</translation>
+        <translation>不在任务栏托盘菜单列表中显示图标 *</translation>
     </message>
     <message>
         <location filename="Forms/SettingsWindow.ui" line="527"/>
