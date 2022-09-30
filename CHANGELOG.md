@@ -5,7 +5,32 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
-## [1.3.5 / 5.58.5] - 2022-09-xx
+
+
+
+## [1.4.0 / 5.59.0] - 2022-??-??
+
+### Added
+- added integrated run from start menu [#1836](https://github.com/sandboxie-plus/Sandboxie/issues/1836)
+- added start menu enumeration [#1570](https://github.com/sandboxie-plus/Sandboxie/issues/1570)
+- added UI for breakout processes [#1904](https://github.com/sandboxie-plus/Sandboxie/issues/1904)
+- added option to customize double-click action per sandbox
+- added new advanced tab in the advanced tab allowing to configure specific processes and other advanced options
+- added "SeparateUserFolders=y" and "SandboxieLogon=y" to the sandbox options dialog
+- added icons to option section labels
+
+
+### Changed
+- prepared for Qt 6.3.1
+- restructured the general settings page
+- restructured the sandbox options page, added a new tab and moved some of the advanced options there
+
+### Fixed
+- fixed menu bar issue in Plus UI [#2280](https://github.com/sandboxie-plus/Sandboxie/pull/2280) (thanks okrc)
+
+
+
+## [1.3.5 / 5.58.5] - 2022-09-26
 
 ### Added 
 - added localization to Windows 11 shell menu [#2229](https://github.com/sandboxie-plus/Sandboxie/issues/2229)
