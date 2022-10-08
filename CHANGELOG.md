@@ -7,17 +7,43 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
+## [1.4.2 / 5.59.2] - 2022-10-??
 
-## [1.4.0 / 5.59.0] - 2022-??-??
+### Added
+- added tooltips to resource access modes [#2300](https://github.com/sandboxie-plus/Sandboxie/issues/2300)
+
+### Fixed
+- fixed wrong button captions in the breakout process page
+- fixed issue with saving box recovery options
+- fixed the display problem of Sandman [#2306](https://github.com/sandboxie-plus/Sandboxie/pull/2306) (thanks okrc)
+- fixed theme not auto changing [#2307](https://github.com/sandboxie-plus/Sandboxie/pull/2307)
+- fixed issue with saving sandman window state on windows shutdown
+
+
+
+## [1.4.1 / 5.59.1] - 2022-10-05
+
+### Added
+- added dark title bar support for Windows 11 [#2299](https://github.com/sandboxie-plus/Sandboxie/pull/2299)
+
+### Changed
+- in Sbie 5.28 and later WinInetCache is open, which breaks IE's source view, therefore it can now be disabled with 'CloseWinInetCache=y'
+
+### Fixed
+- fixed WarnProcess and WarnFolder not working with certain configurations
+
+
+
+## [1.4.0 / 5.59.0] - 2022-09-30
 
 ### Added
 - added integrated run from start menu [#1836](https://github.com/sandboxie-plus/Sandboxie/issues/1836)
 - added start menu enumeration [#1570](https://github.com/sandboxie-plus/Sandboxie/issues/1570)
 - added UI for breakout processes [#1904](https://github.com/sandboxie-plus/Sandboxie/issues/1904)
 - added option to customize double-click action per sandbox
-- added new advanced tab in the advanced tab allowing to configure specific processes and other advanced options
+- added new miscellaneous tab in the advanced options tab allowing to configure specific processes and other advanced options
 - added "SeparateUserFolders=y" and "SandboxieLogon=y" to the sandbox options dialog
-- added icons to option section labels
+- added icons to the section labels on the option pages
 
 
 ### Changed

@@ -40,7 +40,7 @@
 <context>
     <name>CFileBrowserWindow</name>
     <message>
-        <location filename="Views/FileView.cpp" line="315"/>
+        <location filename="Views/FileView.cpp" line="320"/>
         <source>%1 - Files</source>
         <translation>%1 - 文件</translation>
     </message>
@@ -48,27 +48,27 @@
 <context>
     <name>CFileView</name>
     <message>
-        <location filename="Views/FileView.cpp" line="150"/>
+        <location filename="Views/FileView.cpp" line="155"/>
         <source>Create Shortcut</source>
         <translation>创建快捷方式</translation>
     </message>
     <message>
-        <location filename="Views/FileView.cpp" line="156"/>
+        <location filename="Views/FileView.cpp" line="161"/>
         <source>Recover to Any Folder</source>
         <translation>恢复到任意文件夹</translation>
     </message>
     <message>
-        <location filename="Views/FileView.cpp" line="158"/>
+        <location filename="Views/FileView.cpp" line="163"/>
         <source>Recover to Same Folder</source>
         <translation>恢复到对应的目录</translation>
     </message>
     <message>
-        <location filename="Views/FileView.cpp" line="220"/>
+        <location filename="Views/FileView.cpp" line="225"/>
         <source>Select Directory</source>
         <translation>选择目录</translation>
     </message>
     <message>
-        <location filename="Views/FileView.cpp" line="270"/>
+        <location filename="Views/FileView.cpp" line="275"/>
         <source>Create Shortcut to sandbox %1</source>
         <translation>为沙盒 %1 创建快捷方式</translation>
     </message>
@@ -314,68 +314,68 @@ Note: The update check is often behind the latest GitHub release to ensure that 
     <message>
         <location filename="Windows/OptionsAdvanced.cpp" line="39"/>
         <source>Enable the use of win32 hooks for selected processes. Note: You need to enable win32k syscall hook support globally first.</source>
-        <translation type="unfinished"></translation>
+        <translation>对选定的进程启用 Win32 钩子(注意：需要先启用全局范围的 Win32k 系统调用钩子支持)</translation>
     </message>
     <message>
         <location filename="Windows/OptionsAdvanced.cpp" line="40"/>
         <source>Enable crash dump creation in the sandbox folder</source>
-        <translation type="unfinished"></translation>
+        <translation>启用在沙盒目录下创建崩溃转储文件</translation>
     </message>
     <message>
         <location filename="Windows/OptionsAdvanced.cpp" line="41"/>
         <source>Always use ElevateCreateProcess fix, as sometimes applied by the Program Compatibility Assistant.</source>
-        <translation type="unfinished"></translation>
+        <translation>始终应用 ElevateCreateProcess 修复，偶尔会被程序兼容性助手(PCA)调用</translation>
     </message>
     <message>
         <location filename="Windows/OptionsAdvanced.cpp" line="43"/>
         <source>Enable special inconsistent PreferExternalManifest behavioure, as neede for some edge fixes</source>
-        <translation type="unfinished"></translation>
+        <translation>启用不一致的特殊 PreferExternalManifest 行为支持，某些边缘问题的修复可能需要打开此项</translation>
     </message>
     <message>
         <location filename="Windows/OptionsAdvanced.cpp" line="44"/>
         <source>Set RpcMgmtSetComTimeout usage for specific processes</source>
-        <translation type="unfinished"></translation>
+        <translation>为特定进程设置 RpcMgmtSetComTimeout 选项</translation>
     </message>
     <message>
         <location filename="Windows/OptionsAdvanced.cpp" line="45"/>
         <source>Makes a write open call to a file that won&apos;t be copied fail instead of turning it read-only.</source>
-        <translation type="unfinished"></translation>
+        <translation>使得一个禁止被复制文件的写入句柄调用失败，而不是将其变成只读</translation>
     </message>
     <message>
         <location filename="Windows/OptionsAdvanced.cpp" line="48"/>
         <source>Make specified processes think thay have admin permissions.</source>
-        <translation type="unfinished"></translation>
+        <translation>让指定的进程认为它们具有管理员权限</translation>
     </message>
     <message>
         <location filename="Windows/OptionsAdvanced.cpp" line="49"/>
         <source>Force specified processes to wait for a debugger to attach.</source>
-        <translation type="unfinished"></translation>
+        <translation>强制指定的进程等待调试器附加</translation>
     </message>
     <message>
         <location filename="Windows/OptionsAdvanced.cpp" line="53"/>
         <source>Sandbox file system root</source>
-        <translation type="unfinished"></translation>
+        <translation>沙盒文件系统根目录</translation>
     </message>
     <message>
         <location filename="Windows/OptionsAdvanced.cpp" line="54"/>
         <source>Sandbox registry root</source>
-        <translation type="unfinished"></translation>
+        <translation>沙盒注册表根目录</translation>
     </message>
     <message>
         <location filename="Windows/OptionsAdvanced.cpp" line="55"/>
         <source>Sandbox ipc root</source>
-        <translation type="unfinished"></translation>
+        <translation>沙盒 IPC 根目录</translation>
     </message>
     <message>
         <location filename="Windows/OptionsAdvanced.cpp" line="545"/>
         <source>Add special option:</source>
-        <translation type="unfinished"></translation>
+        <translation>添加特殊选项:</translation>
     </message>
     <message>
         <location filename="Windows/OptionsAdvanced.cpp" line="693"/>
         <location filename="Windows/OptionsAdvanced.cpp" line="697"/>
         <source>On Start</source>
-        <translation>启动阶段</translation>
+        <translation>沙盒启动阶段</translation>
     </message>
     <message>
         <location filename="Windows/OptionsAdvanced.cpp" line="694"/>
@@ -393,17 +393,17 @@ Note: The update check is often behind the latest GitHub release to ensure that 
     <message>
         <location filename="Windows/OptionsAdvanced.cpp" line="701"/>
         <source>On Init</source>
-        <translation>初始阶段</translation>
+        <translation>沙盒初始阶段</translation>
     </message>
     <message>
         <location filename="Windows/OptionsAdvanced.cpp" line="705"/>
         <source>On File Recovery</source>
-        <translation type="unfinished"></translation>
+        <translation>文件恢复阶段</translation>
     </message>
     <message>
         <location filename="Windows/OptionsAdvanced.cpp" line="709"/>
         <source>On Delete Content</source>
-        <translation type="unfinished"></translation>
+        <translation>内容删除阶段</translation>
     </message>
     <message>
         <source>On Delete</source>
@@ -420,7 +420,7 @@ Note: The update check is often behind the latest GitHub release to ensure that 
     <message>
         <location filename="Windows/OptionsAdvanced.cpp" line="884"/>
         <source>Deny</source>
-        <translation type="unfinished"></translation>
+        <translation>拒绝(禁止)</translation>
     </message>
     <message>
         <location filename="Windows/OptionsAdvanced.cpp" line="986"/>
@@ -505,26 +505,26 @@ Note: The update check is often behind the latest GitHub release to ensure that 
     <message>
         <location filename="Windows/OptionsGeneral.cpp" line="201"/>
         <source>Open Box Options</source>
-        <translation type="unfinished"></translation>
+        <translation>打开沙盒选项</translation>
     </message>
     <message>
         <location filename="Windows/OptionsGeneral.cpp" line="202"/>
         <source>Browse Content</source>
-        <translation type="unfinished">浏览内容</translation>
+        <translation>浏览内容</translation>
     </message>
     <message>
         <location filename="Windows/OptionsGeneral.cpp" line="203"/>
         <source>Start File Recovery</source>
-        <translation type="unfinished"></translation>
+        <translation>开始恢复文件</translation>
     </message>
     <message>
         <location filename="Windows/OptionsGeneral.cpp" line="204"/>
         <source>Show Run Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>显示运行对话框</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsWindow.cpp" line="378"/>
-        <location filename="Windows/OptionsWindow.cpp" line="391"/>
+        <location filename="Windows/OptionsWindow.cpp" line="383"/>
+        <location filename="Windows/OptionsWindow.cpp" line="396"/>
         <location filename="Windows/OptionsAccess.cpp" line="24"/>
         <source>Browse for File</source>
         <translation>浏览文件</translation>
@@ -537,35 +537,35 @@ Note: The update check is often behind the latest GitHub release to ensure that 
     <message>
         <location filename="Windows/OptionsWindow.cpp" line="257"/>
         <source>Grouping</source>
-        <translation type="unfinished"></translation>
+        <translation>分组</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsWindow.cpp" line="549"/>
+        <location filename="Windows/OptionsWindow.cpp" line="554"/>
         <source>Search for options</source>
         <translation>搜索选项</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsWindow.cpp" line="670"/>
+        <location filename="Windows/OptionsWindow.cpp" line="675"/>
         <source>Box: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>沙盒: %1</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsWindow.cpp" line="671"/>
+        <location filename="Windows/OptionsWindow.cpp" line="676"/>
         <source>Template: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>模板: %1</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsWindow.cpp" line="672"/>
+        <location filename="Windows/OptionsWindow.cpp" line="677"/>
         <source>Global: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>全局: %1</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsWindow.cpp" line="673"/>
+        <location filename="Windows/OptionsWindow.cpp" line="678"/>
         <source>Default: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>默认: %1</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsWindow.cpp" line="845"/>
+        <location filename="Windows/OptionsWindow.cpp" line="844"/>
         <source>This sandbox has been deleted hence configuration can not be saved.</source>
         <translation>该沙盒已被删除，因此配置无法保存</translation>
     </message>
@@ -575,17 +575,17 @@ Note: The update check is often behind the latest GitHub release to ensure that 
         <translation>部分变更未保存，确定要关闭这个选项窗口吗？</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsGeneral.cpp" line="311"/>
+        <location filename="Windows/OptionsGeneral.cpp" line="314"/>
         <source>kilobytes (%1)</source>
         <translation>KB (%1)</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsGeneral.cpp" line="370"/>
+        <location filename="Windows/OptionsGeneral.cpp" line="373"/>
         <source>Select color</source>
         <translation>选择颜色</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsGeneral.cpp" line="407"/>
+        <location filename="Windows/OptionsGeneral.cpp" line="410"/>
         <source>Select Program</source>
         <translation>选择程序</translation>
     </message>
@@ -595,29 +595,29 @@ Note: The update check is often behind the latest GitHub release to ensure that 
         <translation>请输入一个服务标识符</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsGeneral.cpp" line="407"/>
+        <location filename="Windows/OptionsGeneral.cpp" line="410"/>
         <source>Executables (*.exe *.cmd)</source>
         <translation>可执行文件 (*.exe *.cmd)</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsGeneral.cpp" line="411"/>
-        <location filename="Windows/OptionsGeneral.cpp" line="426"/>
+        <location filename="Windows/OptionsGeneral.cpp" line="414"/>
+        <location filename="Windows/OptionsGeneral.cpp" line="429"/>
         <source>Please enter a menu title</source>
         <translation>请输入一个菜单标题</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsGeneral.cpp" line="422"/>
+        <location filename="Windows/OptionsGeneral.cpp" line="425"/>
         <source>Please enter a command</source>
         <translation>请输入一则命令</translation>
     </message>
     <message>
         <location filename="Windows/OptionsWindow.cpp" line="902"/>
         <location filename="Windows/OptionsWindow.cpp" line="920"/>
-        <location filename="Windows/OptionsAccess.cpp" line="367"/>
-        <location filename="Windows/OptionsAccess.cpp" line="603"/>
-        <location filename="Windows/OptionsNetwork.cpp" line="180"/>
-        <location filename="Windows/OptionsNetwork.cpp" line="450"/>
-        <location filename="Windows/OptionsNetwork.cpp" line="542"/>
+        <location filename="Windows/OptionsAccess.cpp" line="384"/>
+        <location filename="Windows/OptionsAccess.cpp" line="620"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="170"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="440"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="532"/>
         <source>Group: %1</source>
         <translation>组: %1</translation>
     </message>
@@ -652,16 +652,16 @@ Note: The update check is often behind the latest GitHub release to ensure that 
         <location filename="Windows/OptionsForce.cpp" line="209"/>
         <location filename="Windows/OptionsForce.cpp" line="219"/>
         <source>Select Executable File</source>
-        <translation type="unfinished"></translation>
+        <translation>选择可执行文件</translation>
     </message>
     <message>
         <location filename="Windows/OptionsForce.cpp" line="209"/>
         <location filename="Windows/OptionsForce.cpp" line="219"/>
         <source>Executable Files (*.exe)</source>
-        <translation type="unfinished"></translation>
+        <translation>可执行文件 (*.exe)</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAccess.cpp" line="342"/>
+        <location filename="Windows/OptionsAccess.cpp" line="359"/>
         <location filename="Windows/OptionsForce.cpp" line="229"/>
         <location filename="Windows/OptionsForce.cpp" line="239"/>
         <location filename="Windows/OptionsRecovery.cpp" line="125"/>
@@ -720,97 +720,143 @@ Note: The update check is often behind the latest GitHub release to ensure that 
     <message>
         <location filename="Windows/OptionsAccess.cpp" line="310"/>
         <source>Ignore UIPI</source>
-        <translation type="unfinished"></translation>
+        <translation>忽略 UIPI</translation>
     </message>
     <message>
         <location filename="Windows/OptionsAccess.cpp" line="312"/>
-        <location filename="Windows/OptionsAccess.cpp" line="325"/>
+        <location filename="Windows/OptionsAccess.cpp" line="329"/>
+        <location filename="Windows/OptionsAccess.cpp" line="342"/>
         <source>Unknown</source>
         <translation>未知</translation>
     </message>
     <message>
         <location filename="Windows/OptionsAccess.cpp" line="319"/>
+        <source>Regular Sandboxie behavior - allow read and also copy on write.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Windows/OptionsAccess.cpp" line="320"/>
+        <source>Allow write-access outside the sandbox.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Windows/OptionsAccess.cpp" line="321"/>
+        <source>Allow write-access outside the sandbox, also for applications installed inside the sandbox.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Windows/OptionsAccess.cpp" line="322"/>
+        <source>Don&apos;t rename window classes.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Windows/OptionsAccess.cpp" line="323"/>
+        <source>Deny access to host location and prevent creation of sandboxed copies.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Windows/OptionsAccess.cpp" line="324"/>
+        <source>Block access to WinRT class.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Windows/OptionsAccess.cpp" line="325"/>
+        <source>Allow read-only access only.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Windows/OptionsAccess.cpp" line="326"/>
+        <source>Hide host files, folders or registry keys from sandboxed processes.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Windows/OptionsAccess.cpp" line="327"/>
+        <source>Ignore UIPI restrictions for processes.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Windows/OptionsAccess.cpp" line="336"/>
         <source>File/Folder</source>
         <translation>文件/文件夹</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAccess.cpp" line="320"/>
+        <location filename="Windows/OptionsAccess.cpp" line="337"/>
         <source>Registry</source>
         <translation>注册表</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAccess.cpp" line="321"/>
+        <location filename="Windows/OptionsAccess.cpp" line="338"/>
         <source>IPC Path</source>
         <translation>IPC 路径</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAccess.cpp" line="322"/>
+        <location filename="Windows/OptionsAccess.cpp" line="339"/>
         <source>Wnd Class</source>
         <translation>窗口类</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAccess.cpp" line="323"/>
+        <location filename="Windows/OptionsAccess.cpp" line="340"/>
         <source>COM Object</source>
         <translation>COM 组件</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAccess.cpp" line="330"/>
+        <location filename="Windows/OptionsAccess.cpp" line="347"/>
         <source>Select File</source>
         <translation>选择文件</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAccess.cpp" line="330"/>
+        <location filename="Windows/OptionsAccess.cpp" line="347"/>
         <source>All Files (*.*)</source>
         <translation>所有文件 (*.*)</translation>
     </message>
     <message>
         <location filename="Windows/OptionsWindow.cpp" line="904"/>
-        <location filename="Windows/OptionsAccess.cpp" line="362"/>
-        <location filename="Windows/OptionsAccess.cpp" line="599"/>
+        <location filename="Windows/OptionsAccess.cpp" line="379"/>
+        <location filename="Windows/OptionsAccess.cpp" line="616"/>
         <location filename="Windows/OptionsAdvanced.cpp" line="524"/>
         <location filename="Windows/OptionsAdvanced.cpp" line="599"/>
-        <location filename="Windows/OptionsNetwork.cpp" line="445"/>
-        <location filename="Windows/OptionsNetwork.cpp" line="538"/>
-        <location filename="Windows/OptionsNetwork.cpp" line="651"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="435"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="528"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="641"/>
         <source>All Programs</source>
         <translation>所有程序</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAccess.cpp" line="505"/>
+        <location filename="Windows/OptionsAccess.cpp" line="522"/>
         <source>COM objects must be specified by their GUID, like: {00000000-0000-0000-0000-000000000000}</source>
         <translation>COM 对象必须用其 GUID 来指定，例如：{00000000-0000-0000-0000-000000000000}</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAccess.cpp" line="511"/>
+        <location filename="Windows/OptionsAccess.cpp" line="528"/>
         <source>RT interfaces must be specified by their name.</source>
         <translation>RT 接口必须用其名称来指定</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAccess.cpp" line="525"/>
+        <location filename="Windows/OptionsAccess.cpp" line="542"/>
         <source>Opening all IPC access also opens COM access, do you still want to restrict COM to the sandbox?</source>
         <translation>开放 IPC 访问权限的同时也将开放 COM 的访问权限，你是否想继续在沙盒内限制 COM 接口的访问权限?</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAccess.cpp" line="526"/>
+        <location filename="Windows/OptionsAccess.cpp" line="543"/>
         <source>Don&apos;t ask in future</source>
         <translation>此后不再询问</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAccess.cpp" line="535"/>
+        <location filename="Windows/OptionsAccess.cpp" line="552"/>
         <source>&apos;OpenWinClass=program.exe,#&apos; is not supported, use &apos;NoRenameWinClass=program.exe,*&apos; instead</source>
         <translation>不支持 &apos;OpenWinClass=program.exe,#&apos; 配置格式，请使用 &apos;NoRenameWinClass=program.exe,*&apos; 替换</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAccess.cpp" line="578"/>
+        <location filename="Windows/OptionsAccess.cpp" line="595"/>
         <location filename="Windows/OptionsAdvanced.cpp" line="575"/>
         <location filename="Windows/OptionsGrouping.cpp" line="278"/>
         <location filename="Windows/OptionsGrouping.cpp" line="302"/>
-        <location filename="Windows/OptionsNetwork.cpp" line="517"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="507"/>
         <source>Template values can not be edited.</source>
         <translation>模板值不能被编辑</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAccess.cpp" line="644"/>
+        <location filename="Windows/OptionsAccess.cpp" line="663"/>
         <source>Template values can not be removed.</source>
         <translation>模板值无法被移除</translation>
     </message>
@@ -909,73 +955,63 @@ Note: The update check is often behind the latest GitHub release to ensure that 
         <translation>确定要删除所选的本地模板吗？</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsNetwork.cpp" line="47"/>
-        <location filename="Windows/OptionsNetwork.cpp" line="572"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="37"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="562"/>
         <source>Any</source>
         <translation>任意</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsNetwork.cpp" line="48"/>
-        <location filename="Windows/OptionsNetwork.cpp" line="573"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="38"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="563"/>
         <source>TCP</source>
         <translation>TCP</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsNetwork.cpp" line="49"/>
-        <location filename="Windows/OptionsNetwork.cpp" line="574"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="39"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="564"/>
         <source>UDP</source>
         <translation>UDP</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsNetwork.cpp" line="50"/>
-        <location filename="Windows/OptionsNetwork.cpp" line="575"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="40"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="565"/>
         <source>ICMP</source>
         <translation>ICMP</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsNetwork.cpp" line="63"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="53"/>
         <source>Allow access</source>
         <translation>允许访问</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsNetwork.cpp" line="64"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="54"/>
         <source>Block using Windows Filtering Platform</source>
         <translation>阻止访问 - 使用 Windows 筛选平台 (WFP)</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsNetwork.cpp" line="65"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="55"/>
         <source>Block by denying access to Network devices</source>
         <translation>阻止访问 - 通过禁止访问网络设备</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsNetwork.cpp" line="744"/>
-        <source>Please enter a domain to be filtered</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Windows/OptionsNetwork.cpp" line="842"/>
-        <source>Please enter a SOCKS 5 proxy server IP and Port, &lt;br /&gt;use format IP:Port for IPv4 and [IP]:Port for IPv6.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="Windows/OptionsAdvanced.cpp" line="884"/>
-        <location filename="Windows/OptionsNetwork.cpp" line="158"/>
-        <location filename="Windows/OptionsNetwork.cpp" line="558"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="148"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="548"/>
         <source>Allow</source>
         <translation>允许</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsNetwork.cpp" line="159"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="149"/>
         <source>Block (WFP)</source>
         <translation>阻止 (WFP)</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsNetwork.cpp" line="160"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="150"/>
         <source>Block (NDev)</source>
         <translation>阻止 (网络设备)</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsNetwork.cpp" line="559"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="549"/>
         <source>Block</source>
         <translation>阻止</translation>
     </message>
@@ -1297,22 +1333,22 @@ Full path: %4</source>
 <context>
     <name>CSandBox</name>
     <message>
-        <location filename="SandMan.cpp" line="3046"/>
+        <location filename="SandMan.cpp" line="3100"/>
         <source>Waiting for folder: %1</source>
         <translation>正在等待文件夹: %1</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3047"/>
+        <location filename="SandMan.cpp" line="3101"/>
         <source>Deleting folder: %1</source>
         <translation>正在删除文件夹: %1</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3048"/>
+        <location filename="SandMan.cpp" line="3102"/>
         <source>Merging folders: %1 &amp;gt;&amp;gt; %2</source>
         <translation>正在合并文件夹: %1 &amp;gt;&amp;gt; %2</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3049"/>
+        <location filename="SandMan.cpp" line="3103"/>
         <source>Finishing Snapshot Merge...</source>
         <translation>正在完成快照合并...</translation>
     </message>
@@ -1383,48 +1419,48 @@ Full path: %4</source>
 <context>
     <name>CSandMan</name>
     <message>
-        <location filename="SandMan.cpp" line="162"/>
-        <location filename="SandMan.cpp" line="1666"/>
+        <location filename="SandMan.cpp" line="168"/>
+        <location filename="SandMan.cpp" line="1684"/>
         <source>Sandboxie-Plus v%1</source>
         <translation>Sandboxie-Plus v%1</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="1333"/>
+        <location filename="SandMan.cpp" line="1351"/>
         <source>No Force Process</source>
         <translation>没有必沙程序</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2950"/>
+        <location filename="SandMan.cpp" line="3004"/>
         <source>Reset Columns</source>
         <translation>重置列</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2951"/>
+        <location filename="SandMan.cpp" line="3005"/>
         <source>Copy Cell</source>
         <translation>复制此格</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2952"/>
+        <location filename="SandMan.cpp" line="3006"/>
         <source>Copy Row</source>
         <translation>复制此行</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2953"/>
+        <location filename="SandMan.cpp" line="3007"/>
         <source>Copy Panel</source>
         <translation>复制此表</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="939"/>
+        <location filename="SandMan.cpp" line="943"/>
         <source>Time|Message</source>
         <translation>时间|消息</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="947"/>
+        <location filename="SandMan.cpp" line="951"/>
         <source>Sbie Messages</source>
         <translation>沙盒消息</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="954"/>
+        <location filename="SandMan.cpp" line="958"/>
         <source>Trace Log</source>
         <translation>跟踪日志</translation>
     </message>
@@ -1434,356 +1470,356 @@ Full path: %4</source>
         <translation>显示/隐藏</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="443"/>
-        <location filename="SandMan.cpp" line="637"/>
+        <location filename="SandMan.cpp" line="447"/>
+        <location filename="SandMan.cpp" line="641"/>
         <source>&amp;Sandbox</source>
         <translation>沙盒(&amp;S)</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="444"/>
+        <location filename="SandMan.cpp" line="448"/>
         <source>Create New Box</source>
         <translation>新建沙盒</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="445"/>
+        <location filename="SandMan.cpp" line="449"/>
         <source>Create Box Group</source>
         <translation>新建沙盒组</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="447"/>
-        <location filename="SandMan.cpp" line="571"/>
+        <location filename="SandMan.cpp" line="451"/>
+        <location filename="SandMan.cpp" line="575"/>
         <source>Terminate All Processes</source>
         <translation>终止所有进程</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="451"/>
+        <location filename="SandMan.cpp" line="455"/>
         <source>Disable File Recovery</source>
         <translation>禁用文件恢复</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="454"/>
+        <location filename="SandMan.cpp" line="458"/>
         <source>Disable Message Popup</source>
         <oldsource>Disable Message PopUp</oldsource>
         <translation>禁用消息弹窗</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="386"/>
+        <location filename="SandMan.cpp" line="390"/>
         <source>&amp;Maintenance</source>
         <translation>维护(&amp;M)</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="387"/>
+        <location filename="SandMan.cpp" line="391"/>
         <source>Connect</source>
         <translation>连接</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="388"/>
+        <location filename="SandMan.cpp" line="392"/>
         <source>Disconnect</source>
         <translation>断开</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="390"/>
+        <location filename="SandMan.cpp" line="394"/>
         <source>Stop All</source>
         <translation>停止所有</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="391"/>
+        <location filename="SandMan.cpp" line="395"/>
         <source>&amp;Advanced</source>
         <translation>高级(&amp;A)</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="392"/>
+        <location filename="SandMan.cpp" line="396"/>
         <source>Install Driver</source>
         <translation>安装驱动</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="393"/>
+        <location filename="SandMan.cpp" line="397"/>
         <source>Start Driver</source>
         <translation>启动驱动</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="394"/>
+        <location filename="SandMan.cpp" line="398"/>
         <source>Stop Driver</source>
         <translation>停止驱动</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="395"/>
+        <location filename="SandMan.cpp" line="399"/>
         <source>Uninstall Driver</source>
         <translation>卸载驱动</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="397"/>
+        <location filename="SandMan.cpp" line="401"/>
         <source>Install Service</source>
         <translation>安装服务</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="398"/>
+        <location filename="SandMan.cpp" line="402"/>
         <source>Start Service</source>
         <translation>启动服务</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="399"/>
+        <location filename="SandMan.cpp" line="403"/>
         <source>Stop Service</source>
         <translation>停止服务</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="400"/>
+        <location filename="SandMan.cpp" line="404"/>
         <source>Uninstall Service</source>
         <translation>卸载服务</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="402"/>
+        <location filename="SandMan.cpp" line="406"/>
         <source>Setup Wizard</source>
         <translation>设置指南</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="405"/>
+        <location filename="SandMan.cpp" line="409"/>
         <source>Uninstall All</source>
         <translation>全部卸载</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="487"/>
-        <location filename="SandMan.cpp" line="607"/>
+        <location filename="SandMan.cpp" line="491"/>
+        <location filename="SandMan.cpp" line="611"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="490"/>
-        <location filename="SandMan.cpp" line="609"/>
+        <location filename="SandMan.cpp" line="494"/>
+        <location filename="SandMan.cpp" line="613"/>
         <source>&amp;View</source>
         <translation>视图(&amp;V)</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="411"/>
+        <location filename="SandMan.cpp" line="415"/>
         <source>Simple View</source>
         <translation>简易视图</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="412"/>
+        <location filename="SandMan.cpp" line="416"/>
         <source>Advanced View</source>
         <translation>高级视图</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="417"/>
+        <location filename="SandMan.cpp" line="421"/>
         <source>Always on Top</source>
         <translation>窗口置顶</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="497"/>
+        <location filename="SandMan.cpp" line="501"/>
         <source>Show Hidden Boxes</source>
         <translation>显示隐藏沙盒</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="499"/>
+        <location filename="SandMan.cpp" line="503"/>
         <source>Show All Sessions</source>
         <translation>显示所有会话的进程</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="516"/>
+        <location filename="SandMan.cpp" line="520"/>
         <source>Refresh View</source>
         <translation>刷新视图</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="522"/>
+        <location filename="SandMan.cpp" line="526"/>
         <source>Clean Up</source>
         <translation>清理</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="523"/>
+        <location filename="SandMan.cpp" line="527"/>
         <source>Cleanup Processes</source>
         <translation>清理所有记录</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="525"/>
+        <location filename="SandMan.cpp" line="529"/>
         <source>Cleanup Message Log</source>
         <translation>清理消息日志</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="526"/>
+        <location filename="SandMan.cpp" line="530"/>
         <source>Cleanup Trace Log</source>
         <translation>清理跟踪日志</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="527"/>
+        <location filename="SandMan.cpp" line="531"/>
         <source>Cleanup Recovery Log</source>
         <translation>清理恢复日志</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="529"/>
+        <location filename="SandMan.cpp" line="533"/>
         <source>Keep terminated</source>
         <translation>保留终止的进程</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="549"/>
+        <location filename="SandMan.cpp" line="553"/>
         <source>&amp;Options</source>
         <translation>选项(&amp;O)</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="550"/>
-        <location filename="SandMan.cpp" line="658"/>
+        <location filename="SandMan.cpp" line="554"/>
+        <location filename="SandMan.cpp" line="662"/>
         <source>Global Settings</source>
         <translation>全局设置</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="551"/>
-        <location filename="SandMan.cpp" line="668"/>
+        <location filename="SandMan.cpp" line="555"/>
+        <location filename="SandMan.cpp" line="672"/>
         <source>Reset all hidden messages</source>
         <translation>重置所有已隐藏消息</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="552"/>
-        <location filename="SandMan.cpp" line="669"/>
+        <location filename="SandMan.cpp" line="556"/>
+        <location filename="SandMan.cpp" line="673"/>
         <source>Reset all GUI options</source>
         <translation>重置所有图形界面设置选项</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="557"/>
-        <location filename="SandMan.cpp" line="676"/>
+        <location filename="SandMan.cpp" line="561"/>
+        <location filename="SandMan.cpp" line="680"/>
         <source>Edit ini file</source>
         <translation>编辑配置文件</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="558"/>
-        <location filename="SandMan.cpp" line="677"/>
+        <location filename="SandMan.cpp" line="562"/>
+        <location filename="SandMan.cpp" line="681"/>
         <source>Reload ini file</source>
         <translation>重载配置文件</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="542"/>
+        <location filename="SandMan.cpp" line="546"/>
         <source>Trace Logging</source>
         <translation>启用跟踪日志</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="413"/>
+        <location filename="SandMan.cpp" line="417"/>
         <source>Vintage View (like SbieCtrl)</source>
         <translation>经典视图(类似 SbieCtrl)</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="423"/>
+        <location filename="SandMan.cpp" line="427"/>
         <source>&amp;Help</source>
         <translation>帮助(&amp;H)</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="425"/>
+        <location filename="SandMan.cpp" line="429"/>
         <source>Support Sandboxie-Plus with a Donation</source>
         <translation>捐赠支持 Sandboxie-Plus</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="430"/>
+        <location filename="SandMan.cpp" line="434"/>
         <source>Visit Support Forum</source>
         <translation>访问用户支持论坛</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="431"/>
+        <location filename="SandMan.cpp" line="435"/>
         <source>Online Documentation</source>
         <translation>在线文档</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="433"/>
+        <location filename="SandMan.cpp" line="437"/>
         <source>Check for Updates</source>
         <translation>检查更新</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="435"/>
+        <location filename="SandMan.cpp" line="439"/>
         <source>About the Qt Framework</source>
         <translation>关于 Qt 框架</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="436"/>
-        <location filename="SandMan.cpp" line="3020"/>
+        <location filename="SandMan.cpp" line="440"/>
+        <location filename="SandMan.cpp" line="3074"/>
         <source>About Sandboxie-Plus</source>
         <translation>关于 Sandboxie-Plus</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="463"/>
-        <location filename="SandMan.cpp" line="581"/>
+        <location filename="SandMan.cpp" line="467"/>
+        <location filename="SandMan.cpp" line="585"/>
         <source>Is Window Sandboxed?</source>
         <oldsource>Is Window Sandboxed</oldsource>
         <translation>检查窗口是否沙盒化</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="508"/>
+        <location filename="SandMan.cpp" line="512"/>
         <source>Show File Panel</source>
         <translation>显示文件面板</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="570"/>
+        <location filename="SandMan.cpp" line="574"/>
         <source>&amp;File</source>
         <translation>文件(&amp;F)</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="582"/>
+        <location filename="SandMan.cpp" line="586"/>
         <source>Resource Access Monitor</source>
         <translation>资源访问监控</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="615"/>
+        <location filename="SandMan.cpp" line="619"/>
         <source>Programs</source>
         <translation>程序</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="616"/>
+        <location filename="SandMan.cpp" line="620"/>
         <source>Files and Folders</source>
         <translation>文件和目录</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="642"/>
+        <location filename="SandMan.cpp" line="646"/>
         <source>Create New Sandbox</source>
         <translation>新建沙盒</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="643"/>
+        <location filename="SandMan.cpp" line="647"/>
         <source>Create New Group</source>
         <translation>新建沙盒组</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="645"/>
+        <location filename="SandMan.cpp" line="649"/>
         <source>Set Container Folder</source>
         <translation>设置沙盒容器目录</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="648"/>
+        <location filename="SandMan.cpp" line="652"/>
         <source>Set Layout and Groups</source>
         <translation>设置布局和组</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="651"/>
+        <location filename="SandMan.cpp" line="655"/>
         <source>Reveal Hidden Boxes</source>
         <translation>显示隐藏的沙盒</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="657"/>
+        <location filename="SandMan.cpp" line="661"/>
         <source>&amp;Configure</source>
         <translation>配置(&amp;C)</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="661"/>
+        <location filename="SandMan.cpp" line="665"/>
         <source>Program Alerts</source>
         <translation>程序警报</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="663"/>
+        <location filename="SandMan.cpp" line="667"/>
         <source>Windows Shell Integration</source>
         <translation>Windows Shell 界面集成</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="665"/>
+        <location filename="SandMan.cpp" line="669"/>
         <source>Software Compatibility</source>
         <translation>软件兼容</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="674"/>
+        <location filename="SandMan.cpp" line="678"/>
         <source>Lock Configuration</source>
         <translation>锁定配置</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="691"/>
+        <location filename="SandMan.cpp" line="695"/>
         <source>Sandbox %1</source>
         <translation>沙盒 %1</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="713"/>
-        <location filename="SandMan.cpp" line="714"/>
+        <location filename="SandMan.cpp" line="717"/>
+        <location filename="SandMan.cpp" line="718"/>
         <source>Cleanup</source>
         <translation>清理</translation>
     </message>
@@ -1792,54 +1828,54 @@ Full path: %4</source>
         <translation type="vanished">&lt;a href=&quot;sbie://update/package&quot; style=&quot;color: red;&quot;&gt;Sandboxie-Plus 存在可供选择的新构建更新&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="771"/>
+        <location filename="SandMan.cpp" line="775"/>
         <source>Click to install update</source>
         <translation>应用更新</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="787"/>
+        <location filename="SandMan.cpp" line="791"/>
         <source>&lt;a href=&quot;https://sandboxie-plus.com/go.php?to=patreon&quot;&gt;Support Sandboxie-Plus on Patreon&lt;/a&gt;</source>
         <translation>&lt;a href=&quot;https://sandboxie-plus.com/go.php?to=patreon&quot;&gt;在 Patreon 上捐赠 Sandboxie-Plus&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="788"/>
+        <location filename="SandMan.cpp" line="792"/>
         <source>Click to open web browser</source>
         <translation>在浏览器打开捐赠页面</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="964"/>
+        <location filename="SandMan.cpp" line="968"/>
         <source>Time|Box Name|File Path</source>
         <translation>时间|沙盒名称|文件路径</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="546"/>
-        <location filename="SandMan.cpp" line="620"/>
-        <location filename="SandMan.cpp" line="972"/>
+        <location filename="SandMan.cpp" line="550"/>
+        <location filename="SandMan.cpp" line="624"/>
+        <location filename="SandMan.cpp" line="976"/>
         <source>Recovery Log</source>
         <translation>恢复日志</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="769"/>
+        <location filename="SandMan.cpp" line="773"/>
         <source>&lt;a href=&quot;sbie://update/package&quot; style=&quot;color: red;&quot;&gt;There is a new build of Sandboxie-Plus ready&lt;/a&gt;</source>
         <translation>&lt;a href=&quot;sbie://update/package&quot; style=&quot;color: red;&quot;&gt;新版本的 Sandboxie-Plus 已经准备就绪&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="778"/>
+        <location filename="SandMan.cpp" line="782"/>
         <source>&lt;a href=&quot;sbie://update/check&quot; style=&quot;color: red;&quot;&gt;There is a new build of Sandboxie-Plus available&lt;/a&gt;</source>
         <translation>&lt;a href=&quot;sbie://update/check&quot; style=&quot;color: red;&quot;&gt;Sandboxie-Plus 存在可用的新版本&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="780"/>
+        <location filename="SandMan.cpp" line="784"/>
         <source>Click to download update</source>
         <translation>点击下载更新</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="1016"/>
+        <location filename="SandMan.cpp" line="1020"/>
         <source>Do you want to close Sandboxie Manager?</source>
         <translation>确定要关闭 Sandboxie 管理器？</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="1034"/>
+        <location filename="SandMan.cpp" line="1038"/>
         <source>Sandboxie-Plus was running in portable mode, now it has to clean up the created services. This will prompt for administrative privileges.
 
 Do you want to do the clean up?</source>
@@ -1848,32 +1884,32 @@ Do you want to do the clean up?</source>
 是否确认清理？</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="1035"/>
-        <location filename="SandMan.cpp" line="1371"/>
-        <location filename="SandMan.cpp" line="1403"/>
-        <location filename="SandMan.cpp" line="1696"/>
-        <location filename="SandMan.cpp" line="2207"/>
-        <location filename="SandMan.cpp" line="2616"/>
+        <location filename="SandMan.cpp" line="1039"/>
+        <location filename="SandMan.cpp" line="1389"/>
+        <location filename="SandMan.cpp" line="1421"/>
+        <location filename="SandMan.cpp" line="1714"/>
+        <location filename="SandMan.cpp" line="2225"/>
+        <location filename="SandMan.cpp" line="2634"/>
         <source>Don&apos;t show this message again.</source>
         <translation>不再显示此消息</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="1176"/>
+        <location filename="SandMan.cpp" line="1194"/>
         <source>This box provides enhanced security isolation, it is suitable to test untrusted software.</source>
         <translation>此类沙盒提供增强的安全隔离，它适用于测试不受信任的软件</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="1180"/>
+        <location filename="SandMan.cpp" line="1198"/>
         <source>This box provides standard isolation, it is suitable to run your software to enhance security.</source>
         <translation>此类沙盒提供标准的隔离，它适用于以安全的方式来运行你的软件</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="1184"/>
+        <location filename="SandMan.cpp" line="1202"/>
         <source>This box does not enforce isolation, it is intended to be used as an application compartment for software virtualization only.</source>
         <translation>此类沙盒不执行隔离，它的目的是将一个应用程序虚拟化</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="1189"/>
+        <location filename="SandMan.cpp" line="1207"/>
         <source>
 
 This box prevents access to all user data locations, except explicitly granted in the Resource Access options.</source>
@@ -1882,7 +1918,7 @@ This box prevents access to all user data locations, except explicitly granted i
 此类沙盒将限制沙盒内程序对沙盒外数据的访问，除非在资源访问选项中明确授权</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="1258"/>
+        <location filename="SandMan.cpp" line="1276"/>
         <source>Unknown operation &apos;%1&apos; requested via command line</source>
         <translation>来自命令行的未知操作请求 &apos;%1&apos;</translation>
     </message>
@@ -1897,59 +1933,59 @@ This box prevents access to all user data locations, except explicitly granted i
         <translation> - 正在删除沙盒内容</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="1470"/>
+        <location filename="SandMan.cpp" line="1488"/>
         <source>Executing OnBoxDelete: %1</source>
         <translation>在删除沙盒时执行: %1</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="1491"/>
+        <location filename="SandMan.cpp" line="1509"/>
         <source>Auto Deleting %1 Content</source>
         <translation>自动删除 %1 的内容</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="1551"/>
+        <location filename="SandMan.cpp" line="1569"/>
         <source>Removed Shortcut: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>移除快捷方式: %1</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="1619"/>
+        <location filename="SandMan.cpp" line="1637"/>
         <source>Added Shortcut to: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>添加快捷方式: %1</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="1649"/>
+        <location filename="SandMan.cpp" line="1667"/>
         <source>Auto deleting content of %1</source>
         <translation>自动删除 %1 的内容</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="1672"/>
+        <location filename="SandMan.cpp" line="1690"/>
         <source>%1 Directory: %2</source>
         <translation>%1 目录: %2</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="1672"/>
+        <location filename="SandMan.cpp" line="1690"/>
         <source>Application</source>
         <translation>应用程序</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="1672"/>
+        <location filename="SandMan.cpp" line="1690"/>
         <source>Installation</source>
         <translation>安装</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2339"/>
-        <location filename="SandMan.cpp" line="2341"/>
-        <location filename="SandMan.cpp" line="2819"/>
+        <location filename="SandMan.cpp" line="2357"/>
+        <location filename="SandMan.cpp" line="2359"/>
+        <location filename="SandMan.cpp" line="2837"/>
         <source>Sandboxie-Plus - Error</source>
         <translation>Sandboxie-Plus - 错误</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2339"/>
+        <location filename="SandMan.cpp" line="2357"/>
         <source>Failed to stop all Sandboxie components</source>
         <translation>停止全部的 Sandboxie 组件失败</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2341"/>
+        <location filename="SandMan.cpp" line="2359"/>
         <source>Failed to start required Sandboxie components</source>
         <translation>启动所需的 Sandboxie 组件失败</translation>
     </message>
@@ -1958,7 +1994,7 @@ This box prevents access to all user data locations, except explicitly granted i
         <translation type="vanished">维护操作成功</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2659"/>
+        <location filename="SandMan.cpp" line="2677"/>
         <source>Sandboxie config has been reloaded</source>
         <translation>已重载沙盒配置文件</translation>
     </message>
@@ -1967,22 +2003,22 @@ This box prevents access to all user data locations, except explicitly granted i
         <translation type="vanished">&lt;p&gt;Sandboxie-Plus 更新包已下载到:&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;%2&quot;&gt;%1&lt;/a&gt;&lt;/p&gt;&lt;p&gt;是否立即安装?(任何在沙盒中运行的程序都将被自动终止)&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2053"/>
+        <location filename="SandMan.cpp" line="2071"/>
         <source>The supporter certificate is not valid for this build, please get an updated certificate</source>
         <translation>此赞助者凭据对该版本沙盒无效，请获取可用的新凭据</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2056"/>
+        <location filename="SandMan.cpp" line="2074"/>
         <source>The supporter certificate has expired%1, please get an updated certificate</source>
         <translation>此赞助者凭据已过期%1，请获取可用的新凭据</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2057"/>
+        <location filename="SandMan.cpp" line="2075"/>
         <source>, but it remains valid for the current build</source>
         <translation>，但它对当前构建的沙盒版本仍然有效</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2059"/>
+        <location filename="SandMan.cpp" line="2077"/>
         <source>The supporter certificate will expire in %1 days, please get an updated certificate</source>
         <translation>此赞助者凭据将在 %1 天后过期，请获取可用的新凭据</translation>
     </message>
@@ -1999,32 +2035,32 @@ This box prevents access to all user data locations, except explicitly granted i
         <translation type="vanished">目前没有可用的凭据更新</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2006"/>
+        <location filename="SandMan.cpp" line="2024"/>
         <source>The selected feature set is only available to project supporters. Processes started in a box with this feature set enabled without a supporter certificate will be terminated after 5 minutes.&lt;br /&gt;&lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-get-cert&quot;&gt;Become a project supporter&lt;/a&gt;, and receive a &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-cert&quot;&gt;supporter certificate&lt;/a&gt;</source>
         <translation>选定的特性只对项目赞助者可用。如果没有赞助者凭据，在启用该特性的沙盒里启动的进程，将在 5 分钟后被终止。&lt;br /&gt;&lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-get-cert&quot;&gt;成为项目赞助者&lt;/a&gt;，以获得&lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-cert&quot;&gt;赞助者凭据&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2765"/>
+        <location filename="SandMan.cpp" line="2783"/>
         <source>Error Status: 0x%1 (%2)</source>
         <translation>错误状态: 0x%1 (%2)</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2766"/>
+        <location filename="SandMan.cpp" line="2784"/>
         <source>Unknown</source>
         <translation>未知</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2794"/>
+        <location filename="SandMan.cpp" line="2812"/>
         <source>Failed to remove old box data files</source>
         <translation>无法删除旧沙盒中的数据文件</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2800"/>
+        <location filename="SandMan.cpp" line="2818"/>
         <source>The operation was canceled by the user</source>
         <translation>该操作已被用户取消</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2801"/>
+        <location filename="SandMan.cpp" line="2819"/>
         <source>Unknown Error Status: 0x%1</source>
         <translation>未知错误状态: 0x%1</translation>
     </message>
@@ -2037,54 +2073,54 @@ Note: The update check is often behind the latest GitHub release to ensure that 
 注意: 更新检查通常落后于 GitHub 释出的版本，以确保只提供经过测试的更新</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2993"/>
+        <location filename="SandMan.cpp" line="3047"/>
         <source>&lt;h3&gt;About Sandboxie-Plus&lt;/h3&gt;&lt;p&gt;Version %1&lt;/p&gt;&lt;p&gt;Copyright (c) 2020-2022 by DavidXanatos&lt;/p&gt;</source>
         <translation>&lt;h3&gt;关于 Sandboxie-Plus&lt;/h3&gt;&lt;p&gt;版本 %1&lt;/p&gt;&lt;p&gt;Copyright (c) 2020-2022 by DavidXanatos&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3001"/>
+        <location filename="SandMan.cpp" line="3055"/>
         <source>This copy of Sandboxie+ is certified for: %1</source>
         <translation>此 Sandboxie+ 副本已授权给: %1</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3003"/>
+        <location filename="SandMan.cpp" line="3057"/>
         <source>Sandboxie+ is free for personal and non-commercial use.</source>
         <translation>Sandboxie+ 可免费用于个人和非商业用途</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3006"/>
+        <location filename="SandMan.cpp" line="3060"/>
         <source>Sandboxie-Plus is an open source continuation of Sandboxie.&lt;br /&gt;Visit &lt;a href=&quot;https://sandboxie-plus.com&quot;&gt;sandboxie-plus.com&lt;/a&gt; for more information.&lt;br /&gt;&lt;br /&gt;%3&lt;br /&gt;&lt;br /&gt;Driver version: %1&lt;br /&gt;Features: %2&lt;br /&gt;&lt;br /&gt;Icons from &lt;a href=&quot;https://icons8.com&quot;&gt;icons8.com&lt;/a&gt;</source>
         <translation>Sandboxie-Plus 是知名程序 Sandboxie 自开源以来的一个延续&lt;br /&gt;访问 &lt;a href=&quot;https://sandboxie-plus.com&quot;&gt;sandboxie-plus.com&lt;/a&gt; 来了解更多信息&lt;br /&gt;&lt;br /&gt;%3&lt;br /&gt;&lt;br /&gt;驱动版本: %1&lt;br /&gt;特性: %2&lt;br /&gt;&lt;br /&gt;图标来源: &lt;a href=&quot;https://icons8.com&quot;&gt;icons8.com&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="1778"/>
+        <location filename="SandMan.cpp" line="1796"/>
         <source>Default sandbox not found; creating: %1</source>
         <translation>未找到默认沙盒，正在创建：%1</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="1370"/>
+        <location filename="SandMan.cpp" line="1388"/>
         <source>Do you want to check if there is a new version of Sandboxie-Plus?</source>
         <translation>您是否想检查有无 Sandboxie-Plus 新版本发布？</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="151"/>
+        <location filename="SandMan.cpp" line="157"/>
         <source>WARNING: Sandboxie-Plus.ini in %1 cannot be written to, settings will not be saved.</source>
         <translation>警告: %1 中的 Sandboxie-Plus.ini 不能被写入，设置将不会被保存</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="448"/>
-        <location filename="SandMan.cpp" line="572"/>
+        <location filename="SandMan.cpp" line="452"/>
+        <location filename="SandMan.cpp" line="576"/>
         <location filename="SandManTray.cpp" line="101"/>
         <source>Pause Forcing Programs</source>
         <translation>停用必沙程序规则</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="1401"/>
+        <location filename="SandMan.cpp" line="1419"/>
         <source>Some compatibility templates (%1) are missing, probably deleted, do you want to remove them from all boxes?</source>
         <translation>部分兼容性模板(%1)丢失，可能已被删除，是否要在所有沙盒中移除？</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="1418"/>
+        <location filename="SandMan.cpp" line="1436"/>
         <source>Cleaned up removed templates...</source>
         <translation>已清理缺失的模板...</translation>
     </message>
@@ -2093,7 +2129,7 @@ Note: The update check is often behind the latest GitHub release to ensure that 
         <translation type="vanished">   -   便携版</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="1693"/>
+        <location filename="SandMan.cpp" line="1711"/>
         <source>Sandboxie-Plus was started in portable mode, do you want to put the Sandbox folder into its parent directory?
 Yes will choose: %1
 No will choose: %2</source>
@@ -2102,32 +2138,32 @@ No will choose: %2</source>
 “否”将选择目录: %2</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="1794"/>
+        <location filename="SandMan.cpp" line="1812"/>
         <source>   -   NOT connected</source>
         <translation>   -   未连接</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="1944"/>
+        <location filename="SandMan.cpp" line="1962"/>
         <source>The program %1 started in box %2 will be terminated in 5 minutes because the box was configured to use features exclusively available to project supporters.</source>
         <translation>在沙盒 %2 中启动的程序 %1 将在 5 分钟之后自动终止，因为此沙盒被配置为使用项目赞助者的特供功能</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="1946"/>
+        <location filename="SandMan.cpp" line="1964"/>
         <source>The box %1 is configured to use features exclusively available to project supporters, these presets will be ignored.</source>
         <translation>沙盒 %1 被配置为使用项目赞助者专有的沙盒类型，这些预设选项将被忽略</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="1947"/>
+        <location filename="SandMan.cpp" line="1965"/>
         <source>&lt;br /&gt;&lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-get-cert&quot;&gt;Become a project supporter&lt;/a&gt;, and receive a &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-cert&quot;&gt;supporter certificate&lt;/a&gt;</source>
         <translation>&lt;br /&gt;&lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-get-cert&quot;&gt;成为项目赞助者&lt;/a&gt;，以获得&lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-cert&quot;&gt;赞助者凭据&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="1975"/>
+        <location filename="SandMan.cpp" line="1993"/>
         <source>PID %1: </source>
         <translation>进程 PID %1: </translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="1977"/>
+        <location filename="SandMan.cpp" line="1995"/>
         <source>%1 (%2): </source>
         <translation>%1 (%2): </translation>
     </message>
@@ -2154,184 +2190,184 @@ No will choose: %2</source>
 </translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2104"/>
+        <location filename="SandMan.cpp" line="2122"/>
         <source>Only Administrators can change the config.</source>
         <translation>仅管理员可更改该配置</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2114"/>
+        <location filename="SandMan.cpp" line="2132"/>
         <source>Please enter the configuration password.</source>
         <translation>请输入配置保护密码</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2122"/>
+        <location filename="SandMan.cpp" line="2140"/>
         <source>Login Failed: %1</source>
         <translation>登录失败：%1</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2147"/>
+        <location filename="SandMan.cpp" line="2165"/>
         <source>Do you want to terminate all processes in all sandboxes?</source>
         <translation>确定要终止所有沙盒中的所有进程吗？</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2148"/>
+        <location filename="SandMan.cpp" line="2166"/>
         <source>Terminate all without asking</source>
         <translation>终止所有且不再询问</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2182"/>
+        <location filename="SandMan.cpp" line="2200"/>
         <source>No Recovery</source>
         <translation>没有恢复文件</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2188"/>
+        <location filename="SandMan.cpp" line="2206"/>
         <source>No Messages</source>
         <translation>没有消息</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2206"/>
+        <location filename="SandMan.cpp" line="2224"/>
         <source>Sandboxie-Plus was started in portable mode and it needs to create necessary services. This will prompt for administrative privileges.</source>
         <translation>Sandboxie-Plus 正以便携模式启动，需要创建所需的服务，这将会寻求管理员权限</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2235"/>
+        <location filename="SandMan.cpp" line="2253"/>
         <source>CAUTION: Another agent (probably SbieCtrl.exe) is already managing this Sandboxie session, please close it first and reconnect to take over.</source>
         <translation>警告：另一代理程序 (可能是 SbieCtrl.exe) 已接管当前 Sandboxie 会话，请将其关闭，然后尝试重新连接以接管控制</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2348"/>
+        <location filename="SandMan.cpp" line="2366"/>
         <source>Maintenance operation completed</source>
         <translation>维护作业完成</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2368"/>
+        <location filename="SandMan.cpp" line="2386"/>
         <source>Executing maintenance operation, please wait...</source>
         <translation>正在执行操作维护，请稍候...</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2475"/>
+        <location filename="SandMan.cpp" line="2493"/>
         <source>In the Plus UI, this functionality has been integrated into the main sandbox list view.</source>
         <translation>在 Plus 视图，此功能已被整合到主沙盒列表中</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2476"/>
+        <location filename="SandMan.cpp" line="2494"/>
         <source>Using the box/group context menu, you can move boxes and groups to other groups. You can also use drag and drop to move the items around. Alternatively, you can also use the arrow keys while holding ALT down to move items up and down within their group.&lt;br /&gt;You can create new boxes and groups from the Sandbox menu.</source>
         <translation>使用“沙盒/组”右键菜单，你可以将沙盒在沙盒组之间移动
 同时，你也可以通过 Alt + 方向键或鼠标拖动来整理列表
 另外，你可以通过右键菜单来新建“沙盒/组”</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2544"/>
+        <location filename="SandMan.cpp" line="2562"/>
         <source>Do you also want to reset hidden message boxes (yes), or only all log messages (no)?</source>
         <translation>请确认是否要重置已隐藏的消息框(选“是”)，或者仅重置所有日志消息(选“否”)？</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2614"/>
+        <location filename="SandMan.cpp" line="2632"/>
         <source>The changes will be applied automatically whenever the file gets saved.</source>
         <translation>每次该文件被保存时，更改将自动应用</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2615"/>
+        <location filename="SandMan.cpp" line="2633"/>
         <source>The changes will be applied automatically as soon as the editor is closed.</source>
         <translation>编辑器被关闭后，更改将很快自动应用</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2768"/>
+        <location filename="SandMan.cpp" line="2786"/>
         <source>Administrator rights are required for this operation.</source>
         <translation>此操作需要管理员权限</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2769"/>
+        <location filename="SandMan.cpp" line="2787"/>
         <source>Failed to execute: %1</source>
         <translation>执行失败：%1</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2770"/>
+        <location filename="SandMan.cpp" line="2788"/>
         <source>Failed to connect to the driver</source>
         <translation>连接驱动程序失败</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2771"/>
+        <location filename="SandMan.cpp" line="2789"/>
         <source>Failed to communicate with Sandboxie Service: %1</source>
         <translation>无法与 Sandboxie 服务通信：%1</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2772"/>
+        <location filename="SandMan.cpp" line="2790"/>
         <source>An incompatible Sandboxie %1 was found. Compatible versions: %2</source>
         <translation>发现不兼容的 Sandboxie %1，其它兼容的版本：%2</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2773"/>
+        <location filename="SandMan.cpp" line="2791"/>
         <source>Can&apos;t find Sandboxie installation path.</source>
         <translation>无法找到 Sandboxie 的安装路径</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2774"/>
+        <location filename="SandMan.cpp" line="2792"/>
         <source>Failed to copy configuration from sandbox %1: %2</source>
         <translation>复制沙盒配置 %1: %2 失败</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2775"/>
+        <location filename="SandMan.cpp" line="2793"/>
         <source>A sandbox of the name %1 already exists</source>
         <translation>名为 %1 的沙盒已存在</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2776"/>
+        <location filename="SandMan.cpp" line="2794"/>
         <source>Failed to delete sandbox %1: %2</source>
         <translation>删除沙盒 %1: %2 失败</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2777"/>
+        <location filename="SandMan.cpp" line="2795"/>
         <source>The sandbox name can not be longer than 32 characters.</source>
         <translation>沙盒名称不能超过 32 个字符</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2778"/>
+        <location filename="SandMan.cpp" line="2796"/>
         <source>The sandbox name can not be a device name.</source>
         <translation>沙盒名称不能为设备名称</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2779"/>
+        <location filename="SandMan.cpp" line="2797"/>
         <source>The sandbox name can contain only letters, digits and underscores which are displayed as spaces.</source>
         <translation>沙盒名称只能包含字母、数字和下划线(显示为空格)</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2780"/>
+        <location filename="SandMan.cpp" line="2798"/>
         <source>Failed to terminate all processes</source>
         <translation>终止所有进程失败</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2781"/>
+        <location filename="SandMan.cpp" line="2799"/>
         <source>Delete protection is enabled for the sandbox</source>
         <translation>该沙盒已启用删除保护</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2782"/>
+        <location filename="SandMan.cpp" line="2800"/>
         <source>All sandbox processes must be stopped before the box content can be deleted</source>
         <translation>在删除沙盒内容之前，必须先停止沙盒内的所有进程</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2783"/>
+        <location filename="SandMan.cpp" line="2801"/>
         <source>Error deleting sandbox folder: %1</source>
         <translation>删除沙盒文件夹出错：%1</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2785"/>
+        <location filename="SandMan.cpp" line="2803"/>
         <source>A sandbox must be emptied before it can be deleted.</source>
         <translation>沙盒被删除前必须清空</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2786"/>
+        <location filename="SandMan.cpp" line="2804"/>
         <source>Failed to move directory &apos;%1&apos; to &apos;%2&apos;</source>
         <translation>移动目录 &apos;%1&apos; 到 &apos;%2&apos; 失败</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2787"/>
+        <location filename="SandMan.cpp" line="2805"/>
         <source>This Snapshot operation can not be performed while processes are still running in the box.</source>
         <translation>因有进程正在沙盒中运行，此快照操作无法完成</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2788"/>
+        <location filename="SandMan.cpp" line="2806"/>
         <source>Failed to create directory for new snapshot</source>
         <translation>创建新快照的目录失败</translation>
     </message>
@@ -2340,108 +2376,108 @@ No will choose: %2</source>
         <translation type="vanished">安装目录: %1</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="1673"/>
+        <location filename="SandMan.cpp" line="1691"/>
         <source>Sandboxie-Plus Version: %1 (%2)</source>
         <translation>Sandboxie-Plus 版本: %1 (%2)</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="1674"/>
+        <location filename="SandMan.cpp" line="1692"/>
         <source>Current Config: %1</source>
         <translation>当前配置: %1</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="1675"/>
+        <location filename="SandMan.cpp" line="1693"/>
         <source>Data Directory: %1</source>
         <translation>数据存放目录: %1</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="1748"/>
+        <location filename="SandMan.cpp" line="1766"/>
         <source> for Personal use</source>
         <translation>个人用户</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="1750"/>
+        <location filename="SandMan.cpp" line="1768"/>
         <source>   -   for Non-Commercial use ONLY</source>
         <translation>   -   仅用于非商业用途</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2047"/>
+        <location filename="SandMan.cpp" line="2065"/>
         <source>The evaluation period has expired!!!</source>
         <oldsource>The evaluation periode has expired!!!</oldsource>
         <translation>已超过评估期限！！！</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2167"/>
+        <location filename="SandMan.cpp" line="2185"/>
         <source>Please enter the duration, in seconds, for disabling Forced Programs rules.</source>
         <translation>请输入「停用必沙程序规则」的持续时间 (单位: 秒)</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2343"/>
+        <location filename="SandMan.cpp" line="2361"/>
         <source>Maintenance operation failed (%1)</source>
         <translation>维护作业执行失败 (%1)</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2789"/>
+        <location filename="SandMan.cpp" line="2807"/>
         <source>Failed to copy box data files</source>
         <translation>复制沙盒数据文件失败</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2790"/>
+        <location filename="SandMan.cpp" line="2808"/>
         <source>Snapshot not found</source>
         <translation>没有找到快照</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2791"/>
+        <location filename="SandMan.cpp" line="2809"/>
         <source>Error merging snapshot directories &apos;%1&apos; with &apos;%2&apos;, the snapshot has not been fully merged.</source>
         <translation>合并快照目录 &apos;%1&apos; 和 &apos;%2&apos; 出错，快照没有被完全合并</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2792"/>
+        <location filename="SandMan.cpp" line="2810"/>
         <source>Failed to remove old snapshot directory &apos;%1&apos;</source>
         <translation>移除旧快照的目录 &apos;%1&apos; 失败</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2793"/>
+        <location filename="SandMan.cpp" line="2811"/>
         <source>Can&apos;t remove a snapshot that is shared by multiple later snapshots</source>
         <translation>无法移除被多个后续快照所共享的快照</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2795"/>
+        <location filename="SandMan.cpp" line="2813"/>
         <source>You are not authorized to update configuration in section &apos;%1&apos;</source>
         <translation>您未被授权在 &apos;%1&apos; 更新配置</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2796"/>
+        <location filename="SandMan.cpp" line="2814"/>
         <source>Failed to set configuration setting %1 in section %2: %3</source>
         <translation>在 %2: %3 中设定配置设置 %1 失败</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2797"/>
+        <location filename="SandMan.cpp" line="2815"/>
         <source>Can not create snapshot of an empty sandbox</source>
         <translation>无法为空的沙盒创建快照</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2798"/>
+        <location filename="SandMan.cpp" line="2816"/>
         <source>A sandbox with that name already exists</source>
         <translation>已存在同名沙盒</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2799"/>
+        <location filename="SandMan.cpp" line="2817"/>
         <source>The config password must not be longer than 64 characters</source>
         <translation>配置保护密码长度不能超过 64 个字符</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2821"/>
+        <location filename="SandMan.cpp" line="2839"/>
         <source>Operation failed for %1 item(s).</source>
         <translation>%1 项操作失败</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2848"/>
+        <location filename="SandMan.cpp" line="2866"/>
         <source>Do you want to open %1 in a sandboxed (yes) or unsandboxed (no) Web browser?</source>
         <translation>是否在沙盒中的浏览器打开链接 %1 ？</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2849"/>
+        <location filename="SandMan.cpp" line="2867"/>
         <source>Remember choice for later.</source>
         <translation>记住选择供之后使用</translation>
     </message>
@@ -2745,522 +2781,522 @@ No will choose: %2</source>
 <context>
     <name>CSbieView</name>
     <message>
-        <location filename="Views/SbieView.cpp" line="139"/>
-        <location filename="Views/SbieView.cpp" line="254"/>
+        <location filename="Views/SbieView.cpp" line="144"/>
+        <location filename="Views/SbieView.cpp" line="259"/>
         <source>Create New Box</source>
         <translation>新建沙盒</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="359"/>
+        <location filename="Views/SbieView.cpp" line="364"/>
         <source>Remove Group</source>
         <translation>移除组</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="147"/>
+        <location filename="Views/SbieView.cpp" line="152"/>
         <source>Run</source>
         <translation>运行</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="148"/>
+        <location filename="Views/SbieView.cpp" line="153"/>
         <source>Run Program</source>
         <translation>运行程序(Run)</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="149"/>
+        <location filename="Views/SbieView.cpp" line="154"/>
         <source>Run from Start Menu</source>
         <translation>从开始菜单运行</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="157"/>
+        <location filename="Views/SbieView.cpp" line="162"/>
         <source>Default Web Browser</source>
         <translation>默认浏览器</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="158"/>
+        <location filename="Views/SbieView.cpp" line="163"/>
         <source>Default eMail Client</source>
         <translation>默认电子邮件客户端</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="166"/>
+        <location filename="Views/SbieView.cpp" line="171"/>
         <source>Windows Explorer</source>
         <translation>Windows 资源管理器</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="167"/>
+        <location filename="Views/SbieView.cpp" line="172"/>
         <source>Registry Editor</source>
         <translation>注册表编辑器</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="168"/>
+        <location filename="Views/SbieView.cpp" line="173"/>
         <source>Programs and Features</source>
         <translation>程序和功能</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="172"/>
+        <location filename="Views/SbieView.cpp" line="177"/>
         <source>Terminate All Programs</source>
         <translation>终止所有程序</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="178"/>
-        <location filename="Views/SbieView.cpp" line="232"/>
-        <location filename="Views/SbieView.cpp" line="303"/>
-        <location filename="Views/SbieView.cpp" line="341"/>
+        <location filename="Views/SbieView.cpp" line="183"/>
+        <location filename="Views/SbieView.cpp" line="237"/>
+        <location filename="Views/SbieView.cpp" line="308"/>
+        <location filename="Views/SbieView.cpp" line="346"/>
         <source>Create Shortcut</source>
         <translation>创建快捷方式</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="180"/>
-        <location filename="Views/SbieView.cpp" line="289"/>
+        <location filename="Views/SbieView.cpp" line="185"/>
+        <location filename="Views/SbieView.cpp" line="294"/>
         <source>Explore Content</source>
         <translation>浏览内容</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="209"/>
-        <location filename="Views/SbieView.cpp" line="296"/>
+        <location filename="Views/SbieView.cpp" line="214"/>
+        <location filename="Views/SbieView.cpp" line="301"/>
         <source>Snapshots Manager</source>
         <translation>快照管理器</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="182"/>
+        <location filename="Views/SbieView.cpp" line="187"/>
         <source>Recover Files</source>
         <translation>文件恢复</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="183"/>
-        <location filename="Views/SbieView.cpp" line="288"/>
+        <location filename="Views/SbieView.cpp" line="188"/>
+        <location filename="Views/SbieView.cpp" line="293"/>
         <source>Delete Content</source>
         <translation>删除内容</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="187"/>
+        <location filename="Views/SbieView.cpp" line="192"/>
         <source>Sandbox Presets</source>
         <translation>预置配置</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="189"/>
+        <location filename="Views/SbieView.cpp" line="194"/>
         <source>Ask for UAC Elevation</source>
         <translation>询问 UAC 提权</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="190"/>
+        <location filename="Views/SbieView.cpp" line="195"/>
         <source>Drop Admin Rights</source>
         <translation>撤销管理员权限</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="191"/>
+        <location filename="Views/SbieView.cpp" line="196"/>
         <source>Emulate Admin Rights</source>
         <translation>模拟管理员权限</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="199"/>
+        <location filename="Views/SbieView.cpp" line="204"/>
         <source>Block Internet Access</source>
         <translation>拦截网络访问</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="201"/>
+        <location filename="Views/SbieView.cpp" line="206"/>
         <source>Allow Network Shares</source>
         <translation>允许网络共享</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="185"/>
+        <location filename="Views/SbieView.cpp" line="190"/>
         <source>Sandbox Options</source>
         <translation>沙盒选项</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="175"/>
+        <location filename="Views/SbieView.cpp" line="180"/>
         <source>Browse Files</source>
         <translation>浏览文件</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="208"/>
-        <location filename="Views/SbieView.cpp" line="294"/>
+        <location filename="Views/SbieView.cpp" line="213"/>
+        <location filename="Views/SbieView.cpp" line="299"/>
         <source>Sandbox Tools</source>
         <translation>沙盒工具</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="211"/>
+        <location filename="Views/SbieView.cpp" line="216"/>
         <source>Duplicate Box Config</source>
         <translation>复制配置</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="213"/>
-        <location filename="Views/SbieView.cpp" line="306"/>
+        <location filename="Views/SbieView.cpp" line="218"/>
+        <location filename="Views/SbieView.cpp" line="311"/>
         <source>Rename Sandbox</source>
         <translation>重命名沙盒</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="214"/>
-        <location filename="Views/SbieView.cpp" line="307"/>
+        <location filename="Views/SbieView.cpp" line="219"/>
+        <location filename="Views/SbieView.cpp" line="312"/>
         <source>Move Sandbox</source>
         <translation>移动沙盒</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="225"/>
-        <location filename="Views/SbieView.cpp" line="318"/>
+        <location filename="Views/SbieView.cpp" line="230"/>
+        <location filename="Views/SbieView.cpp" line="323"/>
         <source>Remove Sandbox</source>
         <translation>移除沙盒</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="230"/>
-        <location filename="Views/SbieView.cpp" line="339"/>
+        <location filename="Views/SbieView.cpp" line="235"/>
+        <location filename="Views/SbieView.cpp" line="344"/>
         <source>Terminate</source>
         <translation>终止</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="233"/>
+        <location filename="Views/SbieView.cpp" line="238"/>
         <source>Preset</source>
         <translation>预设</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="234"/>
+        <location filename="Views/SbieView.cpp" line="239"/>
         <source>Pin to Run Menu</source>
         <translation>固定到运行菜单</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="236"/>
+        <location filename="Views/SbieView.cpp" line="241"/>
         <source>Block and Terminate</source>
         <translation>阻止并终止</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="240"/>
+        <location filename="Views/SbieView.cpp" line="245"/>
         <source>Allow internet access</source>
         <translation>允许网络访问</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="242"/>
+        <location filename="Views/SbieView.cpp" line="247"/>
         <source>Force into this sandbox</source>
         <translation>强制入此沙盒</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="244"/>
+        <location filename="Views/SbieView.cpp" line="249"/>
         <source>Set Linger Process</source>
         <translation>设置驻留进程</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="246"/>
+        <location filename="Views/SbieView.cpp" line="251"/>
         <source>Set Leader Process</source>
         <translation>设置引导进程</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="489"/>
+        <location filename="Views/SbieView.cpp" line="494"/>
         <source>    File root: %1
 </source>
         <translation>    文件根目录: %1
 </translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="490"/>
+        <location filename="Views/SbieView.cpp" line="495"/>
         <source>    Registry root: %1
 </source>
         <translation>    注册表根: %1
 </translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="491"/>
+        <location filename="Views/SbieView.cpp" line="496"/>
         <source>    IPC root: %1
 </source>
         <translation>    IPC 根: %1
 </translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="493"/>
+        <location filename="Views/SbieView.cpp" line="498"/>
         <source>Options:
     </source>
         <translation>选项:
     </translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="710"/>
+        <location filename="Views/SbieView.cpp" line="715"/>
         <source>[None]</source>
         <translation>[无]</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="958"/>
+        <location filename="Views/SbieView.cpp" line="963"/>
         <source>Please enter a new group name</source>
         <translation>请输入新的组名</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="819"/>
+        <location filename="Views/SbieView.cpp" line="824"/>
         <source>Do you really want to remove the selected group(s)?</source>
         <translation>确定要移除选中的组吗？</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="140"/>
-        <location filename="Views/SbieView.cpp" line="255"/>
+        <location filename="Views/SbieView.cpp" line="145"/>
+        <location filename="Views/SbieView.cpp" line="260"/>
         <source>Create Box Group</source>
         <translation>新建沙盒组</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="357"/>
+        <location filename="Views/SbieView.cpp" line="362"/>
         <source>Rename Group</source>
         <translation>重命名组</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="144"/>
-        <location filename="Views/SbieView.cpp" line="259"/>
+        <location filename="Views/SbieView.cpp" line="149"/>
+        <location filename="Views/SbieView.cpp" line="264"/>
         <source>Stop Operations</source>
         <translation>停止作业</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="159"/>
+        <location filename="Views/SbieView.cpp" line="164"/>
         <source>Command Prompt</source>
         <translation>命令提示符</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="160"/>
+        <location filename="Views/SbieView.cpp" line="165"/>
         <source>Boxed Tools</source>
         <translation>沙盒工具</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="161"/>
+        <location filename="Views/SbieView.cpp" line="166"/>
         <source>Command Prompt (as Admin)</source>
         <translation>命令提示符 (管理员)</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="165"/>
+        <location filename="Views/SbieView.cpp" line="170"/>
         <source>Command Prompt (32-bit)</source>
         <translation>命令提示符 (32 位)</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="169"/>
+        <location filename="Views/SbieView.cpp" line="174"/>
         <source>Execute Autorun Entries</source>
         <translation>执行自动运行项目</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="295"/>
+        <location filename="Views/SbieView.cpp" line="300"/>
         <source>Browse Content</source>
         <translation>浏览内容</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="174"/>
+        <location filename="Views/SbieView.cpp" line="179"/>
         <source>Box Content</source>
         <translation>沙盒内容</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="181"/>
+        <location filename="Views/SbieView.cpp" line="186"/>
         <source>Open Registry</source>
         <translation>打开注册表</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="177"/>
-        <location filename="Views/SbieView.cpp" line="302"/>
+        <location filename="Views/SbieView.cpp" line="182"/>
+        <location filename="Views/SbieView.cpp" line="307"/>
         <source>Refresh Info</source>
         <translation>刷新信息</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="152"/>
-        <location filename="Views/SbieView.cpp" line="269"/>
+        <location filename="Views/SbieView.cpp" line="157"/>
+        <location filename="Views/SbieView.cpp" line="274"/>
         <source>(Host) Start Menu</source>
-        <translation type="unfinished"></translation>
+        <translation>开始菜单(宿主)</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="205"/>
+        <location filename="Views/SbieView.cpp" line="210"/>
         <source>Immediate Recovery</source>
         <translation>即时恢复</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="215"/>
-        <location filename="Views/SbieView.cpp" line="308"/>
+        <location filename="Views/SbieView.cpp" line="220"/>
+        <location filename="Views/SbieView.cpp" line="313"/>
         <source>Move Up</source>
         <translation>上移</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="220"/>
-        <location filename="Views/SbieView.cpp" line="313"/>
+        <location filename="Views/SbieView.cpp" line="225"/>
+        <location filename="Views/SbieView.cpp" line="318"/>
         <source>Move Down</source>
         <translation>下移</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="262"/>
+        <location filename="Views/SbieView.cpp" line="267"/>
         <source>Run Sandboxed</source>
         <translation>运行</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="263"/>
+        <location filename="Views/SbieView.cpp" line="268"/>
         <source>Run Web Browser</source>
         <translation>默认浏览器</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="264"/>
+        <location filename="Views/SbieView.cpp" line="269"/>
         <source>Run eMail Reader</source>
         <translation>默认电子邮件客户端</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="265"/>
+        <location filename="Views/SbieView.cpp" line="270"/>
         <source>Run Any Program</source>
         <translation>运行程序(Run)</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="266"/>
+        <location filename="Views/SbieView.cpp" line="271"/>
         <source>Run From Start Menu</source>
         <translation>从开始菜单运行</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="274"/>
+        <location filename="Views/SbieView.cpp" line="279"/>
         <source>Run Windows Explorer</source>
         <translation>Windows 资源管理器</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="286"/>
+        <location filename="Views/SbieView.cpp" line="291"/>
         <source>Terminate Programs</source>
         <translation>终止程序</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="287"/>
+        <location filename="Views/SbieView.cpp" line="292"/>
         <source>Quick Recover</source>
         <translation>快速恢复</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="292"/>
+        <location filename="Views/SbieView.cpp" line="297"/>
         <source>Sandbox Settings</source>
         <translation>沙盒配置</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="299"/>
+        <location filename="Views/SbieView.cpp" line="304"/>
         <source>Duplicate Sandbox Config</source>
         <translation>复制配置</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="358"/>
+        <location filename="Views/SbieView.cpp" line="363"/>
         <source>Move Group</source>
         <translation>移动组</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="809"/>
+        <location filename="Views/SbieView.cpp" line="814"/>
         <source>Please enter a new name for the Group.</source>
         <translation>为此组指定新的名称</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="856"/>
+        <location filename="Views/SbieView.cpp" line="861"/>
         <source>Move entries by (negative values move up, positive values move down):</source>
         <translation>将项目移动的距离(负数向上移动，正数向下移动):</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="892"/>
+        <location filename="Views/SbieView.cpp" line="897"/>
         <source>A group can not be its own parent.</source>
         <translation>组不能是自己的父级</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="986"/>
+        <location filename="Views/SbieView.cpp" line="991"/>
         <source>The Sandbox name and Box Group name cannot use the &apos;,()&apos; symbol.</source>
         <translation>⌈沙盒/组⌋名称不能使用 &apos;,()&apos; 等符号</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="991"/>
+        <location filename="Views/SbieView.cpp" line="996"/>
         <source>This name is already used for a Box Group.</source>
         <translation>名称已被用于现有的其它沙盒组</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="996"/>
+        <location filename="Views/SbieView.cpp" line="1001"/>
         <source>This name is already used for a Sandbox.</source>
         <translation>名称已被用于现有的其它沙盒</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1046"/>
-        <location filename="Views/SbieView.cpp" line="1112"/>
-        <location filename="Views/SbieView.cpp" line="1333"/>
+        <location filename="Views/SbieView.cpp" line="1051"/>
+        <location filename="Views/SbieView.cpp" line="1117"/>
+        <location filename="Views/SbieView.cpp" line="1338"/>
         <source>Don&apos;t show this message again.</source>
         <translation>不再显示此消息</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1103"/>
-        <location filename="Views/SbieView.cpp" line="1123"/>
-        <location filename="Views/SbieView.cpp" line="1509"/>
+        <location filename="Views/SbieView.cpp" line="1108"/>
+        <location filename="Views/SbieView.cpp" line="1128"/>
+        <location filename="Views/SbieView.cpp" line="1514"/>
         <source>This Sandbox is empty.</source>
         <translation>此沙盒是空的</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1130"/>
+        <location filename="Views/SbieView.cpp" line="1135"/>
         <source>WARNING: The opened registry editor is not sandboxed, please be careful and only do changes to the pre-selected sandbox locations.</source>
         <translation>警告：打开的注册表编辑器未沙盒化，请审慎且仅对预先选定的沙盒节点进行修改</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1131"/>
+        <location filename="Views/SbieView.cpp" line="1136"/>
         <source>Don&apos;t show this warning in future</source>
         <translation>不再显示此警告</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1186"/>
+        <location filename="Views/SbieView.cpp" line="1191"/>
         <source>Please enter a new name for the duplicated Sandbox.</source>
         <translation>请为此复制的沙盒输入一个新名称</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1186"/>
+        <location filename="Views/SbieView.cpp" line="1191"/>
         <source>%1 Copy</source>
         <translatorcomment>沙盒名称只能包含字母、数字和下划线，不应对此处的文本进行翻译！</translatorcomment>
         <translation>%1 Copy</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1226"/>
+        <location filename="Views/SbieView.cpp" line="1231"/>
         <source>Please enter a new name for the Sandbox.</source>
         <translation>请为该沙盒输入新名称</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1243"/>
+        <location filename="Views/SbieView.cpp" line="1248"/>
         <source>Do you really want to remove the selected sandbox(es)?&lt;br /&gt;&lt;br /&gt;Warning: The box content will also be deleted!</source>
         <translation>确定要删除选中的沙盒？&lt;br /&gt;&lt;br /&gt;警告：沙盒内的内容也将被删除！</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1274"/>
+        <location filename="Views/SbieView.cpp" line="1279"/>
         <source>This Sandbox is already empty.</source>
         <translation>此沙盒已清空</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1284"/>
+        <location filename="Views/SbieView.cpp" line="1289"/>
         <source>Do you want to delete the content of the selected sandbox?</source>
         <translation>确定要删除选中沙盒的内容吗？</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1285"/>
-        <location filename="Views/SbieView.cpp" line="1289"/>
+        <location filename="Views/SbieView.cpp" line="1290"/>
+        <location filename="Views/SbieView.cpp" line="1294"/>
         <source>Also delete all Snapshots</source>
         <translation>同时删除所有快照</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1288"/>
+        <location filename="Views/SbieView.cpp" line="1293"/>
         <source>Do you really want to delete the content of all selected sandboxes?</source>
         <translation>你真的想删除所有选定的沙盒的内容吗？</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1315"/>
+        <location filename="Views/SbieView.cpp" line="1320"/>
         <source>Do you want to terminate all processes in the selected sandbox(es)?</source>
         <translation>确定要终止所选沙盒中的所有进程吗？</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1316"/>
-        <location filename="Views/SbieView.cpp" line="1409"/>
+        <location filename="Views/SbieView.cpp" line="1321"/>
+        <location filename="Views/SbieView.cpp" line="1414"/>
         <source>Terminate without asking</source>
         <translation>终止且不再询问</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1331"/>
+        <location filename="Views/SbieView.cpp" line="1336"/>
         <source>The Sandboxie Start Menu will now be displayed. Select an application from the menu, and Sandboxie will create a new shortcut icon on your real desktop, which you can use to invoke the selected application under the supervision of Sandboxie.</source>
         <oldsource>The Sandboxie Start Menu will now be displayed. Select an application from the menu, and Sandboxie will create a newshortcut icon on your real desktop, which you can use to invoke the selected application under the supervision of Sandboxie.</oldsource>
         <translation>现在将显示 Sandboxie 开始菜单。从菜单中选择一个应用程序，Sandboxie 将在真实桌面上创建一个新的快捷方式图标，你可以用它来调用所选受 Sandboxie 监督的应用程序。</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1366"/>
-        <location filename="Views/SbieView.cpp" line="1436"/>
+        <location filename="Views/SbieView.cpp" line="1371"/>
+        <location filename="Views/SbieView.cpp" line="1441"/>
         <source>Create Shortcut to sandbox %1</source>
         <translation>为沙盒 %1 创建快捷方式</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1408"/>
+        <location filename="Views/SbieView.cpp" line="1413"/>
         <source>Do you want to %1 %2?</source>
         <translation>确定要%1 %2 吗？</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1408"/>
+        <location filename="Views/SbieView.cpp" line="1413"/>
         <source>the selected processes</source>
         <translation>选中的进程</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1469"/>
+        <location filename="Views/SbieView.cpp" line="1474"/>
         <source>This box does not have Internet restrictions in place, do you want to enable them?</source>
         <translation>此沙盒无互联网限制，确定启用吗？</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1549"/>
+        <location filename="Views/SbieView.cpp" line="1554"/>
         <source>This sandbox is disabled, do you want to enable it?</source>
         <translation>此沙盒已禁用，确定启用吗？</translation>
     </message>
@@ -3294,17 +3330,17 @@ No will choose: %2</source>
     <message>
         <location filename="Windows/SettingsWindow.cpp" line="183"/>
         <source>Advanced Config</source>
-        <translation type="unfinished">高级选项</translation>
+        <translation>高级选项</translation>
     </message>
     <message>
         <location filename="Windows/SettingsWindow.cpp" line="184"/>
         <source>Sandbox Config</source>
-        <translation type="unfinished"></translation>
+        <translation>沙盒配置</translation>
     </message>
     <message>
         <location filename="Windows/SettingsWindow.cpp" line="185"/>
         <source>Config Protection</source>
-        <translation type="unfinished">保护配置</translation>
+        <translation>保护配置</translation>
     </message>
     <message>
         <location filename="Windows/SettingsWindow.cpp" line="198"/>
@@ -3319,17 +3355,17 @@ No will choose: %2</source>
     <message>
         <location filename="Windows/SettingsWindow.cpp" line="210"/>
         <source>Don&apos;t integrate links</source>
-        <translation type="unfinished"></translation>
+        <translation>不整合</translation>
     </message>
     <message>
         <location filename="Windows/SettingsWindow.cpp" line="211"/>
         <source>As sub group</source>
-        <translation type="unfinished"></translation>
+        <translation>作为子组</translation>
     </message>
     <message>
         <location filename="Windows/SettingsWindow.cpp" line="212"/>
         <source>Fully integrate</source>
-        <translation type="unfinished"></translation>
+        <translation>全面整合</translation>
     </message>
     <message>
         <location filename="Windows/SettingsWindow.cpp" line="214"/>
@@ -3639,7 +3675,7 @@ No will choose: %2</source>
         <location filename="Windows/SupportDialog.cpp" line="128"/>
         <source>The installed supporter certificate is &lt;b&gt;expired&lt;/b&gt; and &lt;u&gt;should be renewed&lt;/u&gt;.&lt;br /&gt;&lt;br /&gt;</source>
         <oldsource>The installed supporter certificate is &lt;b&gt;expired&lt;/b&gt; and &lt;u&gt;should to be renewed&lt;/u&gt;.&lt;br /&gt;&lt;br /&gt;</oldsource>
-        <translation type="unfinished">安装的赞助者凭据&lt;b&gt;已过时&lt;/b&gt;，&lt;u&gt;应当更新&lt;/u&gt;。&lt;br /&gt;&lt;br /&gt;</translation>
+        <translation>安装的赞助者凭据&lt;b&gt;已过期&lt;/b&gt;，&lt;u&gt;应当更新&lt;/u&gt;。&lt;br /&gt;&lt;br /&gt;</translation>
     </message>
     <message>
         <location filename="Windows/SupportDialog.cpp" line="130"/>
@@ -3925,7 +3961,7 @@ No will choose: %2</source>
     <message>
         <location filename="Forms/NewBoxWindow.ui" line="54"/>
         <source>Box Type Preset:</source>
-        <translation>沙盒类型预设配置:</translation>
+        <translation>沙盒类型预设配置：</translation>
     </message>
     <message>
         <location filename="Forms/NewBoxWindow.ui" line="77"/>
@@ -4072,7 +4108,7 @@ No will choose: %2</source>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="391"/>
         <source>Issue message 2102 when a file is too large</source>
-        <translation>文件太大时发出问题代码 2102</translation>
+        <translation>文件太大时，提示问题代码 2102</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="351"/>
@@ -4162,10 +4198,10 @@ No will choose: %2</source>
         <location filename="Forms/OptionsWindow.ui" line="1698"/>
         <location filename="Forms/OptionsWindow.ui" line="1776"/>
         <location filename="Forms/OptionsWindow.ui" line="2626"/>
-        <location filename="Forms/OptionsWindow.ui" line="3000"/>
-        <location filename="Forms/OptionsWindow.ui" line="3116"/>
-        <location filename="Forms/OptionsWindow.ui" line="4229"/>
-        <location filename="Forms/OptionsWindow.ui" line="4286"/>
+        <location filename="Forms/OptionsWindow.ui" line="2847"/>
+        <location filename="Forms/OptionsWindow.ui" line="2963"/>
+        <location filename="Forms/OptionsWindow.ui" line="4076"/>
+        <location filename="Forms/OptionsWindow.ui" line="4133"/>
         <source>Name</source>
         <translation>名称</translation>
     </message>
@@ -4194,16 +4230,14 @@ No will choose: %2</source>
         <location filename="Forms/OptionsWindow.ui" line="2323"/>
         <location filename="Forms/OptionsWindow.ui" line="2595"/>
         <location filename="Forms/OptionsWindow.ui" line="2737"/>
-        <location filename="Forms/OptionsWindow.ui" line="2856"/>
-        <location filename="Forms/OptionsWindow.ui" line="2935"/>
-        <location filename="Forms/OptionsWindow.ui" line="3038"/>
-        <location filename="Forms/OptionsWindow.ui" line="3124"/>
-        <location filename="Forms/OptionsWindow.ui" line="3401"/>
-        <location filename="Forms/OptionsWindow.ui" line="3533"/>
-        <location filename="Forms/OptionsWindow.ui" line="3602"/>
-        <location filename="Forms/OptionsWindow.ui" line="3726"/>
-        <location filename="Forms/OptionsWindow.ui" line="3785"/>
-        <location filename="Forms/OptionsWindow.ui" line="4200"/>
+        <location filename="Forms/OptionsWindow.ui" line="2885"/>
+        <location filename="Forms/OptionsWindow.ui" line="2971"/>
+        <location filename="Forms/OptionsWindow.ui" line="3248"/>
+        <location filename="Forms/OptionsWindow.ui" line="3380"/>
+        <location filename="Forms/OptionsWindow.ui" line="3449"/>
+        <location filename="Forms/OptionsWindow.ui" line="3573"/>
+        <location filename="Forms/OptionsWindow.ui" line="3632"/>
+        <location filename="Forms/OptionsWindow.ui" line="4047"/>
         <source>Remove</source>
         <translation>移除</translation>
     </message>
@@ -4243,9 +4277,8 @@ No will choose: %2</source>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="1446"/>
-        <location filename="Forms/OptionsWindow.ui" line="1561"/>
         <source>Force Folder</source>
-        <translation>必沙文件夹</translation>
+        <translation>添加目录</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="1922"/>
@@ -4256,9 +4289,8 @@ No will choose: %2</source>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="1403"/>
-        <location filename="Forms/OptionsWindow.ui" line="1535"/>
         <source>Force Program</source>
-        <translation>必沙程序</translation>
+        <translation>添加程序</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="1319"/>
@@ -4273,12 +4305,12 @@ No will choose: %2</source>
         <location filename="Forms/OptionsWindow.ui" line="2217"/>
         <location filename="Forms/OptionsWindow.ui" line="2357"/>
         <location filename="Forms/OptionsWindow.ui" line="2783"/>
-        <location filename="Forms/OptionsWindow.ui" line="3031"/>
-        <location filename="Forms/OptionsWindow.ui" line="3138"/>
-        <location filename="Forms/OptionsWindow.ui" line="3360"/>
-        <location filename="Forms/OptionsWindow.ui" line="3550"/>
-        <location filename="Forms/OptionsWindow.ui" line="3557"/>
-        <location filename="Forms/OptionsWindow.ui" line="3821"/>
+        <location filename="Forms/OptionsWindow.ui" line="2878"/>
+        <location filename="Forms/OptionsWindow.ui" line="2985"/>
+        <location filename="Forms/OptionsWindow.ui" line="3207"/>
+        <location filename="Forms/OptionsWindow.ui" line="3397"/>
+        <location filename="Forms/OptionsWindow.ui" line="3404"/>
+        <location filename="Forms/OptionsWindow.ui" line="3668"/>
         <source>Show Templates</source>
         <translation>显示模板</translation>
     </message>
@@ -4290,7 +4322,7 @@ No will choose: %2</source>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="211"/>
         <source>Box Type Preset:</source>
-        <translation>沙盒类型预设配置:</translation>
+        <translation>沙盒类型预设配置：</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="179"/>
@@ -4364,7 +4396,7 @@ If leader processes are defined, all others are treated as lingering processes.<
     <message>
         <location filename="Forms/OptionsWindow.ui" line="1765"/>
         <source>Issue message 1308 when a program fails to start</source>
-        <translation>程序启动失败发出问题代码 1308</translation>
+        <translation>程序启动失败时，提示问题代码 1308</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="1816"/>
@@ -4398,7 +4430,7 @@ If leader processes are defined, all others are treated as lingering processes.<
     <message>
         <location filename="Forms/OptionsWindow.ui" line="2574"/>
         <source>Issue message 1307 when a program is denied internet access</source>
-        <translation>程序被拒绝访问网络时发出问题代码 1307</translation>
+        <translation>程序被拒绝访问网络时，提示问题代码 1307</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="2602"/>
@@ -4422,9 +4454,7 @@ If leader processes are defined, all others are treated as lingering processes.<
         <location filename="Forms/OptionsWindow.ui" line="2265"/>
         <location filename="Forms/OptionsWindow.ui" line="2339"/>
         <location filename="Forms/OptionsWindow.ui" line="2755"/>
-        <location filename="Forms/OptionsWindow.ui" line="2867"/>
-        <location filename="Forms/OptionsWindow.ui" line="2946"/>
-        <location filename="Forms/OptionsWindow.ui" line="3808"/>
+        <location filename="Forms/OptionsWindow.ui" line="3655"/>
         <source>Program</source>
         <translation>程序</translation>
     </message>
@@ -4468,47 +4498,47 @@ If leader processes are defined, all others are treated as lingering processes.<
         <translation>添加 IPC 路径</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="2966"/>
+        <location filename="Forms/OptionsWindow.ui" line="2813"/>
         <source>File Recovery</source>
         <translation>文件恢复</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3045"/>
+        <location filename="Forms/OptionsWindow.ui" line="2892"/>
         <source>Add Folder</source>
         <translation>添加文件夹</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3085"/>
+        <location filename="Forms/OptionsWindow.ui" line="2932"/>
         <source>Ignore Extension</source>
         <translation>忽略扩展名</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3131"/>
+        <location filename="Forms/OptionsWindow.ui" line="2978"/>
         <source>Ignore Folder</source>
         <translation>忽略文件夹</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3092"/>
+        <location filename="Forms/OptionsWindow.ui" line="2939"/>
         <source>Enable Immediate Recovery prompt to be able to recover files as soon as they are created.</source>
         <translation>启用快速恢复提示，以便快速恢复创建的文件</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3075"/>
+        <location filename="Forms/OptionsWindow.ui" line="2922"/>
         <source>You can exclude folders and file types (or file extensions) from Immediate Recovery.</source>
         <translation>可以在此处从快速恢复中排除特定目录和文件类型(扩展名)</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3008"/>
+        <location filename="Forms/OptionsWindow.ui" line="2855"/>
         <source>When the Quick Recovery function is invoked, the following folders will be checked for sandboxed content. </source>
         <translation>当快速恢复功能被调用时，检查沙盒内的下列文件夹 </translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3172"/>
+        <location filename="Forms/OptionsWindow.ui" line="3019"/>
         <source>Advanced Options</source>
         <translation>高级选项</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3746"/>
+        <location filename="Forms/OptionsWindow.ui" line="3593"/>
         <source>Miscellaneous</source>
         <translation>杂项</translation>
     </message>
@@ -4536,8 +4566,8 @@ If leader processes are defined, all others are treated as lingering processes.<
         <translation type="vanished">沙盒隔离</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3188"/>
-        <location filename="Forms/OptionsWindow.ui" line="3229"/>
+        <location filename="Forms/OptionsWindow.ui" line="3035"/>
+        <location filename="Forms/OptionsWindow.ui" line="3076"/>
         <source>Compatibility</source>
         <translation>兼容性</translation>
     </message>
@@ -4547,7 +4577,7 @@ If leader processes are defined, all others are treated as lingering processes.<
         <translation>添加沙盒化进程到作业对象 (推荐)</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3216"/>
+        <location filename="Forms/OptionsWindow.ui" line="3063"/>
         <source>Force usage of custom dummy Manifest files (legacy behaviour)</source>
         <translation>强制使用自定义虚拟 Manifest 文件 (传统行为)</translation>
     </message>
@@ -4557,7 +4587,7 @@ If leader processes are defined, all others are treated as lingering processes.<
         <translation>仅允许特权进程访问“服务控制管理器”</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3249"/>
+        <location filename="Forms/OptionsWindow.ui" line="3096"/>
         <source>Emulate sandboxed window station for all processes</source>
         <translation>为所有进程模拟沙盒化的窗口状况</translation>
     </message>
@@ -4577,38 +4607,38 @@ If leader processes are defined, all others are treated as lingering processes.<
         <translation>权限隔离</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3515"/>
+        <location filename="Forms/OptionsWindow.ui" line="3362"/>
         <source>Hide Processes</source>
         <translation>隐藏进程</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3564"/>
-        <location filename="Forms/OptionsWindow.ui" line="3622"/>
+        <location filename="Forms/OptionsWindow.ui" line="3411"/>
+        <location filename="Forms/OptionsWindow.ui" line="3469"/>
         <source>Add Process</source>
         <translation>添加进程</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3540"/>
+        <location filename="Forms/OptionsWindow.ui" line="3387"/>
         <source>Hide host processes from processes running in the sandbox.</source>
         <translation>对沙盒内运行的进程隐藏宿主的进程</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3571"/>
+        <location filename="Forms/OptionsWindow.ui" line="3418"/>
         <source>Don&apos;t allow sandboxed processes to see processes running in other boxes</source>
         <translation>不允许沙盒内的进程查看其它沙盒里运行的进程</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3678"/>
+        <location filename="Forms/OptionsWindow.ui" line="3525"/>
         <source>Users</source>
         <translation>用户</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3696"/>
+        <location filename="Forms/OptionsWindow.ui" line="3543"/>
         <source>Restrict Resource Access monitor to administrators only</source>
         <translation>仅允许管理员访问“资源访问监视器”</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3703"/>
+        <location filename="Forms/OptionsWindow.ui" line="3550"/>
         <source>Add User</source>
         <translation>添加用户</translation>
     </message>
@@ -4617,7 +4647,7 @@ If leader processes are defined, all others are treated as lingering processes.<
         <translation type="vanished">移除用户</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3733"/>
+        <location filename="Forms/OptionsWindow.ui" line="3580"/>
         <source>Add user accounts and user groups to the list below to limit use of the sandbox to only those accounts.  If the list is empty, the sandbox can be used by all user accounts.
 
 Note:  Forced Programs and Force Folders settings for a sandbox do not apply to user accounts which cannot use the sandbox.</source>
@@ -4626,27 +4656,27 @@ Note:  Forced Programs and Force Folders settings for a sandbox do not apply to 
 注意：沙盒的必沙程序及文件夹设置不适用于不能运行沙盒的系统用户</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3844"/>
+        <location filename="Forms/OptionsWindow.ui" line="3691"/>
         <source>Tracing</source>
         <translation>跟踪</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4013"/>
+        <location filename="Forms/OptionsWindow.ui" line="3860"/>
         <source>COM Class Trace</source>
         <translation>COM 类跟踪</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3960"/>
+        <location filename="Forms/OptionsWindow.ui" line="3807"/>
         <source>IPC Trace</source>
         <translation>IPC 跟踪</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4020"/>
+        <location filename="Forms/OptionsWindow.ui" line="3867"/>
         <source>Key Trace</source>
         <translation>键值跟踪</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3967"/>
+        <location filename="Forms/OptionsWindow.ui" line="3814"/>
         <source>GUI Trace</source>
         <translation>GUI 跟踪</translation>
     </message>
@@ -4677,190 +4707,207 @@ Note:  Forced Programs and Force Folders settings for a sandbox do not apply to 
     <message>
         <location filename="Forms/OptionsWindow.ui" line="257"/>
         <source>Double click action:</source>
-        <translation type="unfinished"></translation>
+        <translation>双击动作：</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="358"/>
         <source>Separate user folders</source>
-        <translation type="unfinished">独立的用户文件夹</translation>
+        <translation>隔离不同用户的文件夹</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="445"/>
         <source>Box Structure</source>
-        <translation type="unfinished"></translation>
+        <translation>沙盒结构</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="556"/>
         <source>Security Options</source>
-        <translation type="unfinished"></translation>
+        <translation>安全选项</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="566"/>
         <source>Security Hardening</source>
-        <translation type="unfinished"></translation>
+        <translation>安全加固</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="751"/>
         <source>Various Restrictions</source>
-        <translation type="unfinished"></translation>
+        <translation>杂项限制</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="931"/>
         <source>Security Isolation</source>
-        <translation type="unfinished"></translation>
+        <translation>安全隔离</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="1081"/>
         <source>Adcanced Security</source>
-        <translation type="unfinished"></translation>
+        <translation>安全性(高级)</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="1089"/>
         <source>Use a Sandboxie login instead of an anonymous token (experimental)</source>
-        <translation type="unfinished">使用 Sandboxie 限权用户，而不是匿名令牌 (实验性)</translation>
+        <translation>使用 Sandboxie 限权用户，而不是匿名令牌 (实验性)</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="1105"/>
         <source>Other isolation</source>
-        <translation type="unfinished"></translation>
+        <translation>其它隔离</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="1128"/>
         <source>Privilege isolation</source>
-        <translation type="unfinished"></translation>
+        <translation>特权隔离</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="1151"/>
         <source>Sandboxie token</source>
-        <translation type="unfinished"></translation>
+        <translation>沙盒令牌</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="1238"/>
         <source>Using a custom Sandboxie Token allows to isolate individual sandboxes from each other better, and it shows in the user column of task managers the name of the box a process belongs to. Some 3rd party security solutions may however have problems with custom tokens.</source>
-        <translation type="unfinished"></translation>
+        <translation>使用自定义沙盒令牌可以更好地将各个沙盒相互隔离，同时可以实现在任务管理器的用户栏中显示进程所属的沙盒
+但是，某些第三方安全解决方案可能会与自定义令牌产生兼容性问题</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="1329"/>
         <source>Program Control</source>
-        <translation type="unfinished">程序控制</translation>
+        <translation>程序控制</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="1351"/>
         <source>Force Programs</source>
-        <translation type="unfinished"></translation>
+        <translation>必沙程序</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="1466"/>
         <source>Breakout Programs</source>
+        <translation>分离程序</translation>
+    </message>
+    <message>
+        <location filename="Forms/OptionsWindow.ui" line="1535"/>
+        <source>Breakout Program</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Forms/OptionsWindow.ui" line="1561"/>
+        <source>Breakout Folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="1568"/>
         <source>Programs entered here will be allowed to break out of this box when thay start, you can capture them into an other box. For example to have your web browser always open in a dedicated box. This feature requires a valid supporter certificate to be installed.</source>
-        <translation type="unfinished"></translation>
+        <translation>在此处设置的程序在启动时将被允许脱离这个沙盒，你可以把它们捕获到另一个沙盒里
+例如，让网络浏览器总是在一个专门的沙盒里打开(此功能需要安装一个有效的赞助者凭据)</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="1595"/>
         <source>Lingering Programs</source>
-        <translation type="unfinished"></translation>
+        <translation>驻留程序</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="1661"/>
         <source>Lingering programs will be automatically terminated if they are still running after all other processes have been terminated.</source>
-        <translation type="unfinished"></translation>
+        <translation>其它所有程序被终止后，仍在运行的驻留程序将自动终止</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="1674"/>
         <source>Leader Programs</source>
-        <translation type="unfinished"></translation>
+        <translation>引导进程</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="1740"/>
         <source>If leader processes are defined, all others are treated as lingering processes.</source>
-        <translation type="unfinished"></translation>
+        <translation>如果定义了引导进程，其它进程将被视作驻留进程</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="1869"/>
         <source>Files</source>
-        <translation type="unfinished"></translation>
+        <translation>文件</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="1962"/>
         <source>Configure which processes can access Files, Folders and Pipes. 
 &apos;Open&apos; access only applies to program binaries located outside the sandbox, you can use &apos;Open for All&apos; instead to make it apply to all programs, or change this behavior in the Policies tab.</source>
-        <translation type="unfinished"></translation>
+        <translation>配置哪些进程可以访问文件、文件夹和管道
+“开放”访问权限只适用于原先已位于沙盒之外的程序二进制文件
+你可以使用“完全开放”来对所有程序开放所有权限，或者在策略标签中改变这一行为</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="1976"/>
         <source>Registry</source>
-        <translation type="unfinished">注册表</translation>
+        <translation>注册表</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="2069"/>
         <source>Configure which processes can access the Registry. 
 &apos;Open&apos; access only applies to program binaries located outside the sandbox, you can use &apos;Open for All&apos; instead to make it apply to all programs, or change this behavior in the Policies tab.</source>
-        <translation type="unfinished"></translation>
+        <translation>配置哪些进程可以读写注册表
+“开放”访问权限只适用于原先已位于沙盒之外的程序二进制文件
+你可以使用“完全开放”来对所有程序开放所有权限，或者在策略标签中改变这一行为</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="2083"/>
         <source>IPC</source>
-        <translation type="unfinished"></translation>
+        <translation>IPC</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="2176"/>
         <source>Configure which processes can access NT IPC objects like ALPC ports and other processes memory and context.
 To specify a process use &apos;$:program.exe&apos; as path.</source>
-        <translation type="unfinished"></translation>
+        <translation>配置哪些进程可以访问 NT IPC 对象，如 ALPC 端口及其他进程的内存和相关运行状态环境
+如需指定一个进程，使用“$:program.exe”作为路径值(不含双引号)</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="2190"/>
         <source>Wnd</source>
-        <translation type="unfinished"></translation>
+        <translation>窗口</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="2275"/>
         <source>Wnd Class</source>
-        <translation type="unfinished">窗口类</translation>
+        <translation>窗口类</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="2290"/>
         <source>Configure which processes can access Desktop objects like Windows and alike.</source>
-        <translation type="unfinished"></translation>
+        <translation>配置哪些进程可以访问桌面对象，如 Windows 或其它类似对象</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="2303"/>
         <source>COM</source>
-        <translation type="unfinished"></translation>
+        <translation>COM</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="2349"/>
         <source>Class Id</source>
-        <translation type="unfinished"></translation>
+        <translation>类 Id</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="2396"/>
         <source>Configure which processes can access COM objects.</source>
-        <translation type="unfinished"></translation>
+        <translation>配置哪些进程可以访问 COM 对象</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="2408"/>
         <source>Don&apos;t use virtualized COM, Open access to hosts COM infrastructure (not recommended)</source>
-        <translation type="unfinished"></translation>
+        <translation>不虚拟化 COM 对象，而是开放主机的 COM 基础结构 (不推荐)</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="2416"/>
         <source>Access Policies</source>
-        <translation type="unfinished"></translation>
+        <translation>权限策略</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="2449"/>
         <source>Apply Close...=!&lt;program&gt;,... rules also to all binaries located in the sandbox.</source>
-        <translation type="unfinished"></translation>
+        <translation>将 Close...=!&lt;program&gt;,... 规则，应用到位于沙盒内的所有相关二进制文件</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="2544"/>
         <source>Network Options</source>
-        <translation type="unfinished"></translation>
+        <translation>网络选项</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="2641"/>
@@ -4899,8 +4946,8 @@ To specify a process use &apos;$:program.exe&apos; as path.</source>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="2760"/>
-        <location filename="Forms/OptionsWindow.ui" line="3334"/>
-        <location filename="Forms/OptionsWindow.ui" line="3658"/>
+        <location filename="Forms/OptionsWindow.ui" line="3181"/>
+        <location filename="Forms/OptionsWindow.ui" line="3505"/>
         <source>Action</source>
         <translation>动作</translation>
     </message>
@@ -4911,7 +4958,6 @@ To specify a process use &apos;$:program.exe&apos; as path.</source>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="2770"/>
-        <location filename="Forms/OptionsWindow.ui" line="2877"/>
         <source>IP</source>
         <translation>IP</translation>
     </message>
@@ -4992,7 +5038,7 @@ The process match level has a higher priority than the specificity and describes
         <translation type="vanished">COM/RPC</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3209"/>
+        <location filename="Forms/OptionsWindow.ui" line="3056"/>
         <source>Allow use of nested job objects (works on Windows 8 and later)</source>
         <oldsource>Allow use of nested job objects (experimental, works on Windows 8 and later)</oldsource>
         <translation>允许使用嵌套作业对象(job object) (仅适用于 Windows 8 及更高版本)</translation>
@@ -5040,10 +5086,10 @@ The process match level has a higher priority than the specificity and describes
     <message>
         <location filename="Forms/OptionsWindow.ui" line="854"/>
         <source>Issue message 2111 when a process access is denied</source>
-        <translation>进程被拒绝访问非沙盒进程内存时发出问题代码 2111</translation>
+        <translation>进程被拒绝访问非沙盒进程内存时，提示问题代码 2111</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3256"/>
+        <location filename="Forms/OptionsWindow.ui" line="3103"/>
         <source>Disable the use of RpcMgmtSetComTimeout by default (this may resolve compatibility issues)</source>
         <translation>默认禁用 RpcMgmtSetComTimeout (或许可以解决兼容性问题)</translation>
     </message>
@@ -5078,40 +5124,40 @@ The process match level has a higher priority than the specificity and describes
         <translation>以下选项可以在你未授予管理员权限时安全的使用</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3266"/>
+        <location filename="Forms/OptionsWindow.ui" line="3113"/>
         <source>Triggers</source>
         <translation>触发器</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3329"/>
+        <location filename="Forms/OptionsWindow.ui" line="3176"/>
         <source>Event</source>
         <translation>事件</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3299"/>
-        <location filename="Forms/OptionsWindow.ui" line="3318"/>
-        <location filename="Forms/OptionsWindow.ui" line="3456"/>
+        <location filename="Forms/OptionsWindow.ui" line="3146"/>
+        <location filename="Forms/OptionsWindow.ui" line="3165"/>
+        <location filename="Forms/OptionsWindow.ui" line="3303"/>
         <source>Run Command</source>
         <translation>执行命令</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3488"/>
+        <location filename="Forms/OptionsWindow.ui" line="3335"/>
         <source>Start Service</source>
         <translation>启动服务</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3463"/>
+        <location filename="Forms/OptionsWindow.ui" line="3310"/>
         <source>These events are executed each time a box is started</source>
         <translation>这些事件当沙盒每次启动时都会被执行</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3466"/>
+        <location filename="Forms/OptionsWindow.ui" line="3313"/>
         <source>On Box Start</source>
-        <translation>启动阶段</translation>
+        <translation>沙盒启动阶段</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3347"/>
-        <location filename="Forms/OptionsWindow.ui" line="3495"/>
+        <location filename="Forms/OptionsWindow.ui" line="3194"/>
+        <location filename="Forms/OptionsWindow.ui" line="3342"/>
         <source>These commands are run UNBOXED just before the box content is deleted</source>
         <translation>这些命令将在删除沙盒的内容之前，以非沙盒化的方式被执行</translation>
     </message>
@@ -5120,53 +5166,53 @@ The process match level has a higher priority than the specificity and describes
         <translation type="vanished">删除阶段</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3421"/>
+        <location filename="Forms/OptionsWindow.ui" line="3268"/>
         <source>These commands are executed only when a box is initialized. To make them run again, the box content must be deleted.</source>
         <translation>这些命令只在沙盒被初始化时执行，要使它们再次运行，必须删除沙盒内容</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3424"/>
+        <location filename="Forms/OptionsWindow.ui" line="3271"/>
         <source>On Box Init</source>
-        <translation>初始阶段</translation>
+        <translation>沙盒初始阶段</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3434"/>
+        <location filename="Forms/OptionsWindow.ui" line="3281"/>
         <source>Here you can specify actions to be executed automatically on various box events.</source>
         <translation>在此处可以配置各种沙盒事件中自动执行特定的动作</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3852"/>
+        <location filename="Forms/OptionsWindow.ui" line="3699"/>
         <source>API call trace (requires LogAPI to be installed in the Sbie directory)</source>
         <oldsource>API call trace (requirers logapi to be installed in the sbie dir)</oldsource>
         <translation>API 调用跟踪 (需要安装 LogAPI 模块到沙盒目录)</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3892"/>
+        <location filename="Forms/OptionsWindow.ui" line="3739"/>
         <source>Log all SetError&apos;s to Trace log (creates a lot of output)</source>
         <translation>记录所有 SetError 到跟踪日志 (将产生大量输出)</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3946"/>
+        <location filename="Forms/OptionsWindow.ui" line="3793"/>
         <source>File Trace</source>
         <translation>文件跟踪</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3872"/>
+        <location filename="Forms/OptionsWindow.ui" line="3719"/>
         <source>Pipe Trace</source>
         <translation>管道跟踪</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4006"/>
+        <location filename="Forms/OptionsWindow.ui" line="3853"/>
         <source>Access Tracing</source>
         <translation>访问跟踪</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3912"/>
+        <location filename="Forms/OptionsWindow.ui" line="3759"/>
         <source>Log Debug Output to the Trace Log</source>
         <translation>调试日志输出到跟踪日志</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3919"/>
+        <location filename="Forms/OptionsWindow.ui" line="3766"/>
         <source>Log all access events as seen by the driver to the resource access log.
 
 This options set the event mask to &quot;*&quot; - All access events
@@ -5185,43 +5231,43 @@ instead of &quot;*&quot;.</source>
 来代替 &quot;*&quot;</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3939"/>
+        <location filename="Forms/OptionsWindow.ui" line="3786"/>
         <source>Ntdll syscall Trace (creates a lot of output)</source>
         <translation>Ntdll 系统调用跟踪 (将产生大量输出)</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3953"/>
+        <location filename="Forms/OptionsWindow.ui" line="3800"/>
         <source>Disable Resource Access Monitor</source>
         <translation>禁用资源访问监控器</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3980"/>
+        <location filename="Forms/OptionsWindow.ui" line="3827"/>
         <source>Resource Access Monitor</source>
         <translation>资源访问监控</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="2656"/>
-        <location filename="Forms/OptionsWindow.ui" line="4027"/>
+        <location filename="Forms/OptionsWindow.ui" line="3874"/>
         <source>Network Firewall</source>
         <translation>网络防火墙</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4050"/>
+        <location filename="Forms/OptionsWindow.ui" line="3897"/>
         <source>Debug</source>
         <translation>调试</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4105"/>
+        <location filename="Forms/OptionsWindow.ui" line="3952"/>
         <source>WARNING, these options can disable core security guarantees and break sandbox security!!!</source>
         <translation>警告，这些选项可使核心安全保障失效并且破坏沙盒安全！</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4115"/>
+        <location filename="Forms/OptionsWindow.ui" line="3962"/>
         <source>These options are intended for debugging compatibility issues, please do not use them in production use. </source>
         <translation>这些选项是为调试兼容性问题提供的，日常使用者勿碰 </translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4130"/>
+        <location filename="Forms/OptionsWindow.ui" line="3977"/>
         <source>App Templates</source>
         <translation>应用模板</translation>
     </message>
@@ -5230,22 +5276,22 @@ instead of &quot;*&quot;.</source>
         <translation type="vanished">兼容性模板</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4160"/>
+        <location filename="Forms/OptionsWindow.ui" line="4007"/>
         <source>Filter Categories</source>
         <translation>类别筛选</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4173"/>
+        <location filename="Forms/OptionsWindow.ui" line="4020"/>
         <source>Text Filter</source>
         <translation>文本筛选</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4180"/>
+        <location filename="Forms/OptionsWindow.ui" line="4027"/>
         <source>Add Template</source>
         <translation>添加模板</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4187"/>
+        <location filename="Forms/OptionsWindow.ui" line="4034"/>
         <source>This list contains a large amount of sandbox compatibility enhancing templates</source>
         <translation>此列表含有大量的沙盒兼容性增强模板</translation>
     </message>
@@ -5254,17 +5300,17 @@ instead of &quot;*&quot;.</source>
         <translation type="vanished">删除模板</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4224"/>
+        <location filename="Forms/OptionsWindow.ui" line="4071"/>
         <source>Category</source>
         <translation>类别</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4240"/>
+        <location filename="Forms/OptionsWindow.ui" line="4087"/>
         <source>Template Folders</source>
         <translation>目录模板</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4260"/>
+        <location filename="Forms/OptionsWindow.ui" line="4107"/>
         <source>Configure the folder locations used by your other applications.
 
 Please note that this values are currently user specific and saved globally for all boxes.</source>
@@ -5273,169 +5319,129 @@ Please note that this values are currently user specific and saved globally for 
 请注意，这些值对当前用户的所有沙盒保存</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3813"/>
-        <location filename="Forms/OptionsWindow.ui" line="4291"/>
+        <location filename="Forms/OptionsWindow.ui" line="3660"/>
+        <location filename="Forms/OptionsWindow.ui" line="4138"/>
         <source>Value</source>
         <translation>值</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4302"/>
+        <location filename="Forms/OptionsWindow.ui" line="4149"/>
         <source>Accessibility</source>
         <translation>无障碍功能</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4398"/>
+        <location filename="Forms/OptionsWindow.ui" line="4245"/>
         <source>To compensate for the lost protection, please consult the Drop Rights settings page in the Restrictions settings group.</source>
         <translation>要弥补失去的保护，请参考“限制”设置组中的降低权限部分</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4322"/>
+        <location filename="Forms/OptionsWindow.ui" line="4169"/>
         <source>Screen Readers: JAWS, NVDA, Window-Eyes, System Access</source>
         <translation>屏幕阅读器：JAWS、NVDA、Window-Eyes、系统无障碍接口</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="2809"/>
-        <source>DNS Filter</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Forms/OptionsWindow.ui" line="2826"/>
-        <source>Add Filter</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Forms/OptionsWindow.ui" line="2846"/>
-        <source>With the DNS filter individual domains can be blocked, on a per process basis. Leave the IP column empty to block or enter an ip to redirect.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Forms/OptionsWindow.ui" line="2872"/>
-        <source>Domain</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Forms/OptionsWindow.ui" line="2888"/>
-        <source>Internet Proxy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Forms/OptionsWindow.ui" line="2905"/>
-        <source>Add Proxy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Forms/OptionsWindow.ui" line="2912"/>
-        <source>Sandboxed programs can be forced to use a preset socks5 proxy.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Forms/OptionsWindow.ui" line="2951"/>
-        <source>Proxy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Forms/OptionsWindow.ui" line="2976"/>
+        <location filename="Forms/OptionsWindow.ui" line="2823"/>
         <source>Quick Recovery</source>
-        <translation type="unfinished"></translation>
+        <translation>快速恢复</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3055"/>
+        <location filename="Forms/OptionsWindow.ui" line="2902"/>
         <source>Immediate Recovery</source>
-        <translation type="unfinished">即时恢复</translation>
+        <translation>即时恢复</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3152"/>
+        <location filename="Forms/OptionsWindow.ui" line="2999"/>
         <source>Various Options</source>
-        <translation type="unfinished"></translation>
+        <translation>其它杂项</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3296"/>
+        <location filename="Forms/OptionsWindow.ui" line="3143"/>
         <source>This command will be run before the box content will be deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>该命令将在删除沙盒内容之前运行</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3350"/>
+        <location filename="Forms/OptionsWindow.ui" line="3197"/>
         <source>On File Recovery</source>
-        <translation type="unfinished"></translation>
+        <translation>文件恢复阶段</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3379"/>
+        <location filename="Forms/OptionsWindow.ui" line="3226"/>
         <source>This command will be run before a file is being recoverd and the file path will be passed as the first argument, if this command return something other than 0 the recovery will be blocked</source>
-        <translation type="unfinished"></translation>
+        <translation>该命令将在文件恢复前运行，文件路径将作为第一个参数被传递，如果该命令的返回值不是 0，则恢复将被阻止</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3382"/>
+        <location filename="Forms/OptionsWindow.ui" line="3229"/>
         <source>Run File Checker</source>
-        <translation type="unfinished"></translation>
+        <translation>运行文件检查</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3498"/>
+        <location filename="Forms/OptionsWindow.ui" line="3345"/>
         <source>On Delete Content</source>
-        <translation type="unfinished"></translation>
+        <translation>内容删除阶段</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3578"/>
+        <location filename="Forms/OptionsWindow.ui" line="3425"/>
         <source>Protect processes in this box from being accessed by specified unsandboxed host processes.</source>
-        <translation type="unfinished"></translation>
+        <translation>保护此沙盒内的进程不被指定的非沙盒的主机进程访问</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3589"/>
-        <location filename="Forms/OptionsWindow.ui" line="3653"/>
+        <location filename="Forms/OptionsWindow.ui" line="3436"/>
+        <location filename="Forms/OptionsWindow.ui" line="3500"/>
         <source>Process</source>
-        <translation type="unfinished">进程</translation>
+        <translation>进程</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3629"/>
+        <location filename="Forms/OptionsWindow.ui" line="3476"/>
         <source>Block also read access to processes in this sandbox</source>
-        <translation type="unfinished"></translation>
+        <translation>阻止对位于该沙盒中的进程的读取访问</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3778"/>
+        <location filename="Forms/OptionsWindow.ui" line="3625"/>
         <source>Add Option</source>
-        <translation type="unfinished"></translation>
+        <translation>添加选项</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3792"/>
+        <location filename="Forms/OptionsWindow.ui" line="3639"/>
         <source>Here you can configure advanced per process options to improve compatibility and/or customize sand boxing behavior.</source>
-        <translation type="unfinished"></translation>
+        <translation>在此处可以配置各个进程的高级选项，以提高兼容性或自定义沙盒的某些行为</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3803"/>
+        <location filename="Forms/OptionsWindow.ui" line="3650"/>
         <source>Option</source>
-        <translation type="unfinished"></translation>
+        <translation>选项</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4034"/>
+        <location filename="Forms/OptionsWindow.ui" line="3881"/>
         <source>Dns Request Logging</source>
-        <translation type="unfinished"></translation>
+        <translation>DNS 请求记录</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4140"/>
+        <location filename="Forms/OptionsWindow.ui" line="3987"/>
         <source>Templates</source>
-        <translation type="unfinished"></translation>
+        <translation>模板</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4362"/>
+        <location filename="Forms/OptionsWindow.ui" line="4209"/>
         <source>The following settings enable the use of Sandboxie in combination with accessibility software.  Please note that some measure of Sandboxie protection is necessarily lost when these settings are in effect.</source>
         <translation>以下设置允许 Sandboxie 与辅助功能软件结合，请注意当这些设置生效时，会失去 Sandboxie 的部分保护措施</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4415"/>
+        <location filename="Forms/OptionsWindow.ui" line="4262"/>
         <source>Edit ini Section</source>
         <translation>配置文本</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4421"/>
+        <location filename="Forms/OptionsWindow.ui" line="4268"/>
         <source>Edit ini</source>
         <translation>编辑配置</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4434"/>
+        <location filename="Forms/OptionsWindow.ui" line="4281"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4457"/>
+        <location filename="Forms/OptionsWindow.ui" line="4304"/>
         <source>Save</source>
         <translation>保存</translation>
     </message>
@@ -5459,7 +5465,7 @@ Please note that this values are currently user specific and saved globally for 
 <context>
     <name>QObject</name>
     <message>
-        <location filename="Views/SbieView.cpp" line="1349"/>
+        <location filename="Views/SbieView.cpp" line="1354"/>
         <source>Drive %1</source>
         <translation>磁盘 %1</translation>
     </message>
@@ -5467,27 +5473,27 @@ Please note that this values are currently user specific and saved globally for 
 <context>
     <name>QPlatformTheme</name>
     <message>
-        <location filename="SandMan.cpp" line="3036"/>
+        <location filename="SandMan.cpp" line="3090"/>
         <source>OK</source>
         <translation>确定</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3037"/>
+        <location filename="SandMan.cpp" line="3091"/>
         <source>Apply</source>
         <translation>应用</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3038"/>
+        <location filename="SandMan.cpp" line="3092"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3039"/>
+        <location filename="SandMan.cpp" line="3093"/>
         <source>&amp;Yes</source>
         <translation>是(&amp;Y)</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3040"/>
+        <location filename="SandMan.cpp" line="3094"/>
         <source>&amp;No</source>
         <translation>否(&amp;N)</translation>
     </message>
@@ -5639,37 +5645,37 @@ Please note that this values are currently user specific and saved globally for 
     <message>
         <location filename="Forms/SettingsWindow.ui" line="112"/>
         <source>Recovery Options</source>
-        <translation type="unfinished"></translation>
+        <translation>恢复选项</translation>
     </message>
     <message>
         <location filename="Forms/SettingsWindow.ui" line="255"/>
         <source>Start Menu Integration</source>
-        <translation type="unfinished"></translation>
+        <translation>开始菜单集成</translation>
     </message>
     <message>
         <location filename="Forms/SettingsWindow.ui" line="319"/>
         <source>Integrate boxes with Host Start Menu</source>
-        <translation type="unfinished"></translation>
+        <translation>整合沙盒与宿主开始菜单</translation>
     </message>
     <message>
         <location filename="Forms/SettingsWindow.ui" line="359"/>
         <source>Scan shell folders and offer links in run menu</source>
-        <translation type="unfinished"></translation>
+        <translation>扫描系统 Shell 目录并在开始菜单中集成快捷方式</translation>
     </message>
     <message>
         <location filename="Forms/SettingsWindow.ui" line="605"/>
         <source>Use new config dialog layout *</source>
-        <translation type="unfinished"></translation>
+        <translation>使用新的配置对话框视图 *</translation>
     </message>
     <message>
         <location filename="Forms/SettingsWindow.ui" line="812"/>
         <source>Program Alerts</source>
-        <translation type="unfinished">程序警报</translation>
+        <translation>程序警报</translation>
     </message>
     <message>
         <location filename="Forms/SettingsWindow.ui" line="894"/>
         <source>Issue message 1301 when forced processes has been disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>当必沙进程被禁止时，提示问题代码 1301</translation>
     </message>
     <message>
         <location filename="Forms/SettingsWindow.ui" line="975"/>
@@ -6064,7 +6070,7 @@ Please note that this values are currently user specific and saved globally for 
     <message>
         <location filename="Forms/SettingsWindow.ui" line="818"/>
         <source>Issue message 1308 when a program fails to start</source>
-        <translation>程序启动失败时发出问题代码 1308</translation>
+        <translation>程序启动失败时，提示问题代码 1308</translation>
     </message>
     <message>
         <location filename="Forms/SettingsWindow.ui" line="983"/>
