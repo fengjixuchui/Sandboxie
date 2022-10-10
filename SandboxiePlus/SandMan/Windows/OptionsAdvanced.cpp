@@ -11,6 +11,7 @@
 void COptionsWindow::CreateAdvanced()
 {
 	connect(ui.chkPreferExternalManifest, SIGNAL(clicked(bool)), this, SLOT(OnAdvancedChanged()));
+	connect(ui.chkElevateCreateProcessFix, SIGNAL(clicked(bool)), this, SLOT(OnAdvancedChanged()));
 	connect(ui.chkNoWindowRename, SIGNAL(clicked(bool)), this, SLOT(OnNoWindowRename()));
 	connect(ui.chkNestedJobs, SIGNAL(clicked(bool)), this, SLOT(OnAdvancedChanged()));
 	connect(ui.chkUseSbieWndStation, SIGNAL(clicked(bool)), this, SLOT(OnAdvancedChanged()));
@@ -38,7 +39,7 @@ void COptionsWindow::CreateAdvanced()
 
 	m_AdvOptions.insert("UseWin32kHooks",				SAdvOption{eSpec, QStringList() << "y" << "n", tr("Enable the use of win32 hooks for selected processes. Note: You need to enable win32k syscall hook support globally first.")});
 	m_AdvOptions.insert("EnableMiniDump",				SAdvOption{eSpec, QStringList() << "y" << "n", tr("Enable crash dump creation in the sandbox folder")});
-	m_AdvOptions.insert("ApplyElevateCreateProcessFix", SAdvOption{eSpec, QStringList() << "y" << "n", tr("Always use ElevateCreateProcess fix, as sometimes applied by the Program Compatibility Assistant.")});
+	m_AdvOptions.insert("ApplyElevateCreateProcessFix", SAdvOption{eOnlySpec, QStringList() << "y" << "n", tr("Always use ElevateCreateProcess fix, as sometimes applied by the Program Compatibility Assistant.")});
 	m_AdvOptions.insert("PreferExternalManifest",		SAdvOption{eOnlySpec, QStringList() << "y" << "n, tr("")"});
 	m_AdvOptions.insert("ExternalManifestHack",			SAdvOption{eSpec, QStringList() << "y" << "n", tr("Enable special inconsistent PreferExternalManifest behavioure, as neede for some edge fixes")});
 	m_AdvOptions.insert("RpcMgmtSetComTimeout",			SAdvOption{eSpec, QStringList() << "n" << "y", tr("Set RpcMgmtSetComTimeout usage for specific processes")});
@@ -109,6 +110,8 @@ void COptionsWindow::CreateAdvanced()
 void COptionsWindow::LoadAdvanced()
 {
 	ui.chkPreferExternalManifest->setChecked(m_pBox->GetBool("PreferExternalManifest", false));
+	ui.chkElevateCreateProcessFix->setChecked(m_pBox->GetBool("ApplyElevateCreateProcessFix", false));
+
 	ui.chkNestedJobs->setChecked(m_pBox->GetBool("AllowBoxedJobs", false));
 	ui.chkUseSbieWndStation->setChecked(m_pBox->GetBool("UseSbieWndStation", true));
 
@@ -243,6 +246,8 @@ void COptionsWindow::ShowTriggersTmpl(bool bUpdate)
 void COptionsWindow::SaveAdvanced()
 {
 	WriteAdvancedCheck(ui.chkPreferExternalManifest, "PreferExternalManifest", "y", "");
+	WriteAdvancedCheck(ui.chkElevateCreateProcessFix, "ApplyElevateCreateProcessFix", "y", "");
+
 	WriteAdvancedCheck(ui.chkUseSbieWndStation, "UseSbieWndStation", "", "n");
 
 	WriteAdvancedCheck(ui.chkAddToJob, "NoAddProcessToJob", "", "y");
@@ -432,8 +437,6 @@ void COptionsWindow::OnNoWindowRename()
 		SetAccessEntry(eWnd, "", eOpen, "#");
 	else
 		DelAccessEntry(eWnd, "", eOpen, "#");
-	m_AdvancedChanged = true;
-	OnOptChanged();
 }
 
 // options
@@ -492,6 +495,16 @@ void COptionsWindow::SaveOptionList()
 	CloseOptionEdit(true);
 
 	QMap<QString, QList<QString>> OptionMap;
+
+	// cache unlisted set eOnlySpec global presets
+	foreach(const QString& Name, m_AdvOptions.keys()) {
+		foreach(const QString & Value, m_pBox->GetTextList(Name, m_Template)) {
+			QStringList Values = Value.split(",");
+			if (Values.count() < 2 && m_AdvOptions[Name].ProcSpec == eOnlySpec)
+				OptionMap[Name].append(Values[0]);
+		}
+	}
+
 	for (int i = 0; i < ui.treeOptions->topLevelItemCount(); i++)
 	{
 		QTreeWidgetItem* pItem = ui.treeOptions->topLevelItem(i);
@@ -555,7 +568,7 @@ void COptionsWindow::OnAddOption()
 
 	QString Name = progDialog.value(); 
 
-	AddOptionEntry(Name, "Program.exe", "");
+	AddOptionEntry(Name, "", "");
 }
 
 void COptionsWindow::OnDelOption()
@@ -621,7 +634,10 @@ void COptionsWindow::OnOptionItemDoubleClicked(QTreeWidgetItem* pItem, int Colum
 	pValue->setEditable(true);
 	foreach(const QString& Value, m_AdvOptions[Name].Values)
 		pValue->addItem(Value);
-	//pValue->setCurrentIndex(pValue->findData(pItem->data(2, Qt::UserRole)));
+	int pos = pValue->findData(pItem->data(2, Qt::UserRole));
+	pValue->setCurrentIndex(pos);
+	if (pos == -1)
+		pValue->setCurrentText(pItem->text(2));
 	ui.treeOptions->setItemWidget(pItem, 2, pValue);
 }
 
