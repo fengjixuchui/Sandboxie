@@ -9,8 +9,8 @@ IF %1 == x86 (
 IF %1 == x64 (
   set archPath=x64
   call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
-  set qtPath=%~dp0..\..\Qt\5.15.2\msvc2019_64
 REM  set qtPath=%~dp0..\..\Qt\6.3.1\msvc2019_64
+  set qtPath=%~dp0..\..\Qt\5.15.2\msvc2019_64
   set instPath=%~dp0\SbiePlus_x64
 )
 IF %1 == ARM64 (
@@ -39,8 +39,8 @@ copy "%redistPath%\*" %instPath%\
 
 ECHO Copying Qt libraries
 
-REM IF NOT %archPath% == ARM64 (
-IF %archPath% == Win32 (
+IF NOT %archPath% == ARM64 (
+REM IF %archPath% == Win32 (
 	copy %qtPath%\bin\Qt5Core.dll %instPath%\
 	copy %qtPath%\bin\Qt5Gui.dll %instPath%\
 	copy %qtPath%\bin\Qt5Network.dll %instPath%\
@@ -51,7 +51,6 @@ IF %archPath% == Win32 (
 	copy %qtPath%\bin\Qt6Gui.dll %instPath%\
 	copy %qtPath%\bin\Qt6Network.dll %instPath%\
 	copy %qtPath%\bin\Qt6Widgets.dll %instPath%\
-	copy %qtPath%\bin\Qt6WinExtras.dll %instPath%\
 )
 
 
@@ -94,8 +93,12 @@ copy /y %~dp0..\SandboxiePlus\Build_SandMan_%archPath%\release\sandman_*.qm %ins
 copy /y %~dp0\qttranslations\qm\qt_*.qm %instPath%\translations\
 copy /y %~dp0\qttranslations\qm\qtbase_*.qm %instPath%\translations\
 copy /y %~dp0\qttranslations\qm\qtmultimedia_*.qm %instPath%\translations\
+
+IF NOT %archPath% == ARM64 (
+REM IF %archPath% == Win32 (
 copy /y %qtPath%\translations\qtscript_*.qm %instPath%\translations\
 copy /y %qtPath%\translations\qtxmlpatterns_*.qm %instPath%\translations\
+)
 
 ECHO Copying Sandboxie
 
