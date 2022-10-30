@@ -5,16 +5,46 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
-## [1.5.1 / 5.60.1] - 2022-10-??
+
+## [1.5.3 / 5.60.3] - 2022-10-??
+
+### Fixed
+- fixed issue with box options [#2400](https://github.com/sandboxie-plus/Sandboxie/issues/2400)
+- fixed issue with Smart App Control [#2341](https://github.com/sandboxie-plus/Sandboxie/issues/2341)
+
+
+
+
+## [1.5.2 / 5.60.2] - 2022-10-??
+
+### Changed
+- utility groups are now cleaned up automatically
+
+### Fixed
+- fixed issues with SBIE2227 on virtual drives
+- fixed issues on native 32-bit windows introduced with 1.5.0 [#2401](https://github.com/sandboxie-plus/Sandboxie/issues/2401)
+
+
+
+
+
+## [1.5.1 / 5.60.1] - 2022-10-26
 
 ### Added
 - added SBIE2227 warning when a sandbox is located on a volume without 8.3 name support
+- added template for Tencent QQ [#2367](https://github.com/sandboxie-plus/Sandboxie/issues/2367)
 
 ### Fixed
-- fixed issues when reanaming a sandbox with a custom path [#2368](https://github.com/sandboxie-plus/Sandboxie/issues/2368)
-- proeprly fixed the firefox 106 issue
+- fixed issues when renaming a sandbox with a custom path [#2368](https://github.com/sandboxie-plus/Sandboxie/issues/2368)
+- properly fixed the Firefox 106 issue [46e9979](https://github.com/sandboxie-plus/Sandboxie/commit/46e99799e2b753b85224dc921ec141a05025acfd)
 - fixed issue with alternative UI modes [#2380](https://github.com/sandboxie-plus/Sandboxie/issues/2380)
-- fixed commandline corruption with rbeakout processes [#2377](https://github.com/sandboxie-plus/Sandboxie/issues/2377)
+- fixed command line corruption with breakout processes [#2377](https://github.com/sandboxie-plus/Sandboxie/issues/2377)
+- fixed issues with Privacy Enhanced box types [#2342](https://github.com/sandboxie-plus/Sandboxie/issues/2342)
+- fixed issue with boxed object directory initialization [#2342](https://github.com/sandboxie-plus/Sandboxie/issues/2342)
+- Sandboxie no longer leaves behind permanent directory objects
+- FIXED SECURITY ISSUE ID-21 AlpcConnectPortEx was not filtered by the driver [#2396](https://github.com/sandboxie-plus/Sandboxie/issues/2396)
+- fixed issues with program controll options [#2395](https://github.com/sandboxie-plus/Sandboxie/issues/2395)
+
 
 
 ## [1.5.0 / 5.60.0] - 2022-10-19
@@ -35,7 +65,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - fixed issue with local template [#2338](https://github.com/sandboxie-plus/Sandboxie/pull/2338) (thanks okrc)
 - fixed Edge WebView2 compatibility issue [#2350](https://github.com/sandboxie-plus/Sandboxie/issues/2350)
 - added provisional workaround for Firefox 106 content process sandbox issue
-- fixed bug with renaming sandboxes [2358](https://github.com/sandboxie-plus/Sandboxie/pull/2358) (thanks okrc)
+- fixed bug with renaming sandboxes [#2358](https://github.com/sandboxie-plus/Sandboxie/pull/2358) (thanks okrc)
 
 ### Changed
 - reworked API compatibility check
@@ -566,7 +596,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - EnableObjectFiltering is now set enabled by default, and replaces Sbie's old process/thread handle filter
-- the $: syntax now accepts a wildcard $:* no more specialized wildcards though
+- the `$:` syntax now accepts a wildcard `$:*` no more specialized wildcards though
 
 ### Fixed
 - fixed NtGetNextProcess being fully disabled instead of properly filtered

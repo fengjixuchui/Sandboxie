@@ -76,7 +76,7 @@ private slots:
 	void OnBreakoutBrowse();
 	void OnBreakoutDir();
 	void OnDelBreakout();
-	void OnShowBreakoutTmpl()		{ LoadForcedTmpl(true); }
+	void OnShowBreakoutTmpl()		{ LoadBreakoutTmpl(true); }
 
 	void OnAddLingering();
 	void OnDelStopProg();
@@ -312,8 +312,6 @@ protected:
 	QTreeWidgetItem* GetAccessEntry(EAccessType Type, const QString& Program, EAccessMode Mode, const QString& Path);
 	void SetAccessEntry(EAccessType Type, const QString& Program, EAccessMode Mode, const QString& Path);
 	void DelAccessEntry(EAccessType Type, const QString& Program, EAccessMode Mode, const QString& Path);
-	void AddProgToGroup(QTreeWidget* pTree, const QString& Groupe, bool disabled = false);
-	void DelProgFromGroup(QTreeWidget* pTree, const QString& Groupe);
 
 	void LoadConfig();
 	void SaveConfig();

@@ -58,6 +58,15 @@ public:
 				}*/
 				pBox->setProperty("value", text);
 			});
+			connect(pBox->lineEdit(), &QLineEdit::returnPressed, [pBox](){
+				/*if (pBox->currentIndex() != -1) {
+					int pos = pBox->lineEdit()->cursorPosition();
+					pBox->setCurrentIndex(-1);
+					pBox->setCurrentText(text);
+					pBox->lineEdit()->setCursorPosition(pos);
+				}*/
+				pBox->setProperty("value", pBox->lineEdit()->text());
+			});
 
 			connect(pBox, qOverload<int>(&QComboBox::currentIndexChanged), [pBox](int index){
 				if (index != -1)
@@ -391,7 +400,7 @@ COptionsWindow::COptionsWindow(const QSharedPointer<CSbieIni>& pBox, const QStri
 	connect(ui.chkShowForceTmpl, SIGNAL(clicked(bool)), this, SLOT(OnShowForceTmpl()));
 	//ui.treeForced->setEditTriggers(QAbstractItemView::DoubleClicked);
 	ui.treeForced->setItemDelegateForColumn(0, new NoEditDelegate(this));
-	ui.treeForced->setItemDelegateForColumn(1, new ProgramsDelegate(this, ui.treeForced, 0, this));
+	ui.treeForced->setItemDelegateForColumn(1, new ProgramsDelegate(this, ui.treeForced, -1, this));
 	connect(ui.treeForced, SIGNAL(itemChanged(QTreeWidgetItem *, int)), this, SLOT(OnForcedChanged(QTreeWidgetItem *, int)));
 
 	connect(ui.btnBreakoutProg, SIGNAL(clicked(bool)), this, SLOT(OnBreakoutProg()));
@@ -404,7 +413,7 @@ COptionsWindow::COptionsWindow(const QSharedPointer<CSbieIni>& pBox, const QStri
 	connect(ui.chkShowBreakoutTmpl, SIGNAL(clicked(bool)), this, SLOT(OnShowBreakoutTmpl()));
 	//ui.treeBreakout->setEditTriggers(QAbstractItemView::DoubleClicked);
 	ui.treeBreakout->setItemDelegateForColumn(0, new NoEditDelegate(this));
-	ui.treeBreakout->setItemDelegateForColumn(1, new ProgramsDelegate(this, ui.treeBreakout, 0, this));
+	ui.treeBreakout->setItemDelegateForColumn(1, new ProgramsDelegate(this, ui.treeBreakout, -1, this));
 	connect(ui.treeBreakout, SIGNAL(itemChanged(QTreeWidgetItem *, int)), this, SLOT(OnForcedChanged(QTreeWidgetItem *, int)));
 	//
 
@@ -493,6 +502,7 @@ COptionsWindow::COptionsWindow(const QSharedPointer<CSbieIni>& pBox, const QStri
 
 	LoadConfig();
 
+	m_pCurrentTab = ui.tabGeneral;
 	UpdateCurrentTab();
 
 	ui.buttonBox->button(QDialogButtonBox::Apply)->setEnabled(false);
@@ -961,10 +971,12 @@ void COptionsWindow::OnTab(QWidget* pTab)
 
 void COptionsWindow::UpdateCurrentTab()
 {
-	if (m_pCurrentTab == ui.tabRestrictions || m_pCurrentTab == ui.tabOptions || m_pCurrentTab == ui.tabSecurity) 
+	if (m_pCurrentTab == ui.tabRestrictions || m_pCurrentTab == ui.tabOptions || m_pCurrentTab == ui.tabGeneral) 
 	{
 		ui.chkVmRead->setChecked(GetAccessEntry(eIPC, "", eReadOnly, "$:*") != NULL);
-
+	}
+	else if (m_pCurrentTab ==ui.tabPrivileges || m_pCurrentTab == ui.tabSecurity)
+	{
 		if (GetAccessEntry(eWnd, "", eOpen, "*") != NULL)
 		{
 			ui.chkAddToJob->setEnabled(false);
