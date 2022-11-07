@@ -49,7 +49,7 @@ public:
 	static QString		FormatError(const SB_STATUS& Error);
 	static void			CheckResults(QList<SB_STATUS> Results);
 
-	static QIcon		GetIcon(const QString& Name, bool bAction = true);
+	static QIcon		GetIcon(const QString& Name, int iAction = 1);
 
 	bool				IsFullyPortable();
 
@@ -67,6 +67,7 @@ public:
 	QRgb				GetBoxColor(int boxType) { return m_BoxColors[boxType]; }
 	QIcon				GetColorIcon(QColor boxColor, bool inUse = false/*, bool bOut = false*/);
 	QIcon				MakeIconBusy(const QIcon& Icon, int Index = 0);
+	QIcon				MakeIconRecycle(const QIcon& Icon);
 	QString				GetBoxDescription(int boxType);
 	
 	bool				CheckCertificate(QWidget* pWidget);

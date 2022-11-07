@@ -6,26 +6,37 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
-## [1.5.3 / 5.60.3] - 2022-10-??
+## [1.5.3 / 5.60.3] - 2022-11-??
+
+### Changed
+- boxes set to auto delete are nor marked with a small red recycle symbol
 
 ### Fixed
 - fixed issue with box options [#2400](https://github.com/sandboxie-plus/Sandboxie/issues/2400)
 - fixed issue with Smart App Control [#2341](https://github.com/sandboxie-plus/Sandboxie/issues/2341)
 - fixed issue with snapshots when using privacy boxes [#2427](https://github.com/sandboxie-plus/Sandboxie/issues/2427)
+- fixed issue with m_pColorslider change not applied [#2433](https://github.com/sandboxie-plus/Sandboxie/pull/2433) (thanks okrc)
+- fixed issue with switching snapshots when the file panel is open
+- fixed issue with file panel when an empty box is selected [#2419](https://github.com/sandboxie-plus/Sandboxie/issues/2419)
+- fixed issue with menu icon not being disabled [#2406](https://github.com/sandboxie-plus/Sandboxie/issues/2406)
+- fixed compatibility issue with Microsoft Edge [#2312](https://github.com/sandboxie-plus/Sandboxie/issues/2312)
+- fixed UsePrivacyMode=y compatibility with Windows 7 [#2423](https://github.com/sandboxie-plus/Sandboxie/issues/2423)
+- fixed minor issue during Sandboxie Plus uninstall [#2421](https://github.com/sandboxie-plus/Sandboxie/issues/2421)
+- fixed BSOD issue when driver initialization fails (introduced in 1.5.1) [#2431](https://github.com/sandboxie-plus/Sandboxie/issues/2431)
+- fixed fake paths being listed even if true paths do not exist [#2403](https://github.com/sandboxie-plus/Sandboxie/issues/2403)
 
 
 
 
-## [1.5.2 / 5.60.2] - 2022-10-??
+## [1.5.2 / 5.60.2] - 2022-10-28
 
 ### Changed
 - utility groups are now cleaned up automatically
+- improved removal of leftovers [#2409](https://github.com/sandboxie-plus/Sandboxie/pull/2409)
 
 ### Fixed
 - fixed issues with SBIE2227 on virtual drives
-- fixed issues on native 32-bit windows introduced with 1.5.0 [#2401](https://github.com/sandboxie-plus/Sandboxie/issues/2401)
-
-
+- fixed issues on native 32-bit Windows introduced with 1.5.0 [#2401](https://github.com/sandboxie-plus/Sandboxie/issues/2401)
 
 
 
@@ -44,7 +55,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - fixed issue with boxed object directory initialization [#2342](https://github.com/sandboxie-plus/Sandboxie/issues/2342)
 - Sandboxie no longer leaves behind permanent directory objects
 - FIXED SECURITY ISSUE ID-21 AlpcConnectPortEx was not filtered by the driver [#2396](https://github.com/sandboxie-plus/Sandboxie/issues/2396)
-- fixed issues with program controll options [#2395](https://github.com/sandboxie-plus/Sandboxie/issues/2395)
+- fixed issues with program control options [#2395](https://github.com/sandboxie-plus/Sandboxie/issues/2395)
 
 
 
