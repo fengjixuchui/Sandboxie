@@ -5,6 +5,21 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
+## [1.6.0a / 5.61.0] - 2022-??-??
+
+### Added
+- added global option to add run menu entries to all boxes
+
+### Changed
+- reorganized cmd entried [#2451](https://github.com/sandboxie-plus/Sandboxie/issues/2451)
+
+### Fixed
+- fixed issue with support setting drop down menu multiplying [2502#](https://github.com/sandboxie-plus/Sandboxie/pull/2502) (okrc)
+- Add translations folder to deprecated [#2500](https://github.com/sandboxie-plus/Sandboxie/pull/2500) (lufog)
+- fixed issue with boolean settings which can also be set per process [#2495](https://github.com/sandboxie-plus/Sandboxie/issues/2495)
+
+
+
 ## [1.6.0 / 5.61.0] - 2022-11-26
 
 ### Added
@@ -22,6 +37,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - fixed issue with "index out of range" [#2470](https://github.com/sandboxie-plus/Sandboxie/pull/2470) (thanks okrc)
 - fixed issue starting SandMan after install [#2284](https://github.com/sandboxie-plus/Sandboxie/issues/2284)
 - fixed encoding issue with my_version.h [#2475](https://github.com/sandboxie-plus/Sandboxie/issues/2475)
+- fixed issue with empty group blinking sequence [#2486](https://github.com/sandboxie-plus/Sandboxie/pull/2486) (thanks okrc)
 
 
 
