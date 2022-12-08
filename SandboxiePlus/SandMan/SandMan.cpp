@@ -455,7 +455,9 @@ void CSandMan::CreateMenus(bool bAdvanced)
 		m_pNewGroup = m_pMenuFile->addAction(CSandMan::GetIcon("Group"), tr("Create Box Group"), this, SLOT(OnSandBoxAction()));
 		m_pImportBox = m_pMenuFile->addAction(CSandMan::GetIcon("UnPackBox"), tr("Import Box"), this, SLOT(OnSandBoxAction()));
 		m_pMenuFile->addSeparator();
+		m_pRunBoxed = m_pMenuFile->addAction(CSandMan::GetIcon("Run"), tr("Run Sandboxed"), this, SLOT(OnSandBoxAction()));
 		m_pEmptyAll = m_pMenuFile->addAction(CSandMan::GetIcon("EmptyAll"), tr("Terminate All Processes"), this, SLOT(OnEmptyAll()));
+		m_pMenuFile->addSeparator();
 		m_pDisableForce = m_pMenuFile->addAction(tr("Pause Forcing Programs"), this, SLOT(OnDisableForce()));
 		m_pDisableForce->setCheckable(true);
 	if(bAdvanced) {
@@ -701,7 +703,7 @@ void CSandMan::OnView(QAction* pAction)
 		m_pBoxCombo->clear();
 		foreach(const CSandBoxPtr & pBox, theAPI->GetAllBoxes())
 			m_pBoxCombo->addItem(tr("Sandbox %1").arg(pBox->GetName().replace("_", "")), pBox->GetName());
-		m_pBoxCombo->setCurrentIndex(m_pBoxCombo->findData("DefaultBox"));
+		m_pBoxCombo->setCurrentIndex(m_pBoxCombo->findData(theAPI->GetGlobalSettings()->GetText("DefaultBox", "DefaultBox")));
 	}
 }
 
@@ -1254,7 +1256,7 @@ void CSandMan::OnMessage(const QString& MsgData)
 	}
 	else if (Message.left(4) == "Run:")
 	{
-		QString BoxName = "DefaultBox";
+		QString BoxName;
 		QString CmdLine = Message.mid(4);
 
 		if (CmdLine.contains("\\start.exe", Qt::CaseInsensitive)) {
@@ -1277,7 +1279,7 @@ void CSandMan::OnMessage(const QString& MsgData)
 		CSupportDialog::CheckSupport(true);
 
 		if (theConf->GetBool("Options/RunInDefaultBox", false) && (QGuiApplication::queryKeyboardModifiers() & Qt::ControlModifier) == 0) {
-			theAPI->RunStart("DefaultBox", CmdLine, false, WrkDir);
+			theAPI->RunStart(theAPI->GetGlobalSettings()->GetText("DefaultBox", "DefaultBox"), CmdLine, false, WrkDir);
 		}
 		else
 			RunSandboxed(QStringList(CmdLine), BoxName, WrkDir);
@@ -1309,8 +1311,10 @@ void CSandMan::dragEnterEvent(QDragEnterEvent* e)
 	}
 }
 
-bool CSandMan::RunSandboxed(const QStringList& Commands, const QString& BoxName, const QString& WrkDir)
+bool CSandMan::RunSandboxed(const QStringList& Commands, QString BoxName, const QString& WrkDir)
 {
+	if (BoxName.isEmpty())
+		BoxName = theAPI->GetGlobalSettings()->GetText("DefaultBox", "DefaultBox");
 	CSelectBoxWindow* pSelectBoxWindow = new CSelectBoxWindow(Commands, BoxName, WrkDir);
 	//pSelectBoxWindow->show();
 	return SafeExec(pSelectBoxWindow) == 1;
@@ -1324,7 +1328,7 @@ void CSandMan::dropEvent(QDropEvent* e)
 			Commands.append(url.toLocalFile().replace("/", "\\"));
 	}
 
-	RunSandboxed(Commands, "DefaultBox");
+	RunSandboxed(Commands);
 }
 
 void CSandMan::timerEvent(QTimerEvent* pEvent)
@@ -1448,7 +1452,7 @@ void CSandMan::OnBoxSelected()
 	if (m_pBoxCombo && m_pViewStack->currentIndex() == 1) {
 		QString Name = m_pBoxCombo->currentData().toString();
 		if (Name.isEmpty())
-			Name = "DefaultBox";
+			Name = theAPI->GetGlobalSettings()->GetText("DefaultBox", "DefaultBox");
 		pBox = theAPI->GetBoxByName(Name);
 	}
 
@@ -1490,7 +1494,7 @@ SB_STATUS CSandMan::DeleteBoxContent(const CSandBoxPtr& pBox, EDelMode Mode, boo
 	
 	{
 		SB_PROGRESS Status;
-		if (Mode != eForDelete && !DeleteShapshots && pBox->HasSnapshots()) { // in auto delete mdoe always return to last snapshot
+		if (Mode != eForDelete && !DeleteShapshots && pBox->HasSnapshots()) { // in auto delete mode always return to last snapshot
 			QString Current;
 			QString Default = pBox->GetDefaultSnapshot(&Current);
 			Status = pBox->SelectSnapshot(Mode == eAuto ? Current : Default);
@@ -1786,9 +1790,10 @@ void CSandMan::OnStatusChanged()
 					theConf->DelValue("SizeCache/" + Key);
 			}
 
-			if (!AllBoxes.contains("defaultbox")) {
-				OnLogMessage(tr("Default sandbox not found; creating: %1").arg("DefaultBox"));
-				theAPI->CreateBox("DefaultBox");
+			QString DefaultBox = theAPI->GetGlobalSettings()->GetText("DefaultBox", "DefaultBox");
+			if (!AllBoxes.contains(DefaultBox.toLower())) {
+				OnLogMessage(tr("Default sandbox not found; creating: %1").arg(DefaultBox));
+				theAPI->CreateBox(DefaultBox);
 			}
 		}
 
@@ -1822,6 +1827,7 @@ void CSandMan::OnStatusChanged()
 	m_bIconDisabled = false;
 	m_bIconBusy = false;
 
+	m_pRunBoxed->setEnabled(isConnected);
 	m_pNewBox->setEnabled(isConnected);
 	m_pNewGroup->setEnabled(isConnected);
 	m_pEmptyAll->setEnabled(isConnected);
@@ -1991,11 +1997,11 @@ void CSandMan::OnLogSbieMessage(quint32 MsgCode, const QStringList& MsgData, qui
 
 	OnLogMessage(Message);
 
-	if ((MsgCode & 0xFFFF) == 6004) // certificat error
-		return; // dont pop that one up
+	if ((MsgCode & 0xFFFF) == 6004) // certificate error
+		return; // don't pop that one up
 
 	if ((MsgCode & 0xFFFF) == 2111) // process open denided
-		return; // dont pop that one up
+		return; // don't pop that one up
 
 	if(MsgCode != 0 && theConf->GetBool("Options/ShowNotifications", true) && !IsDisableMessages())
 		m_pPopUpWindow->AddLogMessage(Message, MsgCode, MsgData, ProcessId);
@@ -2187,6 +2193,8 @@ void CSandMan::OnSandBoxAction()
 		else
 			CSandMan::CheckResults(QList<SB_STATUS>() << Status);
 	}
+	else if (pAction == m_pRunBoxed)
+		RunSandboxed(QStringList() << "run_dialog");
 }
 
 void CSandMan::OnEmptyAll()
@@ -2914,7 +2922,7 @@ void CSandMan::OpenUrl(const QUrl& url)
 		if(bCheck) theConf->SetValue("Options/OpenUrlsSandboxed", iSandboxed);
 	}
 
-	if (iSandboxed) RunSandboxed(QStringList(url.toString()), "DefaultBox");
+	if (iSandboxed) RunSandboxed(QStringList(url.toString()));
 	else ShellExecute(MainWndHandle, NULL, url.toString().toStdWString().c_str(), NULL, NULL, SW_SHOWNORMAL);
 }
 

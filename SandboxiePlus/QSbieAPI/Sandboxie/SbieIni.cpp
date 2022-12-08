@@ -254,7 +254,7 @@ SB_STATUS CSbieIni::RenameSection( const QString& NewName, bool deleteOld) // No
 		return SB_ERR();
 	bool SameName = (bool)(NewName.compare(m_Name, Qt::CaseInsensitive) == 0);
 
-	// Get all Settigns
+	// Get all Settings
 	QList<QPair<QString, QString>> Settings = GetIniSection(&status);
 	if (status != STATUS_SUCCESS)
 		return SB_ERR(SB_FailedCopyConf, QVariantList() << m_Name << (quint32)status, status);
@@ -268,12 +268,12 @@ SB_STATUS CSbieIni::RenameSection( const QString& NewName, bool deleteOld) // No
 	}
 
 	// if the name is the same we first delete than write, 
-	// else we first write and than delete, fro safety reasons
+	// else we first write and than delete, for safety reasons
 	if (deleteOld && SameName)
 		goto do_delete;
 
 do_write:
-	// Apply all Settigns
+	// Apply all Settings
 	for (QList<QPair<QString, QString>>::iterator I = Settings.begin(); I != Settings.end(); ++I)
 	{
 		SB_STATUS Status = m_pAPI->SbieIniSet(NewName, I->first, I->second, CSbieAPI::eIniInsert, true);

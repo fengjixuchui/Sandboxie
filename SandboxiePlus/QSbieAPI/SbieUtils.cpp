@@ -74,7 +74,7 @@ SB_RESULT(void*) CSbieUtils::Start(EComponent Component)
 
 void CSbieUtils::Start(EComponent Component, QStringList& Ops)
 {
-	// Note: Service aways starts the driver
+	// Note: Service always starts the driver
 	if ((Component & eService) != 0 && GetServiceStatus(SBIESVC) != SERVICE_RUNNING)
 		Ops.append(QString::fromWCharArray(L"kmdutil.exe|start|" SBIESVC));
 	else if ((Component & eDriver) != 0 && GetServiceStatus(SBIEDRV) != SERVICE_RUNNING)
@@ -388,7 +388,7 @@ bool CSbieUtils::CreateShortcut(CSbieAPI* pApi, QString LinkPath, const QString 
 		if (!workdir.isEmpty())
 			pShellLink->SetWorkingDirectory(workdir.toStdWString().c_str());
 		if (!LinkName.isEmpty()) {
-			QString desc = QString("%1 [%2]").arg(LinkName).arg(boxname.isEmpty() ? "DefaultBox" : boxname);
+			QString desc = QString("%1 [%2]").arg(LinkName).arg(boxname.isEmpty() ? pApi->GetGlobalSettings()->GetText("DefaultBox", "DefaultBox") : boxname);
 			pShellLink->SetDescription(desc.toStdWString().c_str());
 		}
 

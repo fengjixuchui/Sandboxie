@@ -49,7 +49,7 @@ void FixTriStateBoxPallete(QWidget* pWidget)
 	if (QApplication::style()->objectName() == "windows") {
 
 		//
-		// the built in "windows" theme of Qt does not properly renderd PartiallyChecked
+		// the built in "windows" theme of Qt does not properly rendered PartiallyChecked
 		// checkboxes, to remedi this issue we connect to the stateChanged slot
 		// and change the pattern to improve the rendering.
 		//
@@ -635,6 +635,13 @@ void CSettingsWindow::LoadSettings()
 			AddRunItem(NameCmd.first, NameCmd.second);
 		}
 
+		foreach(const CSandBoxPtr & pBox, theAPI->GetAllBoxes())
+			ui.cmbDefault->addItem(pBox->GetName().replace("_", ""), pBox->GetName());
+		int pos = ui.cmbDefault->findData(theAPI->GetGlobalSettings()->GetText("DefaultBox", "DefaultBox"));
+		if(pos == -1)
+			pos = ui.cmbDefault->findData("DefaultBox");
+		ui.cmbDefault->setCurrentIndex(pos);
+
 		QString FileRootPath_Default = "\\??\\%SystemDrive%\\Sandbox\\%USER%\\%SANDBOX%";
 		QString KeyRootPath_Default  = "\\REGISTRY\\USER\\Sandbox_%USER%_%SANDBOX%";
 		QString IpcRootPath_Default  = "\\Sandbox\\%USER%\\%SANDBOX%\\Session_%SESSION%";
@@ -671,6 +678,7 @@ void CSettingsWindow::LoadSettings()
 	
 	if(!theAPI->IsConnected() || (theAPI->GetGlobalSettings()->GetBool("EditAdminOnly", false) && !IsAdminUser()))
 	{
+		ui.cmbDefault->setEnabled(false);
 		ui.fileRoot->setEnabled(false);
 		ui.chkSeparateUserFolders->setEnabled(false);
 		ui.chkAutoRoot->setEnabled(false);
@@ -931,6 +939,8 @@ void CSettingsWindow::SaveSettings()
 				RunCommands.append(pItem->text(0) + "|" + pItem->text(1));
 			}
 			WriteTextList("RunCommand", RunCommands);
+
+			WriteText("DefaultBox", ui.cmbDefault->currentData().toString());
 
 			WriteText("FileRootPath", ui.fileRoot->text()); //ui.fileRoot->setText("\\??\\%SystemDrive%\\Sandbox\\%USER%\\%SANDBOX%");
 			WriteAdvancedCheck(ui.chkSeparateUserFolders, "SeparateUserFolders", "", "n");
@@ -1411,7 +1421,7 @@ QString CSettingsWindow__MkVersion(const QString& Name, const QVariantMap& Relea
 	QVariantMap Release = Releases[Name].toMap();
 	QString Version = Release.value("version").toString();
 	//if (Release["build"].type() != QVariant::Invalid) 
-	int iUpdate = Release["iUpdate"].toInt();
+	int iUpdate = Release["update"].toInt();
 	if(iUpdate) Version += QChar('a' + (iUpdate - 1));
 	return QString("<a href=\"%1\">%2</a>").arg(Name, Version);
 }
