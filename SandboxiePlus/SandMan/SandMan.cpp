@@ -33,6 +33,7 @@
 #include "../MiscHelpers/Common/NeonEffect.h"
 #include <QVariantAnimation>
 #include <QSessionManager>
+#include "Helpers/FullScreen.h"
 
 CSbiePlusAPI* theAPI = NULL;
 
@@ -184,6 +185,10 @@ CSandMan::CSandMan(QWidget *parent)
 	m_bConnectPending = false;
 	m_bStopPending = false;
 
+
+	m_pUpdater = new COnlineUpdater(this);
+
+
 	m_pMainWidget = new QWidget(this);
 
 	m_pMenuBar = menuBar();
@@ -244,8 +249,6 @@ CSandMan::CSandMan(QWidget *parent)
 	this->setWindowFlag(Qt::WindowStaysOnTopHint, bAlwaysOnTop);
 	m_pPopUpWindow->setWindowFlag(Qt::WindowStaysOnTopHint, bAlwaysOnTop);
 	m_pProgressDialog->setWindowFlag(Qt::WindowStaysOnTopHint, bAlwaysOnTop);
-
-	m_pUpdater = new COnlineUpdater(this);
 
 	//connect(theAPI, SIGNAL(LogMessage(const QString&, bool)), this, SLOT(OnLogMessage(const QString&, bool)));
 	connect(theAPI, SIGNAL(LogSbieMessage(quint32, const QStringList&, quint32)), this, SLOT(OnLogSbieMessage(quint32, const QStringList&, quint32)));
@@ -518,7 +521,7 @@ void CSandMan::CreateMenus(bool bAdvanced)
 	}
 
 		m_pMenuView->addSeparator();
-		m_pMenuBrowse = m_pMenuView->addAction(CSandMan::GetIcon("Tree"), tr("Show File Panel"), this, SLOT(OnProcView()));
+		m_pMenuBrowse = m_pMenuView->addAction(CSandMan::GetIcon("Folder"), tr("Show File Panel"), this, SLOT(OnProcView()));
 		m_pMenuBrowse->setCheckable(true);
 		m_pMenuBrowse->setShortcut(QKeySequence("Ctrl+D"));
 		m_pMenuBrowse->setShortcutContext(Qt::WidgetWithChildrenShortcut);
@@ -567,7 +570,7 @@ void CSandMan::CreateMenus(bool bAdvanced)
 		m_pMenuResetGUI->setShortcutContext(Qt::WidgetWithChildrenShortcut);
 		this->addAction(m_pMenuResetGUI);
 		m_pMenuOptions->addSeparator();
-		m_pEditIni = m_pMenuOptions->addAction(CSandMan::GetIcon("EditIni"), tr("Edit ini file"), this, SLOT(OnEditIni()));
+		m_pEditIni = m_pMenuOptions->addAction(CSandMan::GetIcon("Editor"), tr("Edit ini file"), this, SLOT(OnEditIni()));
 		m_pReloadIni = m_pMenuOptions->addAction(CSandMan::GetIcon("ReloadIni"), tr("Reload ini file"), this, SLOT(OnReloadIni()));
 
 	CreateHelpMenu(bAdvanced);
@@ -687,7 +690,7 @@ void CSandMan::CreateOldMenus()
 		m_pMenuOptions->addSeparator();
 		QAction* m_pConfigLock = m_pMenuOptions->addAction(CSandMan::GetIcon("Lock"), tr("Lock Configuration"), this, SLOT(OnSettingsAction()));
 		m_pConfigLock->setData(CSettingsWindow::eConfigLock);
-		m_pEditIni = m_pMenuOptions->addAction(CSandMan::GetIcon("EditIni"), tr("Edit ini file"), this, SLOT(OnEditIni()));
+		m_pEditIni = m_pMenuOptions->addAction(CSandMan::GetIcon("Editor"), tr("Edit ini file"), this, SLOT(OnEditIni()));
 		m_pReloadIni = m_pMenuOptions->addAction(CSandMan::GetIcon("ReloadIni"), tr("Reload ini file"), this, SLOT(OnReloadIni()));
 
 	CreateHelpMenu(false);
@@ -776,19 +779,19 @@ void CSandMan::UpdateLabel()
 	QString LabelText;
 	QString LabelTip;
 
-	if (theConf->GetBool("Updater/PendingUpdate"))
+	if (!theConf->GetString("Updater/PendingUpdate").isEmpty())
 	{
 		QString FilePath = theConf->GetString("Updater/InstallerPath");
 		if (!FilePath.isEmpty() && QFile::exists(FilePath)) {
-			LabelText = tr("<a href=\"sbie://update/installer\" style=\"color: red;\">There is a new Sandboxie-Plus release ready</a>");
+			LabelText = tr("<a href=\"sbie://update/installer\" style=\"color: red;\">There is a new Sandboxie-Plus release %1 ready</a>").arg(theConf->GetString("Updater/InstallerVersion"));
 			LabelTip = tr("Click to run installer");
 		}
 		else if (!theConf->GetString("Updater/UpdateVersion").isEmpty()){
-			LabelText = tr("<a href=\"sbie://update/apply\" style=\"color: red;\">There is a new Sandboxie-Plus update ready</a>");
+			LabelText = tr("<a href=\"sbie://update/apply\" style=\"color: red;\">There is a new Sandboxie-Plus update %1 ready</a>").arg(theConf->GetString("Updater/UpdateVersion"));
 			LabelTip = tr("Click to apply update");
 		}
 		else {
-			LabelText = tr("<a href=\"sbie://update/check\" style=\"color: red;\">There is a new build of Sandboxie-Plus available</a>");
+			LabelText = tr("<a href=\"sbie://update/check\" style=\"color: red;\">There is a new Sandboxie-Plus update v%1 available</a>").arg(theConf->GetString("Updater/PendingUpdate"));
 			LabelTip = tr("Click to download update");
 		}
 
@@ -1243,6 +1246,12 @@ bool CSandMan::IsFullyPortable()
 	return false;
 }
 
+bool CSandMan::IsSilentMode()
+{
+	if (!theConf->GetBool("Options/CheckSilentMode", true))
+		return false;
+	return IsFullScreenMode();
+}
 void CSandMan::OnMessage(const QString& MsgData)
 {
 	QStringList Messages = MsgData.split("\n");
@@ -1401,7 +1410,8 @@ void CSandMan::timerEvent(QTimerEvent* pEvent)
 
 	m_pBoxView->Refresh();
 
-	m_pUpdater->Process();
+	if(!IsSilentMode()) // dont check for updates when in presentation/game mode
+		m_pUpdater->Process();
 
 	if (!m_MissingTemplates.isEmpty())
 	{
@@ -1664,7 +1674,7 @@ void CSandMan::OnBoxClosed(const CSandBoxPtr& pBox)
 		if(theConf->GetBool("Options/AutoBoxOpsNotify", false))
 			OnLogMessage(tr("Auto deleting content of %1").arg(pBox->GetName()), true);
 
-		if (theConf->GetBool("Options/UseAsyncBoxOps", false))
+		if (theConf->GetBool("Options/UseAsyncBoxOps", false) || IsSilentMode())
 		{
 			auto pBoxEx = pBox.objectCast<CSandBoxPlus>();
 			SB_STATUS Status = pBoxEx->DeleteContentAsync(DeleteShapshots);

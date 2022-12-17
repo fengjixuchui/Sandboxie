@@ -145,14 +145,14 @@ CSettingsWindow::CSettingsWindow(QWidget* parent)
 	ui.tabs->setTabIcon(3, CSandMan::GetIcon("Advanced"));
 	ui.tabs->setTabIcon(4, CSandMan::GetIcon("Alarm"));
 	ui.tabs->setTabIcon(5, CSandMan::GetIcon("Compatibility"));
-	ui.tabs->setTabIcon(6, CSandMan::GetIcon("EditIni"));
+	ui.tabs->setTabIcon(6, CSandMan::GetIcon("Editor"));
 	ui.tabs->setTabIcon(7, CSandMan::GetIcon("Support"));
 
-	ui.tabsGUI->setTabIcon(0, CSandMan::GetIcon("Design"));
+	ui.tabsGUI->setTabIcon(0, CSandMan::GetIcon("GUI"));
 	ui.tabsGUI->setTabIcon(1, CSandMan::GetIcon("Run"));
 
 	ui.tabsAdvanced->setTabIcon(0, CSandMan::GetIcon("Options"));
-	ui.tabsAdvanced->setTabIcon(1, CSandMan::GetIcon("Lock"));
+	ui.tabsAdvanced->setTabIcon(1, CSandMan::GetIcon("EditIni"));
 
 	int size = 16.0;
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
@@ -600,6 +600,7 @@ void CSettingsWindow::LoadSettings()
 	//ui.cmbFontScale->setCurrentIndex(ui.cmbFontScale->findData(theConf->GetInt("Options/FontScaling", 100)));
 	ui.cmbFontScale->setCurrentText(QString::number(theConf->GetInt("Options/FontScaling", 100)));
 
+	ui.chkSilentMode->setChecked(theConf->GetBool("Options/CheckSilentMode", true));
 	ui.chkNotifications->setChecked(theConf->GetBool("Options/ShowNotifications", true));
 
 	ui.chkSandboxUrls->setCheckState(CSettingsWindow__Int2Chk(theConf->GetInt("Options/OpenUrlsSandboxed", 2)));
@@ -896,6 +897,7 @@ void CSettingsWindow::SaveSettings()
 
 	theConf->SetValue("Options/RunInDefaultBox", ui.chkAlwaysDefault->isChecked());
 
+	theConf->SetValue("Options/CheckSilentMode", ui.chkSilentMode->isChecked());
 	theConf->SetValue("Options/ShowNotifications", ui.chkNotifications->isChecked());
 
 	theConf->SetValue("Options/OpenUrlsSandboxed", CSettingsWindow__Chk2Int(ui.chkSandboxUrls->checkState()));

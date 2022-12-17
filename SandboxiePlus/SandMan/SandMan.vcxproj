@@ -207,10 +207,12 @@
     <ClCompile Include="BoxMonitor.cpp" />
     <ClCompile Include="Dialogs\MultiErrorDialog.cpp" />
     <ClCompile Include="Helpers\FindTool.cpp" />
+    <ClCompile Include="Helpers\FullScreen.cpp" />
     <ClCompile Include="Helpers\ReadDirectoryChanges.cpp" />
     <ClCompile Include="Helpers\ReadDirectoryChangesPrivate.cpp" />
     <ClCompile Include="Helpers\WinAdmin.cpp" />
     <ClCompile Include="Helpers\WindowFromPointEx.cpp" />
+    <ClCompile Include="Helpers\WinHelper.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Models\MonitorModel.cpp" />
     <ClCompile Include="Models\TraceModel.cpp" />
@@ -338,11 +340,13 @@
     <ClInclude Include="..\version.h" />
     <QtMoc Include="BoxMonitor.h" />
     <ClInclude Include="Helpers\FindTool.h" />
+    <ClInclude Include="Helpers\FullScreen.h" />
     <ClInclude Include="Helpers\ReadDirectoryChanges.h" />
     <ClInclude Include="Helpers\ReadDirectoryChangesPrivate.h" />
     <ClInclude Include="Helpers\ThreadSafeQueue.h" />
     <ClInclude Include="Helpers\WinAdmin.h" />
     <QtMoc Include="Models\MonitorModel.h" />
+    <ClInclude Include="Helpers\WinHelper.h" />
     <ClInclude Include="resource.h" />
     <QtMoc Include="SbiePlusAPI.h" />
     <QtMoc Include="SbieProcess.h" />
