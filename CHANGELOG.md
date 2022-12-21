@@ -4,11 +4,34 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
+
+
+
+
+## [1.6.2b / 5.61.2] - 2022-12-??
+
+### Fixed
+- fixed issue with update label when "version update" is set to "ignore"
+- fixed issue with wow64 thunking on 32 bit windows 10 systems [#2546](https://github.com/sandboxie-plus/Sandboxie/issues/2546)
+- fixed on reboot auto clean up boxes are nto cleared [#2531](https://github.com/sandboxie-plus/Sandboxie/issues/2531)
+-- Note: a clean up is now done after each reboot
+- fixed issue with Network Location Awareness under windows 11 [#2530](https://github.com/sandboxie-plus/Sandboxie/issues/2530)
+- fixed issues with recovery window [#2458](https://github.com/sandboxie-plus/Sandboxie/issues/2458)
+
+
+
+## [1.6.2a / 5.61.2] - 2022-12-19
+
+### Fixed
+- Fixed crash issue in Vintage UI introduced in 1.6.1a
+
+
+
+
 ## [1.6.2 / 5.61.2] - 2022-12-19
 
 ### Added
 - added template for Tencent TIM [#2516](https://github.com/sandboxie-plus/Sandboxie/pull/2516) (thanks TooYoungTooSimp)
-
 
 
 
