@@ -435,13 +435,14 @@ void CSandMan::CreateHelpMenu(bool bAdvanced)
 {
 	m_pMenuHelp = m_pMenuBar->addMenu(tr("&Help"));
 		//m_pMenuHelp->addAction(tr("Support Sandboxie-Plus on Patreon"), this, SLOT(OnHelp()));
-		m_pSupport = m_pMenuHelp->addAction(tr("Support Sandboxie-Plus with a Donation"), this, SLOT(OnHelp()));
+		m_pSupport = m_pMenuHelp->addAction(tr("Support Sandboxie-Plus with Donations"), this, SLOT(OnHelp()));
 		//if (!bAdvanced) {
 		//	m_pMenuHelp->removeAction(m_pSupport);
 		//	m_pMenuBar->addAction(m_pSupport);
 		//}
-		m_pForum = m_pMenuHelp->addAction(tr("Visit Support Forum"), this, SLOT(OnHelp()));
+		m_pContribution = m_pMenuHelp->addAction(tr("Contribute to Sandboxie-Plus"), this, SLOT(OnHelp()));
 		m_pManual = m_pMenuHelp->addAction(tr("Online Documentation"), this, SLOT(OnHelp()));
+		m_pForum = m_pMenuHelp->addAction(tr("Visit Support Forum"), this, SLOT(OnHelp()));
 		m_pMenuHelp->addSeparator();
 		m_pUpdate = m_pMenuHelp->addAction(tr("Check for Updates"), this, SLOT(CheckForUpdates()));
 		m_pMenuHelp->addSeparator();
@@ -1689,10 +1690,8 @@ void CSandMan::OnBoxClosed(const CSandBoxPtr& pBox)
 
 void CSandMan::OnStatusChanged()
 {
-	bool isConnected = theAPI->IsConnected();
-
 	QString appTitle = tr("Sandboxie-Plus v%1").arg(GetVersion());
-	if (isConnected)
+	if (theAPI->IsConnected())
 	{
 		bool bPortable = IsFullyPortable();
 
@@ -1729,16 +1728,6 @@ void CSandMan::OnStatusChanged()
 
 			if (PortableRootDir)
 				theAPI->GetGlobalSettings()->SetText("FileRootPath", BoxPath + "\\%SANDBOX%");
-		}
-
-		if (theConf->GetBool("Options/AutoRunSoftCompat", true))
-		{
-			if (m_SbieTemplates->RunCheck())
-			{
-				CSettingsWindow* pSettingsWindow = new CSettingsWindow(this);
-				connect(pSettingsWindow, SIGNAL(OptionsChanged(bool)), this, SLOT(UpdateSettings(bool)));
-				pSettingsWindow->showTab(CSettingsWindow::eSoftCompat);
-			}
 		}
 
 		if (SbiePath.compare(QApplication::applicationDirPath().replace("/", "\\"), Qt::CaseInsensitive) == 0)
@@ -1808,13 +1797,18 @@ void CSandMan::OnStatusChanged()
 				theAPI->CreateBox(DefaultBox);
 			}
 
-			//
-			// clean up Auto Delete boxes after reboot
-			//
+			if (theConf->GetBool("Options/CleanUpOnStart", false)) {
 
-			foreach(const CSandBoxPtr& pBox, AllBoxes) {
-				if(pBox->GetActiveProcessCount() == 0)
-					OnBoxClosed(pBox);
+				//
+				// clean up Auto Delete boxes after reboot
+				//
+
+				theAPI->UpdateProcesses(false, ShowAllSessions());
+
+				foreach(const CSandBoxPtr & pBox, AllBoxes) {
+					if (pBox->GetActiveProcessCount() == 0)
+						OnBoxClosed(pBox);
+				}
 			}
 		}
 
@@ -1825,6 +1819,16 @@ void CSandMan::OnStatusChanged()
 		if (WizardLevel == 0) {
 			if (!CSetupWizard::ShowWizard()) // if user canceled mark that and not show again
 				theConf->SetValue("Options/WizardLevel", -1);
+		}
+
+		if (theConf->GetBool("Options/AutoRunSoftCompat", true))
+		{
+			if (m_SbieTemplates->RunCheck())
+			{
+				CSettingsWindow* pSettingsWindow = new CSettingsWindow(this);
+				connect(pSettingsWindow, SIGNAL(OptionsChanged(bool)), this, SLOT(UpdateSettings(bool)));
+				pSettingsWindow->showTab(CSettingsWindow::eSoftCompat);
+			}
 		}
 	}
 	else
@@ -1838,9 +1842,16 @@ void CSandMan::OnStatusChanged()
 		theAPI->StopMonitor();
 	}
 
-	m_pSupport->setVisible(g_Certificate.isEmpty());
-
 	this->setWindowTitle(appTitle);
+
+	UpdateState();
+}
+
+void CSandMan::UpdateState()
+{
+	bool isConnected = theAPI->IsConnected();
+
+	m_pSupport->setVisible(g_Certificate.isEmpty());
 
 	m_pTrayIcon->setIcon(GetTrayIcon(isConnected));
 	m_pTrayIcon->setToolTip(GetTrayText(isConnected));
@@ -1851,6 +1862,7 @@ void CSandMan::OnStatusChanged()
 	m_pRunBoxed->setEnabled(isConnected);
 	m_pNewBox->setEnabled(isConnected);
 	m_pNewGroup->setEnabled(isConnected);
+	m_pImportBox->setEnabled(isConnected);
 	m_pEmptyAll->setEnabled(isConnected);
 	m_pDisableForce->setEnabled(isConnected);
 	m_pDisableForce2->setEnabled(isConnected);
@@ -2613,7 +2625,7 @@ void CSandMan::RebuildUI()
 
 	GetBoxView()->ReloadUserConfig();
 
-	OnStatusChanged();
+	UpdateState();
 
 	if(m_pTrayBoxes) m_pTrayBoxes->setStyle(QStyleFactory::create(m_DefaultStyle));
 }
@@ -3115,10 +3127,12 @@ void CSandMan::OnHelp()
 {
 	if (sender() == m_pSupport)
 		QDesktopServices::openUrl(QUrl("https://sandboxie-plus.com/go.php?to=donate"));
-	else if (sender() == m_pForum)
-		QDesktopServices::openUrl(QUrl("https://sandboxie-plus.com/go.php?to=sbie-forum"));
+	else if (sender() == m_pContribution)
+		QDesktopServices::openUrl(QUrl("https://sandboxie-plus.com/go.php?to=sbie-contribute"));
 	else if (sender() == m_pManual)
 		QDesktopServices::openUrl(QUrl("https://sandboxie-plus.com/go.php?to=sbie-docs"));
+	else if (sender() == m_pForum)
+		QDesktopServices::openUrl(QUrl("https://sandboxie-plus.com/go.php?to=sbie-forum"));
 	else
 		QDesktopServices::openUrl(QUrl("https://sandboxie-plus.com/go.php?to=patreon"));
 }

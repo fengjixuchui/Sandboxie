@@ -253,6 +253,8 @@ private:
 	void				LoadState(bool bFull = true);
 	void				StoreState();
 
+	void				UpdateState();
+
 	void				EnumBoxLinks(QMap<QString, QMap<QString, QString> >& BoxLinks, const QString& Prefix, const QString& Folder, bool bWithSubDirs = true);
 	void				CleanupShortcutPath(const QString& Path);
 	void				DeleteShortcut(const QString& Path);
@@ -338,6 +340,7 @@ private:
 
 	QMenu*				m_pMenuHelp;
 	QAction*			m_pSupport;
+	QAction*			m_pContribution;
 	QAction*			m_pForum;
 	QAction*			m_pManual;
 	QAction*			m_pUpdate;

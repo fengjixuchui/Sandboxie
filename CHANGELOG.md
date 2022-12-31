@@ -4,18 +4,38 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
+## [1.6.4 / 5.61.4] - 2022-XX-XX
 
+### Added
+- added option to disable sandbox clean-up on startup [#2553](https://github.com/sandboxie-plus/Sandboxie/issues/2553)
+- added contribution guidelines in the Help menu for both Plus and Classic UIs [#2551](https://github.com/sandboxie-plus/Sandboxie/pull/2551)
+
+### Fixed
+- fixed issue with auto delete sandbox on SandMan startup [#2555](https://github.com/sandboxie-plus/Sandboxie/issues/2555)
+- fixed issue with Windows 11 context menu when SandMan was not already running [#2284](https://github.com/sandboxie-plus/Sandboxie/issues/2284)
+- fixed issue with the display about cmbDefault [#2560](https://github.com/sandboxie-plus/Sandboxie/pull/2560) (okrc)
+- fixed issue with color inaccuracy [#2570](https://github.com/sandboxie-plus/Sandboxie/pull/2570) (okrc)
+- fixed issue with Templates.ini loading on first start [#2574](https://github.com/sandboxie-plus/Sandboxie/issues/2574)
+- fixed Cyberpunk 2077 not being able to load mods when sandboxed
+- fixed performance issue in games
+
+
+
+## [1.6.3 / 5.61.3] - 2022-12-21
+
+### Changed
+- improved Network Location Awareness template
 
 
 
 ## [1.6.2b / 5.61.2] - 2022-12-21
 
 ### Fixed
-- fixed issue with update label when "version update" is set to "ignore"
-- fixed issue with wow64 thunking on 32 bit windows 10 systems [#2546](https://github.com/sandboxie-plus/Sandboxie/issues/2546)
-- fixed on reboot auto clean up boxes are nto cleared [#2531](https://github.com/sandboxie-plus/Sandboxie/issues/2531)
--- Note: a clean up is now done after each reboot
-- fixed issue with Network Location Awareness under windows 11 [#2530](https://github.com/sandboxie-plus/Sandboxie/issues/2530)
+- fixed issue with update label when "Version Updates" drop-down menu was set to "Ignore"
+- fixed issue with WoW64 thunking on 32-bit Windows 10 systems [#2546](https://github.com/sandboxie-plus/Sandboxie/issues/2546)
+- fixed issue with auto delete option not working in sandboxes [#2531](https://github.com/sandboxie-plus/Sandboxie/issues/2531)
+-- Note: a clean-up is now done after each reboot
+- fixed issue with Network Location Awareness under Windows 11 [#2530](https://github.com/sandboxie-plus/Sandboxie/issues/2530)
 - fixed issues with recovery window [#2458](https://github.com/sandboxie-plus/Sandboxie/issues/2458)
 
 
@@ -23,7 +43,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [1.6.2a / 5.61.2] - 2022-12-19
 
 ### Fixed
-- Fixed crash issue in Vintage UI introduced in 1.6.1a
+- fixed crash issue in Vintage UI introduced in 1.6.1a
 
 
 
