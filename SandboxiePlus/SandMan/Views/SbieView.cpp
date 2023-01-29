@@ -12,6 +12,7 @@
 #include "../Windows/RecoveryWindow.h"
 #include "../Windows/NewBoxWindow.h"
 #include "../Views/FileView.h"
+#include "../Wizards/NewBoxWizard.h"
 
 #include "qt_windows.h"
 #include "qwindowdefs_win.h"
@@ -161,6 +162,8 @@ void CSbieView::CreateMenu()
 		}
 		else
 			m_pMenuRunStart = NULL;
+		//m_pMenuRunTools->addSeparator();
+		m_pMenuAutoRun = m_pMenuRun->addAction(CSandMan::GetIcon("ReloadIni"), tr("Execute Autorun Entries"), this, SLOT(OnSandBoxAction()));
 		m_pMenuRunTools = m_pMenuRun->addMenu(CSandMan::GetIcon("Maintenance"), tr("More Tools"));
 			m_pMenuRunBrowser = m_pMenuRunTools->addAction(CSandMan::GetIcon("Internet"), tr("Default Web Browser"), this, SLOT(OnSandBoxAction()));
 			m_pMenuRunMailer = m_pMenuRunTools->addAction(CSandMan::GetIcon("Email"), tr("Default eMail Client"), this, SLOT(OnSandBoxAction()));
@@ -176,9 +179,6 @@ void CSbieView::CreateMenu()
 			if(CSbieAPI::IsWow64())
 				m_pMenuRunCmd32 = m_pMenuRunTools->addAction(CSandMan::GetIcon("Cmd"), tr("Command Prompt (32-bit)"), this, SLOT(OnSandBoxAction()));
 #endif
-			m_pMenuRunTools->addSeparator();
-			m_pMenuAutoRun = m_pMenuRunTools->addAction(CSandMan::GetIcon("ReloadIni"), tr("Execute Autorun Entries"), this, SLOT(OnSandBoxAction()));
-
 		m_pMenuRun->addSeparator();
 		m_iMenuRun = m_pMenuRun->actions().count();
 	m_pMenuEmptyBox = m_pMenuBox->addAction(CSandMan::GetIcon("EmptyAll"), tr("Terminate All Programs"), this, SLOT(OnSandBoxAction()));
@@ -961,17 +961,24 @@ bool CSbieView::MoveItem(const QString& Name, const QString& To, int pos)
 
 QString CSbieView::AddNewBox()
 {
-	CNewBoxWindow NewBoxWindow(this);
-	bool bAlwaysOnTop = theConf->GetBool("Options/AlwaysOnTop", false);
-	NewBoxWindow.setWindowFlag(Qt::WindowStaysOnTopHint, bAlwaysOnTop);
-	if (NewBoxWindow.exec() == 1)
-	{
+	QString BoxName;
+
+	bool bVintage = theConf->GetInt("Options/ViewMode", 1) == 2;
+
+	if (bVintage) {
+		CNewBoxWindow NewBoxWindow(this);
+		if (NewBoxWindow.exec() == 1)
+			BoxName = NewBoxWindow.m_Name;
+	}
+	else
+		BoxName = CNewBoxWizard::CreateNewBox(this);
+
+	if (!BoxName.isEmpty()) {
 		theAPI->ReloadBoxes();
 		Refresh();
-		SelectBox(NewBoxWindow.m_Name);
-		return NewBoxWindow.m_Name;
+		SelectBox(BoxName);
 	}
-	return QString();
+	return BoxName;
 }
 
 QString CSbieView::AddNewGroup()

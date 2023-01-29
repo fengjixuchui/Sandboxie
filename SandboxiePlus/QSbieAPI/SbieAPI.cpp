@@ -1666,7 +1666,7 @@ CBoxedProcessPtr CSbieAPI::GetProcessById(quint32 ProcessId) const
 	return m_BoxedProxesses.value(ProcessId);
 }
 
-quint32 CSbieAPI::QueryProcessInfo(quint32 ProcessId, quint32 InfoClass)
+quint64 CSbieAPI::QueryProcessInfo(quint32 ProcessId, quint32 InfoClass)
 {
 	__declspec(align(8)) ULONG64 ResultValue;
 	__declspec(align(8)) ULONG64 parms[API_NUM_ARGS];
@@ -1950,9 +1950,12 @@ QString CSbieAPI::GetBoxedPath(const QString& BoxName, const QString& Path)
 
 //#pragma comment(lib, "mpr.lib")
 
-QString CSbieAPI::GetBoxedPath(CSandBox* pBox, const QString& Path)
+QString CSbieAPI::GetBoxedPath(CSandBox* pBox, const QString& Path, const QString& Snapshot)
 {
 	QString BoxRoot = pBox->m_FilePath;
+
+	if (!Snapshot.isEmpty())
+		BoxRoot += QString("\\snapshot-%1").arg(Snapshot);
 
     //WCHAR Buffer[4096];
     //DWORD dwBufferLength = sizeof(Buffer)/sizeof(WCHAR );
