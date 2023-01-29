@@ -10,10 +10,10 @@
 #include "../Views/SbieView.h"
 
 
-CNewBoxWizard::CNewBoxWizard(QWidget *parent)
+CNewBoxWizard::CNewBoxWizard(bool bAlowTemp, QWidget *parent)
     : QWizard(parent)
 {
-    setPage(Page_Type, new CBoxTypePage);
+    setPage(Page_Type, new CBoxTypePage(bAlowTemp));
     setPage(Page_Files, new CFilesPage);
     setPage(Page_Advanced, new CAdvancedPage);
     setPage(Page_Summary, new CSummaryPage);
@@ -34,9 +34,9 @@ void CNewBoxWizard::showHelp()
 
 }
 
-QString CNewBoxWizard::CreateNewBox(QWidget* pParent)
+QString CNewBoxWizard::CreateNewBox(bool bAlowTemp, QWidget* pParent)
 {
-	CNewBoxWizard wizard(pParent);
+	CNewBoxWizard wizard(bAlowTemp, pParent);
     if (!wizard.exec())
         return QString();
 
@@ -98,7 +98,11 @@ SB_STATUS CNewBoxWizard::TryToCreateBox()
         if(field("useVolumeSN").toBool())
             pBox->SetBool("UseVolumeSerialNumbers", true);
         
-        if(field("autoDelete").toBool())
+        if (field("autoRemove").toBool()) {
+            pBox->SetBool("AutoDelete", true);
+            pBox->SetBool("AutoRemove", true);
+        }
+        else if(field("autoDelete").toBool())
             pBox->SetBool("AutoDelete", true);
         if(field("autoRecover").toBool())
             pBox->SetBool("AutoRecover", true);
@@ -131,7 +135,7 @@ QString CNewBoxWizard::GetDefaultLocation()
 // CBoxTypePage
 // 
 
-CBoxTypePage::CBoxTypePage(QWidget *parent)
+CBoxTypePage::CBoxTypePage(bool bAlowTemp, QWidget *parent)
     : QWizardPage(parent)
 {
     setTitle(tr("Create new Sandbox"));
@@ -189,10 +193,15 @@ CBoxTypePage::CBoxTypePage(QWidget *parent)
     m_pBoxType->setCurrentIndex(3); // default
 
 
-
     QWidget* pSpacer = new QWidget();
 	pSpacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     layout->addWidget(pSpacer, row++, 1);
+
+    QCheckBox* pTemp = new QCheckBox(tr("Remove after use"));
+    pTemp->setToolTip(tr("After the last process in the box terminates, all data in the box will be deleted and the box itself will be removed."));
+    layout->addWidget(pTemp, row, 0, 1, 2);
+    pTemp->setVisible(bAlowTemp);
+    registerField("autoRemove", pTemp);
 
     m_pAdvanced = new QCheckBox(tr("Configure advanced options"));
     layout->addWidget(m_pAdvanced, row++, 2);
@@ -321,6 +330,8 @@ CFilesPage::CFilesPage(QWidget *parent)
     QCheckBox* pAutoDelete = new QCheckBox(tr("Auto delete content when last process terminates"));
     pAutoDelete->setChecked(theConf->GetBool("BoxDefaults/AutoDelete", false));
     layout->addWidget(pAutoDelete, row++, 1, 1, 3);
+    if (field("autoRemove").toBool())
+        pAutoDelete->setEnabled(false);
     registerField("autoDelete", pAutoDelete);
 
     QCheckBox* pAutoRecover = new QCheckBox(tr("Enable Immediate Recovery of files from recovery locations"));
@@ -514,7 +525,9 @@ void CSummaryPage::initializePage()
         Location = ((CNewBoxWizard*)wizard())->GetDefaultLocation();
     m_pSummary->append(tr("\nThis Sandbox will be saved to: %1").arg(Location));
 
-    if (field("autoDelete").toBool())
+    if (field("autoRemove").toBool()) 
+        m_pSummary->append(tr("\nThis box's content will be DISCARDED when its closed, and the box will be removed."));
+    else if (field("autoDelete").toBool())
         m_pSummary->append(tr("\nThis box will DISCARD its content when its closed, its suitable only for temporary data."));
     if (field("blockNetwork").toInt())
         m_pSummary->append(tr("\nProcesses in this box will not be able to access the internet or the local network, this ensures all accessed data to stay confidential."));
