@@ -23,7 +23,7 @@ void CSandMan::OnFileToRecover(const QString& BoxName, const QString& FilePath, 
 		m_pPopUpWindow->AddFileToRecover(FilePath, BoxPath, pBox, ProcessId);
 }
 
-bool CSandMan::OpenRecovery(const CSandBoxPtr& pBox, bool& DeleteShapshots, bool bCloseEmpty)
+bool CSandMan::OpenRecovery(const CSandBoxPtr& pBox, bool& DeleteSnapshots, bool bCloseEmpty)
 {
 	auto pBoxEx = pBox.objectCast<CSandBoxPlus>();
 	if (!pBoxEx) return false;
@@ -34,6 +34,7 @@ bool CSandMan::OpenRecovery(const CSandBoxPtr& pBox, bool& DeleteShapshots, bool
 	}
 
 	CRecoveryWindow* pRecoveryWnd = pBoxEx->m_pRecoveryWnd = new CRecoveryWindow(pBox, false, this);
+	connect(this, SIGNAL(Closed()), pBoxEx->m_pRecoveryWnd, SLOT(close()));
 	if (pBoxEx->m_pRecoveryWnd->FindFiles() == 0 && bCloseEmpty) {
 		delete pBoxEx->m_pRecoveryWnd;
 		pBoxEx->m_pRecoveryWnd = NULL;
@@ -46,7 +47,7 @@ bool CSandMan::OpenRecovery(const CSandBoxPtr& pBox, bool& DeleteShapshots, bool
 		if (pBoxEx->m_pRecoveryWnd->exec() != 1)
 			return false;
 	}
-	DeleteShapshots = pRecoveryWnd->IsDeleteShapshots();
+	DeleteSnapshots = pRecoveryWnd->IsDeleteSnapshots();
 	return true;
 }
 
@@ -56,6 +57,7 @@ CRecoveryWindow* CSandMan::ShowRecovery(const CSandBoxPtr& pBox, bool bFind)
 	if (!pBoxEx) return NULL;
 	if (pBoxEx->m_pRecoveryWnd == NULL) {
 		pBoxEx->m_pRecoveryWnd = new CRecoveryWindow(pBox, bFind == false);
+		connect(this, SIGNAL(Closed()), pBoxEx->m_pRecoveryWnd, SLOT(close()));
 		connect(pBoxEx->m_pRecoveryWnd, &CRecoveryWindow::Closed, [pBoxEx]() {
 			pBoxEx->m_pRecoveryWnd = NULL;
 		});
@@ -170,7 +172,7 @@ void CSandMan::RecoverFilesAsync(const CSbieProgressPtr& pProgress, const QStrin
 						int retVal = 0;
 						QMetaObject::invokeMethod(theGUI, "ShowQuestion", Qt::BlockingQueuedConnection, // show this question using the GUI thread
 							Q_RETURN_ARG(int, retVal),
-							Q_ARG(QString, tr("The file %1 failed a security check, do you want to recover it anyways?\r\n\r\n%2").arg(BoxPath).arg(Output)),
+							Q_ARG(QString, tr("The file %1 failed a security check, do you want to recover it anyway?\r\n\r\n%2").arg(BoxPath).arg(Output)),
 							Q_ARG(QString, tr("Do this for all files!")),
 							Q_ARG(bool*, &forAll),
 							Q_ARG(int, QDialogButtonBox::Yes | QDialogButtonBox::No),

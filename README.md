@@ -46,8 +46,9 @@ A partial archive of the [old Sandboxie forum](https://sandboxie-website-archive
 
 Sandboxie's functionality can be enhanced with specialized tools like the following:
 
-  * [LogApiDll](https://github.com/sandboxie-plus/LogApiDll) - this adds verbose trace output to Sandboxie's trace log, listing invocations of relevant Windows API functions.
+  * [LogApiDll](https://github.com/sandboxie-plus/LogApiDll) - this adds a verbose trace output to Sandboxie's trace log, listing invocations of relevant Windows API functions.
   * [SbieHide](https://github.com/VeroFess/SbieHide) - this hides the presence of SbieDll.dll from the application.
+  * [SandboxToys2](https://github.com/blap/SandboxToys2) - this allows to monitor files and registry changes in the sandbox.
   
 
 ## 📌 Project history

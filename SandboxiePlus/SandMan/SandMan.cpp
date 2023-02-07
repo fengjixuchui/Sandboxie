@@ -908,8 +908,10 @@ void CSandMan::CreateView(int iViewMode)
 	connect(m_pBoxView, SIGNAL(BoxSelected()), this, SLOT(OnBoxSelected()));
 	m_pFileView = new CFileView();
 
-	if (iViewMode != 1)
+	if (iViewMode != 1) {
 		m_pRecoveryLogWnd = new CRecoveryLogWnd(m_pMainWidget);
+		connect(this, SIGNAL(Closed()), m_pRecoveryLogWnd, SLOT(close()));
+	}
 	else
 		m_pRecoveryLogWnd = NULL;
 
@@ -1068,6 +1070,8 @@ void CSandMan::closeEvent(QCloseEvent *e)
 		}
 	}
 
+	emit Closed();
+
 	//if(theAPI->IsConnected())
 	//	m_pBoxView->SaveUserConfig();
 
@@ -1094,7 +1098,7 @@ void CSandMan::closeEvent(QCloseEvent *e)
 
 		if (PortableStop == 1) {
 			SB_RESULT(void*) Status = StopSbie(true);
-			// don't care for Status we quit here anyways
+			// don't care for Status we quit here anyway
 		}
 	}
 
@@ -1354,6 +1358,7 @@ bool CSandMan::RunSandboxed(const QStringList& Commands, QString BoxName, const 
 	if (BoxName.isEmpty())
 		BoxName = theAPI->GetGlobalSettings()->GetText("DefaultBox", "DefaultBox");
 	CSelectBoxWindow* pSelectBoxWindow = new CSelectBoxWindow(Commands, BoxName, WrkDir);
+	connect(this, SIGNAL(Closed()), pSelectBoxWindow, SLOT(close()));
 	//pSelectBoxWindow->show();
 	return SafeExec(pSelectBoxWindow) == 1;
 }
@@ -1366,7 +1371,7 @@ void CSandMan::dropEvent(QDropEvent* e)
 			Commands.append(url.toLocalFile().replace("/", "\\"));
 	}
 
-	RunSandboxed(Commands);
+	QTimer::singleShot(0, this, [Commands, this]() { RunSandboxed(Commands); });
 }
 
 void CSandMan::timerEvent(QTimerEvent* pEvent)
@@ -1508,7 +1513,7 @@ void CSandMan::OnBoxSelected()
 	}
 }
 
-SB_STATUS CSandMan::DeleteBoxContent(const CSandBoxPtr& pBox, EDelMode Mode, bool DeleteShapshots)
+SB_STATUS CSandMan::DeleteBoxContent(const CSandBoxPtr& pBox, EDelMode Mode, bool DeleteSnapshots)
 {
 	SB_STATUS Ret = SB_OK;
 	m_iDeletingContent++;
@@ -1536,7 +1541,7 @@ SB_STATUS CSandMan::DeleteBoxContent(const CSandBoxPtr& pBox, EDelMode Mode, boo
 	
 	{
 		SB_PROGRESS Status;
-		if (Mode != eForDelete && !DeleteShapshots && pBox->HasSnapshots()) { // in auto delete mode always return to last snapshot
+		if (Mode != eForDelete && !DeleteSnapshots && pBox->HasSnapshots()) { // in auto delete mode always return to last snapshot
 			QString Current;
 			QString Default = pBox->GetDefaultSnapshot(&Current);
 			Status = pBox->SelectSnapshot(Mode == eAuto ? Current : Default);
@@ -1725,9 +1730,9 @@ void CSandMan::OnBoxClosed(const CSandBoxPtr& pBox)
 	{
 		if (pBox->GetBool("AutoDelete", false))
 		{
-			bool DeleteShapshots = false;
+			bool DeleteSnapshots = false;
 			// if this box auto deletes first show the recovry dialog with the option to abort deletion
-			if (!theGUI->OpenRecovery(pBox, DeleteShapshots, true)) // unless no files are found than continue silently
+			if (!theGUI->OpenRecovery(pBox, DeleteSnapshots, true)) // unless no files are found than continue silently
 				return;
 
 			if (theConf->GetBool("Options/AutoBoxOpsNotify", false))
@@ -1736,11 +1741,11 @@ void CSandMan::OnBoxClosed(const CSandBoxPtr& pBox)
 			if (theConf->GetBool("Options/UseAsyncBoxOps", false) || IsSilentMode())
 			{
 				auto pBoxEx = pBox.objectCast<CSandBoxPlus>();
-				SB_STATUS Status = pBoxEx->DeleteContentAsync(DeleteShapshots);
+				SB_STATUS Status = pBoxEx->DeleteContentAsync(DeleteSnapshots);
 				CheckResults(QList<SB_STATUS>() << Status);
 			}
 			else
-				DeleteBoxContent(pBox, eAuto, DeleteShapshots);
+				DeleteBoxContent(pBox, eAuto, DeleteSnapshots);
 		}
 	}
 }
@@ -2614,6 +2619,7 @@ void CSandMan::OnSettings()
 	static CSettingsWindow* pSettingsWindow = NULL;
 	if (pSettingsWindow == NULL) {
 		pSettingsWindow = new CSettingsWindow();
+		connect(this, SIGNAL(Closed()), pSettingsWindow, SLOT(close()));
 		connect(pSettingsWindow, SIGNAL(OptionsChanged(bool)), this, SLOT(UpdateSettings(bool)));
 		connect(pSettingsWindow, &CSettingsWindow::Closed, [this]() {
 			pSettingsWindow = NULL;
@@ -2781,17 +2787,17 @@ void CSandMan::OnEditIni()
 	bool bPlus;
 	if (bPlus = (ini == "plus"))
 	{
-		IniPath = QString(theConf->GetConfigDir() + "/Sandboxie-Plus.ini").replace("/", "\\").toStdWString();
+		IniPath = L"\"" + QString(theConf->GetConfigDir() + "/Sandboxie-Plus.ini").replace("/", "\\").toStdWString() + L"\"";
 	}
 	else if (ini == "tmpl")
 	{
-		IniPath = (theAPI->GetSbiePath() + "\\Templates.ini").toStdWString();
+		IniPath = L"\"" + (theAPI->GetSbiePath() + "\\Templates.ini").toStdWString() + L"\"";
 
 		if (theConf->GetBool("Options/NoEditWarn", true)) {
 			bool State = false;
 			CCheckableMessageBox::question(this, "Sandboxie-Plus",
-				tr("You are about to edit the Templates.ini, thsi is generally not recommeded.\n"
-					"This file is part of Sandboxie and all changed done to it will be reverted next time Sandboxie is updated.")
+				tr("You are about to edit the Templates.ini, this is generally not recommended.\n"
+					"This file is part of Sandboxie and all change done to it will be reverted next time Sandboxie is updated.")
 				, tr("Don't show this message again."), &State, QDialogButtonBox::Ok, QDialogButtonBox::Ok, QMessageBox::Warning);
 
 			if (State)
@@ -2800,7 +2806,7 @@ void CSandMan::OnEditIni()
 	}
 	else //if (ini == "sbie")
 	{
-		IniPath = theAPI->GetIniPath().toStdWString();
+		IniPath = L"\"" + theAPI->GetIniPath().toStdWString() + L"\"";
 
 		if (theConf->GetBool("Options/NoEditInfo", true)) {
 			bool State = false;
@@ -2819,7 +2825,7 @@ void CSandMan::OnEditIni()
 	si.cbSize = sizeof(SHELLEXECUTEINFO);
 	si.fMask = SEE_MASK_NOCLOSEPROCESS;
 	si.hwnd = NULL;
-	si.lpVerb = bPlus ? NULL : L"runas"; // plus ini does nto require admin privileges
+	si.lpVerb = bPlus ? NULL : L"runas"; // plus ini does not require admin privileges
 	si.lpFile = Editor.c_str();
 	si.lpParameters = IniPath.c_str();
 	si.lpDirectory = NULL;
@@ -2876,6 +2882,7 @@ void CSandMan::OnMonitoring()
 		static CTraceWindow* pTraceWindow = NULL;
 		if (!pTraceWindow) {
 			pTraceWindow = new CTraceWindow();
+			connect(this, SIGNAL(Closed()), pTraceWindow, SLOT(close()));
 			//pTraceWindow->setAttribute(Qt::WA_DeleteOnClose);
 			connect(pTraceWindow, &CTraceWindow::Closed, [&]() {
 				pTraceWindow = NULL;

@@ -968,6 +968,7 @@ QString CSbieView::AddNewBox(bool bAlowTemp)
 
 	if (bVintage) {
 		CNewBoxWindow NewBoxWindow(this);
+		connect(theGUI, SIGNAL(Closed()), &NewBoxWindow, SLOT(close()));
 		if (NewBoxWindow.exec() == 1)
 			BoxName = NewBoxWindow.m_Name;
 	}
@@ -1200,6 +1201,7 @@ void CSbieView::OnSandBoxAction(QAction* Action, const QList<CSandBoxPtr>& SandB
 		CSnapshotsWindow* pSnapshotsWindow = SnapshotWindows.value(pBox.data());
 		if (pSnapshotsWindow == NULL) {
 			pSnapshotsWindow = new CSnapshotsWindow(SandBoxes.first(), this);
+			connect(theGUI, SIGNAL(Closed()), pSnapshotsWindow, SLOT(close()));
 			SnapshotWindows.insert(pBox.data(), pSnapshotsWindow);
 			connect(pSnapshotsWindow, &CSnapshotsWindow::Closed, [this, pBox]() {
 				SnapshotWindows.remove(pBox.data());
@@ -1315,7 +1317,7 @@ void CSbieView::OnSandBoxAction(QAction* Action, const QList<CSandBoxPtr>& SandB
 	}
 	else if (Action == m_pMenuCleanUp)
 	{
-		bool DeleteShapshots = false;
+		bool DeleteSnapshots = false;
 
 		if (SandBoxes.count() == 1)
 		{
@@ -1327,15 +1329,15 @@ void CSbieView::OnSandBoxAction(QAction* Action, const QList<CSandBoxPtr>& SandB
 			if (theConf->GetBool("Options/ShowRecovery", false))
 			{
 				// Use recovery dialog in place of the confirmation messagebox for box clean up
-				if(!theGUI->OpenRecovery(SandBoxes.first(), DeleteShapshots))
+				if(!theGUI->OpenRecovery(SandBoxes.first(), DeleteSnapshots))
 					return;
 			}
 			else if(CCheckableMessageBox::question(this, "Sandboxie-Plus", tr("Do you want to delete the content of the selected sandbox?")
-				, tr("Also delete all Snapshots"), &DeleteShapshots, QDialogButtonBox::Yes | QDialogButtonBox::No, QDialogButtonBox::Yes) != QDialogButtonBox::Yes)
+				, tr("Also delete all Snapshots"), &DeleteSnapshots, QDialogButtonBox::Yes | QDialogButtonBox::No, QDialogButtonBox::Yes) != QDialogButtonBox::Yes)
 					return;
 		}
 		else if(CCheckableMessageBox::question(this, "Sandboxie-Plus", tr("Do you really want to delete the content of all selected sandboxes?")
-			, tr("Also delete all Snapshots"), &DeleteShapshots, QDialogButtonBox::Yes | QDialogButtonBox::No, QDialogButtonBox::Yes) != QDialogButtonBox::Yes)
+			, tr("Also delete all Snapshots"), &DeleteSnapshots, QDialogButtonBox::Yes | QDialogButtonBox::No, QDialogButtonBox::Yes) != QDialogButtonBox::Yes)
 				return;
 
 		foreach(const CSandBoxPtr &pBox, SandBoxes)
@@ -1343,13 +1345,13 @@ void CSbieView::OnSandBoxAction(QAction* Action, const QList<CSandBoxPtr>& SandB
 			if (theConf->GetBool("Options/UseAsyncBoxOps", false) || theGUI->IsSilentMode())
 			{
 				auto pBoxEx = pBox.objectCast<CSandBoxPlus>();
-				SB_STATUS Status = pBoxEx->DeleteContentAsync(DeleteShapshots);
+				SB_STATUS Status = pBoxEx->DeleteContentAsync(DeleteSnapshots);
 				if (Status.IsError())
 					Results.append(Status);
 			}
 			else  
 			{
-				SB_STATUS Status = theGUI->DeleteBoxContent(pBox, CSandMan::eDefault, DeleteShapshots);
+				SB_STATUS Status = theGUI->DeleteBoxContent(pBox, CSandMan::eDefault, DeleteSnapshots);
 				if (Status.GetMsgCode() == SB_Canceled)
 					break;
 				Results.append(Status);
@@ -1454,7 +1456,7 @@ void CSbieView::OnProcessAction(QAction* Action, const QList<CBoxedProcessPtr>& 
 				return;
 
 			bool State = false;
-			if(CCheckableMessageBox::question(this, "Sandboxie-Plus", tr("Do you want to %1 %2?").arg(((QAction*)sender())->text().toLower()).arg(Processes.count() == 1 ? Processes[0]->GetProcessName() : tr("the selected processes"))
+			if(CCheckableMessageBox::question(this, "Sandboxie-Plus", tr("Do you want to terminate %1?").arg(Processes.count() == 1 ? Processes[0]->GetProcessName() : tr("the selected processes"))
 				, tr("Terminate without asking"), &State, QDialogButtonBox::Yes | QDialogButtonBox::No, QDialogButtonBox::Yes) != QDialogButtonBox::Yes)
 				return;
 
@@ -1541,6 +1543,7 @@ void CSbieView::ShowOptions(const CSandBoxPtr& pBox)
 	auto pBoxEx = pBox.objectCast<CSandBoxPlus>();
 	if (pBoxEx->m_pOptionsWnd == NULL) {
 		pBoxEx->m_pOptionsWnd = new COptionsWindow(pBox, pBox->GetName());
+		connect(theGUI, SIGNAL(Closed()), pBoxEx->m_pOptionsWnd, SLOT(close()));
 		connect(pBoxEx->m_pOptionsWnd, &COptionsWindow::Closed, [pBoxEx]() {
 			pBoxEx->m_pOptionsWnd = NULL;
 		});
@@ -1563,6 +1566,7 @@ void CSbieView::ShowBrowse(const CSandBoxPtr& pBox)
 	CFileBrowserWindow* pFileBrowserWindow = FileBrowserWindows.value(pBox.data());
 	if (pFileBrowserWindow == NULL) {
 		pFileBrowserWindow = new CFileBrowserWindow(pBox);
+		connect(theGUI, SIGNAL(Closed()), pFileBrowserWindow, SLOT(close()));
 		FileBrowserWindows.insert(pBox.data(), pFileBrowserWindow);
 		connect(pFileBrowserWindow, &CFileBrowserWindow::Closed, [this, pBox]() {
 			FileBrowserWindows.remove(pBox.data());

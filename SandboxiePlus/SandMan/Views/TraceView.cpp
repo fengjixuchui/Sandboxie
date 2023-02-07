@@ -86,7 +86,9 @@ CTraceTree::CTraceTree(QWidget* parent)
 	//connect(m_pBoxTree, SIGNAL(ColumnChanged(int, bool)), this, SLOT(OnColumnsChanged()));
 
 	//m_pMainLayout->addWidget(CFinder::AddFinder(m_pTreeList, m_pSortProxy));
-	m_pMainLayout->addWidget(CFinder::AddFinder(m_pTreeList, this, CFinder::eHighLightDefault));
+	CFinder* pFinder;
+	m_pMainLayout->addWidget(CFinder::AddFinder(m_pTreeList, this, CFinder::eHighLightDefault, &pFinder));
+	pFinder->SetModel(m_pTraceModel);
 	//QObject::connect(pFinder, SIGNAL(SelectNext()), this, SLOT(SelectNext()));
 
 
@@ -401,8 +403,8 @@ void CTraceView::Refresh()
 			if (bHasFilter && !m_pTrace->m_bHighLight) {
 				if (!pEntry->GetName().contains(m_pTrace->m_FilterExp, Qt::CaseInsensitive)
 					&& !pEntry->GetMessage().contains(m_pTrace->m_FilterExp, Qt::CaseInsensitive)
-					//&& !pEntry->GetTypeStr().contains(m_pTrace->m_FilterExp, Qt::CaseInsensitive) // dont filter on non static strings !!!
-					//&& !pEntry->GetStautsStr().contains(m_pTrace->m_FilterExp, Qt::CaseInsensitive) // dont filter on non static strings !!!
+					//&& !pEntry->GetTypeStr().contains(m_pTrace->m_FilterExp, Qt::CaseInsensitive) // don't filter on non static strings !!!
+					//&& !pEntry->GetStautsStr().contains(m_pTrace->m_FilterExp, Qt::CaseInsensitive) // don't filter on non static strings !!!
 					&& !pEntry->GetProcessName().contains(m_pTrace->m_FilterExp, Qt::CaseInsensitive))
 						continue;
 			}

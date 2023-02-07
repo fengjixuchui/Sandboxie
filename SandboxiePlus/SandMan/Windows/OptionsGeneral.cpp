@@ -242,7 +242,8 @@ void COptionsWindow::LoadGeneral()
 	ui.chkOpenSpooler->setChecked(m_pBox->GetBool("OpenPrintSpooler", false));
 	ui.chkPrintToFile->setChecked(m_pBox->GetBool("AllowSpoolerPrintToFile", false));
 
-	ui.chkOpenProtectedStorage->setChecked(m_pBox->GetBool("OpenProtectedStorage", false));
+	//ui.chkOpenProtectedStorage->setChecked(m_pBox->GetBool("OpenProtectedStorage", false));
+	ui.chkOpenProtectedStorage->setChecked(m_BoxTemplates.contains("OpenProtectedStorage"));
 	ui.chkOpenCredentials->setChecked(!ui.chkOpenCredentials->isEnabled() || m_pBox->GetBool("OpenCredentials", false));
 	ui.chkCloseClipBoard->setChecked(!m_pBox->GetBool("OpenClipboard", true));
 	ui.chkVmReadNotify->setChecked(m_pBox->GetBool("NotifyProcessAccessDenied", false));
@@ -277,9 +278,11 @@ void COptionsWindow::LoadGeneral()
 	if (pos == -1) ui.cmbDblClick->setCurrentText(Action);
 
 
-	if (m_pBox->GetBool("UseFileDeleteV2", false) && m_pBox->GetBool("UseRegDeleteV2", false))
+	bool bUseFileDeleteV2Global = theAPI->GetGlobalSettings()->GetBool("UseFileDeleteV2", false);
+	bool bUseRegDeleteV2Global = theAPI->GetGlobalSettings()->GetBool("UseRegDeleteV2", false);
+	if (m_pBox->GetBool("UseFileDeleteV2", bUseFileDeleteV2Global) && m_pBox->GetBool("UseRegDeleteV2", bUseRegDeleteV2Global))
 		ui.cmbVersion->setCurrentIndex(1);
-	else if (!m_pBox->GetBool("UseFileDeleteV2", false) && !m_pBox->GetBool("UseRegDeleteV2", false))
+	else if (!m_pBox->GetBool("UseFileDeleteV2", bUseFileDeleteV2Global) && !m_pBox->GetBool("UseRegDeleteV2", bUseRegDeleteV2Global))
 		ui.cmbVersion->setCurrentIndex(0);
 	else {
 		ui.cmbVersion->setEditable(true);
@@ -287,8 +290,8 @@ void COptionsWindow::LoadGeneral()
 		ui.cmbVersion->setCurrentText(tr("Indeterminate"));
 	}
 
-	ReadGlobalCheck(ui.chkSeparateUserFolders, "SeparateUserFolders", true);
-	ReadGlobalCheck(ui.chkUseVolumeSerialNumbers, "UseVolumeSerialNumbers", false);
+	ReadGlobalCheck(ui.chkSeparateUserFolders, "SeparateUserFolders", theAPI->GetGlobalSettings()->GetBool("SeparateUserFolders", true));
+	ReadGlobalCheck(ui.chkUseVolumeSerialNumbers, "UseVolumeSerialNumbers", theAPI->GetGlobalSettings()->GetBool("UseVolumeSerialNumbers", false));
 
 	int iLimit = m_pBox->GetNum("CopyLimitKb", 80 * 1024);
 	ui.chkCopyLimit->setChecked(iLimit != -1);
@@ -350,7 +353,8 @@ void COptionsWindow::SaveGeneral()
 	WriteAdvancedCheck(ui.chkOpenSpooler, "OpenPrintSpooler", "y", "");
 	WriteAdvancedCheck(ui.chkPrintToFile, "AllowSpoolerPrintToFile", "y", "");
 
-	WriteAdvancedCheck(ui.chkOpenProtectedStorage, "OpenProtectedStorage", "y", "");
+	//WriteAdvancedCheck(ui.chkOpenProtectedStorage, "OpenProtectedStorage", "y", "");
+	SetTemplate("OpenProtectedStorage", ui.chkOpenProtectedStorage->isChecked());
 	if (ui.chkOpenCredentials->isEnabled())
 		WriteAdvancedCheck(ui.chkOpenCredentials, "OpenCredentials", "y", "");
 	WriteAdvancedCheck(ui.chkCloseClipBoard, "OpenClipboard", "n", "");

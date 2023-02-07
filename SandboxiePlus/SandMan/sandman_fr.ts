@@ -6,58 +6,60 @@
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="413"/>
         <source>Advanced Sandbox options</source>
-        <translation type="unfinished"></translation>
+        <translation>Options de bac à sable avancées</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="414"/>
         <source>On this page advanced sandbox options can be configured.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sur cette page peuvent être configurées les options de bac à sable avancées.</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="419"/>
         <source>Network Access</source>
-        <translation type="unfinished"></translation>
+        <translation>Accès réseau</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="427"/>
         <source>Allow network/internet access</source>
-        <translation type="unfinished"></translation>
+        <translation>Autoriser l&apos;accès au réseau/à Internet</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="428"/>
         <source>Block network/internet by denying access to Network devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Bloquer le réseau/Internet en refusant l&apos;accès aux périphériques réseau</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="430"/>
         <source>Block network/internet using Windows Filtering Platform</source>
-        <translation type="unfinished"></translation>
+        <translation>Bloquer le réseau/Internet en utilisant la plateforme de filtrage Windows</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="435"/>
-        <source>Allow access to network files and fodlers</source>
-        <translation type="unfinished"></translation>
+        <source>Allow access to network files and folders</source>
+        <oldsource>Allow access to network files and fodlers</oldsource>
+        <translation type="unfinished">Autoriser l&apos;accès aux fichiers et dossiers réseau</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="436"/>
         <location filename="Wizards/NewBoxWizard.cpp" line="452"/>
-        <source>This option is not recomended for Hardened boxes</source>
-        <translation type="unfinished"></translation>
+        <source>This option is not recommended for Hardened boxes</source>
+        <oldsource>This option is not recomended for Hardened boxes</oldsource>
+        <translation type="unfinished">Cette option n&apos;est pas recommandée pour les bacs renforcés</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="442"/>
         <source>Admin Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Options d&apos;administrateur</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="446"/>
         <source>Make applications think they are running elevated</source>
-        <translation type="unfinished"></translation>
+        <translation>Faire croire aux applications qu&apos;elles tournent avec une élévation des privilèges</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="451"/>
         <source>Allow MSIServer to run with a sandboxed system token</source>
-        <translation type="unfinished"></translation>
+        <translation>Autoriser MSIServer à s&apos;exécuter dans le bac à sable avec un jeton système</translation>
     </message>
 </context>
 <context>
@@ -65,72 +67,73 @@
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="156"/>
         <source>Create new Sandbox</source>
-        <translation type="unfinished"></translation>
+        <translation>Création d&apos;un nouveau bac à sable</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="163"/>
         <source>A sandbox isolates your host system from processes running within the box, it prevents them from making permanent changes to other programs and data in your computer. The level of isolation impacts your security as well as the compatibility with applications, hence there will be a different level of isolation depending on the selected Box Type. Sandboxie can also protect your personal data from being accessed by processes running under its supervision.</source>
-        <translation type="unfinished">Un bac à sable isole le système hôte des processus lancés dans le bac. Cela les empêche de faire des changements permanents aux autres programmes ou aux données de votre ordinateur. Le niveau d&apos;isolation affecte la sécurité mais aussi la compatibilité avec les applications, c&apos;est pourquoi il y a différents niveaux d&apos;isolation en fonction du type de bac à sable choisi. Sandboxie peut aussi empêcher l&apos;accès à vos données personnelles aux processus tournant sous sa supervision.</translation>
+        <translation>Un bac à sable isole le système hôte des processus lancés dans le bac. Cela les empêche de faire des changements permanents aux autres programmes ou aux données de votre ordinateur. Le niveau d&apos;isolation affecte la sécurité mais aussi la compatibilité avec les applications, c&apos;est pourquoi il y a différents niveaux d&apos;isolation en fonction du type de bac choisi. Sandboxie peut aussi empêcher l&apos;accès à vos données personnelles aux processus tournant sous sa supervision.</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="172"/>
         <source>Enter box name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Saisir le nom du bac :</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="178"/>
         <source>New Box</source>
-        <translation type="unfinished">Nouveau bac</translation>
+        <translation>Nouveau bac</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="190"/>
-        <source>Sellect box type:</source>
-        <translation type="unfinished"></translation>
+        <source>Select box type:</source>
+        <oldsource>Sellect box type:</oldsource>
+        <translation type="unfinished">Choisir le type de bac :</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="193"/>
         <source>Hardened Sandbox with Data Protection</source>
-        <translation type="unfinished">Bac à sable renforcé avec protection des données</translation>
+        <translation>Bac à sable renforcé avec protection des données</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="194"/>
         <source>Security Hardened Sandbox</source>
-        <translation type="unfinished">Bac à sable à sécurité renforcée</translation>
+        <translation>Bac à sable à sécurité renforcée</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="195"/>
         <source>Sandbox with Data Protection</source>
-        <translation type="unfinished">Bac à sable avec protection des données</translation>
+        <translation>Bac à sable avec protection des données</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="196"/>
         <source>Standard Isolation Sandbox (Default)</source>
-        <translation type="unfinished">Bac à sable à isolation standard (par défaut)</translation>
+        <translation>Bac à sable à isolation standard (par défaut)</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="198"/>
         <source>Application Compartment with Data Protection</source>
-        <translation type="unfinished">Conteneur d&apos;applications avec protection des données      </translation>
+        <translation>Conteneur d&apos;applications avec protection des données      </translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="199"/>
         <source>Application Compartment (NO Isolation)</source>
-        <translation type="unfinished">Conteneur d&apos;applications (SANS isolation)</translation>
+        <translation>Conteneur d&apos;applications (SANS isolation)</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="215"/>
         <source>Remove after use</source>
-        <translation type="unfinished"></translation>
+        <translation>Supprimer après utilisation</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="216"/>
         <source>After the last process in the box terminates, all data in the box will be deleted and the box itself will be removed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Après la fermeture du dernier processus dans le bac, toutes les données du bac ainsi que le bac lui-même seront supprimés.</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="221"/>
         <source>Configure advanced options</source>
-        <translation type="unfinished"></translation>
+        <translation>Configurer les options avancées</translation>
     </message>
 </context>
 <context>
@@ -217,7 +220,7 @@
     <message>
         <location filename="Views/FileView.cpp" line="171"/>
         <source>Run Recovery Checks</source>
-        <translation type="unfinished"></translation>
+        <translation>Exécuter  les vérification de récupération</translation>
     </message>
     <message>
         <location filename="Views/FileView.cpp" line="234"/>
@@ -234,74 +237,81 @@
     <name>CFilesPage</name>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="287"/>
-        <source>Sandbox location and behavioure</source>
-        <translation type="unfinished"></translation>
+        <source>Sandbox location and behavior</source>
+        <oldsource>Sandbox location and behavioure</oldsource>
+        <translation type="unfinished">Emplacement et comportement du bac à sable</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="288"/>
-        <source>On this page the sandbox location and its behaviorue can be customized.
-You can use %USER% to save each users sandbox to an own fodler.</source>
-        <translation type="unfinished"></translation>
+        <source>On this page the sandbox location and its behavior can be customized.
+You can use %USER% to save each users sandbox to an own folder.</source>
+        <oldsource>On this page the sandbox location and its behaviorue can be customized.
+You can use %USER% to save each users sandbox to an own fodler.</oldsource>
+        <translation type="unfinished">Sur cette page l&apos;emplacement et le comportement du bac à sable peuvent être personnalisés.
+Vous pouvez utiliser « %USER% » pour enregistrer le bac de chaque utilisateur dans son propre dossier.</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="293"/>
         <source>Sandboxed Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Fichiers placés dans le bac</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="316"/>
         <source>Select Directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Choisir le répertoire</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="324"/>
         <source>Virtualization scheme</source>
-        <translation type="unfinished">Plan de virtualisation</translation>
+        <translation>Schéma de virtualisation :</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="328"/>
         <source>Version 1</source>
-        <translation type="unfinished">Version 1</translation>
+        <translation>Version 1</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="329"/>
         <source>Version 2</source>
-        <translation type="unfinished">Version 2</translation>
+        <translation>Version 2</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="335"/>
         <source>Separate user folders</source>
-        <translation type="unfinished"></translation>
+        <translation>Séparer les dossiers d&apos;utilisateurs</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="340"/>
         <source>Use volume serial numbers for drives</source>
-        <translation type="unfinished"></translation>
+        <translation>Utiliser les numéros de série de volume pour les lecteurs</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="345"/>
         <source>Auto delete content when last process terminates</source>
-        <translation type="unfinished"></translation>
+        <translation>Supprimer automatiquement le contenu lorsque le dernier processus prend fin</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="352"/>
         <source>Enable Immediate Recovery of files from recovery locations</source>
-        <translation type="unfinished"></translation>
+        <translation>Activer la récupération immédiate des fichiers depuis les emplacement de récupération</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="387"/>
-        <source>The sellected box location is not a valid path.</source>
-        <translation type="unfinished"></translation>
+        <source>The selected box location is not a valid path.</source>
+        <oldsource>The sellected box location is not a valid path.</oldsource>
+        <translation type="unfinished">L&apos;emplacement de bac choisi n&apos;est pas un chemin valide.</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="392"/>
-        <source>The sellected box location exists and is not empty, it is recomended to pick a new or empty folder. Are you sure you want to use an existing folder?</source>
-        <translation type="unfinished"></translation>
+        <source>The selected box location exists and is not empty, it is recommended to pick a new or empty folder. Are you sure you want to use an existing folder?</source>
+        <oldsource>The sellected box location exists and is not empty, it is recomended to pick a new or empty folder. Are you sure you want to use an existing folder?</oldsource>
+        <translation type="unfinished">L&apos;emplacement de bac choisi n&apos;est pas vide ; il est recommandé de choisir un répertoire nouveau ou vide. Êtes-vous sûr de vouloir utiliser un dossier existant ?</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="397"/>
-        <source>The sellected box location not placed on a currently available drive.</source>
-        <translation type="unfinished"></translation>
+        <source>The selected box location not placed on a currently available drive.</source>
+        <oldsource>The sellected box location not placed on a currently available drive.</oldsource>
+        <translation type="unfinished">L&apos;emplacement de bac choisi n&apos;est pas situé sur un lecteur actuellement disponible.</translation>
     </message>
 </context>
 <context>
@@ -314,7 +324,7 @@ You can use %USER% to save each users sandbox to an own fodler.</source>
     <message>
         <location filename="Wizards/SetupWizard.cpp" line="494"/>
         <source>Almost complete, click Finish to apply all selected options and conclude the wizard.</source>
-        <translation>C&apos;est presque fini, appuyez sur « Terminer » pour appliquer toutes les options choisies et mettre fin à l&apos;assistant.</translation>
+        <translation>C&apos;est presque fini. Appuyez sur « Terminer » pour appliquer toutes les options choisies et mettre fin à l&apos;assistant.</translation>
     </message>
     <message>
         <location filename="Wizards/SetupWizard.cpp" line="506"/>
@@ -457,17 +467,18 @@ You can use %USER% to save each users sandbox to an own fodler.</source>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="30"/>
         <source>New Box Wizard</source>
-        <translation type="unfinished"></translation>
+        <translation>Assistant de nouveau bac</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="126"/>
-        <source>The new sandbox has been created using the new &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-delete-v2&quot;&gt;Virtualization Scheme Version 2&lt;/a&gt;, if you expirience any unecpected issues with this box, please switch to the Virtualization Scheme to Version 1 and report the issue, the option to change this preset can be found in the Box Options in the Box Structure groupe.</source>
-        <translation type="unfinished"></translation>
+        <source>The new sandbox has been created using the new &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-delete-v2&quot;&gt;Virtualization Scheme Version 2&lt;/a&gt;, if you experience any unexpected issues with this box, please switch to the Virtualization Scheme to Version 1 and report the issue, the option to change this preset can be found in the Box Options in the Box Structure group.</source>
+        <oldsource>The new sandbox has been created using the new &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-delete-v2&quot;&gt;Virtualization Scheme Version 2&lt;/a&gt;, if you expirience any unecpected issues with this box, please switch to the Virtualization Scheme to Version 1 and report the issue, the option to change this preset can be found in the Box Options in the Box Structure groupe.</oldsource>
+        <translation type="unfinished">Le nouveau bac à sable a été créé en utilisant le nouveau &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-delete-v2&quot;&gt;schéma de virtualisation version 2&lt;/a&gt;. Si vous rencontrez des erreurs inattendues avec ce bac, veuillez basculer le schéma de virtualisation sur la version 1 et signalez le problème. L&apos;option pour modifier ce préréglage peut être trouvée dans les options du bac, dans le groupe de structure de bac.</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="129"/>
         <source>Don&apos;t show this message again.</source>
-        <translation type="unfinished">Ne plus afficher ce message.</translation>
+        <translation>Ne plus afficher ce message</translation>
     </message>
 </context>
 <context>
@@ -488,7 +499,7 @@ You can use %USER% to save each users sandbox to an own fodler.</source>
     <message>
         <location filename="OnlineUpdater.cpp" line="100"/>
         <source>Don&apos;t show this message again.</source>
-        <translation>Ne plus afficher ce message.</translation>
+        <translation>Ne plus afficher ce message</translation>
     </message>
     <message>
         <location filename="OnlineUpdater.cpp" line="209"/>
@@ -633,7 +644,7 @@ You can use %USER% to save each users sandbox to an own fodler.</source>
     </message>
     <message>
         <source>Don&apos;t show this message anymore.</source>
-        <translation type="vanished">Ne plus afficher ce message.</translation>
+        <translation type="vanished">Ne plus afficher ce message</translation>
     </message>
     <message>
         <location filename="OnlineUpdater.cpp" line="274"/>
@@ -1424,7 +1435,7 @@ Remarque : La recherche de mise à jour est souvent en retard par rapport à la 
     <message>
         <location filename="Windows/OptionsWindow.cpp" line="285"/>
         <source>File Options</source>
-        <translation type="unfinished">Options des fichiers</translation>
+        <translation>Options des fichiers</translation>
     </message>
     <message>
         <location filename="Windows/OptionsWindow.cpp" line="296"/>
@@ -1813,7 +1824,7 @@ Chemin complet : %4</translation>
 <context>
     <name>CSandBoxPlus</name>
     <message>
-        <location filename="SbiePlusAPI.cpp" line="631"/>
+        <location filename="SbiePlusAPI.cpp" line="636"/>
         <source>Disabled</source>
         <translation>Désactivé</translation>
     </message>
@@ -1826,62 +1837,62 @@ Chemin complet : %4</translation>
         <translation type="vanished">NON SÉCURISÉ (Configuration de débogage)</translation>
     </message>
     <message>
-        <location filename="SbiePlusAPI.cpp" line="642"/>
+        <location filename="SbiePlusAPI.cpp" line="647"/>
         <source>OPEN Root Access</source>
         <translation>OUVRIR l&apos;accès Racine</translation>
     </message>
     <message>
-        <location filename="SbiePlusAPI.cpp" line="644"/>
+        <location filename="SbiePlusAPI.cpp" line="649"/>
         <source>Application Compartment</source>
         <translation>Conteneur d&apos;applications</translation>
     </message>
     <message>
-        <location filename="SbiePlusAPI.cpp" line="646"/>
+        <location filename="SbiePlusAPI.cpp" line="651"/>
         <source>NOT SECURE</source>
         <translation>NON SÉCURISÉ</translation>
     </message>
     <message>
-        <location filename="SbiePlusAPI.cpp" line="648"/>
+        <location filename="SbiePlusAPI.cpp" line="653"/>
         <source>Reduced Isolation</source>
         <translation>Isolation réduite</translation>
     </message>
     <message>
-        <location filename="SbiePlusAPI.cpp" line="650"/>
+        <location filename="SbiePlusAPI.cpp" line="655"/>
         <source>Enhanced Isolation</source>
         <translation>Isolation renforcée</translation>
     </message>
     <message>
-        <location filename="SbiePlusAPI.cpp" line="653"/>
+        <location filename="SbiePlusAPI.cpp" line="658"/>
         <source>Privacy Enhanced</source>
         <translation>Confidentialité renforcée</translation>
     </message>
     <message>
-        <location filename="SbiePlusAPI.cpp" line="656"/>
+        <location filename="SbiePlusAPI.cpp" line="661"/>
         <source>API Log</source>
         <translation>Journal API</translation>
     </message>
     <message>
-        <location filename="SbiePlusAPI.cpp" line="658"/>
+        <location filename="SbiePlusAPI.cpp" line="663"/>
         <source>No INet</source>
         <translation>Pas d&apos;INet</translation>
     </message>
     <message>
-        <location filename="SbiePlusAPI.cpp" line="660"/>
+        <location filename="SbiePlusAPI.cpp" line="665"/>
         <source>Net Share</source>
         <translation>Partage réseau</translation>
     </message>
     <message>
-        <location filename="SbiePlusAPI.cpp" line="662"/>
+        <location filename="SbiePlusAPI.cpp" line="667"/>
         <source>No Admin</source>
         <translation>Pas administrateur</translation>
     </message>
     <message>
-        <location filename="SbiePlusAPI.cpp" line="665"/>
+        <location filename="SbiePlusAPI.cpp" line="670"/>
         <source>Auto Delete</source>
         <translation>Suppression automatique</translation>
     </message>
     <message>
-        <location filename="SbiePlusAPI.cpp" line="668"/>
+        <location filename="SbiePlusAPI.cpp" line="673"/>
         <source>Normal</source>
         <translation>Normal</translation>
     </message>
@@ -1905,7 +1916,7 @@ Chemin complet : %4</translation>
     <message>
         <location filename="SandMan.cpp" line="825"/>
         <source>Click to download update</source>
-        <translation>Cliquez pour télécharger la mise à jour</translation>
+        <translation>Appuyer pour télécharger la mise à jour</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="1419"/>
@@ -1920,17 +1931,17 @@ Chemin complet : %4</translation>
     <message>
         <location filename="SandMan.cpp" line="1700"/>
         <source>Updated Shortcut to: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Raccourci vers %1 mis à jour</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="1702"/>
         <source>Added Shortcut to: %1</source>
-        <translation>Raccourci ajouté à : %1</translation>
+        <translation>Raccourci vers %1 ajouté</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="1753"/>
         <source>Auto removing sandbox %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Suppression auto. du bac à sable %1</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="1768"/>
@@ -1996,9 +2007,12 @@ Chemin complet : %4</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="2793"/>
-        <source>You are about to edit the Templates.ini, thsi is generally not recommeded.
-This file is part of Sandboxie and all changed done to it will be reverted next time Sandboxie is updated.</source>
-        <translation type="unfinished"></translation>
+        <source>You are about to edit the Templates.ini, this is generally not recommended.
+This file is part of Sandboxie and all change done to it will be reverted next time Sandboxie is updated.</source>
+        <oldsource>You are about to edit the Templates.ini, thsi is generally not recommeded.
+This file is part of Sandboxie and all changed done to it will be reverted next time Sandboxie is updated.</oldsource>
+        <translation type="unfinished">Vous êtes sur le point de modifier Templates.ini ; ce n&apos;est généralement pas recommandé.
+Ce fichier fait partie de Sandboxie et toute modification faite sur lui sera annulée la prochaine fois que Sandboxie sera mis à jour.</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="2998"/>
@@ -2071,7 +2085,7 @@ This file is part of Sandboxie and all changed done to it will be reverted next 
     </message>
     <message>
         <location filename="SandMan.cpp" line="462"/>
-        <location filename="SandMan.cpp" line="665"/>
+        <location filename="SandMan.cpp" line="668"/>
         <source>&amp;Sandbox</source>
         <translation>&amp;Bacs à sable</translation>
     </message>
@@ -2087,7 +2101,7 @@ This file is part of Sandboxie and all changed done to it will be reverted next 
     </message>
     <message>
         <location filename="SandMan.cpp" line="468"/>
-        <location filename="SandMan.cpp" line="599"/>
+        <location filename="SandMan.cpp" line="602"/>
         <source>Terminate All Processes</source>
         <translation>Arrêter tous les processus</translation>
     </message>
@@ -2185,13 +2199,13 @@ This file is part of Sandboxie and all changed done to it will be reverted next 
     </message>
     <message>
         <location filename="SandMan.cpp" line="509"/>
-        <location filename="SandMan.cpp" line="635"/>
+        <location filename="SandMan.cpp" line="638"/>
         <source>Exit</source>
         <translation>Quitter</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="512"/>
-        <location filename="SandMan.cpp" line="637"/>
+        <location filename="SandMan.cpp" line="640"/>
         <source>&amp;View</source>
         <translation>&amp;Affichage</translation>
     </message>
@@ -2262,19 +2276,19 @@ This file is part of Sandboxie and all changed done to it will be reverted next 
     </message>
     <message>
         <location filename="SandMan.cpp" line="572"/>
-        <location filename="SandMan.cpp" line="687"/>
+        <location filename="SandMan.cpp" line="690"/>
         <source>Global Settings</source>
         <translation>Paramètres généraux</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="573"/>
-        <location filename="SandMan.cpp" line="697"/>
+        <location filename="SandMan.cpp" line="700"/>
         <source>Reset all hidden messages</source>
         <translation>Réinitialiser tous les messages masqués</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="574"/>
-        <location filename="SandMan.cpp" line="698"/>
+        <location filename="SandMan.cpp" line="701"/>
         <source>Reset all GUI options</source>
         <translation>Réinitialiser toutes les options d&apos;interface</translation>
     </message>
@@ -2345,13 +2359,13 @@ This file is part of Sandboxie and all changed done to it will be reverted next 
     </message>
     <message>
         <location filename="SandMan.cpp" line="467"/>
-        <location filename="SandMan.cpp" line="598"/>
+        <location filename="SandMan.cpp" line="601"/>
         <source>Run Sandboxed</source>
         <translation>Exécuter dans un bac à sable</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="485"/>
-        <location filename="SandMan.cpp" line="609"/>
+        <location filename="SandMan.cpp" line="612"/>
         <source>Is Window Sandboxed?</source>
         <oldsource>Is Window Sandboxed</oldsource>
         <translation>La fenêtre est-elle dans un bac à sable ?</translation>
@@ -2363,102 +2377,100 @@ This file is part of Sandboxie and all changed done to it will be reverted next 
     </message>
     <message>
         <location filename="SandMan.cpp" line="579"/>
-        <location filename="SandMan.cpp" line="705"/>
+        <location filename="SandMan.cpp" line="708"/>
         <source>Edit Sandboxie.ini</source>
-        <translation type="unfinished"></translation>
+        <translation>Éditer Sandboxie.ini</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="581"/>
-        <location filename="SandMan.cpp" line="707"/>
+        <location filename="SandMan.cpp" line="582"/>
         <source>Edit Templates.ini</source>
-        <translation type="unfinished"></translation>
+        <translation>Éditer Templates.ini</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="583"/>
-        <location filename="SandMan.cpp" line="709"/>
+        <location filename="SandMan.cpp" line="584"/>
         <source>Edit Sandboxie-Plus.ini</source>
-        <translation type="unfinished"></translation>
+        <translation>Éditer Sandboxie-Plus.ini</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="585"/>
+        <location filename="SandMan.cpp" line="588"/>
         <location filename="SandMan.cpp" line="711"/>
         <source>Reload configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Recharger la configuration</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="597"/>
+        <location filename="SandMan.cpp" line="600"/>
         <source>&amp;File</source>
         <translation>&amp;Fichier</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="610"/>
+        <location filename="SandMan.cpp" line="613"/>
         <source>Resource Access Monitor</source>
         <translation>Moniteur d&apos;accès aux ressources</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="643"/>
+        <location filename="SandMan.cpp" line="646"/>
         <source>Programs</source>
         <translation>Programmes</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="644"/>
+        <location filename="SandMan.cpp" line="647"/>
         <source>Files and Folders</source>
         <translation>Fichiers et dossiers</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="670"/>
+        <location filename="SandMan.cpp" line="673"/>
         <source>Create New Sandbox</source>
-        <translation>Créer un nouveau bac à sable</translation>
+        <translation>Création d&apos;un nouveau bac à sable</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="671"/>
+        <location filename="SandMan.cpp" line="674"/>
         <source>Create New Group</source>
         <translation>Créer un nouveau groupe</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="672"/>
+        <location filename="SandMan.cpp" line="675"/>
         <source>Import Sandbox</source>
         <translation>Importer un bac à sable</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="674"/>
+        <location filename="SandMan.cpp" line="677"/>
         <source>Set Container Folder</source>
         <translation>Définir le répertoire conteneur</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="677"/>
+        <location filename="SandMan.cpp" line="680"/>
         <source>Set Layout and Groups</source>
         <translation>Définir la disposition et les groupes</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="680"/>
+        <location filename="SandMan.cpp" line="683"/>
         <source>Reveal Hidden Boxes</source>
         <translation>Révéler les bacs masqués</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="686"/>
+        <location filename="SandMan.cpp" line="689"/>
         <source>&amp;Configure</source>
         <translation>&amp;Configuration</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="690"/>
+        <location filename="SandMan.cpp" line="693"/>
         <source>Program Alerts</source>
-        <translation>Alertes des programmes</translation>
+        <translation>Alertes concernant les programmes</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="692"/>
+        <location filename="SandMan.cpp" line="695"/>
         <source>Windows Shell Integration</source>
         <translation>Intégration à l&apos;interface système de Windows</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="694"/>
+        <location filename="SandMan.cpp" line="697"/>
         <source>Software Compatibility</source>
         <translation>Compatibilité logicielle</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="703"/>
+        <location filename="SandMan.cpp" line="706"/>
         <source>Lock Configuration</source>
-        <translation>Protection de configuration</translation>
+        <translation>Protection de la configuration</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="725"/>
@@ -2477,7 +2489,7 @@ This file is part of Sandboxie and all changed done to it will be reverted next 
     </message>
     <message>
         <source>Click to install update</source>
-        <translation type="vanished">Cliquer pour installer la mise à jour</translation>
+        <translation type="vanished">Appuyer pour installer la mise à jour</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="833"/>
@@ -2487,7 +2499,7 @@ This file is part of Sandboxie and all changed done to it will be reverted next 
     <message>
         <location filename="SandMan.cpp" line="834"/>
         <source>Click to open web browser</source>
-        <translation>Cliquer pour ouvrir le navigateur web</translation>
+        <translation>Appuyer pour ouvrir le navigateur web</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="1010"/>
@@ -2496,7 +2508,7 @@ This file is part of Sandboxie and all changed done to it will be reverted next 
     </message>
     <message>
         <location filename="SandMan.cpp" line="568"/>
-        <location filename="SandMan.cpp" line="648"/>
+        <location filename="SandMan.cpp" line="651"/>
         <location filename="SandMan.cpp" line="1018"/>
         <source>Recovery Log</source>
         <translation>Journal de récupération</translation>
@@ -2504,12 +2516,12 @@ This file is part of Sandboxie and all changed done to it will be reverted next 
     <message>
         <location filename="SandMan.cpp" line="817"/>
         <source>Click to run installer</source>
-        <translation>Cliquez pour lancer l&apos;installeur</translation>
+        <translation>Appuyer pour lancer l&apos;installeur</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="821"/>
         <source>Click to apply update</source>
-        <translation>Cliquez pour appliquer la mise à jour</translation>
+        <translation>Appuyer pour appliquer la mise à jour</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="824"/>
@@ -2538,7 +2550,7 @@ Voulez-vous faire la purge ?</translation>
         <location filename="SandMan.cpp" line="2795"/>
         <location filename="SandMan.cpp" line="2811"/>
         <source>Don&apos;t show this message again.</source>
-        <translation>Ne plus afficher ce message.</translation>
+        <translation>Ne plus afficher ce message</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="1250"/>
@@ -2634,7 +2646,7 @@ Ce bac empêche l&apos;accès à toutes les données utilisateur, sauf si spéci
     </message>
     <message>
         <location filename="SandMan.cpp" line="470"/>
-        <location filename="SandMan.cpp" line="600"/>
+        <location filename="SandMan.cpp" line="603"/>
         <location filename="SandManTray.cpp" line="101"/>
         <source>Pause Forcing Programs</source>
         <translation>Suspendre le forçage des programmes</translation>
@@ -2804,8 +2816,8 @@ Non choisira : %2</translation>
         <oldsource>The file %1 failed a security check!
 
 %2</oldsource>
-        <translation type="unfinished">Le fichier %1 a échoué à la vérification de sécurité !
-
+        <translation>Le fichier %1 a échoué à la vérification de sécurité !<byte value="xd"/>
+<byte value="xd"/>
 %2</translation>
     </message>
     <message>
@@ -2815,14 +2827,14 @@ Non choisira : %2</translation>
     </message>
     <message>
         <location filename="SandManRecovery.cpp" line="173"/>
-        <source>The file %1 failed a security check, do you want to recover it anyways?<byte value="xd"/>
+        <source>The file %1 failed a security check, do you want to recover it anyway?<byte value="xd"/>
 <byte value="xd"/>
 %2</source>
-        <oldsource>The file %1 failed a security check, do you want to recover it anyways?
-
+        <oldsource>The file %1 failed a security check, do you want to recover it anyways?<byte value="xd"/>
+<byte value="xd"/>
 %2</oldsource>
-        <translation type="unfinished">Le fichier %1 a échoué à un test de sécurité ; voulez-vous le récupérer quand même ?
-
+        <translation type="unfinished">Le fichier %1 a échoué à un test de sécurité ; voulez-vous le récupérer quand même ?<byte value="xd"/>
+<byte value="xd"/>
 %2</translation>
     </message>
     <message>
@@ -2965,8 +2977,9 @@ Remarque : La recherche de mise à jour est souvent en retard par rapport à la 
     </message>
     <message>
         <location filename="SandMan.cpp" line="3250"/>
-        <source>&lt;h3&gt;About Sandboxie-Plus&lt;/h3&gt;&lt;p&gt;Version %1&lt;/p&gt;&lt;p&gt;Copyright (c) 2020-2022 by DavidXanatos&lt;/p&gt;</source>
-        <translation>&lt;h3&gt;À propos de Sandboxie-Plus&lt;/h3&gt;&lt;p&gt;Version %1&lt;/p&gt;&lt;p&gt;Copyright (c) 2020-2022 par DavidXanatos&lt;/p&gt;</translation>
+        <source>&lt;h3&gt;About Sandboxie-Plus&lt;/h3&gt;&lt;p&gt;Version %1&lt;/p&gt;&lt;p&gt;Copyright (c) 2020-2023 by DavidXanatos&lt;/p&gt;</source>
+        <oldsource>&lt;h3&gt;About Sandboxie-Plus&lt;/h3&gt;&lt;p&gt;Version %1&lt;/p&gt;&lt;p&gt;Copyright (c) 2020-2022 by DavidXanatos&lt;/p&gt;</oldsource>
+        <translation type="unfinished">&lt;h3&gt;À propos de Sandboxie-Plus&lt;/h3&gt;&lt;p&gt;Version %1&lt;/p&gt;&lt;p&gt;Copyright (c) 2020-2022 par DavidXanatos&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="3258"/>
@@ -3206,7 +3219,7 @@ Remarque : La recherche de mise à jour est souvent en retard par rapport à la 
     </message>
     <message>
         <source>Don&apos;t show this message anymore.</source>
-        <translation type="vanished">Ne plus afficher ce message.</translation>
+        <translation type="vanished">Ne plus afficher ce message</translation>
     </message>
     <message>
         <source>Downloading new version...</source>
@@ -3477,12 +3490,12 @@ Remarque : La recherche de mise à jour est souvent en retard par rapport à la 
     <message>
         <location filename="SbieProcess.cpp" line="118"/>
         <source> Elevated</source>
-        <translation type="unfinished"></translation>
+        <translation> avec une élévation des privilèges</translation>
     </message>
     <message>
         <location filename="SbieProcess.cpp" line="120"/>
         <source> as System</source>
-        <translation type="unfinished"></translation>
+        <translation> en tant que Système</translation>
     </message>
     <message>
         <location filename="SbieProcess.cpp" line="123"/>
@@ -3627,7 +3640,7 @@ Remarque : La recherche de mise à jour est souvent en retard par rapport à la 
     <message>
         <location filename="Views/SbieView.cpp" line="206"/>
         <source>Ask for UAC Elevation</source>
-        <translation>Demander l&apos;élévation de privilège UAC</translation>
+        <translation>Demander l&apos;élévation des privilèges UAC</translation>
     </message>
     <message>
         <location filename="Views/SbieView.cpp" line="207"/>
@@ -3727,7 +3740,7 @@ Remarque : La recherche de mise à jour est souvent en retard par rapport à la 
     <message>
         <location filename="Views/SbieView.cpp" line="278"/>
         <source>Run Sandboxed</source>
-        <translation>Exécuter dans le bac à sable</translation>
+        <translation>Exécuter dans le bac</translation>
     </message>
     <message>
         <location filename="Views/SbieView.cpp" line="279"/>
@@ -3767,17 +3780,17 @@ Remarque : La recherche de mise à jour est souvent en retard par rapport à la 
     <message>
         <location filename="Views/SbieView.cpp" line="310"/>
         <source>Sandbox Settings</source>
-        <translation>Paramètres du bac à sable</translation>
+        <translation>Paramètres du bac</translation>
     </message>
     <message>
         <location filename="Views/SbieView.cpp" line="317"/>
         <source>Duplicate Sandbox Config</source>
-        <translation>Dupliquer la configuration du bac à sable</translation>
+        <translation>Dupliquer la configuration du bac</translation>
     </message>
     <message>
         <location filename="Views/SbieView.cpp" line="318"/>
         <source>Export Sandbox</source>
-        <translation>Exporter le bac à sable</translation>
+        <translation>Exporter le bac</translation>
     </message>
     <message>
         <location filename="Views/SbieView.cpp" line="377"/>
@@ -3964,7 +3977,7 @@ Remarque : La recherche de mise à jour est souvent en retard par rapport à la 
         <location filename="Views/SbieView.cpp" line="1143"/>
         <location filename="Views/SbieView.cpp" line="1382"/>
         <source>Don&apos;t show this message again.</source>
-        <translation>Ne plus afficher ce message.</translation>
+        <translation>Ne plus afficher ce message</translation>
     </message>
     <message>
         <location filename="Views/SbieView.cpp" line="1134"/>
@@ -4073,8 +4086,9 @@ Remarque : La recherche de mise à jour est souvent en retard par rapport à la 
     </message>
     <message>
         <location filename="Views/SbieView.cpp" line="1457"/>
-        <source>Do you want to %1 %2?</source>
-        <translation>Voulez-vous %1 %2 ?</translation>
+        <source>Do you want to terminate %1?</source>
+        <oldsource>Do you want to %1 %2?</oldsource>
+        <translation type="unfinished">Voulez-vous %1 %2 ?</translation>
     </message>
     <message>
         <location filename="Views/SbieView.cpp" line="1457"/>
@@ -4520,63 +4534,71 @@ Remarque : La recherche de mise à jour est souvent en retard par rapport à la 
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="494"/>
         <source>Create the new Sandbox</source>
-        <translation type="unfinished"></translation>
+        <translation>Création du nouveau bac à sable</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="502"/>
         <source>Almost complete, click Finish to create a new sandbox and conclude the wizard.</source>
-        <translation type="unfinished"></translation>
+        <translation>C&apos;est bientôt fini. Appuyez sur « Terminer » pour créer un nouveau bac et conclure l&apos;assistant.</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="511"/>
         <source>Save options as new defaults</source>
-        <translation type="unfinished"></translation>
+        <translation>Enregistrer les options en tant que nouvelles options par défaut</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="522"/>
         <source>Don&apos;t show the summary page in future (unless advanced options were set)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ne plus afficher la page de récapitulatif (à moins que les options avancées n&apos;aient été définies)</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="541"/>
         <source>
 This Sandbox will be saved to: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>
+Ce bac sera enregistré dans : %1</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="544"/>
         <source>
-This box&apos;s content will be DISCARDED when its closed, and the box will be removed.</source>
-        <translation type="unfinished"></translation>
+This box&apos;s content will be DISCARDED when it&apos;s closed, and the box will be removed.</source>
+        <oldsource>
+This box&apos;s content will be DISCARDED when its closed, and the box will be removed.</oldsource>
+        <translation type="unfinished">
+Le contenu de ce bac sera ÉLIMINÉ lors de sa fermeture, et le bac sera supprimé.</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="546"/>
         <source>
 This box will DISCARD its content when its closed, its suitable only for temporary data.</source>
-        <translation type="unfinished"></translation>
+        <translation>
+Ce bac ÉLIMINERA son contenu lors de sa fermeture ; cela convient uniquement aux données temporaires.</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="548"/>
         <source>
 Processes in this box will not be able to access the internet or the local network, this ensures all accessed data to stay confidential.</source>
-        <translation type="unfinished"></translation>
+        <translation>
+Les processus de ce bac ne seront pas capables d&apos;accéder à Internet ou au réseau local. Cela garantit que toutes les données consultées restent confidentielles.</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="550"/>
         <source>
 This box will run the MSIServer (*.msi installer service) with a system token, this improves the compatybility but reduces the security isolation.</source>
-        <translation type="unfinished"></translation>
+        <translation>
+Ce bac lancera MSIServer (service d&apos;installation *.msi) avec un jeton système. Cela améliore la compatibilité, mais réduit l&apos;isolation de sécurité.</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="552"/>
         <source>
 Processes in this box will think they are run with administrative privileges, without actually having them, hence installers can be used even in a security hardened box.</source>
-        <translation type="unfinished"></translation>
+        <translation>
+Les processus de ce bac penseront qu&apos;ils sont lancés avec des privilèges d&apos;administration, sans en fait les avoir. Les installeurs seront donc en mesure d&apos;être utilisés même dans un bac à sécurité renforcée.</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="580"/>
         <source>Failed to create new box: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Échec de création du nouveau bac : %1</translation>
     </message>
 </context>
 <context>
@@ -4911,7 +4933,7 @@ Processes in this box will think they are run with administrative privileges, wi
     <message>
         <location filename="Forms/NewBoxWindow.ui" line="91"/>
         <source>A sandbox isolates your host system from processes running within the box, it prevents them from making permanent changes to other programs and data in your computer. The level of isolation impacts your security as well as the compatibility with applications, hence there will be a different level of isolation depending on the selected Box Type. Sandboxie can also protect your personal data from being accessed by processes running under its supervision.</source>
-        <translation>Un bac à sable isole le système hôte des processus lancés dans le bac. Cela les empêche de faire des changements permanents aux autres programmes ou aux données de votre ordinateur. Le niveau d&apos;isolation affecte la sécurité mais aussi la compatibilité avec les applications, c&apos;est pourquoi il y a différents niveaux d&apos;isolation en fonction du type de bac à sable choisi. Sandboxie peut aussi empêcher l&apos;accès à vos données personnelles aux processus tournant sous sa supervision.</translation>
+        <translation>Un bac à sable isole le système hôte des processus lancés dans le bac. Cela les empêche de faire des changements permanents aux autres programmes ou aux données de votre ordinateur. Le niveau d&apos;isolation affecte la sécurité mais aussi la compatibilité avec les applications, c&apos;est pourquoi il y a différents niveaux d&apos;isolation en fonction du type de bac choisi. Sandboxie peut aussi empêcher l&apos;accès à vos données personnelles aux processus tournant sous sa supervision.</translation>
     </message>
     <message>
         <location filename="Forms/NewBoxWindow.ui" line="101"/>
@@ -5000,7 +5022,7 @@ Processes in this box will think they are run with administrative privileges, wi
     <message>
         <location filename="Forms/OptionsWindow.ui" line="946"/>
         <source>Elevation restrictions</source>
-        <translation>Restrictions d&apos;élévation de privilège</translation>
+        <translation>Restrictions d&apos;élévation des privilèges</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="1031"/>
@@ -5045,7 +5067,7 @@ Processes in this box will think they are run with administrative privileges, wi
     <message>
         <location filename="Forms/OptionsWindow.ui" line="390"/>
         <source>Auto delete content when last sandboxed process terminates</source>
-        <translation>Suppression automatique du contenu lorsque le dernier processus du bac se termine</translation>
+        <translation>Supprimer automatiquement le contenu lorsque le dernier processus du bac prend fin</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="460"/>
@@ -6375,12 +6397,12 @@ Veuillez noter que ces valeurs sont actuellement spécifiques à l&apos;utilisat
     <message>
         <location filename="Forms/OptionsWindow.ui" line="355"/>
         <source>The box structure can only be changed when the sandbox is empty</source>
-        <translation>La structure de bac peut être changée uniquement lorsque le bac à sable est vide</translation>
+        <translation>La structure de bac ne peut être changée que lorsque le bac à sable est vide.</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="362"/>
         <source>Allow sandboxed processes to open files protected by EFS</source>
-        <translation>Autoriser les processus dans un bac à ouvrir les fichiers protégés par EFS</translation>
+        <translation>Autoriser les processus dans le bac à ouvrir les fichiers protégés par EFS</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="376"/>
@@ -6390,7 +6412,7 @@ Veuillez noter que ces valeurs sont actuellement spécifiques à l&apos;utilisat
     <message>
         <location filename="Forms/OptionsWindow.ui" line="383"/>
         <source>Virtualization scheme</source>
-        <translation>Plan de virtualisation</translation>
+        <translation>Schéma de virtualisation :</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="488"/>
@@ -6683,7 +6705,7 @@ Veuillez noter que ces valeurs sont actuellement spécifiques à l&apos;utilisat
     <message>
         <location filename="Forms/SelectBoxWindow.ui" line="97"/>
         <source>Run in a new Sandbox</source>
-        <translation type="unfinished"></translation>
+        <translation>Exécuter dans un nouveau bac à sable</translation>
     </message>
     <message>
         <location filename="Forms/SelectBoxWindow.ui" line="65"/>
@@ -6859,7 +6881,7 @@ Veuillez noter que ces valeurs sont actuellement spécifiques à l&apos;utilisat
     <message>
         <location filename="Forms/SettingsWindow.ui" line="539"/>
         <source>Use a Page Tree in the Box Options instead of Nested Tabs *</source>
-        <translation>Utiliser une arborescence dans les options de bac plutôt que des onglets imbriqués *</translation>
+        <translation>Utiliser une arborescence dans les options du bac plutôt que des onglets imbriqués *</translation>
     </message>
     <message>
         <location filename="Forms/SettingsWindow.ui" line="556"/>
@@ -7118,7 +7140,7 @@ Veuillez noter que ces valeurs sont actuellement spécifiques à l&apos;utilisat
     <message>
         <location filename="Forms/SettingsWindow.ui" line="1040"/>
         <source>Program Alerts</source>
-        <translation>Alertes des programmes</translation>
+        <translation>Alertes concernant les programmes</translation>
     </message>
     <message>
         <location filename="Forms/SettingsWindow.ui" line="1122"/>
@@ -7174,7 +7196,7 @@ Veuillez noter que ces valeurs sont actuellement spécifiques à l&apos;utilisat
     <message>
         <location filename="Forms/SettingsWindow.ui" line="743"/>
         <source>Sandbox Config</source>
-        <translation>Configuration du bac à sable</translation>
+        <translation>Configuration des bacs à sable</translation>
     </message>
     <message>
         <location filename="Forms/SettingsWindow.ui" line="857"/>
@@ -7204,7 +7226,7 @@ Veuillez noter que ces valeurs sont actuellement spécifiques à l&apos;utilisat
     <message>
         <location filename="Forms/SettingsWindow.ui" line="1181"/>
         <source>Sandboxie has detected the following software applications in your system. Click OK to apply configuration settings, which will improve compatibility with these applications. These configuration settings will have effect in all existing sandboxes and in any new sandboxes.</source>
-        <translation>Sandboxie a détecté les applications logicielles suivantes dans votre système. Cliquez sur OK pour appliquer les paramètres de configuration, qui amélioreront la compatibilité avec ces applications. Ces paramètres de configuration auront un effet dans tous les bacs à sable existants et dans tous les nouveaux.</translation>
+        <translation>Sandboxie a détecté les applications logicielles suivantes dans votre système. Appuyez sur OK pour appliquer les paramètres de configuration, qui amélioreront la compatibilité avec ces applications. Ces paramètres de configuration auront un effet dans tous les bacs à sable existants et dans tous les nouveaux.</translation>
     </message>
     <message>
         <location filename="Forms/SettingsWindow.ui" line="1194"/>

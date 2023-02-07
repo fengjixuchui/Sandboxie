@@ -11,6 +11,7 @@ public:
 	~CFinder();
 
 	void				SetTree(QTreeView* pTree);
+	void				SetModel(QAbstractItemModel* pModel) { m_pModel = pModel; }
 
 	static void			SetDarkMode(bool bDarkMode) { m_DarkMode = bDarkMode; }
 	static bool			GetDarkMode()				{ return m_DarkMode; }
@@ -53,8 +54,8 @@ protected:
 	virtual bool		MatchString(const QString& value);
 	bool				MatchCell(QModelIndex idx, int column);
 	bool				MatchRow(QModelIndex idx);
-	QModelIndex			FindNext(QModelIndex idx, bool next = false, int depth = 0);
-	QModelIndex			FindPrev(QModelIndex idx, bool next = false, int depth = 0);
+	QModelIndex			FindRow(QModelIndex par, int start, bool reverse);
+	QModelIndex			FindRow(bool reverse);
 
 private:
 
