@@ -1371,7 +1371,12 @@ void CSandMan::dropEvent(QDropEvent* e)
 			Commands.append(url.toLocalFile().replace("/", "\\"));
 	}
 
-	QTimer::singleShot(0, this, [Commands, this]() { RunSandboxed(Commands); });
+	QString BoxName;
+	QList<CSandBoxPtr> Boxes = m_pBoxView->GetSelectedBoxes();
+	if (Boxes.count() == 1)
+		BoxName = Boxes.first()->GetName();
+
+	QTimer::singleShot(0, this, [Commands, BoxName, this]() { RunSandboxed(Commands, BoxName); });
 }
 
 void CSandMan::timerEvent(QTimerEvent* pEvent)
@@ -1425,13 +1430,16 @@ void CSandMan::timerEvent(QTimerEvent* pEvent)
 			m_pDisabledForce->setText(m_pDisableForce->isChecked() ? Str1 : QString(Str1.length(), ' '));
 		}
 
-		if (m_bIconEmpty != (ActiveProcesses == 0) || m_bIconBusy != bIconBusy || m_iIconDisabled != (bForceProcessDisabled ? 1 : 0))
+		bool bUpdatePending = !theConf->GetString("Updater/PendingUpdate").isEmpty();
+
+		if (m_bIconEmpty != (ActiveProcesses == 0) || m_bIconBusy != bIconBusy || m_iIconDisabled != (bForceProcessDisabled ? 1 : 0) || bUpdatePending)
 		{
 			m_bIconEmpty = (ActiveProcesses == 0);
 			m_bIconBusy = bIconBusy;
 			m_iIconDisabled = (bForceProcessDisabled ? 1 : 0);
 
-			m_pTrayIcon->setIcon(GetTrayIcon());
+			m_bIconSun = bUpdatePending ? !m_bIconSun : false;
+			m_pTrayIcon->setIcon(GetTrayIcon(true, m_bIconSun));
 			m_pTrayIcon->setToolTip(GetTrayText());
 		}
 	}
@@ -1932,6 +1940,7 @@ void CSandMan::UpdateState()
 	m_bIconEmpty = true;
 	m_iIconDisabled = -1;
 	m_bIconBusy = false;
+	m_bIconSun = false;
 
 	m_pRunBoxed->setEnabled(isConnected);
 	m_pNewBox->setEnabled(isConnected);
@@ -3017,7 +3026,7 @@ QString CSandMan::FormatError(const SB_STATUS& Error)
 	return Message;
 }
 
-void CSandMan::CheckResults(QList<SB_STATUS> Results)
+void CSandMan::CheckResults(QList<SB_STATUS> Results, bool bAsync)
 {
 	QStringList Errors;
 	for (QList<SB_STATUS>::iterator I = Results.begin(); I != Results.end(); ++I) {
@@ -3025,7 +3034,11 @@ void CSandMan::CheckResults(QList<SB_STATUS> Results)
 			Errors.append(FormatError(*I));
 	}
 
-	if (Errors.count() == 1)
+	if (bAsync) {
+		foreach(const QString &Error, Errors)
+			theGUI->OnLogMessage(Error, true);
+	}
+	else if (Errors.count() == 1)
 		QMessageBox::warning(theGUI, tr("Sandboxie-Plus - Error"), Errors.first());
 	else if (Errors.count() > 1) {
 		CMultiErrorDialog Dialog(tr("Operation failed for %1 item(s).").arg(Errors.size()), Errors, theGUI);
