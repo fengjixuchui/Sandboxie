@@ -847,6 +847,8 @@ void COptionsWindow::SaveConfig()
 	{
 		if (m_GeneralChanged)
 			SaveGeneral();
+		if (m_CopyRulesChanged)
+			SaveCopyRules();
 
 		if (m_GroupsChanged)
 			SaveGroups();
@@ -931,6 +933,7 @@ void COptionsWindow::ok()
 void COptionsWindow::reject()
 {
 	if (m_GeneralChanged
+	 || m_CopyRulesChanged
 	 || m_GroupsChanged
 	 || m_ForcedChanged
 	 || m_StopChanged
@@ -1017,11 +1020,11 @@ void COptionsWindow::UpdateCurrentTab()
 {
 	if (m_pCurrentTab == ui.tabRestrictions || m_pCurrentTab == ui.tabOptions || m_pCurrentTab == ui.tabGeneral) 
 	{
-		ui.chkVmRead->setChecked(GetAccessEntry(eIPC, "", eReadOnly, "$:*") != NULL);
+		ui.chkVmRead->setChecked(IsAccessEntrySet(eIPC, "", eReadOnly, "$:*"));
 	}
 	else if (m_pCurrentTab ==ui.tabPrivileges || m_pCurrentTab == ui.tabSecurity)
 	{
-		if (GetAccessEntry(eWnd, "", eOpen, "*") != NULL)
+		if (IsAccessEntrySet(eWnd, "", eOpen, "*"))
 		{
 			ui.chkAddToJob->setEnabled(false);
 			ui.chkAddToJob->setChecked(false);
@@ -1034,9 +1037,9 @@ void COptionsWindow::UpdateCurrentTab()
 	}
 	else if (m_pCurrentTab == ui.tabStart || m_pCurrentTab == ui.tabForce)
 	{
-		if (GetAccessEntry(eIPC, "!<StartRunAccess>", eClosed, "*") != NULL)
+		if (IsAccessEntrySet(eIPC, "!<StartRunAccess>", eClosed, "*"))
 			ui.radStartSelected->setChecked(true);
-		else if (GetAccessEntry(eIPC, "<StartRunAccess>", eClosed, "*") != NULL)
+		else if (IsAccessEntrySet(eIPC, "<StartRunAccess>", eClosed, "*"))
 			ui.radStartExcept->setChecked(true);
 		else
 			ui.radStartAll->setChecked(true);
@@ -1057,7 +1060,7 @@ void COptionsWindow::UpdateCurrentTab()
 	}
 	else if (m_pCurrentTab == ui.tabWnd)
 	{
-		if (GetAccessEntry(eWnd, "", eOpen, "*") != NULL)
+		if (IsAccessEntrySet(eWnd, "", eOpen, "*"))
 		{
 			ui.chkNoWindowRename->setEnabled(false);
 			ui.chkNoWindowRename->setChecked(true);
@@ -1065,7 +1068,7 @@ void COptionsWindow::UpdateCurrentTab()
 		else
 		{
 			ui.chkNoWindowRename->setEnabled(true);
-			ui.chkNoWindowRename->setChecked(GetAccessEntry(eWnd, "", eOpen, "#") != NULL);
+			ui.chkNoWindowRename->setChecked(IsAccessEntrySet(eWnd, "", eOpen, "#"));
 		}
 	}
 }

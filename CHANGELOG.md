@@ -13,6 +13,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Run menu now supports folders, to be used by entering foldername1\foldername2\entryname in the name column of the UI
 - added a tray indicator for pending updates
 - added virtualization for CreateDirectoryObject(Ex) and OpenDirectoryObject (improves security, prevents name squatting)
+-- note: this can be disabled using 'NtNamespaceIsolation=n'
 
 ### Changed
 - 'OpenProtectedStorage=y' has been replaced with a template
@@ -30,6 +31,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - added AppContainer support for Compartment type boxes
 - FIXED SECURITY ISSUE ID-22 NtCreateSectionEx was not filtered by the driver
 - fixed issue starting services without a system token
+- fixed issues with new file migration settings [#2700](https://github.com/sandboxie-plus/Sandboxie/issues/2700)
+- fixed shell integration on ARM64 [#2685](https://github.com/sandboxie-plus/Sandboxie/issues/2685)
 
 
 
@@ -47,7 +50,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - fixed updater sometimes failing to create a temporary directory [#2615](https://github.com/sandboxie-plus/Sandboxie/issues/2615)
 - fixed issue with snapshot removal [#2663](https://github.com/sandboxie-plus/Sandboxie/issues/2663)
 - fixed issue with symbolic links [#2606](https://github.com/sandboxie-plus/Sandboxie/issues/2606)
-- fixed issues with app container-based isolation, app container tokens are now dropped by default
+- fixed issues with AppContainer isolation, app container tokens are now dropped by default
 -- Note: this behaviour can be disabled with 'DropAppContainerTokens=program.exe,n'
 
 
