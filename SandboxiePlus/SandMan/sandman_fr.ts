@@ -37,14 +37,14 @@
         <location filename="Wizards/NewBoxWizard.cpp" line="435"/>
         <source>Allow access to network files and folders</source>
         <oldsource>Allow access to network files and fodlers</oldsource>
-        <translation type="unfinished">Autoriser l&apos;accès aux fichiers et dossiers réseau</translation>
+        <translation>Autoriser l&apos;accès aux fichiers et dossiers réseau</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="436"/>
         <location filename="Wizards/NewBoxWizard.cpp" line="452"/>
         <source>This option is not recommended for Hardened boxes</source>
         <oldsource>This option is not recomended for Hardened boxes</oldsource>
-        <translation type="unfinished">Cette option n&apos;est pas recommandée pour les bacs renforcés</translation>
+        <translation>Cette option n&apos;est pas recommandée pour les bacs renforcés</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="442"/>
@@ -54,7 +54,7 @@
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="446"/>
         <source>Make applications think they are running elevated</source>
-        <translation>Faire croire aux applications qu&apos;elles tournent avec une élévation des privilèges</translation>
+        <translation>Faire croire aux applications qu&apos;elles ont des privilèges élevés</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="451"/>
@@ -88,7 +88,7 @@
         <location filename="Wizards/NewBoxWizard.cpp" line="190"/>
         <source>Select box type:</source>
         <oldsource>Sellect box type:</oldsource>
-        <translation type="unfinished">Choisir le type de bac :</translation>
+        <translation>Choisir le type de bac :</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="193"/>
@@ -239,7 +239,7 @@
         <location filename="Wizards/NewBoxWizard.cpp" line="287"/>
         <source>Sandbox location and behavior</source>
         <oldsource>Sandbox location and behavioure</oldsource>
-        <translation type="unfinished">Emplacement et comportement du bac à sable</translation>
+        <translation>Emplacement et comportement du bac à sable</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="288"/>
@@ -247,7 +247,7 @@
 You can use %USER% to save each users sandbox to an own folder.</source>
         <oldsource>On this page the sandbox location and its behaviorue can be customized.
 You can use %USER% to save each users sandbox to an own fodler.</oldsource>
-        <translation type="unfinished">Sur cette page l&apos;emplacement et le comportement du bac à sable peuvent être personnalisés.
+        <translation>Sur cette page l&apos;emplacement et le comportement du bac à sable peuvent être personnalisés.
 Vous pouvez utiliser « %USER% » pour enregistrer le bac de chaque utilisateur dans son propre dossier.</translation>
     </message>
     <message>
@@ -299,19 +299,19 @@ Vous pouvez utiliser « %USER% » pour enregistrer le bac de chaque utilisateur 
         <location filename="Wizards/NewBoxWizard.cpp" line="387"/>
         <source>The selected box location is not a valid path.</source>
         <oldsource>The sellected box location is not a valid path.</oldsource>
-        <translation type="unfinished">L&apos;emplacement de bac choisi n&apos;est pas un chemin valide.</translation>
+        <translation>L&apos;emplacement de bac choisi n&apos;est pas un chemin valide.</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="392"/>
         <source>The selected box location exists and is not empty, it is recommended to pick a new or empty folder. Are you sure you want to use an existing folder?</source>
         <oldsource>The sellected box location exists and is not empty, it is recomended to pick a new or empty folder. Are you sure you want to use an existing folder?</oldsource>
-        <translation type="unfinished">L&apos;emplacement de bac choisi n&apos;est pas vide ; il est recommandé de choisir un répertoire nouveau ou vide. Êtes-vous sûr de vouloir utiliser un dossier existant ?</translation>
+        <translation>L&apos;emplacement de bac choisi n&apos;est pas vide ; il est recommandé de choisir un répertoire nouveau ou vide. Êtes-vous sûr de vouloir utiliser un dossier existant ?</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="397"/>
         <source>The selected box location not placed on a currently available drive.</source>
         <oldsource>The sellected box location not placed on a currently available drive.</oldsource>
-        <translation type="unfinished">L&apos;emplacement de bac choisi n&apos;est pas situé sur un lecteur actuellement disponible.</translation>
+        <translation>L&apos;emplacement de bac choisi n&apos;est pas situé sur un lecteur actuellement disponible.</translation>
     </message>
 </context>
 <context>
@@ -473,7 +473,7 @@ Vous pouvez utiliser « %USER% » pour enregistrer le bac de chaque utilisateur 
         <location filename="Wizards/NewBoxWizard.cpp" line="126"/>
         <source>The new sandbox has been created using the new &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-delete-v2&quot;&gt;Virtualization Scheme Version 2&lt;/a&gt;, if you experience any unexpected issues with this box, please switch to the Virtualization Scheme to Version 1 and report the issue, the option to change this preset can be found in the Box Options in the Box Structure group.</source>
         <oldsource>The new sandbox has been created using the new &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-delete-v2&quot;&gt;Virtualization Scheme Version 2&lt;/a&gt;, if you expirience any unecpected issues with this box, please switch to the Virtualization Scheme to Version 1 and report the issue, the option to change this preset can be found in the Box Options in the Box Structure groupe.</oldsource>
-        <translation type="unfinished">Le nouveau bac à sable a été créé en utilisant le nouveau &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-delete-v2&quot;&gt;schéma de virtualisation version 2&lt;/a&gt;. Si vous rencontrez des erreurs inattendues avec ce bac, veuillez basculer le schéma de virtualisation sur la version 1 et signalez le problème. L&apos;option pour modifier ce préréglage peut être trouvée dans les options du bac, dans le groupe de structure de bac.</translation>
+        <translation>Le nouveau bac à sable a été créé en utilisant le nouveau &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-delete-v2&quot;&gt;schéma de virtualisation version 2&lt;/a&gt;. Si vous rencontrez des erreurs inattendues avec ce bac, veuillez basculer le schéma de virtualisation sur la version 1 et signalez le problème. L&apos;option pour modifier ce préréglage peut être trouvée dans les options du bac, dans le groupe de structure de bac.</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="129"/>
@@ -961,7 +961,7 @@ Remarque : La recherche de mise à jour est souvent en retard par rapport à la 
         <location filename="Windows/OptionsAdvanced.cpp" line="49"/>
         <source>Make specified processes think they have admin permissions.</source>
         <oldsource>Make specified processes think thay have admin permissions.</oldsource>
-        <translation>Fait en sorte que les processus définis pensent qu&apos;ils ont des privilèges d&apos;Administrateur.</translation>
+        <translation>Fait en sorte que les processus définis pensent qu&apos;ils ont des privilèges d&apos;administrateur.</translation>
     </message>
     <message>
         <location filename="Windows/OptionsAdvanced.cpp" line="50"/>
@@ -1599,12 +1599,12 @@ Remarque : La recherche de mise à jour est souvent en retard par rapport à la 
     <message>
         <location filename="Windows/PopUpWindow.h" line="255"/>
         <source>Recover &amp;&amp; Explore</source>
-        <translation>Récupérer et explorer</translation>
+        <translation>Récupérer et parcourir</translation>
     </message>
     <message>
         <location filename="Windows/PopUpWindow.h" line="256"/>
         <source>Recover &amp;&amp; Open/Run</source>
-        <translation>Récupérer et ouvrir ou exécuter</translation>
+        <translation>Récupérer et ouvrir/exécuter</translation>
     </message>
     <message>
         <location filename="Windows/PopUpWindow.h" line="258"/>
@@ -2011,7 +2011,7 @@ Chemin complet : %4</translation>
 This file is part of Sandboxie and all change done to it will be reverted next time Sandboxie is updated.</source>
         <oldsource>You are about to edit the Templates.ini, thsi is generally not recommeded.
 This file is part of Sandboxie and all changed done to it will be reverted next time Sandboxie is updated.</oldsource>
-        <translation type="unfinished">Vous êtes sur le point de modifier Templates.ini ; ce n&apos;est généralement pas recommandé.
+        <translation>Vous êtes sur le point de modifier Templates.ini ; ce n&apos;est généralement pas recommandé.
 Ce fichier fait partie de Sandboxie et toute modification faite sur lui sera annulée la prochaine fois que Sandboxie sera mis à jour.</translation>
     </message>
     <message>
@@ -2420,7 +2420,7 @@ Ce fichier fait partie de Sandboxie et toute modification faite sur lui sera ann
     <message>
         <location filename="SandMan.cpp" line="673"/>
         <source>Create New Sandbox</source>
-        <translation>Création d&apos;un nouveau bac à sable</translation>
+        <translation>Créer un nouveau bac</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="674"/>
@@ -2430,7 +2430,7 @@ Ce fichier fait partie de Sandboxie et toute modification faite sur lui sera ann
     <message>
         <location filename="SandMan.cpp" line="675"/>
         <source>Import Sandbox</source>
-        <translation>Importer un bac à sable</translation>
+        <translation>Importer un bac</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="677"/>
@@ -2538,7 +2538,7 @@ Ce fichier fait partie de Sandboxie et toute modification faite sur lui sera ann
         <source>Sandboxie-Plus was running in portable mode, now it has to clean up the created services. This will prompt for administrative privileges.
 
 Do you want to do the clean up?</source>
-        <translation>Sandboxie-Plus fonctionnait en mode portable ; il est maintenant nécessaire de purger les services créés. Cela demandera des privilèges administratifs.
+        <translation>Sandboxie-Plus fonctionnait en mode portable ; il est maintenant nécessaire de purger les services créés. Cela demandera des privilèges d&apos;administrateur.
 
 Voulez-vous faire la purge ?</translation>
     </message>
@@ -2574,7 +2574,7 @@ Voulez-vous faire la purge ?</translation>
 This box prevents access to all user data locations, except explicitly granted in the Resource Access options.</source>
         <translation>
 
-Ce bac empêche l&apos;accès à toutes les données utilisateur, sauf si spécifiquement autorisé dans les options d&apos;accès aux ressources.</translation>
+Ce bac empêche l&apos;accès à toutes les données de l&apos;utilisateur, sauf si spécifiquement autorisé dans les options d&apos;accès aux ressources.</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="1343"/>
@@ -2698,13 +2698,13 @@ Ce bac empêche l&apos;accès à toutes les données utilisateur, sauf si spéci
 Yes will choose: %1
 No will choose: %2</source>
         <translation>Sandboxie-Plus a été démarré en mode portable ; voulez-vous mettre le dossier Sandbox dans son répertoire parent ?
-Oui choisira : %1
-Non choisira : %2</translation>
+« Oui » choisira : %1
+« Non » choisira : %2</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="2342"/>
         <source>Please enter the duration, in seconds, for disabling Forced Programs rules.</source>
-        <translation>Veuillez saisir la durée, en secondes, pour désactiver les règles des programmes forcés.</translation>
+        <translation>Veuillez saisir la durée (en secondes) de suspension du forçage des programmes.</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="2188"/>
@@ -2833,7 +2833,7 @@ Non choisira : %2</translation>
         <oldsource>The file %1 failed a security check, do you want to recover it anyways?<byte value="xd"/>
 <byte value="xd"/>
 %2</oldsource>
-        <translation type="unfinished">Le fichier %1 a échoué à un test de sécurité ; voulez-vous le récupérer quand même ?<byte value="xd"/>
+        <translation>Le fichier %1 a échoué à un test de sécurité ; voulez-vous quand même le récupérer ?<byte value="xd"/>
 <byte value="xd"/>
 %2</translation>
     </message>
@@ -2871,12 +2871,12 @@ Non choisira : %2</translation>
     </message>
     <message>
         <source>Please enter the duration for disabling forced programs.</source>
-        <translation type="vanished">Veuillez entrer la durée de la désactivation des programmes forcés.</translation>
+        <translation type="vanished">Veuillez saisir la durée de désactivation du forçage des programmes.</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="2381"/>
         <source>Sandboxie-Plus was started in portable mode and it needs to create necessary services. This will prompt for administrative privileges.</source>
-        <translation>Sandboxie-Plus a été démarré en mode portable et doit maintenant créer les services nécessaires. Cela demandera des privilèges administratifs.</translation>
+        <translation>Sandboxie-Plus a été démarré en mode portable et doit maintenant créer les services nécessaires. Cela demandera des privilèges d&apos;administrateur.</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="2410"/>
@@ -2979,7 +2979,7 @@ Remarque : La recherche de mise à jour est souvent en retard par rapport à la 
         <location filename="SandMan.cpp" line="3270"/>
         <source>&lt;h3&gt;About Sandboxie-Plus&lt;/h3&gt;&lt;p&gt;Version %1&lt;/p&gt;&lt;p&gt;Copyright (c) 2020-2023 by DavidXanatos&lt;/p&gt;</source>
         <oldsource>&lt;h3&gt;About Sandboxie-Plus&lt;/h3&gt;&lt;p&gt;Version %1&lt;/p&gt;&lt;p&gt;Copyright (c) 2020-2022 by DavidXanatos&lt;/p&gt;</oldsource>
-        <translation type="unfinished">&lt;h3&gt;À propos de Sandboxie-Plus&lt;/h3&gt;&lt;p&gt;Version %1&lt;/p&gt;&lt;p&gt;Copyright (c) 2020-2022 par DavidXanatos&lt;/p&gt;</translation>
+        <translation>&lt;h3&gt;À propos de Sandboxie-Plus&lt;/h3&gt;&lt;p&gt;Version %1&lt;/p&gt;&lt;p&gt;Copyright (c) 2020-2023 par DavidXanatos&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="3278"/>
@@ -3101,7 +3101,7 @@ Remarque : La recherche de mise à jour est souvent en retard par rapport à la 
     </message>
     <message>
         <source>Pause Forced Programs Rules</source>
-        <translation type="vanished">Suspendre les règles des programmes forcés</translation>
+        <translation type="vanished">Règles de suspension du forçage des programmes</translation>
     </message>
     <message>
         <source>Installation Directory: %1</source>
@@ -3266,7 +3266,7 @@ Remarque : La recherche de mise à jour est souvent en retard par rapport à la 
         <translation>Sandboxie-Plus - Viseur de fenêtre</translation>
     </message>
     <message>
-        <location filename="main.cpp" line="120"/>
+        <location filename="main.cpp" line="123"/>
         <source>Sandboxie Manager can not be run sandboxed!</source>
         <translation>Le gestionnaire de Sandboxie ne peut pas être lancé dans un bac à sable !</translation>
     </message>
@@ -3469,7 +3469,6 @@ Remarque : La recherche de mise à jour est souvent en retard par rapport à la 
     <message>
         <location filename="SbieProcess.cpp" line="89"/>
         <source>Thunderbird</source>
-        <translatorcomment>Nom de logiciel</translatorcomment>
         <translation>Thunderbird</translation>
     </message>
     <message>
@@ -3490,7 +3489,7 @@ Remarque : La recherche de mise à jour est souvent en retard par rapport à la 
     <message>
         <location filename="SbieProcess.cpp" line="109"/>
         <source> Elevated</source>
-        <translation> avec une élévation des privilèges</translation>
+        <translation> avec des privilèges élevés</translation>
     </message>
     <message>
         <location filename="SbieProcess.cpp" line="111"/>
@@ -3640,7 +3639,7 @@ Remarque : La recherche de mise à jour est souvent en retard par rapport à la 
     <message>
         <location filename="Views/SbieView.cpp" line="206"/>
         <source>Ask for UAC Elevation</source>
-        <translation>Demander l&apos;élévation des privilèges UAC</translation>
+        <translation>Demander l&apos;élévation des privilèges avec le contrôle de compte d&apos;utilisateur</translation>
     </message>
     <message>
         <location filename="Views/SbieView.cpp" line="207"/>
@@ -3655,7 +3654,7 @@ Remarque : La recherche de mise à jour est souvent en retard par rapport à la 
     <message>
         <location filename="Views/SbieView.cpp" line="216"/>
         <source>Block Internet Access</source>
-        <translation>Bloquer l&apos;accès à l&apos;Internet</translation>
+        <translation>Bloquer l&apos;accès à Internet</translation>
     </message>
     <message>
         <location filename="Views/SbieView.cpp" line="218"/>
@@ -4088,7 +4087,7 @@ Remarque : La recherche de mise à jour est souvent en retard par rapport à la 
         <location filename="Views/SbieView.cpp" line="1459"/>
         <source>Do you want to terminate %1?</source>
         <oldsource>Do you want to %1 %2?</oldsource>
-        <translation type="unfinished">Voulez-vous %1 %2 ?</translation>
+        <translation>Voulez-vous arrêter %1 ?</translation>
     </message>
     <message>
         <location filename="Views/SbieView.cpp" line="1459"/>
@@ -4564,7 +4563,7 @@ Ce bac sera enregistré dans : %1</translation>
 This box&apos;s content will be DISCARDED when it&apos;s closed, and the box will be removed.</source>
         <oldsource>
 This box&apos;s content will be DISCARDED when its closed, and the box will be removed.</oldsource>
-        <translation type="unfinished">
+        <translation>
 Le contenu de ce bac sera ÉLIMINÉ lors de sa fermeture, et le bac sera supprimé.</translation>
     </message>
     <message>
@@ -4587,7 +4586,7 @@ Les processus de ce bac ne seront pas capables d&apos;accéder à Internet ou au
 This box will run the MSIServer (*.msi installer service) with a system token, this improves the compatibility but reduces the security isolation.</source>
         <oldsource>
 This box will run the MSIServer (*.msi installer service) with a system token, this improves the compatybility but reduces the security isolation.</oldsource>
-        <translation type="unfinished">
+        <translation>
 Ce bac lancera MSIServer (service d&apos;installation *.msi) avec un jeton système. Cela améliore la compatibilité, mais réduit l&apos;isolation de sécurité.</translation>
     </message>
     <message>
@@ -4595,7 +4594,7 @@ Ce bac lancera MSIServer (service d&apos;installation *.msi) avec un jeton syst�
         <source>
 Processes in this box will think they are run with administrative privileges, without actually having them, hence installers can be used even in a security hardened box.</source>
         <translation>
-Les processus de ce bac penseront qu&apos;ils sont lancés avec des privilèges d&apos;administration, sans en fait les avoir. Les installeurs seront donc en mesure d&apos;être utilisés même dans un bac à sécurité renforcée.</translation>
+Les processus de ce bac penseront qu&apos;ils sont lancés avec des privilèges d&apos;administrateur, sans en fait les avoir. Les installeurs seront donc en mesure d&apos;être utilisés même dans un bac à sécurité renforcée.</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="580"/>
@@ -5044,7 +5043,7 @@ Les processus de ce bac penseront qu&apos;ils sont lancés avec des privilèges 
     <message>
         <location filename="Forms/OptionsWindow.ui" line="1045"/>
         <source>CAUTION: When running under the built in administrator, processes can not drop administrative privileges.</source>
-        <translation>ATTENTION : Lors de l&apos;exécution sous l&apos;administrateur intégré, les processus ne peuvent pas abandonner les privilèges administratifs.</translation>
+        <translation>ATTENTION : Lors de l&apos;exécution sous l&apos;administrateur intégré, les processus ne peuvent pas abandonner les privilèges d&apos;&apos;administrateur.</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="252"/>
@@ -6717,7 +6716,7 @@ Veuillez noter que ces valeurs sont actuellement spécifiques à l&apos;utilisat
     <message>
         <location filename="Forms/SelectBoxWindow.ui" line="80"/>
         <source>Run As UAC Administrator</source>
-        <translation>Exécuter en tant qu&apos;administrateur UAC</translation>
+        <translation>Exécuter en tant qu&apos;administrateur avec le contrôle de compte d&apos;utilisateur</translation>
     </message>
     <message>
         <location filename="Forms/SelectBoxWindow.ui" line="47"/>
@@ -6986,12 +6985,12 @@ Veuillez noter que ces valeurs sont actuellement spécifiques à l&apos;utilisat
     <message>
         <location filename="Forms/SettingsWindow.ui" line="1208"/>
         <source>Password must be entered in order to make changes</source>
-        <translation>Le mot de passe doit être saisi pour pouvoir effectuer des modifications</translation>
+        <translation>Demander un mot de passe pour pouvoir effectuer des modifications</translation>
     </message>
     <message>
         <location filename="Forms/SettingsWindow.ui" line="1256"/>
         <source>Only Administrator user accounts can make changes</source>
-        <translation>Seuls les comptes utilisateurs administrateurs peuvent effectuer des modifications</translation>
+        <translation>Autoriser seulement les comptes administrateurs à effectuer des modifications</translation>
     </message>
     <message>
         <location filename="Forms/SettingsWindow.ui" line="1263"/>
@@ -7002,7 +7001,7 @@ Veuillez noter que ces valeurs sont actuellement spécifiques à l&apos;utilisat
         <location filename="Forms/SettingsWindow.ui" line="1242"/>
         <source>Only Administrator user accounts can use Pause Forcing Programs command</source>
         <oldsource>Only Administrator user accounts can use Pause Forced Programs Rules command</oldsource>
-        <translation>Seuls les comptes utilisateurs Administrateurs peuvent utiliser la commande Suspendre le forçage des programmes</translation>
+        <translation>Autoriser seulement les comptes administrateurs à utiliser « Suspendre le forçage des programmes »</translation>
     </message>
     <message>
         <location filename="Forms/SettingsWindow.ui" line="1183"/>
@@ -7198,7 +7197,7 @@ Veuillez noter que ces valeurs sont actuellement spécifiques à l&apos;utilisat
     <message>
         <location filename="Forms/SettingsWindow.ui" line="733"/>
         <source>Support &amp;&amp; Updates</source>
-        <translation type="unfinished"></translation>
+        <translation>Soutien et mises à jour</translation>
     </message>
     <message>
         <location filename="Forms/SettingsWindow.ui" line="980"/>
