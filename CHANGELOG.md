@@ -6,6 +6,25 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
+## [1.8.2 / 5.63.2] - 2023-03-12
+
+### Added
+- reworked CreateAppContainerToken hook to return a restricted token instead to fix [#2762](https://github.com/sandboxie-plus/Sandboxie/issues/2762)
+-- Note: this behaviour can be disabled with 'FakeAppContainerToken=program.exe,n'
+- enabled app container compatybility in app compartment mode
+-- Note: this should improve msedge compatybility
+
+### Changed
+- renamed 'DropAppContainerTokens=program.exe,n' to 'DropAppContainerToken=program.exe,n'
+- 'DropAppContainerToken=program.exe,y' can now be used in App Compartment boxes is howeever not recomended security whise
+
+### Fixed
+- issue with global ini section editing
+- fixed issue with *UseRegDeleteV2=y' [#2756](https://github.com/sandboxie-plus/Sandboxie/issues/2756)
+
+
+
+
 ## [1.8.1 / 5.63.1] - 2023-03-12
 
 ### Added

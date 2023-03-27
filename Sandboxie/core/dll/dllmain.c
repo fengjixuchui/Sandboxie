@@ -99,6 +99,7 @@ BOOLEAN Dll_IsXtAjit = FALSE;
 BOOLEAN Dll_IsSystemSid = FALSE;
 BOOLEAN Dll_InitComplete = FALSE;
 BOOLEAN Dll_RestrictedToken = FALSE;
+BOOLEAN Dll_AppContainerToken = FALSE;
 BOOLEAN Dll_ChromeSandbox = FALSE;
 BOOLEAN Dll_FirstProcessInBox = FALSE;
 BOOLEAN Dll_CompartmentMode = FALSE;
@@ -291,16 +292,7 @@ _FX void Dll_InitInjected(void)
     // break for the debugger, as soon as we have Dll_ImageName
     //
 
-    if (SbieDll_CheckStringInList(Dll_ImageName, NULL, L"WaitForDebugger")) {
-    //if (SbieDll_GetSettingsForName_bool(NULL, Dll_ImageName, L"WaitForDebugger", FALSE)) {
-    //if (SbieApi_QueryConfBool(NULL, L"WaitForDebuggerAll", FALSE)) {
-        while (!IsDebuggerPresent()) {
-            OutputDebugString(L"Waiting for Debugger\n");
-            Sleep(500);
-        } 
-        if(!SbieApi_QueryConfBool(NULL, L"WaitForDebuggerSilent", TRUE))
-            __debugbreak();
-    }
+    Debug_Wait();
 
     Trace_Init();
 
@@ -757,6 +749,8 @@ _FX void Dll_SelectImageType(void)
             Dll_ChromeSandbox = TRUE;
         }
     }
+
+    Dll_AppContainerToken = Secure_IsAppContainerToken(NULL);
 
     Dll_SkipHook(NULL);
 }
