@@ -32,6 +32,7 @@ HEADERS += ./stdafx.h \
     ./Windows/SupportDialog.h\
     ./OnlineUpdater.h \
     ./Wizards/NewBoxWizard.h \
+    ./Wizards/TemplateWizard.h \
     ./Wizards/SetupWizard.h
 
 SOURCES += ./main.cpp \
@@ -65,6 +66,7 @@ SOURCES += ./main.cpp \
     ./Windows/SupportDialog.cpp\
     ./OnlineUpdater.cpp \
     ./Wizards/NewBoxWizard.cpp \
+    ./Wizards/TemplateWizard.cpp \
     ./Wizards/SetupWizard.cpp
 
 FORMS += ./Forms/NewBoxWindow.ui \
@@ -79,6 +81,7 @@ TRANSLATIONS += sandman_de.ts \
     sandman_en.ts \
     sandman_es.ts \
     sandman_fr.ts \
+    sandman_hu.ts \
     sandman_it.ts \
     sandman_ko.ts \
     sandman_nl.ts \

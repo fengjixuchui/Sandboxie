@@ -137,6 +137,190 @@
     </message>
 </context>
 <context>
+    <name>CBrowserOptionsPage</name>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="843"/>
+        <source>Create Web Browser Template</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="844"/>
+        <source>Configure web browser template options.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="854"/>
+        <source>Force the Web Browser to run in this sandbox</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="858"/>
+        <source>Allow direct access to the entire Web Browser profile folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="862"/>
+        <source>Allow direct access to Web Browser&apos;s phishing database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="866"/>
+        <source>Allow direct access to Web Browser&apos;s session management</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="870"/>
+        <source>Allow direct access to Web Browser&apos;s sync data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="874"/>
+        <source>Allow direct access to Web Browser&apos;s preferences</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="878"/>
+        <source>Allow direct access to Web Browser&apos;s passwords</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="882"/>
+        <source>Allow direct access to Web Browser&apos;s cookies</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="886"/>
+        <source>Allow direct access to Web Browser&apos;s bookmarks</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="890"/>
+        <source>Allow direct access to Web Browser&apos;s bookmark and history database</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>CBrowserPathsPage</name>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="516"/>
+        <source>Create Web Browser Template</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="517"/>
+        <source>Configure your Web Browsers profile directories.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="525"/>
+        <source>User profile(s) directory:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="527"/>
+        <source>Show also imperfect matches</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="533"/>
+        <source>Browser Executable (*.exe)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="550"/>
+        <source>Continue without browser profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="711"/>
+        <source>Configure your Gecko based Browsers profile directories.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="715"/>
+        <source>Configure your Chromium based Browsers profile directories.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="795"/>
+        <source>No suitable fodlers have been found.
+Note: you need to run the browser unsandboxed for them to get created.
+Please browse to the correct user profile directory.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="800"/>
+        <source>Please choose the correct user profile directory, if it is not listed you may need to browse to it.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="806"/>
+        <source>Please ensure the selected directory is correct, the wizard is not confident in all the presented options.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="809"/>
+        <source>Please ensure the selected directory is correct.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="814"/>
+        <source>This path does not look like a valid profile directory.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>CBrowserTypePage</name>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="324"/>
+        <source>Create Web Browser Template</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="325"/>
+        <source>Select your Web Browsers main executable, this will allow Sandboxie to identify the browser.</source>
+        <oldsource>Select your Web Browsers main executable, this will allow sandboxie to identify the browser.</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="335"/>
+        <source>Enter browser name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="346"/>
+        <source>Main executable (eg. firefox.exe, chrome.exe, msedge.exe, etc...):</source>
+        <oldsource>Mein executable (eg. firefox.exe, chrome.exe, msedge.exe, etc...):</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="350"/>
+        <source>Browser executable (*.exe)</source>
+        <oldsource>Browser Executable (*.exe)</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="450"/>
+        <source>The browser appears to be Gecko based, like Mozilla Firefox and its derivatives.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="453"/>
+        <source>The browser appears to be Chromium based, like Microsoft Edge or Google Chrome and its derivatives.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="456"/>
+        <source>Browser could not be recognized, template cannot be created.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="503"/>
+        <source>This browser name is already in use, please chooe an other one.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CCertificatePage</name>
     <message>
         <location filename="Wizards/SetupWizard.cpp" line="193"/>
@@ -331,6 +515,55 @@ Możesz użyć %USER%, aby zapisać piaskownicę każdego użytkownika w jego w�
         <location filename="Wizards/SetupWizard.cpp" line="506"/>
         <source>Keep Sandboxie-Plus up to date.</source>
         <translation>Aktualizuj Sandboxie-Plus.</translation>
+    </message>
+</context>
+<context>
+    <name>CFinishTemplatePage</name>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="935"/>
+        <source>Create Web Browser Template</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="943"/>
+        <source>Almost complete, click Finish to create a new  Web Browser Template and conclude the wizard.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="961"/>
+        <source>Browser name: %1
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="965"/>
+        <source>Browser Type: Gecko (Mozilla firefox)
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="966"/>
+        <source>Browser Type: Chromium (Google Chrome)
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="968"/>
+        <source>
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="969"/>
+        <source>Browser executable path: %1
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="979"/>
+        <source>Browser profile path: %1
+</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -673,105 +906,105 @@ Uwaga: Sprawdzanie aktualizacji często pomija najnowsze wydania GitHub, aby zap
 <context>
     <name>COptionsWindow</name>
     <message>
-        <location filename="Windows/OptionsWindow.cpp" line="157"/>
+        <location filename="Windows/OptionsWindow.cpp" line="158"/>
         <source>Sandboxie Plus - &apos;%1&apos; Options</source>
         <translation>Sandboxie Plus - &apos;%1&apos; Ustawienia</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAdvanced.cpp" line="40"/>
+        <location filename="Windows/OptionsAdvanced.cpp" line="41"/>
         <source>Enable the use of win32 hooks for selected processes. Note: You need to enable win32k syscall hook support globally first.</source>
         <translation>Włącz użycie haków win32 dla wybranych procesów. Uwaga: Musisz najpierw włączyć globalnie obsługę haków syscall Win32k.</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAdvanced.cpp" line="41"/>
+        <location filename="Windows/OptionsAdvanced.cpp" line="42"/>
         <source>Enable crash dump creation in the sandbox folder</source>
         <translation>Włącz tworzenie zrzutu awaryjnego w folderze piaskownicy</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAdvanced.cpp" line="42"/>
+        <location filename="Windows/OptionsAdvanced.cpp" line="43"/>
         <source>Always use ElevateCreateProcess fix, as sometimes applied by the Program Compatibility Assistant.</source>
         <translation>Zawsze używaj poprawki ElevateCreateProcess, jaką czasami stosuje Asystent zgodności z programem.</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAdvanced.cpp" line="44"/>
+        <location filename="Windows/OptionsAdvanced.cpp" line="45"/>
         <source>Enable special inconsistent PreferExternalManifest behaviour, as needed for some Edge fixes</source>
         <oldsource>Enable special inconsistent PreferExternalManifest behavioure, as neede for some edge fixes</oldsource>
         <translatorcomment>I am not familiar with the term &quot;edge fix&quot; other than the glue that seals the edges. If it refers to a browser, it should be a capital letter, meaning Edge.</translatorcomment>
         <translation>Włącz specjalne niespójne zachowanie PreferExternal Manifest, jeśli jest to konieczne w przypadku niektórych poprawek krawędzi</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAdvanced.cpp" line="45"/>
+        <location filename="Windows/OptionsAdvanced.cpp" line="46"/>
         <source>Set RpcMgmtSetComTimeout usage for specific processes</source>
         <translation>Ustawienie użycia RpcMgmtSetComTimeout dla określonych procesów</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAdvanced.cpp" line="46"/>
+        <location filename="Windows/OptionsAdvanced.cpp" line="47"/>
         <source>Makes a write open call to a file that won&apos;t be copied fail instead of turning it read-only.</source>
         <translatorcomment>How to understand it without an example?</translatorcomment>
         <translation>Sprawia, że wywołanie zapisu otwartego do pliku, który nie zostanie skopiowany, kończy się niepowodzeniem, zamiast zmieniać go w tryb tylko do odczytu.</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAdvanced.cpp" line="49"/>
+        <location filename="Windows/OptionsAdvanced.cpp" line="50"/>
         <source>Make specified processes think they have admin permissions.</source>
         <oldsource>Make specified processes think thay have admin permissions.</oldsource>
         <translation>Spraw, by określone procesy uważały, że mają uprawnienia administratora.</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAdvanced.cpp" line="50"/>
+        <location filename="Windows/OptionsAdvanced.cpp" line="51"/>
         <source>Force specified processes to wait for a debugger to attach.</source>
         <translation>Zmuszaj określone procesy do oczekiwania na dołączenie debuggera.</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAdvanced.cpp" line="52"/>
+        <location filename="Windows/OptionsAdvanced.cpp" line="53"/>
         <source>Sandbox file system root</source>
         <translation>Główny system plików piaskownicy</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAdvanced.cpp" line="53"/>
+        <location filename="Windows/OptionsAdvanced.cpp" line="54"/>
         <source>Sandbox registry root</source>
         <translation>Główny rejestr piaskownicy</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAdvanced.cpp" line="54"/>
+        <location filename="Windows/OptionsAdvanced.cpp" line="55"/>
         <source>Sandbox ipc root</source>
         <translation>Główny ipc piaskownicy</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAdvanced.cpp" line="556"/>
+        <location filename="Windows/OptionsAdvanced.cpp" line="559"/>
         <source>Add special option:</source>
         <translation>Dodaj opcję specjalną:</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAdvanced.cpp" line="707"/>
-        <location filename="Windows/OptionsAdvanced.cpp" line="711"/>
+        <location filename="Windows/OptionsAdvanced.cpp" line="710"/>
+        <location filename="Windows/OptionsAdvanced.cpp" line="714"/>
         <source>On Start</source>
         <translation>Uruchom Start</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAdvanced.cpp" line="708"/>
-        <location filename="Windows/OptionsAdvanced.cpp" line="716"/>
-        <location filename="Windows/OptionsAdvanced.cpp" line="720"/>
-        <location filename="Windows/OptionsAdvanced.cpp" line="724"/>
+        <location filename="Windows/OptionsAdvanced.cpp" line="711"/>
+        <location filename="Windows/OptionsAdvanced.cpp" line="719"/>
+        <location filename="Windows/OptionsAdvanced.cpp" line="723"/>
+        <location filename="Windows/OptionsAdvanced.cpp" line="727"/>
         <source>Run Command</source>
         <translation>Uruchom polecenie</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAdvanced.cpp" line="712"/>
+        <location filename="Windows/OptionsAdvanced.cpp" line="715"/>
         <source>Start Service</source>
         <translation>Uruchom usługę</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAdvanced.cpp" line="715"/>
+        <location filename="Windows/OptionsAdvanced.cpp" line="718"/>
         <source>On Init</source>
         <translation>Uruchom Init</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAdvanced.cpp" line="719"/>
+        <location filename="Windows/OptionsAdvanced.cpp" line="722"/>
         <source>On File Recovery</source>
         <translation>O odzyskiwaniu plików</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAdvanced.cpp" line="723"/>
+        <location filename="Windows/OptionsAdvanced.cpp" line="726"/>
         <source>On Delete Content</source>
         <translation>Uruchom, Usuń zawartość</translation>
     </message>
@@ -780,20 +1013,20 @@ Uwaga: Sprawdzanie aktualizacji często pomija najnowsze wydania GitHub, aby zap
         <translation type="vanished">Uruchom kasowanie</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAdvanced.cpp" line="734"/>
-        <location filename="Windows/OptionsAdvanced.cpp" line="756"/>
-        <location filename="Windows/OptionsAdvanced.cpp" line="767"/>
-        <location filename="Windows/OptionsAdvanced.cpp" line="778"/>
+        <location filename="Windows/OptionsAdvanced.cpp" line="737"/>
+        <location filename="Windows/OptionsAdvanced.cpp" line="759"/>
+        <location filename="Windows/OptionsAdvanced.cpp" line="770"/>
+        <location filename="Windows/OptionsAdvanced.cpp" line="781"/>
         <source>Please enter the command line to be executed</source>
         <translation>Wprowadź wiersz polecenia do wykonania</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAdvanced.cpp" line="898"/>
+        <location filename="Windows/OptionsAdvanced.cpp" line="901"/>
         <source>Deny</source>
         <translation>Odmowa</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAdvanced.cpp" line="1003"/>
+        <location filename="Windows/OptionsAdvanced.cpp" line="1006"/>
         <source>%1 (%2)</source>
         <translation>%1 (%2)</translation>
     </message>
@@ -931,8 +1164,8 @@ Uwaga: Sprawdzanie aktualizacji często pomija najnowsze wydania GitHub, aby zap
         <translation>Kopiuj puste</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsWindow.cpp" line="420"/>
-        <location filename="Windows/OptionsWindow.cpp" line="433"/>
+        <location filename="Windows/OptionsWindow.cpp" line="421"/>
+        <location filename="Windows/OptionsWindow.cpp" line="434"/>
         <location filename="Windows/OptionsAccess.cpp" line="24"/>
         <source>Browse for File</source>
         <translation>Przeglądaj w poszukiwaniu pliku</translation>
@@ -943,47 +1176,52 @@ Uwaga: Sprawdzanie aktualizacji często pomija najnowsze wydania GitHub, aby zap
         <translation>Przeglądaj w poszukiwaniu folderu</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsWindow.cpp" line="262"/>
+        <location filename="Windows/OptionsWindow.cpp" line="263"/>
         <source>File Options</source>
         <translation>Opcje plików</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsWindow.cpp" line="294"/>
+        <location filename="Windows/OptionsWindow.cpp" line="295"/>
         <source>Grouping</source>
         <translation>Grupowanie</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsWindow.cpp" line="593"/>
+        <location filename="Windows/OptionsWindow.cpp" line="499"/>
+        <source>Add %1 Template</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Windows/OptionsWindow.cpp" line="599"/>
         <source>Search for options</source>
         <translation>Szukaj opcji</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsWindow.cpp" line="723"/>
+        <location filename="Windows/OptionsWindow.cpp" line="729"/>
         <source>Box: %1</source>
         <translation>Boks: %1</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsWindow.cpp" line="724"/>
+        <location filename="Windows/OptionsWindow.cpp" line="730"/>
         <source>Template: %1</source>
         <translation>Szablon: %1</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsWindow.cpp" line="725"/>
+        <location filename="Windows/OptionsWindow.cpp" line="731"/>
         <source>Global: %1</source>
         <translation>Globalny: %1</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsWindow.cpp" line="726"/>
+        <location filename="Windows/OptionsWindow.cpp" line="732"/>
         <source>Default: %1</source>
         <translation>Domyślny: %1</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsWindow.cpp" line="903"/>
+        <location filename="Windows/OptionsWindow.cpp" line="909"/>
         <source>This sandbox has been deleted hence configuration can not be saved.</source>
         <translation>Ta piaskownica została usunięta, dlatego nie można zapisać konfiguracji.</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsWindow.cpp" line="950"/>
+        <location filename="Windows/OptionsWindow.cpp" line="956"/>
         <source>Some changes haven&apos;t been saved yet, do you really want to close this options window?</source>
         <translation>Niektóre ustawienia nie zostały jeszcze zapisane, czy naprawdę chcesz zamknąć ustawienia?</translation>
     </message>
@@ -1011,7 +1249,7 @@ Uwaga: Sprawdzanie aktualizacji często pomija najnowsze wydania GitHub, aby zap
         <translation type="vanished">Programy (*.exe *.cmd);;Wszystkie pliki (*.*)</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAdvanced.cpp" line="745"/>
+        <location filename="Windows/OptionsAdvanced.cpp" line="748"/>
         <source>Please enter a service identifier</source>
         <translation>Proszę wpisać identyfikator usługi</translation>
     </message>
@@ -1040,8 +1278,8 @@ Uwaga: Sprawdzanie aktualizacji często pomija najnowsze wydania GitHub, aby zap
         <translation>Proszę wpisać polecenie</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsWindow.cpp" line="962"/>
-        <location filename="Windows/OptionsWindow.cpp" line="980"/>
+        <location filename="Windows/OptionsWindow.cpp" line="968"/>
+        <location filename="Windows/OptionsWindow.cpp" line="986"/>
         <location filename="Windows/OptionsAccess.cpp" line="404"/>
         <location filename="Windows/OptionsAccess.cpp" line="636"/>
         <location filename="Windows/OptionsGeneral.cpp" line="505"/>
@@ -1058,7 +1296,7 @@ Uwaga: Sprawdzanie aktualizacji często pomija najnowsze wydania GitHub, aby zap
         <translation>Proszę wpisać nazwę nowej grupy</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsWindow.cpp" line="973"/>
+        <location filename="Windows/OptionsWindow.cpp" line="979"/>
         <source>Enter program:</source>
         <translation>Podaj program:</translation>
     </message>
@@ -1241,11 +1479,11 @@ Uwaga: Sprawdzanie aktualizacji często pomija najnowsze wydania GitHub, aby zap
         <translation>Wszystkie pliki(*.*)</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsWindow.cpp" line="964"/>
+        <location filename="Windows/OptionsWindow.cpp" line="970"/>
         <location filename="Windows/OptionsAccess.cpp" line="399"/>
         <location filename="Windows/OptionsAccess.cpp" line="632"/>
-        <location filename="Windows/OptionsAdvanced.cpp" line="535"/>
-        <location filename="Windows/OptionsAdvanced.cpp" line="610"/>
+        <location filename="Windows/OptionsAdvanced.cpp" line="538"/>
+        <location filename="Windows/OptionsAdvanced.cpp" line="613"/>
         <location filename="Windows/OptionsGeneral.cpp" line="500"/>
         <location filename="Windows/OptionsGeneral.cpp" line="596"/>
         <location filename="Windows/OptionsNetwork.cpp" line="436"/>
@@ -1281,7 +1519,7 @@ Uwaga: Sprawdzanie aktualizacji często pomija najnowsze wydania GitHub, aby zap
     </message>
     <message>
         <location filename="Windows/OptionsAccess.cpp" line="611"/>
-        <location filename="Windows/OptionsAdvanced.cpp" line="586"/>
+        <location filename="Windows/OptionsAdvanced.cpp" line="589"/>
         <location filename="Windows/OptionsGeneral.cpp" line="567"/>
         <location filename="Windows/OptionsGrouping.cpp" line="234"/>
         <location filename="Windows/OptionsGrouping.cpp" line="258"/>
@@ -1308,7 +1546,7 @@ Uwaga: Sprawdzanie aktualizacji często pomija najnowsze wydania GitHub, aby zap
         <translation type="vanished">Proszę podać polecenie samowykonywalne</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAdvanced.cpp" line="816"/>
+        <location filename="Windows/OptionsAdvanced.cpp" line="819"/>
         <source>Please enter a program file name</source>
         <translation>Proszę wpisać nazwę pliku programu</translation>
     </message>
@@ -1383,12 +1621,12 @@ Uwaga: Sprawdzanie aktualizacji często pomija najnowsze wydania GitHub, aby zap
         <translation>Błąd: %1</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsTemplates.cpp" line="219"/>
+        <location filename="Windows/OptionsTemplates.cpp" line="226"/>
         <source>Only local templates can be removed!</source>
         <translation>Można usunąć tylko szablony lokalne!</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsTemplates.cpp" line="223"/>
+        <location filename="Windows/OptionsTemplates.cpp" line="230"/>
         <source>Do you really want to delete the selected local template?</source>
         <translation>Czy na pewno chcesz usunąć wybrany szablon lokalny?</translation>
     </message>
@@ -1432,7 +1670,7 @@ Uwaga: Sprawdzanie aktualizacji często pomija najnowsze wydania GitHub, aby zap
         <translation>Blokuj, odmawiając dostępu do urządzeń sieciowych</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsAdvanced.cpp" line="898"/>
+        <location filename="Windows/OptionsAdvanced.cpp" line="901"/>
         <location filename="Windows/OptionsNetwork.cpp" line="148"/>
         <location filename="Windows/OptionsNetwork.cpp" line="549"/>
         <source>Allow</source>
@@ -4559,6 +4797,97 @@ Procesy w tym boksie reagowały tak jakby były uruchamiane z uprawnieniami admi
     </message>
 </context>
 <context>
+    <name>CTemplateTypePage</name>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="257"/>
+        <source>Create new Template</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="266"/>
+        <source>Select template type:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="270"/>
+        <source>%1 template</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>CTemplateWizard</name>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="37"/>
+        <source>Compatibility Template Wizard</source>
+        <oldsource>Compatybility Template Wizard</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="48"/>
+        <source>Custom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="49"/>
+        <source>Web Browser</source>
+        <translation type="unfinished">Przeglądarka WWW</translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="82"/>
+        <source>Force %1 to run in this sandbox</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="100"/>
+        <source>Allow direct access to the entire %1 profile folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="113"/>
+        <location filename="Wizards/TemplateWizard.cpp" line="168"/>
+        <source>Allow direct access to %1 phishing database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="127"/>
+        <source>Allow direct access to %1 session management</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="136"/>
+        <location filename="Wizards/TemplateWizard.cpp" line="199"/>
+        <source>Allow direct access to %1 passwords</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="146"/>
+        <location filename="Wizards/TemplateWizard.cpp" line="208"/>
+        <source>Allow direct access to %1 cookies</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="155"/>
+        <location filename="Wizards/TemplateWizard.cpp" line="227"/>
+        <source>Allow direct access to %1 bookmark and history database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="180"/>
+        <source>Allow direct access to %1 sync data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="190"/>
+        <source>Allow direct access to %1 preferences</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wizards/TemplateWizard.cpp" line="217"/>
+        <source>Allow direct access to %1 bookmarks</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CTraceModel</name>
     <message>
         <location filename="Models/TraceModel.cpp" line="196"/>
@@ -4912,8 +5241,8 @@ Procesy w tym boksie reagowały tak jakby były uruchamiane z uprawnieniami admi
         <location filename="Forms/OptionsWindow.ui" line="2809"/>
         <location filename="Forms/OptionsWindow.ui" line="3031"/>
         <location filename="Forms/OptionsWindow.ui" line="3147"/>
-        <location filename="Forms/OptionsWindow.ui" line="4269"/>
-        <location filename="Forms/OptionsWindow.ui" line="4326"/>
+        <location filename="Forms/OptionsWindow.ui" line="4281"/>
+        <location filename="Forms/OptionsWindow.ui" line="4357"/>
         <source>Name</source>
         <translation>Nazwa</translation>
     </message>
@@ -4944,12 +5273,12 @@ Procesy w tym boksie reagowały tak jakby były uruchamiane z uprawnieniami admi
         <location filename="Forms/OptionsWindow.ui" line="2920"/>
         <location filename="Forms/OptionsWindow.ui" line="3069"/>
         <location filename="Forms/OptionsWindow.ui" line="3155"/>
-        <location filename="Forms/OptionsWindow.ui" line="3442"/>
-        <location filename="Forms/OptionsWindow.ui" line="3575"/>
-        <location filename="Forms/OptionsWindow.ui" line="3644"/>
-        <location filename="Forms/OptionsWindow.ui" line="3769"/>
-        <location filename="Forms/OptionsWindow.ui" line="3828"/>
-        <location filename="Forms/OptionsWindow.ui" line="4240"/>
+        <location filename="Forms/OptionsWindow.ui" line="3449"/>
+        <location filename="Forms/OptionsWindow.ui" line="3582"/>
+        <location filename="Forms/OptionsWindow.ui" line="3651"/>
+        <location filename="Forms/OptionsWindow.ui" line="3776"/>
+        <location filename="Forms/OptionsWindow.ui" line="3835"/>
+        <location filename="Forms/OptionsWindow.ui" line="4301"/>
         <source>Remove</source>
         <translation>Usuń</translation>
     </message>
@@ -5127,10 +5456,10 @@ Procesy w tym boksie reagowały tak jakby były uruchamiane z uprawnieniami admi
         <location filename="Forms/OptionsWindow.ui" line="2966"/>
         <location filename="Forms/OptionsWindow.ui" line="3062"/>
         <location filename="Forms/OptionsWindow.ui" line="3169"/>
-        <location filename="Forms/OptionsWindow.ui" line="3401"/>
-        <location filename="Forms/OptionsWindow.ui" line="3592"/>
+        <location filename="Forms/OptionsWindow.ui" line="3408"/>
         <location filename="Forms/OptionsWindow.ui" line="3599"/>
-        <location filename="Forms/OptionsWindow.ui" line="3864"/>
+        <location filename="Forms/OptionsWindow.ui" line="3606"/>
+        <location filename="Forms/OptionsWindow.ui" line="3871"/>
         <source>Show Templates</source>
         <translation>Pokaż szablony</translation>
     </message>
@@ -5298,7 +5627,7 @@ Jeśli zdefiniowane są procesy wiodące, wszystkie inne są traktowane jako pro
         <location filename="Forms/OptionsWindow.ui" line="2446"/>
         <location filename="Forms/OptionsWindow.ui" line="2520"/>
         <location filename="Forms/OptionsWindow.ui" line="2938"/>
-        <location filename="Forms/OptionsWindow.ui" line="3851"/>
+        <location filename="Forms/OptionsWindow.ui" line="3858"/>
         <source>Program</source>
         <translation>Program</translation>
     </message>
@@ -5378,7 +5707,7 @@ Jeśli zdefiniowane są procesy wiodące, wszystkie inne są traktowane jako pro
         <translation>Opcje zaawansowane</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3789"/>
+        <location filename="Forms/OptionsWindow.ui" line="3796"/>
         <source>Miscellaneous</source>
         <translation>Różne</translation>
     </message>
@@ -5426,13 +5755,13 @@ Jeśli zdefiniowane są procesy wiodące, wszystkie inne są traktowane jako pro
         <translation>Dodaj procesy w piaskownicy do obiektów zadań (zalecane)</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3250"/>
+        <location filename="Forms/OptionsWindow.ui" line="3249"/>
         <source>Force usage of custom dummy Manifest files (legacy behaviour)</source>
         <translation>Wymuś użycie niestandardowych fałszywych plików manifestu (zachowanie starszego typu)</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="3221"/>
-        <location filename="Forms/OptionsWindow.ui" line="3236"/>
+        <location filename="Forms/OptionsWindow.ui" line="3270"/>
         <source>Compatibility</source>
         <translation>Zgodność</translation>
     </message>
@@ -5449,38 +5778,38 @@ Jeśli zdefiniowane są procesy wiodące, wszystkie inne są traktowane jako pro
         <translation type="vanished">Tutaj można określić listę poleceń do wykonania przy inicjalizacji pustej piaskownicy.</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3557"/>
+        <location filename="Forms/OptionsWindow.ui" line="3564"/>
         <source>Hide Processes</source>
         <translation>Ukryj procesy</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3606"/>
-        <location filename="Forms/OptionsWindow.ui" line="3664"/>
+        <location filename="Forms/OptionsWindow.ui" line="3613"/>
+        <location filename="Forms/OptionsWindow.ui" line="3671"/>
         <source>Add Process</source>
         <translation>Dodaj proces</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3582"/>
+        <location filename="Forms/OptionsWindow.ui" line="3589"/>
         <source>Hide host processes from processes running in the sandbox.</source>
         <translation>Ukryj procesy hosta piaskownicy przed procesami działającymi w piaskownicy.</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3613"/>
+        <location filename="Forms/OptionsWindow.ui" line="3620"/>
         <source>Don&apos;t allow sandboxed processes to see processes running in other boxes</source>
         <translation>Nie zezwalaj procesom w trybie piaskownicy widzieć procesów działających w innych boksach</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3721"/>
+        <location filename="Forms/OptionsWindow.ui" line="3728"/>
         <source>Users</source>
         <translation>Użytkownicy</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3739"/>
+        <location filename="Forms/OptionsWindow.ui" line="3746"/>
         <source>Restrict Resource Access monitor to administrators only</source>
         <translation>Ogranicz dostęp do monitora dostępu do zasobów tylko dla administratorów</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3746"/>
+        <location filename="Forms/OptionsWindow.ui" line="3753"/>
         <source>Add User</source>
         <translation>Dodaj użytkownika</translation>
     </message>
@@ -5489,7 +5818,7 @@ Jeśli zdefiniowane są procesy wiodące, wszystkie inne są traktowane jako pro
         <translation type="vanished">Usuń użytkownika</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3776"/>
+        <location filename="Forms/OptionsWindow.ui" line="3783"/>
         <source>Add user accounts and user groups to the list below to limit use of the sandbox to only those accounts.  If the list is empty, the sandbox can be used by all user accounts.
 
 Note:  Forced Programs and Force Folders settings for a sandbox do not apply to user accounts which cannot use the sandbox.</source>
@@ -5498,47 +5827,47 @@ Note:  Forced Programs and Force Folders settings for a sandbox do not apply to 
 Uwaga:  ustawienia Wymuszonych Programów i Wymuszania Folderów dla piaskownicy nie mają zastosowania do kont użytkowników, które nie mogą korzystać z piaskownicy.</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3887"/>
+        <location filename="Forms/OptionsWindow.ui" line="3894"/>
         <source>Tracing</source>
         <translation>Śledzenie</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4010"/>
+        <location filename="Forms/OptionsWindow.ui" line="4017"/>
         <source>GUI Trace</source>
         <translation>Śledzenie GUI</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4003"/>
+        <location filename="Forms/OptionsWindow.ui" line="4010"/>
         <source>IPC Trace</source>
         <translation>Śledzenie IPC</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3915"/>
+        <location filename="Forms/OptionsWindow.ui" line="3922"/>
         <source>Pipe Trace</source>
         <translation>Śledzenie pipe</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4051"/>
+        <location filename="Forms/OptionsWindow.ui" line="4058"/>
         <source>Access Tracing</source>
         <translation>Śledzenie dostępów</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3955"/>
+        <location filename="Forms/OptionsWindow.ui" line="3962"/>
         <source>Log Debug Output to the Trace Log</source>
         <translation>Rejestruj dane wyjściowe debugowania w dzienniku śledzenia</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3989"/>
+        <location filename="Forms/OptionsWindow.ui" line="3996"/>
         <source>File Trace</source>
         <translation>Śledzenie plikow</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4065"/>
+        <location filename="Forms/OptionsWindow.ui" line="4072"/>
         <source>Key Trace</source>
         <translation>Śledzenie kluczy</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3962"/>
+        <location filename="Forms/OptionsWindow.ui" line="3969"/>
         <source>Log all access events as seen by the driver to the resource access log.
 
 This options set the event mask to &quot;*&quot; - All access events
@@ -5557,12 +5886,12 @@ Możesz dostosować rejestrowanie za pomocą ini, określając
 zamiast &quot;*&quot;.</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4058"/>
+        <location filename="Forms/OptionsWindow.ui" line="4065"/>
         <source>COM Class Trace</source>
         <translation>Śledzenie klas COM</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3270"/>
+        <location filename="Forms/OptionsWindow.ui" line="3256"/>
         <source>Emulate sandboxed window station for all processes</source>
         <translation>Emuluj piaskownicę dla wszystkich procesów</translation>
     </message>
@@ -5576,54 +5905,59 @@ zamiast &quot;*&quot;.</translation>
         <translation>Izolacja dostępu</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3297"/>
+        <location filename="Forms/OptionsWindow.ui" line="3242"/>
         <source>Apply ElevateCreateProcess Workaround (legacy behaviour)</source>
         <translation>Zastosuj obejście ElevateCreateProcess (starsze zachowanie)</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3337"/>
+        <location filename="Forms/OptionsWindow.ui" line="3304"/>
+        <source>Use desktop object workaround for all processes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Forms/OptionsWindow.ui" line="3344"/>
         <source>This command will be run before the box content will be deleted</source>
         <translation>To polecenie zostanie uruchomione zanim zawartość boksu zostanie usunięta</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3391"/>
+        <location filename="Forms/OptionsWindow.ui" line="3398"/>
         <source>On File Recovery</source>
         <translation>O odzyskiwaniu plików</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3420"/>
+        <location filename="Forms/OptionsWindow.ui" line="3427"/>
         <source>This command will be run before a file is being recovered and the file path will be passed as the first argument. If this command returns anything other than 0, the recovery will be blocked</source>
         <oldsource>This command will be run before a file is being recoverd and the file path will be passed as the first argument, if this command return something other than 0 the recovery will be blocked</oldsource>
         <translation>To polecenie zostanie uruchomione przed odzyskaniem pliku i ścieżka do pliku zostanie przekazana jako pierwszy argument, jeśli to polecenie zwrócić coś innego niż 0 odzyskanie zostanie zablokowane</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3423"/>
+        <location filename="Forms/OptionsWindow.ui" line="3430"/>
         <source>Run File Checker</source>
         <translation>Uruchom sprawdzanie plików</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3539"/>
+        <location filename="Forms/OptionsWindow.ui" line="3546"/>
         <source>On Delete Content</source>
         <translation>Uruchom, Usuń zawartość</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3620"/>
+        <location filename="Forms/OptionsWindow.ui" line="3627"/>
         <source>Protect processes in this box from being accessed by specified unsandboxed host processes.</source>
         <translation>Chroni procesy w tym boksie przed dostępem określonych procesów hosta spoza piaskownicy.</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3631"/>
-        <location filename="Forms/OptionsWindow.ui" line="3695"/>
+        <location filename="Forms/OptionsWindow.ui" line="3638"/>
+        <location filename="Forms/OptionsWindow.ui" line="3702"/>
         <source>Process</source>
         <translation>Proces</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3671"/>
+        <location filename="Forms/OptionsWindow.ui" line="3678"/>
         <source>Block also read access to processes in this sandbox</source>
         <translation>Zablokuj również dostęp do odczytu procesów w tej piaskownicy</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3821"/>
+        <location filename="Forms/OptionsWindow.ui" line="3828"/>
         <source>Add Option</source>
         <translation>Dodaj opcję</translation>
     </message>
@@ -5632,23 +5966,23 @@ zamiast &quot;*&quot;.</translation>
         <translation type="vanished">Tutaj możesz skonfigurować zaawansowane opcje dla każdego procesu, aby poprawić kompatybilność i/lub dostosować zachowanie piaskownicy.</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3846"/>
+        <location filename="Forms/OptionsWindow.ui" line="3853"/>
         <source>Option</source>
         <translation>Opcja</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3895"/>
+        <location filename="Forms/OptionsWindow.ui" line="3902"/>
         <source>API call trace (requires LogAPI to be installed in the Sbie directory)</source>
         <oldsource>API call trace (requirers logapi to be installed in the sbie dir)</oldsource>
         <translation>Śledzenie wywołań API (wymaga zainstalowania logapi w katalogu sbie)</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3935"/>
+        <location filename="Forms/OptionsWindow.ui" line="3942"/>
         <source>Log all SetError&apos;s to Trace log (creates a lot of output)</source>
         <translation>Rejestruj wszystkie błędy SetError do dziennika śledzenia (tworzy dużo danych wyjściowych)</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3982"/>
+        <location filename="Forms/OptionsWindow.ui" line="3989"/>
         <source>Ntdll syscall Trace (creates a lot of output)</source>
         <translation>Śledzenie Ntdll syscall (tworzy dużo danych wyjściowych)</translation>
     </message>
@@ -5658,22 +5992,22 @@ zamiast &quot;*&quot;.</translation>
         <translation type="obsolete">Rejestrowanie żądań DNS</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4089"/>
+        <location filename="Forms/OptionsWindow.ui" line="4096"/>
         <source>Debug</source>
         <translation>Debug</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4145"/>
+        <location filename="Forms/OptionsWindow.ui" line="4152"/>
         <source>WARNING, these options can disable core security guarantees and break sandbox security!!!</source>
         <translation>UWAGA, te opcje mogą wyłączyć podstawowe gwarancje bezpieczeństwa i złamać zabezpieczenia sandboxa!</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4155"/>
+        <location filename="Forms/OptionsWindow.ui" line="4162"/>
         <source>These options are intended for debugging compatibility issues, please do not use them in production use. </source>
         <translation>Te opcje są przeznaczone do debugowania problemów z kompatybilnością, proszę nie używać ich w zastosowaniach produkcyjnych. </translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4170"/>
+        <location filename="Forms/OptionsWindow.ui" line="4177"/>
         <source>App Templates</source>
         <translation>Dodaj szablony</translation>
     </message>
@@ -5682,17 +6016,17 @@ zamiast &quot;*&quot;.</translation>
         <translation type="vanished">Szablony zgodności</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4200"/>
+        <location filename="Forms/OptionsWindow.ui" line="4262"/>
         <source>Filter Categories</source>
         <translation>Filtruj kategorie</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4213"/>
+        <location filename="Forms/OptionsWindow.ui" line="4233"/>
         <source>Text Filter</source>
         <translation>Filtruj text</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4220"/>
+        <location filename="Forms/OptionsWindow.ui" line="4255"/>
         <source>Add Template</source>
         <translation>Dodaj szablon</translation>
     </message>
@@ -5701,12 +6035,12 @@ zamiast &quot;*&quot;.</translation>
         <translation type="vanished">Usuń szablon</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4264"/>
+        <location filename="Forms/OptionsWindow.ui" line="4276"/>
         <source>Category</source>
         <translation>Kategoria</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4227"/>
+        <location filename="Forms/OptionsWindow.ui" line="4210"/>
         <source>This list contains a large amount of sandbox compatibility enhancing templates</source>
         <translation>Ta lista zawiera dużą ilość szablonów poprawiających kompatybilność z piaskownicą</translation>
     </message>
@@ -5950,8 +6284,8 @@ Aby określić proces, użyj jako ścieżki &apos;$:program.exe&apos;.</translat
     <message>
         <location filename="Forms/OptionsWindow.ui" line="568"/>
         <location filename="Forms/OptionsWindow.ui" line="2943"/>
-        <location filename="Forms/OptionsWindow.ui" line="3375"/>
-        <location filename="Forms/OptionsWindow.ui" line="3700"/>
+        <location filename="Forms/OptionsWindow.ui" line="3382"/>
+        <location filename="Forms/OptionsWindow.ui" line="3707"/>
         <source>Action</source>
         <translation>Akcja</translation>
     </message>
@@ -6060,7 +6394,7 @@ Aby określić proces, użyj jako ścieżki &apos;$:program.exe&apos;.</translat
         <translation>Różne opcje</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3243"/>
+        <location filename="Forms/OptionsWindow.ui" line="3277"/>
         <source>Allow use of nested job objects (works on Windows 8 and later)</source>
         <oldsource>Allow use of nested job objects (experimental, works on Windows 8 and later)</oldsource>
         <translation>Zezwalaj na używanie zagnieżdżonych obiektów zadań (eksperymentalne, działa od Windows 8 i w następnych)</translation>
@@ -6204,7 +6538,7 @@ Poziom dopasowania do procesu ma wyższy priorytet niż specyfika i opisuje spos
         <translation type="vanished">COM/RPC</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3290"/>
+        <location filename="Forms/OptionsWindow.ui" line="3297"/>
         <source>Disable the use of RpcMgmtSetComTimeout by default (this may resolve compatibility issues)</source>
         <translation>Wyłączenie domyślnego użycia RpcMgmtSetComTimeout (może rozwiązać problemy z kompatybilnością)</translation>
     </message>
@@ -6244,40 +6578,40 @@ Poziom dopasowania do procesu ma wyższy priorytet niż specyfika i opisuje spos
         <translation>Poniższe opcje mogą być bezpiecznie użyte, gdy nie nadano uprawnień administratora.</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3307"/>
+        <location filename="Forms/OptionsWindow.ui" line="3314"/>
         <source>Triggers</source>
         <translation>Wyzwalacze</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3370"/>
+        <location filename="Forms/OptionsWindow.ui" line="3377"/>
         <source>Event</source>
         <translation>Zdarzenie</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3340"/>
-        <location filename="Forms/OptionsWindow.ui" line="3359"/>
-        <location filename="Forms/OptionsWindow.ui" line="3497"/>
+        <location filename="Forms/OptionsWindow.ui" line="3347"/>
+        <location filename="Forms/OptionsWindow.ui" line="3366"/>
+        <location filename="Forms/OptionsWindow.ui" line="3504"/>
         <source>Run Command</source>
         <translation>Uruchom polecenie</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3529"/>
+        <location filename="Forms/OptionsWindow.ui" line="3536"/>
         <source>Start Service</source>
         <translation>Uruchom usługę</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3504"/>
+        <location filename="Forms/OptionsWindow.ui" line="3511"/>
         <source>These events are executed each time a box is started</source>
         <translation>Zdarzenia te wykonywane są za każdym razem, gdy uruchamiany jest boks</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3507"/>
+        <location filename="Forms/OptionsWindow.ui" line="3514"/>
         <source>On Box Start</source>
         <translation>Włącz w start boksu</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3388"/>
-        <location filename="Forms/OptionsWindow.ui" line="3536"/>
+        <location filename="Forms/OptionsWindow.ui" line="3395"/>
+        <location filename="Forms/OptionsWindow.ui" line="3543"/>
         <source>These commands are run UNBOXED just before the box content is deleted</source>
         <translation>Te polecenia uruchamiane są tuż przed usunięciem zawartości boksu</translation>
     </message>
@@ -6286,43 +6620,43 @@ Poziom dopasowania do procesu ma wyższy priorytet niż specyfika i opisuje spos
         <translation type="vanished">Przy usuwaniu boksu</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3462"/>
+        <location filename="Forms/OptionsWindow.ui" line="3469"/>
         <source>These commands are executed only when a box is initialized. To make them run again, the box content must be deleted.</source>
         <translation>Polecenia te wykonywane są tylko wtedy, gdy boks jest inicjalizowany. Aby je ponownie uruchomić, należy usunąć zawartość boksu.</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3465"/>
+        <location filename="Forms/OptionsWindow.ui" line="3472"/>
         <source>On Box Init</source>
         <translation>Włącz w Init boksu</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3475"/>
+        <location filename="Forms/OptionsWindow.ui" line="3482"/>
         <source>Here you can specify actions to be executed automatically on various box events.</source>
         <translation>W tym miejscu można określić akcje, które mają być wykonywane automatycznie w przypadku różnych zdarzeń w boksie.</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3996"/>
+        <location filename="Forms/OptionsWindow.ui" line="4003"/>
         <source>Disable Resource Access Monitor</source>
         <translation>Wyłącz monitor dostępu do zasobów</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4024"/>
+        <location filename="Forms/OptionsWindow.ui" line="4031"/>
         <source>Resource Access Monitor</source>
         <translation>Monitor dostępu do zasobów</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="2839"/>
-        <location filename="Forms/OptionsWindow.ui" line="4072"/>
+        <location filename="Forms/OptionsWindow.ui" line="4079"/>
         <source>Network Firewall</source>
         <translation>Zapora sieciowa</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4280"/>
+        <location filename="Forms/OptionsWindow.ui" line="4311"/>
         <source>Template Folders</source>
         <translation>Foldery szablonów</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4300"/>
+        <location filename="Forms/OptionsWindow.ui" line="4331"/>
         <source>Configure the folder locations used by your other applications.
 
 Please note that this values are currently user specific and saved globally for all boxes.</source>
@@ -6331,58 +6665,58 @@ Please note that this values are currently user specific and saved globally for 
 Należy pamiętać, że te wartości są obecnie specyficzne dla użytkownika i zapisywane globalnie dla wszystkich boksów.</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3856"/>
-        <location filename="Forms/OptionsWindow.ui" line="4331"/>
+        <location filename="Forms/OptionsWindow.ui" line="3863"/>
+        <location filename="Forms/OptionsWindow.ui" line="4362"/>
         <source>Value</source>
         <translation>Wartość</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4342"/>
+        <location filename="Forms/OptionsWindow.ui" line="4373"/>
         <source>Accessibility</source>
         <translation>Dostępność</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4438"/>
+        <location filename="Forms/OptionsWindow.ui" line="4469"/>
         <source>To compensate for the lost protection, please consult the Drop Rights settings page in the Restrictions settings group.</source>
         <translation>Aby zrekompensować utratę ochrony, zapoznaj się ze stroną ustawień Usuwania Uprawnień w grupie ustawień Ograniczenia.</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4362"/>
+        <location filename="Forms/OptionsWindow.ui" line="4393"/>
         <source>Screen Readers: JAWS, NVDA, Window-Eyes, System Access</source>
         <translation>Czytniki ekranu: JAWS, NVDA, Window-Eyes, System Access</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="3835"/>
+        <location filename="Forms/OptionsWindow.ui" line="3842"/>
         <source>Here you can configure advanced per process options to improve compatibility and/or customize sandboxing behavior.</source>
         <translation>Tutaj można skonfigurować zaawansowane opcje dla poszczególnych procesów, aby poprawić zgodność i/lub dostosować zachowanie piaskownicy.</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4180"/>
+        <location filename="Forms/OptionsWindow.ui" line="4187"/>
         <source>Templates</source>
         <translation>Szablony</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4402"/>
+        <location filename="Forms/OptionsWindow.ui" line="4433"/>
         <source>The following settings enable the use of Sandboxie in combination with accessibility software.  Please note that some measure of Sandboxie protection is necessarily lost when these settings are in effect.</source>
         <translation>Poniższe ustawienia umożliwiają korzystanie z usługi Sandboxie w połączeniu z oprogramowaniem zapewniającym dostępność.  Należy pamiętać, że niektóre środki ochrony Sandboxie są z konieczności tracone, gdy te ustawienia są aktywne.</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4455"/>
+        <location filename="Forms/OptionsWindow.ui" line="4486"/>
         <source>Edit ini Section</source>
         <translation>Edytuj sekcję ini</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4461"/>
+        <location filename="Forms/OptionsWindow.ui" line="4492"/>
         <source>Edit ini</source>
         <translation>Edytuj ini</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4474"/>
+        <location filename="Forms/OptionsWindow.ui" line="4505"/>
         <source>Cancel</source>
         <translation>Anuluj</translation>
     </message>
     <message>
-        <location filename="Forms/OptionsWindow.ui" line="4497"/>
+        <location filename="Forms/OptionsWindow.ui" line="4528"/>
         <source>Save</source>
         <translation>Zapisz</translation>
     </message>
@@ -6398,7 +6732,7 @@ Należy pamiętać, że te wartości są obecnie specyficzne dla użytkownika i 
 <context>
     <name>ProgramsDelegate</name>
     <message>
-        <location filename="Windows/OptionsWindow.cpp" line="47"/>
+        <location filename="Windows/OptionsWindow.cpp" line="48"/>
         <source>Group: %1</source>
         <translation>Grupa: %1</translation>
     </message>

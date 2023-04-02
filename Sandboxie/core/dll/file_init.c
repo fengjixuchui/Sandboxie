@@ -252,24 +252,15 @@ _FX BOOLEAN File_Init(void)
     // support for Google Chrome flash plugin process
     //
 
-    if (Dll_ChromeSandbox) {
+    void *GetVolumeInformationW =
+        GetProcAddress(Dll_KernelBase ? Dll_KernelBase : Dll_Kernel32,
+            "GetVolumeInformationW");
+    SBIEDLL_HOOK(File_,GetVolumeInformationW);
 
-        void *GetVolumeInformationW =
-            GetProcAddress(Dll_KernelBase ? Dll_KernelBase : Dll_Kernel32,
-                "GetVolumeInformationW");
-
-        SBIEDLL_HOOK(File_,GetVolumeInformationW);
-    }
-
-
-    if (Dll_ImageType == DLL_IMAGE_MOZILLA_FIREFOX || Dll_ImageType == DLL_IMAGE_MOZILLA_THUNDERBIRD)
-    {
-        void *WriteProcessMemory =
-            GetProcAddress(Dll_KernelBase ? Dll_KernelBase : Dll_Kernel32,
-                "WriteProcessMemory");
-
-        SBIEDLL_HOOK(File_, WriteProcessMemory);
-    }
+    void *WriteProcessMemory =
+        GetProcAddress(Dll_KernelBase ? Dll_KernelBase : Dll_Kernel32,
+            "WriteProcessMemory");
+    SBIEDLL_HOOK(File_, WriteProcessMemory);
 
     return TRUE;
 }
@@ -408,7 +399,7 @@ _FX BOOLEAN File_InitDrives(ULONG DriveMask)
     ULONG file_drive_len;
     ULONG drive;
     ULONG path_len;
-    ULONG drive_count;
+    //ULONG drive_count;
     WCHAR *path;
     WCHAR error_str[16];
     BOOLEAN CallInitLinks;
@@ -458,7 +449,7 @@ _FX BOOLEAN File_InitDrives(ULONG DriveMask)
     InitializeObjectAttributes(
         &objattrs, &objname, OBJ_CASE_INSENSITIVE, NULL, NULL);
 
-    drive_count = 0;
+    //drive_count = 0;
 
     for (drive = 0; drive < 26; ++drive) {
 
@@ -651,7 +642,7 @@ _FX BOOLEAN File_InitDrives(ULONG DriveMask)
                 }
 
                 File_Drives[drive] = file_drive;
-                drive_count++;
+                //drive_count++;
 
                 SbieApi_MonitorPut(MONITOR_DRIVE, path);
             }
@@ -673,10 +664,10 @@ _FX BOOLEAN File_InitDrives(ULONG DriveMask)
         }
     }
 
-    if (drive_count == 0) {
-        Sbie_snwprintf(error_str, 16, L"No Drives Found");
-        SbieApi_Log(2307, error_str);
-    }
+    //if (drive_count == 0) {
+    //    Sbie_snwprintf(error_str, 16, L"No Drives Found");
+    //    SbieApi_Log(2307, error_str);
+    //}
 
     //
     // initialize list of volumes mounted to directories rather than drives
