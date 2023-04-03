@@ -10,14 +10,15 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
-## [1.8.3 / 5.63.3] - 2023-04-??
+## [1.8.2a / 5.63.2] - 2023-04-02
 
 ### Changed
-- disabled token based workarounds when in compartment  mode
+- disabled token based workarounds when in compartment mode
 
 ### Fixed
-- fixed issue with the new SBIE2307 being triggered on media removal
-- excluded one of the ols old token hacks (for firefox) from being disabled 
+- fixed issue with the new SBIE2307 message being triggered on media removal
+- excluded some old token hacks (for Firefox) from being disabled
+- long-standing ping issue with compartment type boxes [#1608](https://github.com/sandboxie-plus/Sandboxie/issues/1608)
 
 
 
