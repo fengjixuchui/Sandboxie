@@ -181,7 +181,7 @@ CBoxTypePage::CBoxTypePage(bool bAlowTemp, QWidget *parent)
     m_pBoxName->setMaxLength(32);
 	QMap<QString, CSandBoxPtr> Boxes = theAPI->GetAllBoxes();
 	for (int i=0;; i++) {
-		QString NewName = tr("New Box");
+		QString NewName = "New Box";
 		if (i > 0) NewName.append(" " + QString::number(i));
 		if (Boxes.contains(NewName.toLower().replace(" ", "_")))
 			continue;
@@ -400,7 +400,7 @@ bool CFilesPage::validatePage()
                 return false;
         }
         if (!QDir().exists(Location.left(3))) {
-            QMessageBox::critical(this, "Sandboxie-Plus", tr("The selected box location not placed on a currently available drive."));
+            QMessageBox::critical(this, "Sandboxie-Plus", tr("The selected box location is not placed on a currently available drive."));
             return false;
         }
         wizard()->setField("boxLocation", Location);
