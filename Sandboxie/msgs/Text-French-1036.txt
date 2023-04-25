@@ -3875,7 +3875,7 @@ Veuillez relire les informations ci-dessous.
 .
 
 8012;ins;01
-Cliquez sur suivant pour installer et activer le pilote Sandboxie au niveau Système. Ce pilote est le cœur de l'application Sandboxie.
+Cliquez sur suivant pour installer et activer le pilote Sandboxie au niveau Système. Ce pilote est le noyau de l'application Sandboxie.
 .
 
 8013;ins;01
@@ -3997,6 +3997,10 @@ Voulez-vous sauvegarder la configuration de votre fichier Sandboxie.ini ?
 Sélectionner « oui » pour garder les paramètres de configuration dans le fichier Sandboxie.ini.
 
 Sélectionner « non » pour effacer le fichier Sandboxie.ini et perdre vos paramètres de configuration.
+.
+
+8055;ins;01
+Une mise à jour en ligne de Templates.ini et/ou des traductions pour cette version de sandboxie est disponible, voulez-vous l'installer ?
 .
 
 #----------------------------------------------------------------------------
