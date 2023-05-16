@@ -1233,7 +1233,7 @@ QIcon CSandMan::IconAddOverlay(const QIcon& Icon, const QString& Name, int Size)
 {
 	QPixmap overlay = QPixmap(Name).scaled(Size, Size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
 
-	QPixmap base = Icon.pixmap(32, 32);
+	QPixmap base = Icon.pixmap(32, 32).scaled(32, 32, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
 	QPixmap result(base.width(), base.height());
 	result.fill(Qt::transparent); // force alpha channel
 	QPainter painter(&result);
@@ -1250,7 +1250,7 @@ QString CSandMan::GetBoxDescription(int boxType)
 	switch (boxType) {
 	case CSandBoxPlus::eHardenedPlus:
 	case CSandBoxPlus::eHardened:
-		Info = tr("This box provides enhanced security isolation, it is suitable to test untrusted software.");
+		Info = tr("This box provides <a href=\"sbie://docs/security-mode\">enhanced security isolation</a>, it is suitable to test untrusted software.");
 		break;
 	case CSandBoxPlus::eDefaultPlus:
 	case CSandBoxPlus::eDefault:
@@ -1258,12 +1258,12 @@ QString CSandMan::GetBoxDescription(int boxType)
 		break;
 	case CSandBoxPlus::eAppBoxPlus:
 	case CSandBoxPlus::eAppBox:
-		Info = tr("This box does not enforce isolation, it is intended to be used as an application compartment for software virtualization only.");
+		Info = tr("This box does not enforce isolation, it is intended to be used as an <a href=\"sbie://docs/compartment-mode\">application compartment</a> for software virtualization only.");
 		break;
 	}
 	
 	if(boxType == CSandBoxPlus::eHardenedPlus || boxType == CSandBoxPlus::eDefaultPlus || boxType == CSandBoxPlus::eAppBoxPlus)
-		Info.append(tr("\n\nThis box prevents access to all user data locations, except explicitly granted in the Resource Access options."));
+		Info.append(tr("\n\nThis box <a href=\"sbie://docs/privacy-mode\">prevents access to all user data</a> locations, except explicitly granted in the Resource Access options."));
 
 	return Info;
 }
@@ -1430,6 +1430,16 @@ void CSandMan::timerEvent(QTimerEvent* pEvent)
 		}
 
 		bool bUpdatePending = !theConf->GetString("Updater/PendingUpdate").isEmpty();
+		if (bUpdatePending) {
+			if (m_pDismissUpdate->isChecked())
+				bUpdatePending = false;
+			else if (!m_pDismissUpdate->isVisible())
+				m_pDismissUpdate->setVisible(true);
+		}
+		else if (m_pDismissUpdate->isChecked())
+			m_pDismissUpdate->setChecked(false);
+		if(!bUpdatePending && m_pDismissUpdate->isVisible())
+			m_pDismissUpdate->setVisible(false);
 
 		if (m_bIconEmpty != (ActiveProcesses == 0) || m_bIconBusy != bIconBusy || m_iIconDisabled != (bForceProcessDisabled ? 1 : 0) || bUpdatePending || m_bIconSun)
 		{
@@ -2237,9 +2247,9 @@ void CSandMan::OnQueuedRequest(quint32 ClientPid, quint32 ClientTid, quint32 Req
 
 #include "SandManRecovery.cpp"
 
-int CSandMan::ShowQuestion(const QString& question, const QString& checkBoxText, bool* checkBoxSetting, int buttons, int defaultButton, int type)
+int CSandMan::ShowQuestion(const QString& question, const QString& checkBoxText, bool* checkBoxSetting, int buttons, int defaultButton, int type, QWidget* pParent)
 {
-	int ret =  CCheckableMessageBox::question(this, "Sandboxie-Plus", question, checkBoxText, checkBoxSetting, (QDialogButtonBox::StandardButtons)buttons, (QDialogButtonBox::StandardButton)defaultButton, (QMessageBox::Icon)type);
+	int ret =  CCheckableMessageBox::question(pParent, "Sandboxie-Plus", question, checkBoxText, checkBoxSetting, (QDialogButtonBox::StandardButtons)buttons, (QDialogButtonBox::StandardButton)defaultButton, (QMessageBox::Icon)type);
 	QTimer::singleShot(10, [this]() {
 		this->raise();
 	});
@@ -3286,7 +3296,7 @@ void CSandMan::OnHelp()
 	//	QDesktopServices::openUrl(QUrl("https://sandboxie-plus.com/go.php?to=donate"));
 	//else 
 	if (sender() == m_pContribution)
-		QDesktopServices::openUrl(QUrl("https://sandboxie-plus.com/go.php?to=sbie-contribution"));
+		QDesktopServices::openUrl(QUrl("https://sandboxie-plus.com/go.php?to=sbie-contribute"));
 	else if (sender() == m_pManual)
 		QDesktopServices::openUrl(QUrl("https://sandboxie-plus.com/go.php?to=sbie-docs"));
 	else if (sender() == m_pForum)

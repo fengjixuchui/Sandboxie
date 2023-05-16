@@ -9,7 +9,7 @@
 #include <QJsonObject>
 #include "../MiscHelpers/Common/CheckableMessageBox.h"
 #include <QMessageBox>
-#include "../../SandboxieLive/UpdUtil/UpdUtil.h"
+#include "../../SandboxieTools/UpdUtil/UpdUtil.h"
 #include <QCryptographicHash>
 #include "Helpers/WinAdmin.h"
 #include <windows.h>
@@ -27,7 +27,7 @@
 #undef VERSION_UPD
 #define VERSION_UPD 	0
 
-#define DUMMY_PATH "C:\\Projects\\Sandboxie\\SandboxieLive\\x64\\Debug\\Test"
+#define DUMMY_PATH "C:\\Projects\\Sandboxie\\SandboxieTools\\x64\\Debug\\Test"
 #endif
 
 DWORD GetIdleTime() // in seconds

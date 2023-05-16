@@ -120,7 +120,7 @@ void CSandMan::CheckFilesAsync(const CSbieProgressPtr& pProgress, const QString&
 	pProgress->Finish(SB_OK);
 }
 
-SB_PROGRESS CSandMan::RecoverFiles(const QString& BoxName, const QList<QPair<QString, QString>>& FileList, int Action)
+SB_PROGRESS CSandMan::RecoverFiles(const QString& BoxName, const QList<QPair<QString, QString>>& FileList, QWidget* pParent, int Action)
 {
 	CSbieProgressPtr pProgress = CSbieProgressPtr(new CSbieProgress());
 	CSandBoxPtr pBox = theAPI->GetBoxByName(BoxName);
@@ -130,12 +130,15 @@ SB_PROGRESS CSandMan::RecoverFiles(const QString& BoxName, const QList<QPair<QSt
 			Checkers.append(pBox->Expand(Value));
 		}
 	}
-	QtConcurrent::run(CSandMan::RecoverFilesAsync, pProgress, BoxName, FileList, Checkers, Action);
+	QtConcurrent::run(CSandMan::RecoverFilesAsync, qMakePair(pProgress, pParent), BoxName, FileList, Checkers, Action);
 	return SB_PROGRESS(OP_ASYNC, pProgress);
 }
 
-void CSandMan::RecoverFilesAsync(const CSbieProgressPtr& pProgress, const QString& BoxName, const QList<QPair<QString, QString>>& FileList, const QStringList& Checkers, int Action)
+void CSandMan::RecoverFilesAsync(QPair<const CSbieProgressPtr&,QWidget*> pParam, const QString& BoxName, const QList<QPair<QString, QString>>& FileList, const QStringList& Checkers, int Action)
 {
+	const CSbieProgressPtr& pProgress = pParam.first;
+	QWidget* pParent = pParam.second;
+
 	SB_STATUS Status = SB_OK;
 
 	int OverwriteOnExist = -1;
@@ -177,7 +180,8 @@ void CSandMan::RecoverFilesAsync(const CSbieProgressPtr& pProgress, const QStrin
 							Q_ARG(bool*, &forAll),
 							Q_ARG(int, QDialogButtonBox::Yes | QDialogButtonBox::No),
 							Q_ARG(int, QDialogButtonBox::No),
-							Q_ARG(int, QMessageBox::Warning)
+							Q_ARG(int, QMessageBox::Warning),
+							Q_ARG(QWidget*, pParent)
 						);
 
 						Recover = retVal == QDialogButtonBox::Yes ? 1 : 0;
@@ -212,7 +216,8 @@ void CSandMan::RecoverFilesAsync(const CSbieProgressPtr& pProgress, const QStrin
 					Q_ARG(bool*, &forAll),
 					Q_ARG(int, QDialogButtonBox::Yes | QDialogButtonBox::No),
 					Q_ARG(int, QDialogButtonBox::No),
-					Q_ARG(int, QMessageBox::Question)
+					Q_ARG(int, QMessageBox::Question),
+					Q_ARG(QWidget*, pParent)
 				);
 
 				Overwrite = retVal == QDialogButtonBox::Yes ? 1 : 0;

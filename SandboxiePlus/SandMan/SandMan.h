@@ -35,7 +35,7 @@ public:
 
 	static QString		GetVersion();
 
-	SB_PROGRESS			RecoverFiles(const QString& BoxName, const QList<QPair<QString, QString>>& FileList, int Action = 0);
+	SB_PROGRESS			RecoverFiles(const QString& BoxName, const QList<QPair<QString, QString>>& FileList, QWidget* pParent, int Action = 0);
 	SB_PROGRESS			CheckFiles(const QString& BoxName, const QStringList& Files);
 
 	enum EDelMode {
@@ -91,7 +91,7 @@ protected:
 	SB_STATUS			DisconnectSbie();
 	SB_RESULT(void*)	StopSbie(bool andRemove = false);
 
-	static void			RecoverFilesAsync(const CSbieProgressPtr& pProgress, const QString& BoxName, const QList<QPair<QString, QString>>& FileList, const QStringList& Checkers, int Action = 0);
+	static void			RecoverFilesAsync(QPair<const CSbieProgressPtr&,QWidget*> pParam, const QString& BoxName, const QList<QPair<QString, QString>>& FileList, const QStringList& Checkers, int Action = 0);
 	static void			CheckFilesAsync(const CSbieProgressPtr& pProgress, const QString& BoxName, const QStringList &Files, const QStringList& Checkers);
 
 	QIcon				GetTrayIcon(bool isConnected = true, bool bSun = false);
@@ -180,7 +180,7 @@ public slots:
 	void				OpenUrl(const QString& url) { OpenUrl(QUrl(url)); }
 	void				OpenUrl(const QUrl& url);
 
-	int					ShowQuestion(const QString& question, const QString& checkBoxText, bool* checkBoxSetting, int buttons, int defaultButton, int type);
+	int					ShowQuestion(const QString& question, const QString& checkBoxText, bool* checkBoxSetting, int buttons, int defaultButton, int type, QWidget* pParent);
 	void				ShowMessage(const QString& message, int type);
 
 	void				OnBoxMenu(const QPoint &);
@@ -305,6 +305,7 @@ private:
 	QAction*			m_pDisableForce2;
 	QAction*			m_pDisableRecovery;
 	QAction*			m_pDisableMessages;
+	QAction*			m_pDismissUpdate;
 	QMenu*				m_pMaintenance;
 	QAction*			m_pConnect;
 	QAction*			m_pDisconnect;

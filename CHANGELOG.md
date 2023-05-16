@@ -5,13 +5,45 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
-## [1.9.3 / 5.64.3] - 2023-04-??
+
+
+
+
+
+
+
+## [1.9.4 / 5.64.4] - 2023-04-??
 
 ### Added
-- added setting to disable overlay icons
+- added more documentation links to the plus UI
+- added tray menu option to dismiss a pending update notification
+
+### Changed
+- improved compatybility template for Data Protection mode (thanks offhub)
+
+### Fixed
+- fixed Qt6 issues in ARM64 build
+- fixed delete V2 bug when using box mounts without a drive letter
+- fixed icon overlay issue with high DPI scaling
+- fix behaviour on multiple selection (thanks okrc)
+
+
+
+## [1.9.3 / 5.64.3] - 2023-05-08
+
+### Added
+- added global setting to disable overlay icons
+- added ability to specify Sandboxie.ini location in registry
+  - open "HKLM\SYSTEM\CurrentControlSet\Services\SbieDrv" and set "IniPath" [#2837](https://github.com/sandboxie-plus/Sandboxie/issues/2837)
+  - use a REG_SZ string for the path, like "\??\C:\my_path\my_sandboxie.ini"
+
+### Changed
+- improved handling of DLL injection failure
+- updated Polish translation (thanks to user 7zip)
 
 ### Fixed
 - fixed issue with command lines [#2858](https://github.com/sandboxie-plus/Sandboxie/issues/2858)
+- fixed issue with always on top in the recovery window [#2885](https://github.com/sandboxie-plus/Sandboxie/issues/2885)
 
 
 
