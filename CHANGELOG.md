@@ -17,9 +17,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - added more documentation links to the Plus UI
 - added tray menu option to dismiss a pending update notification
+- added Pin/Favourite files to Tray [#2913](https://github.com/sandboxie-plus/Sandboxie/issues/2913)
 
 ### Changed
 - improved compatibility template for Privacy Enhanced box types (thanks offhub) [#2899](https://github.com/sandboxie-plus/Sandboxie/pull/2899)
+- improved support page in settings and reminder [#2896](https://github.com/sandboxie-plus/Sandboxie/issues/2896)
+- improved signature error message [#2931](https://github.com/sandboxie-plus/Sandboxie/issues/2931)
+- changed Don't show "No Inet" when exceptions exist [#2919](https://github.com/sandboxie-plus/Sandboxie/issues/2919)
 
 ### Fixed
 - fixed Qt6 issues in ARM64 build
@@ -27,6 +31,18 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - fixed icon overlay issue with high DPI scaling
 - fixed behaviour on multiple selection (thanks okrc) [#2903](https://github.com/sandboxie-plus/Sandboxie/pull/2903)
 - fixed issue with default box grouping (thanks okrc) [#2910](https://github.com/sandboxie-plus/Sandboxie/pull/2910)
+- fixed issue with sandbox renaming [#2912](https://github.com/sandboxie-plus/Sandboxie/issues/2912)
+- fixed The checkbox for the Open System Protected Storage setting appears to be unchecked [#2866](https://github.com/sandboxie-plus/Sandboxie/issues/2866)
+- fixed Firewall Rules - Colors make testing difficult in dark mode [#2900](https://github.com/sandboxie-plus/Sandboxie/issues/2900)
+- fixed RecoverFolder shows GUID instead of folder name [#2918](https://github.com/sandboxie-plus/Sandboxie/issues/2918)
+- fixed System tray icon hourglass overlay gets stuck when operation is stopped [#2869](https://github.com/sandboxie-plus/Sandboxie/issues/2869)
+- fixed File Panel doesn't allow to adjust columns size in a permanent way [#2930](https://github.com/sandboxie-plus/Sandboxie/issues/2930)
+- fixed Renaming a box with sandboxed run entries can break those entries. [#2921](https://github.com/sandboxie-plus/Sandboxie/issues/2921)
+- fixed WFP not enabled after Setup Wizard and other issues [#2915](https://github.com/sandboxie-plus/Sandboxie/issues/2915)
+- fixed Name column in the sandbox view should never be hidden [#2933](https://github.com/sandboxie-plus/Sandboxie/issues/2933)
+- fixed File Panel does not share the right-click options provided in the sandbox view columns [#2934](https://github.com/sandboxie-plus/Sandboxie/issues/2934)
+- fixed Checkboxes issue of NetworkEnableWFP and EnableObjectFiltering settings [#2935](https://github.com/sandboxie-plus/Sandboxie/issues/2935)
+
 
 
 
@@ -36,7 +52,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - added global setting to disable overlay icons
 - added ability to specify Sandboxie.ini location in registry
   - open "HKLM\SYSTEM\CurrentControlSet\Services\SbieDrv" and set "IniPath" [#2837](https://github.com/sandboxie-plus/Sandboxie/issues/2837)
-  - use a REG_SZ string for the path, like "\\??\C:\my_path\my_sandboxie.ini"
+  - use a REG_SZ string for the path, like "\??\C:\my_path\my_sandboxie.ini"
 
 ### Changed
 - improved handling of DLL injection failure

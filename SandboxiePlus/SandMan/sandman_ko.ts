@@ -354,27 +354,27 @@ Please browse to the correct user profile directory.</source>
 <context>
     <name>CCertificatePage</name>
     <message>
-        <location filename="Wizards/SetupWizard.cpp" line="193"/>
+        <location filename="Wizards/SetupWizard.cpp" line="195"/>
         <source>Install your &lt;b&gt;Sandboxie-Plus&lt;/b&gt; support certificate</source>
         <translation>&lt;b&gt;Sandboxie-Plus&lt;/b&gt; 지원 인증서를 설치합니다</translation>
     </message>
     <message>
-        <location filename="Wizards/SetupWizard.cpp" line="194"/>
+        <location filename="Wizards/SetupWizard.cpp" line="196"/>
         <source>If you have a supporter certificate, please fill it into the field below.</source>
         <translation>후원자 인증서가 있으면 아래 필드에 입력하십시오.</translation>
     </message>
     <message>
-        <location filename="Wizards/SetupWizard.cpp" line="216"/>
+        <location filename="Wizards/SetupWizard.cpp" line="218"/>
         <source>Start evaluation without a certificate for a limited period of time.</source>
         <translation>제한된 기간 동안 인증서 없이 평가를 시작합니다.</translation>
     </message>
     <message>
-        <location filename="Wizards/SetupWizard.cpp" line="244"/>
+        <location filename="Wizards/SetupWizard.cpp" line="246"/>
         <source>To use &lt;b&gt;Sandboxie-Plus&lt;/b&gt; in a business setting, an appropriate &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-get-cert&quot;&gt;support certificate&lt;/a&gt; for business use is required. If you do not yet have the required certificate(s), you can get those from the &lt;a href=&quot;https://xanasoft.com/shop/&quot;&gt;xanasoft.com web shop&lt;/a&gt;.</source>
         <translation>&lt;b&gt;Sandboxie-Plus&lt;/b&gt;를 비즈니스용으로 사용하려면 비즈니스 사용에 적합한 &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-get-cert&quot;&gt;후원 인증서&lt;/a&gt;가 필요합니다. 필요한 인증서가 아직 없는 경우 &lt;a href=&quot;https://xanasoft.com/shop/&quot;&gt;xanasoft.com 웹 상점에서 인증서를 받을 수 있습니다&lt;/a&gt;.</translation>
     </message>
     <message>
-        <location filename="Wizards/SetupWizard.cpp" line="258"/>
+        <location filename="Wizards/SetupWizard.cpp" line="260"/>
         <source>&lt;b&gt;Sandboxie-Plus&lt;/b&gt; provides additional features and box types exclusively to &lt;u&gt;project supporters&lt;/u&gt;. Boxes like the Privacy Enhanced boxes &lt;b&gt;&lt;font color=&apos;red&apos;&gt;protect user data from illicit access&lt;/font&gt;&lt;/b&gt; by the sandboxed programs. If you are not yet a supporter, then please consider &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-get-cert&quot;&gt;supporting the project&lt;/a&gt; to ensure further development of Sandboxie and to receive a &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-cert&quot;&gt;supporter certificate&lt;/a&gt;.</source>
         <translation>&lt;b&gt;Sandboxie-Plus&lt;/b&gt;는 &lt;u&gt;프로젝트 후원자&lt;/u&gt;에게만 추가 기능과 박스 유형을 제공합니다. 개인 정보 강화 박스와 같은 박스는 샌드박스 프로그램의 &lt;b&gt;&lt;font color=&apos;red&apos;&gt;불법 액세스으로부터 사용자 데이터를 보호&lt;/font&gt;&lt;/b&gt;합니다. 아직 후원자가 되지 않았다면 샌드박스의 추가 개발 및 후원자 인증서 발급을 위한 &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-get-cert&quot;&gt;프로젝트 지원을 고려해주시기 바랍니다.&lt;/a&gt;.</translation>
     </message>
@@ -390,7 +390,7 @@ Please browse to the correct user profile directory.</source>
 <context>
     <name>CFileBrowserWindow</name>
     <message>
-        <location filename="Views/FileView.cpp" line="355"/>
+        <location filename="Views/FileView.cpp" line="398"/>
         <source>%1 - Files</source>
         <translation>%1 - 파일</translation>
     </message>
@@ -398,32 +398,37 @@ Please browse to the correct user profile directory.</source>
 <context>
     <name>CFileView</name>
     <message>
-        <location filename="Views/FileView.cpp" line="178"/>
+        <location filename="Views/FileView.cpp" line="188"/>
         <source>Create Shortcut</source>
         <translation>바로가기 만들기</translation>
     </message>
     <message>
-        <location filename="Views/FileView.cpp" line="184"/>
+        <location filename="Views/FileView.cpp" line="210"/>
+        <source>Pin to Box Run Menu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Views/FileView.cpp" line="217"/>
         <source>Recover to Any Folder</source>
         <translation>임의의 폴더로 복구</translation>
     </message>
     <message>
-        <location filename="Views/FileView.cpp" line="186"/>
+        <location filename="Views/FileView.cpp" line="219"/>
         <source>Recover to Same Folder</source>
         <translation>동일한 폴더로 복구</translation>
     </message>
     <message>
-        <location filename="Views/FileView.cpp" line="190"/>
+        <location filename="Views/FileView.cpp" line="223"/>
         <source>Run Recovery Checks</source>
         <translation>복구 검사 실행</translation>
     </message>
     <message>
-        <location filename="Views/FileView.cpp" line="253"/>
+        <location filename="Views/FileView.cpp" line="287"/>
         <source>Select Directory</source>
         <translation>디렉터리 선택</translation>
     </message>
     <message>
-        <location filename="Views/FileView.cpp" line="310"/>
+        <location filename="Views/FileView.cpp" line="353"/>
         <source>Create Shortcut to sandbox %1</source>
         <translation>sandbox %1로 바로가기 만들기</translation>
     </message>
@@ -512,17 +517,17 @@ You can use %USER% to save each users sandbox to an own fodler.</oldsource>
 <context>
     <name>CFinishPage</name>
     <message>
-        <location filename="Wizards/SetupWizard.cpp" line="487"/>
+        <location filename="Wizards/SetupWizard.cpp" line="489"/>
         <source>Complete your configuration</source>
         <translation>구성을 완료합니다</translation>
     </message>
     <message>
-        <location filename="Wizards/SetupWizard.cpp" line="494"/>
+        <location filename="Wizards/SetupWizard.cpp" line="496"/>
         <source>Almost complete, click Finish to apply all selected options and conclude the wizard.</source>
         <translation>거의 완료되었습니다. 선택한 옵션을 모두 적용하고 마법사를 끝내려면 마침을 클릭하십시오.</translation>
     </message>
     <message>
-        <location filename="Wizards/SetupWizard.cpp" line="506"/>
+        <location filename="Wizards/SetupWizard.cpp" line="508"/>
         <source>Keep Sandboxie-Plus up to date.</source>
         <translation>Sandboxie-Plus를 최신 상태로 유지합니다.</translation>
     </message>
@@ -580,32 +585,32 @@ You can use %USER% to save each users sandbox to an own fodler.</oldsource>
 <context>
     <name>CIntroPage</name>
     <message>
-        <location filename="Wizards/SetupWizard.cpp" line="115"/>
+        <location filename="Wizards/SetupWizard.cpp" line="117"/>
         <source>Introduction</source>
         <translation>소개</translation>
     </message>
     <message>
-        <location filename="Wizards/SetupWizard.cpp" line="119"/>
+        <location filename="Wizards/SetupWizard.cpp" line="121"/>
         <source>Welcome to the Setup Wizard. This wizard will help you to configure your copy of &lt;b&gt;Sandboxie-Plus&lt;/b&gt;. You can start this wizard at any time from the Sandbox-&gt;Maintenance menu if you do not wish to complete it now.</source>
         <translation>설정 마법사에 오신 것을 환영합니다. 이 마법사는 &lt;b&gt;Sandboxie-Plus&lt;/b&gt;의 사본을 구성할 수 있도록 도와줍니다. 지금 완료하지 않으려면 샌드박스-&gt;유지관리 메뉴에서 언제든지 이 마법사를 시작할 수 있습니다.</translation>
     </message>
     <message>
-        <location filename="Wizards/SetupWizard.cpp" line="128"/>
+        <location filename="Wizards/SetupWizard.cpp" line="130"/>
         <source>Select how you would like to use Sandboxie-Plus</source>
         <translation>Sandboxie-Plus 사용 방법 선택</translation>
     </message>
     <message>
-        <location filename="Wizards/SetupWizard.cpp" line="131"/>
+        <location filename="Wizards/SetupWizard.cpp" line="133"/>
         <source>&amp;Personally, for private non-commercial use</source>
         <translation>개인적, 사적인 비상업적으로 사용(&amp;P)</translation>
     </message>
     <message>
-        <location filename="Wizards/SetupWizard.cpp" line="136"/>
+        <location filename="Wizards/SetupWizard.cpp" line="138"/>
         <source>&amp;Commercially, for business or enterprise use</source>
         <translation>상업적, 사업 또는 기업용으로 사용(&amp;C)</translation>
     </message>
     <message>
-        <location filename="Wizards/SetupWizard.cpp" line="141"/>
+        <location filename="Wizards/SetupWizard.cpp" line="143"/>
         <source>Note: this option is persistent</source>
         <translation>참고: 이 옵션은 영구적입니다</translation>
     </message>
@@ -1072,9 +1077,9 @@ Note: The update check is often behind the latest GitHub release to ensure that 
         <location filename="Windows/OptionsAdvanced.cpp" line="627"/>
         <location filename="Windows/OptionsGeneral.cpp" line="510"/>
         <location filename="Windows/OptionsGeneral.cpp" line="606"/>
-        <location filename="Windows/OptionsNetwork.cpp" line="451"/>
-        <location filename="Windows/OptionsNetwork.cpp" line="544"/>
-        <location filename="Windows/OptionsNetwork.cpp" line="657"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="461"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="554"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="667"/>
         <source>All Programs</source>
         <translation>모든 프로그램</translation>
     </message>
@@ -1086,8 +1091,8 @@ Note: The update check is often behind the latest GitHub release to ensure that 
         <location filename="Windows/OptionsGeneral.cpp" line="515"/>
         <location filename="Windows/OptionsGeneral.cpp" line="610"/>
         <location filename="Windows/OptionsNetwork.cpp" line="193"/>
-        <location filename="Windows/OptionsNetwork.cpp" line="456"/>
-        <location filename="Windows/OptionsNetwork.cpp" line="548"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="466"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="558"/>
         <source>Group: %1</source>
         <translation>그룹: %1</translation>
     </message>
@@ -1122,7 +1127,7 @@ Note: The update check is often behind the latest GitHub release to ensure that 
         <location filename="Windows/OptionsGeneral.cpp" line="577"/>
         <location filename="Windows/OptionsGrouping.cpp" line="234"/>
         <location filename="Windows/OptionsGrouping.cpp" line="258"/>
-        <location filename="Windows/OptionsNetwork.cpp" line="523"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="533"/>
         <source>Template values can not be edited.</source>
         <translation>템플릿 값은 편집할 수 없습니다.</translation>
     </message>
@@ -1438,12 +1443,12 @@ Note: The update check is often behind the latest GitHub release to ensure that 
     </message>
     <message>
         <location filename="Windows/OptionsGeneral.cpp" line="895"/>
-        <location filename="Windows/OptionsGeneral.cpp" line="910"/>
+        <location filename="Windows/OptionsGeneral.cpp" line="911"/>
         <source>Please enter a menu title</source>
         <translation>메뉴 제목을 입력하십시오</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsGeneral.cpp" line="906"/>
+        <location filename="Windows/OptionsGeneral.cpp" line="907"/>
         <source>Please enter a command</source>
         <translation>명령을 입력하십시오</translation>
     </message>
@@ -1459,47 +1464,47 @@ Note: The update check is often behind the latest GitHub release to ensure that 
     </message>
     <message>
         <location filename="Windows/OptionsNetwork.cpp" line="37"/>
-        <location filename="Windows/OptionsNetwork.cpp" line="578"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="588"/>
         <source>Any</source>
         <translation>모두</translation>
     </message>
     <message>
         <location filename="Windows/OptionsNetwork.cpp" line="38"/>
-        <location filename="Windows/OptionsNetwork.cpp" line="579"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="589"/>
         <source>TCP</source>
         <translation>TCP</translation>
     </message>
     <message>
         <location filename="Windows/OptionsNetwork.cpp" line="39"/>
-        <location filename="Windows/OptionsNetwork.cpp" line="580"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="590"/>
         <source>UDP</source>
         <translation>UDP</translation>
     </message>
     <message>
         <location filename="Windows/OptionsNetwork.cpp" line="40"/>
-        <location filename="Windows/OptionsNetwork.cpp" line="581"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="591"/>
         <source>ICMP</source>
         <translation>ICMP</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsNetwork.cpp" line="53"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="52"/>
         <source>Allow access</source>
         <translation>액세스 허용</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsNetwork.cpp" line="54"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="53"/>
         <source>Block using Windows Filtering Platform</source>
         <translation>Windows 필터링 플랫폼을 사용하여 차단</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsNetwork.cpp" line="55"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="54"/>
         <source>Block by denying access to Network devices</source>
         <translation>네트워크 장치에 대한 액세스를 거부하여 차단</translation>
     </message>
     <message>
         <location filename="Windows/OptionsAdvanced.cpp" line="915"/>
         <location filename="Windows/OptionsNetwork.cpp" line="171"/>
-        <location filename="Windows/OptionsNetwork.cpp" line="564"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="574"/>
         <source>Allow</source>
         <translation>허용</translation>
     </message>
@@ -1514,7 +1519,12 @@ Note: The update check is often behind the latest GitHub release to ensure that 
         <translation>차단 (NDev)</translation>
     </message>
     <message>
-        <location filename="Windows/OptionsNetwork.cpp" line="565"/>
+        <location filename="Windows/OptionsNetwork.cpp" line="278"/>
+        <source>A non empty program name is required.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Windows/OptionsNetwork.cpp" line="575"/>
         <source>Block</source>
         <translation>차단</translation>
     </message>
@@ -1996,22 +2006,22 @@ Full path: %4</source>
 <context>
     <name>CSandBox</name>
     <message>
-        <location filename="SandMan.cpp" line="3367"/>
+        <location filename="SandMan.cpp" line="3378"/>
         <source>Waiting for folder: %1</source>
         <translation>폴더 대기 중: %1</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3368"/>
+        <location filename="SandMan.cpp" line="3379"/>
         <source>Deleting folder: %1</source>
         <translation>폴더 삭제 중: %1</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3369"/>
+        <location filename="SandMan.cpp" line="3380"/>
         <source>Merging folders: %1 &amp;gt;&amp;gt; %2</source>
         <translation>폴더 병합: %1 &amp;gt;&amp;gt; %2</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3370"/>
+        <location filename="SandMan.cpp" line="3381"/>
         <source>Finishing Snapshot Merge...</source>
         <translation>스냅샷 병합을 완료하는 중...</translation>
     </message>
@@ -2019,67 +2029,72 @@ Full path: %4</source>
 <context>
     <name>CSandBoxPlus</name>
     <message>
-        <location filename="SbiePlusAPI.cpp" line="638"/>
+        <location filename="SbiePlusAPI.cpp" line="649"/>
         <source>Disabled</source>
         <translation>사용 안 함</translation>
     </message>
     <message>
-        <location filename="SbiePlusAPI.cpp" line="649"/>
+        <location filename="SbiePlusAPI.cpp" line="660"/>
         <source>OPEN Root Access</source>
         <translation>루트 액세스 열기</translation>
     </message>
     <message>
-        <location filename="SbiePlusAPI.cpp" line="651"/>
+        <location filename="SbiePlusAPI.cpp" line="662"/>
         <source>Application Compartment</source>
         <translation>응용 프로그램 구획</translation>
     </message>
     <message>
-        <location filename="SbiePlusAPI.cpp" line="653"/>
+        <location filename="SbiePlusAPI.cpp" line="664"/>
         <source>NOT SECURE</source>
         <translation>안전하지 않음</translation>
     </message>
     <message>
-        <location filename="SbiePlusAPI.cpp" line="655"/>
+        <location filename="SbiePlusAPI.cpp" line="666"/>
         <source>Reduced Isolation</source>
         <translation>격리 감소</translation>
     </message>
     <message>
-        <location filename="SbiePlusAPI.cpp" line="657"/>
+        <location filename="SbiePlusAPI.cpp" line="668"/>
         <source>Enhanced Isolation</source>
         <translation>격리 강화</translation>
     </message>
     <message>
-        <location filename="SbiePlusAPI.cpp" line="660"/>
+        <location filename="SbiePlusAPI.cpp" line="671"/>
         <source>Privacy Enhanced</source>
         <translation>개인 정보 강화</translation>
     </message>
     <message>
-        <location filename="SbiePlusAPI.cpp" line="663"/>
+        <location filename="SbiePlusAPI.cpp" line="674"/>
         <source>API Log</source>
         <translation>API 로그</translation>
     </message>
     <message>
-        <location filename="SbiePlusAPI.cpp" line="665"/>
+        <location filename="SbiePlusAPI.cpp" line="677"/>
+        <source>No INet (with Exceptions)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="SbiePlusAPI.cpp" line="679"/>
         <source>No INet</source>
         <translation>INet 없음</translation>
     </message>
     <message>
-        <location filename="SbiePlusAPI.cpp" line="667"/>
+        <location filename="SbiePlusAPI.cpp" line="682"/>
         <source>Net Share</source>
         <translation>Net 공유</translation>
     </message>
     <message>
-        <location filename="SbiePlusAPI.cpp" line="669"/>
+        <location filename="SbiePlusAPI.cpp" line="684"/>
         <source>No Admin</source>
         <translation>관리자 없음</translation>
     </message>
     <message>
-        <location filename="SbiePlusAPI.cpp" line="672"/>
+        <location filename="SbiePlusAPI.cpp" line="687"/>
         <source>Auto Delete</source>
         <translation>자동 삭제</translation>
     </message>
     <message>
-        <location filename="SbiePlusAPI.cpp" line="675"/>
+        <location filename="SbiePlusAPI.cpp" line="690"/>
         <source>Normal</source>
         <translation>일반</translation>
     </message>
@@ -2093,22 +2108,22 @@ Full path: %4</source>
         <translation>Sandboxie-Plus v%1</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3256"/>
+        <location filename="SandMan.cpp" line="3267"/>
         <source>Reset Columns</source>
         <translation>열 초기화</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3257"/>
+        <location filename="SandMan.cpp" line="3268"/>
         <source>Copy Cell</source>
         <translation>셀 복사</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3258"/>
+        <location filename="SandMan.cpp" line="3269"/>
         <source>Copy Row</source>
         <translation>행 복사</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3259"/>
+        <location filename="SandMan.cpp" line="3270"/>
         <source>Copy Panel</source>
         <translation>패널 복사</translation>
     </message>
@@ -2381,7 +2396,7 @@ Full path: %4</source>
     </message>
     <message>
         <location filename="SandMan.cpp" line="455"/>
-        <location filename="SandMan.cpp" line="3341"/>
+        <location filename="SandMan.cpp" line="3352"/>
         <source>About Sandboxie-Plus</source>
         <translation>Sandboxie-Plus 정보</translation>
     </message>
@@ -2468,8 +2483,8 @@ Do you want to do the clean up?</source>
         <location filename="SandMan.cpp" line="1485"/>
         <location filename="SandMan.cpp" line="1816"/>
         <location filename="SandMan.cpp" line="2420"/>
-        <location filename="SandMan.cpp" line="2848"/>
-        <location filename="SandMan.cpp" line="2864"/>
+        <location filename="SandMan.cpp" line="2852"/>
+        <location filename="SandMan.cpp" line="2868"/>
         <source>Don&apos;t show this message again.</source>
         <translation>이 메시지를 다시 표시하지 않습니다.</translation>
     </message>
@@ -2492,13 +2507,11 @@ Do you want to do the clean up?</source>
     </message>
     <message>
         <location filename="SandMan.cpp" line="1266"/>
-        <source>
-
-This box &lt;a href=&quot;sbie://docs/privacy-mode&quot;&gt;prevents access to all user data&lt;/a&gt; locations, except explicitly granted in the Resource Access options.</source>
+        <source>&lt;br /&gt;&lt;br /&gt;This box &lt;a href=&quot;sbie://docs/privacy-mode&quot;&gt;prevents access to all user data&lt;/a&gt; locations, except explicitly granted in the Resource Access options.</source>
         <oldsource>
 
-This box prevents access to all user data locations, except explicitly granted in the Resource Access options.</oldsource>
-        <translation>
+This box &lt;a href=&quot;sbie://docs/privacy-mode&quot;&gt;prevents access to all user data&lt;/a&gt; locations, except explicitly granted in the Resource Access options.</oldsource>
+        <translation type="unfinished">
 
 이 박스는 리소스 액세스 옵션에 명시적으로 부여된 경우를 제외하고 &lt;a href=&quot;sbie://docs/privacy-mode&quot;&gt;모든 사용자 데이터 위치에 대한 액세스&lt;/a&gt;를 금지합니다.</translation>
     </message>
@@ -2558,19 +2571,19 @@ This box prevents access to all user data locations, except explicitly granted i
         <translation>현재 구성: %1</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2552"/>
-        <location filename="SandMan.cpp" line="2554"/>
-        <location filename="SandMan.cpp" line="3080"/>
+        <location filename="SandMan.cpp" line="2556"/>
+        <location filename="SandMan.cpp" line="2558"/>
+        <location filename="SandMan.cpp" line="3086"/>
         <source>Sandboxie-Plus - Error</source>
         <translation>Sandboxie-Plus - 오류</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2552"/>
+        <location filename="SandMan.cpp" line="2556"/>
         <source>Failed to stop all Sandboxie components</source>
         <translation>모든 Sandboxie 구성 요소를 중지하지 못했습니다</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2554"/>
+        <location filename="SandMan.cpp" line="2558"/>
         <source>Failed to start required Sandboxie components</source>
         <translation>필수 Sandboxie 구성 요소를 시작하지 못했습니다</translation>
     </message>
@@ -2728,113 +2741,113 @@ No will choose: %2</source>
         <translation>Sandboxie-Plus는 휴대용 모드로 시작되었으며 필요한 서비스를 만들어야 합니다. 관리 권한을 묻는 메시지가 나타납니다.</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2448"/>
+        <location filename="SandMan.cpp" line="2453"/>
         <source>CAUTION: Another agent (probably SbieCtrl.exe) is already managing this Sandboxie session, please close it first and reconnect to take over.</source>
         <translation>주의: 다른 에이전트 (아마도 SbieCtrl.exe)가 이미 이 Sandboxie 세션을 관리하고 있습니다. 먼저 이 세션을 닫은 후 다시 연결하여 작업을 수행하십시오.</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2581"/>
+        <location filename="SandMan.cpp" line="2585"/>
         <source>Executing maintenance operation, please wait...</source>
         <translation>유지 보수 작업을 실행하는 중입니다. 잠시 기다려 주십시오...</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2761"/>
+        <location filename="SandMan.cpp" line="2765"/>
         <source>Do you also want to reset hidden message boxes (yes), or only all log messages (no)?</source>
         <translation>숨겨진 메시지 박스 (예)를 재설정하시겠습니까, 아니면 모든 로그 메시지 (아니오)만 재설정하시겠습니까?</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2862"/>
+        <location filename="SandMan.cpp" line="2866"/>
         <source>The changes will be applied automatically whenever the file gets saved.</source>
         <translation>파일이 저장될 때마다 변경 내용이 자동으로 적용됩니다.</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2863"/>
+        <location filename="SandMan.cpp" line="2867"/>
         <source>The changes will be applied automatically as soon as the editor is closed.</source>
         <translation>편집기가 닫히는 즉시 변경 내용이 자동으로 적용됩니다.</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3015"/>
+        <location filename="SandMan.cpp" line="3021"/>
         <source>Error Status: 0x%1 (%2)</source>
         <translation>오류 상태: 0x%1(%2)</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3016"/>
+        <location filename="SandMan.cpp" line="3022"/>
         <source>Unknown</source>
         <translation>알 수 없음</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3035"/>
+        <location filename="SandMan.cpp" line="3041"/>
         <source>A sandbox must be emptied before it can be deleted.</source>
         <translation>샌드박스를 삭제하려면 먼저 비워야 합니다.</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3039"/>
+        <location filename="SandMan.cpp" line="3045"/>
         <source>Failed to copy box data files</source>
         <translation>박스 데이터 파일을 복사하지 못했습니다</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3044"/>
+        <location filename="SandMan.cpp" line="3050"/>
         <source>Failed to remove old box data files</source>
         <translation>이전 박스 데이터 파일을 제거하지 못했습니다</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3058"/>
+        <location filename="SandMan.cpp" line="3064"/>
         <source>Unknown Error Status: 0x%1</source>
         <translation>알 수 없는 오류 상태: 0x%1</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3260"/>
+        <location filename="SandMan.cpp" line="3271"/>
         <source>Case Sensitive</source>
         <translation>대소문자 구분</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3261"/>
+        <location filename="SandMan.cpp" line="3272"/>
         <source>RegExp</source>
         <translation>정규식</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3262"/>
+        <location filename="SandMan.cpp" line="3273"/>
         <source>Highlight</source>
         <translation>강조</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3263"/>
+        <location filename="SandMan.cpp" line="3274"/>
         <source>Close</source>
         <translation>닫기</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3264"/>
+        <location filename="SandMan.cpp" line="3275"/>
         <source>&amp;Find ...</source>
         <translation>찾기(&amp;F)...</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3265"/>
+        <location filename="SandMan.cpp" line="3276"/>
         <source>All columns</source>
         <translation>모든 열</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3314"/>
+        <location filename="SandMan.cpp" line="3325"/>
         <source>&lt;h3&gt;About Sandboxie-Plus&lt;/h3&gt;&lt;p&gt;Version %1&lt;/p&gt;&lt;p&gt;Copyright (c) 2020-2023 by DavidXanatos&lt;/p&gt;</source>
         <oldsource>&lt;h3&gt;About Sandboxie-Plus&lt;/h3&gt;&lt;p&gt;Version %1&lt;/p&gt;&lt;p&gt;Copyright (c) 2020-2022 by DavidXanatos&lt;/p&gt;</oldsource>
         <translation>&lt;h3&gt;Sandboxie-Plus 정보 - 한국어: VenusGirl&lt;/h3&gt;&lt;p&gt;버전 %1&lt;/p&gt;&lt;p&gt;Copyright (c) 2020-2023 by DavidXanatos&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3322"/>
+        <location filename="SandMan.cpp" line="3333"/>
         <source>This copy of Sandboxie+ is certified for: %1</source>
         <translation>Sandboxie+의 이 사본은 다음에 대해 인증되었습니다: %1</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3324"/>
+        <location filename="SandMan.cpp" line="3335"/>
         <source>Sandboxie+ is free for personal and non-commercial use.</source>
         <translation>Sandboxie+는 개인 및 비상업적인 사용에 대해 무료입니다.</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3327"/>
+        <location filename="SandMan.cpp" line="3338"/>
         <source>Sandboxie-Plus is an open source continuation of Sandboxie.&lt;br /&gt;Visit &lt;a href=&quot;https://sandboxie-plus.com&quot;&gt;sandboxie-plus.com&lt;/a&gt; for more information.&lt;br /&gt;&lt;br /&gt;%3&lt;br /&gt;&lt;br /&gt;Driver version: %1&lt;br /&gt;Features: %2&lt;br /&gt;&lt;br /&gt;Icons from &lt;a href=&quot;https://icons8.com&quot;&gt;icons8.com&lt;/a&gt;</source>
         <translation>Sandboxie-Plus는 Sandboxie의 오픈 소스 연속입니다.&lt;br /&gt;더 많은 정보는 &lt;a href=&quot;https://sandboxie-plus.com&quot;&gt;sandboxie-plus.com&lt;/a&gt;를 방문하세요.&lt;br /&gt;&lt;br /&gt;%3&lt;br /&gt;&lt;br /&gt;드라이버 버전: %1&lt;br /&gt;기능: %2&lt;br /&gt;&lt;br /&gt;아이콘 제공은 &lt;a href=&quot;https://icons8.com&quot;&gt;icons8.com&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3018"/>
+        <location filename="SandMan.cpp" line="3024"/>
         <source>Administrator rights are required for this operation.</source>
         <translation>이 작업을 수행하려면 관리자 권한이 필요합니다.</translation>
     </message>
@@ -3084,27 +3097,32 @@ No will choose: %2</source>
         <translation>메시지 없음</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2556"/>
+        <location filename="SandMan.cpp" line="2457"/>
+        <source>&lt;b&gt;ERROR:&lt;/b&gt; The Sandboxie-Plus Manager (SandMan.exe) does not have a valid signature (SandMan.exe.sig). Please download a trusted release from the &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-get&quot;&gt;official Download page&lt;/a&gt;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="SandMan.cpp" line="2560"/>
         <source>Maintenance operation failed (%1)</source>
         <translation>유지 관리 작업에 실패했습니다 (%1)</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2561"/>
+        <location filename="SandMan.cpp" line="2565"/>
         <source>Maintenance operation completed</source>
         <translation>유지 보수 작업이 완료되었습니다</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2692"/>
+        <location filename="SandMan.cpp" line="2696"/>
         <source>In the Plus UI, this functionality has been integrated into the main sandbox list view.</source>
         <translation>Plus UI에서 이 기능은 기본 샌드박스 목록 보기에 통합되었습니다.</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2693"/>
+        <location filename="SandMan.cpp" line="2697"/>
         <source>Using the box/group context menu, you can move boxes and groups to other groups. You can also use drag and drop to move the items around. Alternatively, you can also use the arrow keys while holding ALT down to move items up and down within their group.&lt;br /&gt;You can create new boxes and groups from the Sandbox menu.</source>
         <translation>박스/그룹의 상황에 맞는 메뉴를 사용하여 박스와 그룹을 다른 그룹으로 이동할 수 있습니다. 끌어서 놓기를 사용하여 항목을 이동할 수도 있습니다. 또는 ALT를 누른 상태에서 화살표 키를 사용하여 그룹 내에서 항목을 위아래로 이동할 수도 있습니다.&lt;br /&gt;.샌드박스 메뉴에서 새 박스 및 그룹을 생성할 수 있습니다.</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2846"/>
+        <location filename="SandMan.cpp" line="2850"/>
         <source>You are about to edit the Templates.ini, this is generally not recommended.
 This file is part of Sandboxie and all change done to it will be reverted next time Sandboxie is updated.</source>
         <oldsource>You are about to edit the Templates.ini, thsi is generally not recommeded.
@@ -3113,187 +3131,187 @@ This file is part of Sandboxie and all changed done to it will be reverted next 
 이 파일은 Sandboxie의 일부이며 다음에 Sandboxie가 업데이트될 때 변경된 모든 내용이 되돌아갑니다.</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="2908"/>
+        <location filename="SandMan.cpp" line="2912"/>
         <source>Sandboxie config has been reloaded</source>
         <translation>Sandboxie 구성을 다시 불러왔습니다</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3019"/>
+        <location filename="SandMan.cpp" line="3025"/>
         <source>Failed to execute: %1</source>
         <translation>실행하지 못했습니다: %1</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3020"/>
+        <location filename="SandMan.cpp" line="3026"/>
         <source>Failed to connect to the driver</source>
         <translation>드라이버에 연결하지 못했습니다</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3021"/>
+        <location filename="SandMan.cpp" line="3027"/>
         <source>Failed to communicate with Sandboxie Service: %1</source>
         <translation>Sandboxie Service와 통신하지 못했습니다: %1</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3022"/>
+        <location filename="SandMan.cpp" line="3028"/>
         <source>An incompatible Sandboxie %1 was found. Compatible versions: %2</source>
         <translation>호환되지 않는 Sandboxie %1이(가) 발견되었습니다. 호환 버전: %2</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3023"/>
+        <location filename="SandMan.cpp" line="3029"/>
         <source>Can&apos;t find Sandboxie installation path.</source>
         <translation>Sandboxie 설치 경로를 찾을 수 없습니다.</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3024"/>
+        <location filename="SandMan.cpp" line="3030"/>
         <source>Failed to copy configuration from sandbox %1: %2</source>
         <translation>%1에서 구성을 복사하지 못했습니다: %2</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3025"/>
+        <location filename="SandMan.cpp" line="3031"/>
         <source>A sandbox of the name %1 already exists</source>
         <translation>%1 이름의 샌드박스가 이미 있습니다</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3026"/>
+        <location filename="SandMan.cpp" line="3032"/>
         <source>Failed to delete sandbox %1: %2</source>
         <translation>샌드박스 %1을(를) 삭제하지 못했습니다: %2</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3027"/>
+        <location filename="SandMan.cpp" line="3033"/>
         <source>The sandbox name can not be longer than 32 characters.</source>
         <translation>샌드박스 이름은 32자를 초과할 수 없습니다.</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3028"/>
+        <location filename="SandMan.cpp" line="3034"/>
         <source>The sandbox name can not be a device name.</source>
         <translation>샌드박스 이름은 장치 이름이 될 수 없습니다.</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3029"/>
+        <location filename="SandMan.cpp" line="3035"/>
         <source>The sandbox name can contain only letters, digits and underscores which are displayed as spaces.</source>
         <translation>샌드박스 이름에는 공백으로 표시되는 문자, 숫자 및 밑줄만 포함될 수 있습니다.</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3030"/>
+        <location filename="SandMan.cpp" line="3036"/>
         <source>Failed to terminate all processes</source>
         <translation>모든 프로세스를 종료하지 못했습니다</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3031"/>
+        <location filename="SandMan.cpp" line="3037"/>
         <source>Delete protection is enabled for the sandbox</source>
         <translation>샌드박스에 대해 삭제 보호가 활성화되었습니다</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3032"/>
+        <location filename="SandMan.cpp" line="3038"/>
         <source>All sandbox processes must be stopped before the box content can be deleted</source>
         <translation>박스 내용을 삭제하려면 먼저 모든 샌드박스 프로세스를 중지해야 합니다</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3033"/>
+        <location filename="SandMan.cpp" line="3039"/>
         <source>Error deleting sandbox folder: %1</source>
         <translation>샌드박스 폴더 삭제 중 오류 발생: %1</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3036"/>
+        <location filename="SandMan.cpp" line="3042"/>
         <source>Failed to move directory &apos;%1&apos; to &apos;%2&apos;</source>
         <translation>&apos;%1&apos; 디렉터리를 &apos;%2&apos;로 이동하지 못했습니다</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3037"/>
+        <location filename="SandMan.cpp" line="3043"/>
         <source>This Snapshot operation can not be performed while processes are still running in the box.</source>
         <translation>프로세스가 박스에서 실행 중인 동안에는 이 스냅샷 작업을 수행할 수 없습니다.</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3038"/>
+        <location filename="SandMan.cpp" line="3044"/>
         <source>Failed to create directory for new snapshot</source>
         <translation>새 스냅샷에 대한 디렉터리를 생성하지 못했습니다</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3040"/>
+        <location filename="SandMan.cpp" line="3046"/>
         <source>Snapshot not found</source>
         <translation>스냅샷을 찾을 수 없음</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3041"/>
+        <location filename="SandMan.cpp" line="3047"/>
         <source>Error merging snapshot directories &apos;%1&apos; with &apos;%2&apos;, the snapshot has not been fully merged.</source>
         <translation>&apos;%1&apos; 스냅샷 디렉터리를 &apos;%2&apos;과(와) 병합하는 동안 오류가 발생했습니다. 스냅샷이 완전히 병합되지 않았습니다.</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3042"/>
+        <location filename="SandMan.cpp" line="3048"/>
         <source>Failed to remove old snapshot directory &apos;%1&apos;</source>
         <translation>이전 스냅샷 디렉터리 &apos;%1&apos;을(를) 제거하지 못했습니다</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3043"/>
+        <location filename="SandMan.cpp" line="3049"/>
         <source>Can&apos;t remove a snapshot that is shared by multiple later snapshots</source>
         <translation>이후 여러 스냅샷이 공유하는 스냅샷을 제거할 수 없습니다</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3045"/>
+        <location filename="SandMan.cpp" line="3051"/>
         <source>You are not authorized to update configuration in section &apos;%1&apos;</source>
         <translation>&apos;%1&apos; 섹션의 구성을 업데이트할 수 있는 권한이 없습니다</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3046"/>
+        <location filename="SandMan.cpp" line="3052"/>
         <source>Failed to set configuration setting %1 in section %2: %3</source>
         <translation>%2 섹션에서 구성 설정 %1을 설정하지 못했습니다: %3</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3047"/>
+        <location filename="SandMan.cpp" line="3053"/>
         <source>Can not create snapshot of an empty sandbox</source>
         <translation>빈 샌드박스의 스냅샷을 생성할 수 없습니다</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3048"/>
+        <location filename="SandMan.cpp" line="3054"/>
         <source>A sandbox with that name already exists</source>
         <translation>같은 이름의 샌드박스가 이미 있습니다</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3049"/>
+        <location filename="SandMan.cpp" line="3055"/>
         <source>The config password must not be longer than 64 characters</source>
         <translation>구성 암호는 64자를 초과할 수 없습니다</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3050"/>
+        <location filename="SandMan.cpp" line="3056"/>
         <source>The operation was canceled by the user</source>
         <translation>사용자가 작업을 취소했습니다</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3052"/>
+        <location filename="SandMan.cpp" line="3058"/>
         <source>Import/Export not available, 7z.dll could not be loaded</source>
         <translation>가져오기/내보내기 기능을 사용할 수 없습니다, 7z.dll을 불러올 수 없습니다</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3053"/>
+        <location filename="SandMan.cpp" line="3059"/>
         <source>Failed to create the box archive</source>
         <translation>박스 압축파일을 만들지 못했습니다</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3054"/>
+        <location filename="SandMan.cpp" line="3060"/>
         <source>Failed to open the 7z archive</source>
         <translation>7z 압축파일을 열지 못했습니다</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3055"/>
+        <location filename="SandMan.cpp" line="3061"/>
         <source>Failed to unpack the box archive</source>
         <translation>박스 압축파일의 압축을 풀지 못했습니다</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3056"/>
+        <location filename="SandMan.cpp" line="3062"/>
         <source>The selected 7z file is NOT a box archive</source>
         <translation>선택한 7z 파일이 박스 압축파일이 아닙니다</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3082"/>
+        <location filename="SandMan.cpp" line="3088"/>
         <source>Operation failed for %1 item(s).</source>
         <translation>%1 항목에 대한 작업에 실패했습니다.</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3113"/>
+        <location filename="SandMan.cpp" line="3119"/>
         <source>Do you want to open %1 in a sandboxed (yes) or unsandboxed (no) Web browser?</source>
         <translation>샌드박스에서 (예) 또는 샌드박스가 없는 (아니오) 웹 브라우저에서 %1을 여시겠습니까?</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3114"/>
+        <location filename="SandMan.cpp" line="3120"/>
         <source>Remember choice for later.</source>
         <translation>나중을 위해 선택을 기억합니다.</translation>
     </message>
@@ -3579,269 +3597,269 @@ This file is part of Sandboxie and all changed done to it will be reverted next 
 <context>
     <name>CSbieView</name>
     <message>
-        <location filename="Views/SbieView.cpp" line="149"/>
-        <location filename="Views/SbieView.cpp" line="273"/>
+        <location filename="Views/SbieView.cpp" line="150"/>
+        <location filename="Views/SbieView.cpp" line="274"/>
         <source>Create New Box</source>
         <translation>새 박스 만들기</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="382"/>
+        <location filename="Views/SbieView.cpp" line="383"/>
         <source>Remove Group</source>
         <translation>그룹 제거</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="157"/>
+        <location filename="Views/SbieView.cpp" line="158"/>
         <source>Run</source>
         <translation>실행</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="158"/>
+        <location filename="Views/SbieView.cpp" line="159"/>
         <source>Run Program</source>
         <translation>프로그램 실행</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="159"/>
+        <location filename="Views/SbieView.cpp" line="160"/>
         <source>Run from Start Menu</source>
         <translation>시작 메뉴에서 실행</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="170"/>
+        <location filename="Views/SbieView.cpp" line="171"/>
         <source>Default Web Browser</source>
         <translation>기본 웹 브라우저</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="171"/>
+        <location filename="Views/SbieView.cpp" line="172"/>
         <source>Default eMail Client</source>
         <translation>기본 이메일 클라이언트</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="173"/>
+        <location filename="Views/SbieView.cpp" line="174"/>
         <source>Windows Explorer</source>
         <translation>Windows 탐색기</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="174"/>
+        <location filename="Views/SbieView.cpp" line="175"/>
         <source>Registry Editor</source>
         <translation>레지스트리 편집기</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="175"/>
+        <location filename="Views/SbieView.cpp" line="176"/>
         <source>Programs and Features</source>
         <translation>프로그램 및 기능</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="186"/>
+        <location filename="Views/SbieView.cpp" line="187"/>
         <source>Terminate All Programs</source>
         <translation>모든 프로그램 종료</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="192"/>
-        <location filename="Views/SbieView.cpp" line="251"/>
-        <location filename="Views/SbieView.cpp" line="325"/>
-        <location filename="Views/SbieView.cpp" line="364"/>
+        <location filename="Views/SbieView.cpp" line="193"/>
+        <location filename="Views/SbieView.cpp" line="252"/>
+        <location filename="Views/SbieView.cpp" line="326"/>
+        <location filename="Views/SbieView.cpp" line="365"/>
         <source>Create Shortcut</source>
         <translation>바로 가기 만들기</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="194"/>
-        <location filename="Views/SbieView.cpp" line="310"/>
+        <location filename="Views/SbieView.cpp" line="195"/>
+        <location filename="Views/SbieView.cpp" line="311"/>
         <source>Explore Content</source>
         <translation>내용 탐색</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="196"/>
-        <location filename="Views/SbieView.cpp" line="317"/>
+        <location filename="Views/SbieView.cpp" line="197"/>
+        <location filename="Views/SbieView.cpp" line="318"/>
         <source>Snapshots Manager</source>
         <translation>스냅샷 관리자</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="197"/>
+        <location filename="Views/SbieView.cpp" line="198"/>
         <source>Recover Files</source>
         <translation>파일 복구</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="198"/>
-        <location filename="Views/SbieView.cpp" line="309"/>
+        <location filename="Views/SbieView.cpp" line="199"/>
+        <location filename="Views/SbieView.cpp" line="310"/>
         <source>Delete Content</source>
         <translation>내용 삭제</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="205"/>
+        <location filename="Views/SbieView.cpp" line="206"/>
         <source>Sandbox Presets</source>
         <translation>샌드박스 사전 설정</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="207"/>
+        <location filename="Views/SbieView.cpp" line="208"/>
         <source>Ask for UAC Elevation</source>
         <translation>UAC 상승 요청</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="208"/>
+        <location filename="Views/SbieView.cpp" line="209"/>
         <source>Drop Admin Rights</source>
         <translation>관리자 권한 삭제</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="209"/>
+        <location filename="Views/SbieView.cpp" line="210"/>
         <source>Emulate Admin Rights</source>
         <translation>관리자 권한 에뮬레이트</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="217"/>
+        <location filename="Views/SbieView.cpp" line="218"/>
         <source>Block Internet Access</source>
         <translation>인터넷 액세스 차단</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="219"/>
+        <location filename="Views/SbieView.cpp" line="220"/>
         <source>Allow Network Shares</source>
         <translation>네트워크 공유 허용</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="200"/>
+        <location filename="Views/SbieView.cpp" line="201"/>
         <source>Sandbox Options</source>
         <translation>샌드박스 옵션</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="169"/>
+        <location filename="Views/SbieView.cpp" line="170"/>
         <source>Standard Applications</source>
         <translation>표준 응용 프로그램</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="189"/>
+        <location filename="Views/SbieView.cpp" line="190"/>
         <source>Browse Files</source>
         <translation>파일 찾아보기</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="228"/>
-        <location filename="Views/SbieView.cpp" line="315"/>
+        <location filename="Views/SbieView.cpp" line="229"/>
+        <location filename="Views/SbieView.cpp" line="316"/>
         <source>Sandbox Tools</source>
         <translation>샌드박스 도구</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="229"/>
+        <location filename="Views/SbieView.cpp" line="230"/>
         <source>Duplicate Box Config</source>
         <translation>중복 박스 구성</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="232"/>
-        <location filename="Views/SbieView.cpp" line="328"/>
+        <location filename="Views/SbieView.cpp" line="233"/>
+        <location filename="Views/SbieView.cpp" line="329"/>
         <source>Rename Sandbox</source>
         <translation>샌드박스 이름 바꾸기</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="233"/>
-        <location filename="Views/SbieView.cpp" line="329"/>
+        <location filename="Views/SbieView.cpp" line="234"/>
+        <location filename="Views/SbieView.cpp" line="330"/>
         <source>Move Sandbox</source>
         <translation>샌드박스 이동</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="244"/>
-        <location filename="Views/SbieView.cpp" line="340"/>
+        <location filename="Views/SbieView.cpp" line="245"/>
+        <location filename="Views/SbieView.cpp" line="341"/>
         <source>Remove Sandbox</source>
         <translation>샌드박스 제거</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="249"/>
-        <location filename="Views/SbieView.cpp" line="362"/>
+        <location filename="Views/SbieView.cpp" line="250"/>
+        <location filename="Views/SbieView.cpp" line="363"/>
         <source>Terminate</source>
         <translation>종료</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="252"/>
+        <location filename="Views/SbieView.cpp" line="253"/>
         <source>Preset</source>
         <translation>사전 설정</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="253"/>
+        <location filename="Views/SbieView.cpp" line="254"/>
         <source>Pin to Run Menu</source>
         <translation>실행할 메뉴 고정</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="255"/>
+        <location filename="Views/SbieView.cpp" line="256"/>
         <source>Block and Terminate</source>
         <translation>차단 및 종료</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="259"/>
+        <location filename="Views/SbieView.cpp" line="260"/>
         <source>Allow internet access</source>
         <translation>인터넷 액세스 허용</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="261"/>
+        <location filename="Views/SbieView.cpp" line="262"/>
         <source>Force into this sandbox</source>
         <translation>이 샌드박스에 강제 적용</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="263"/>
+        <location filename="Views/SbieView.cpp" line="264"/>
         <source>Set Linger Process</source>
         <translation>링거 프로세스 설정</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="265"/>
+        <location filename="Views/SbieView.cpp" line="266"/>
         <source>Set Leader Process</source>
         <translation>지시자 프로세스 설정</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="518"/>
+        <location filename="Views/SbieView.cpp" line="519"/>
         <source>    File root: %1
 </source>
         <translation>    파일 루트: %1
 </translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="519"/>
+        <location filename="Views/SbieView.cpp" line="520"/>
         <source>    Registry root: %1
 </source>
         <translation>    레지스트리 루트: %1
 </translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="520"/>
+        <location filename="Views/SbieView.cpp" line="521"/>
         <source>    IPC root: %1
 </source>
         <translation>    IPC 루트: %1
 </translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="522"/>
+        <location filename="Views/SbieView.cpp" line="523"/>
         <source>Options:
     </source>
         <translation>옵션:
     </translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="740"/>
+        <location filename="Views/SbieView.cpp" line="731"/>
         <source>[None]</source>
         <translation>[없음]</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1011"/>
+        <location filename="Views/SbieView.cpp" line="1002"/>
         <source>Please enter a new group name</source>
         <translation>새 그룹 이름을 입력하십시오</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="849"/>
+        <location filename="Views/SbieView.cpp" line="840"/>
         <source>Do you really want to remove the selected group(s)?</source>
         <translation>선택한 그룹을 제거하시겠습니까?</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="150"/>
-        <location filename="Views/SbieView.cpp" line="274"/>
+        <location filename="Views/SbieView.cpp" line="151"/>
+        <location filename="Views/SbieView.cpp" line="275"/>
         <source>Create Box Group</source>
         <translation>박스 그룹 만들기</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="380"/>
+        <location filename="Views/SbieView.cpp" line="381"/>
         <source>Rename Group</source>
         <translation>그룹 이름 바꾸기</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="154"/>
-        <location filename="Views/SbieView.cpp" line="278"/>
+        <location filename="Views/SbieView.cpp" line="155"/>
+        <location filename="Views/SbieView.cpp" line="279"/>
         <source>Stop Operations</source>
         <translation>작업 중지</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="178"/>
+        <location filename="Views/SbieView.cpp" line="179"/>
         <source>Command Prompt</source>
         <translation>명령 프롬프트</translation>
     </message>
@@ -3850,44 +3868,44 @@ This file is part of Sandboxie and all changed done to it will be reverted next 
         <translation type="vanished">박스형 도구</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="179"/>
+        <location filename="Views/SbieView.cpp" line="180"/>
         <source>Command Prompt (as Admin)</source>
         <translation>명령 프롬프트 (관리자)</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="183"/>
+        <location filename="Views/SbieView.cpp" line="184"/>
         <source>Command Prompt (32-bit)</source>
         <translation>명령 프롬프트 (32비트)</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="168"/>
+        <location filename="Views/SbieView.cpp" line="169"/>
         <source>Execute Autorun Entries</source>
         <translation>자동 실행 항목 실행</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="316"/>
+        <location filename="Views/SbieView.cpp" line="317"/>
         <source>Browse Content</source>
         <translation>내용 찾아보기</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="188"/>
+        <location filename="Views/SbieView.cpp" line="189"/>
         <source>Box Content</source>
         <translation>박스 내용</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="195"/>
+        <location filename="Views/SbieView.cpp" line="196"/>
         <source>Open Registry</source>
         <translation>레지스트리 열기</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="191"/>
-        <location filename="Views/SbieView.cpp" line="324"/>
+        <location filename="Views/SbieView.cpp" line="192"/>
+        <location filename="Views/SbieView.cpp" line="325"/>
         <source>Refresh Info</source>
         <translation>정보 새로 고침</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="162"/>
-        <location filename="Views/SbieView.cpp" line="288"/>
+        <location filename="Views/SbieView.cpp" line="163"/>
+        <location filename="Views/SbieView.cpp" line="289"/>
         <source>(Host) Start Menu</source>
         <translation>(호스트) 시작 메뉴</translation>
     </message>
@@ -3896,244 +3914,244 @@ This file is part of Sandboxie and all changed done to it will be reverted next 
         <translation type="vanished">추가 도구</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="223"/>
+        <location filename="Views/SbieView.cpp" line="224"/>
         <source>Immediate Recovery</source>
         <translation>즉시 복구</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="225"/>
+        <location filename="Views/SbieView.cpp" line="226"/>
         <source>Disable Force Rules</source>
         <translation>강제 규칙 사용 안 함</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="230"/>
+        <location filename="Views/SbieView.cpp" line="231"/>
         <source>Export Box</source>
         <translation>박스 내보내기</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="234"/>
-        <location filename="Views/SbieView.cpp" line="330"/>
+        <location filename="Views/SbieView.cpp" line="235"/>
+        <location filename="Views/SbieView.cpp" line="331"/>
         <source>Move Up</source>
         <translation>위로 이동</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="239"/>
-        <location filename="Views/SbieView.cpp" line="335"/>
+        <location filename="Views/SbieView.cpp" line="240"/>
+        <location filename="Views/SbieView.cpp" line="336"/>
         <source>Move Down</source>
         <translation>아래로 이동</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="281"/>
+        <location filename="Views/SbieView.cpp" line="282"/>
         <source>Run Sandboxed</source>
         <translation>샌드박스에서 실행</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="282"/>
+        <location filename="Views/SbieView.cpp" line="283"/>
         <source>Run Web Browser</source>
         <translation>웹 브라우저 실행</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="283"/>
+        <location filename="Views/SbieView.cpp" line="284"/>
         <source>Run eMail Reader</source>
         <translation>이메일 리더 실행</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="284"/>
+        <location filename="Views/SbieView.cpp" line="285"/>
         <source>Run Any Program</source>
         <translation>모든 프로그램 실행</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="285"/>
+        <location filename="Views/SbieView.cpp" line="286"/>
         <source>Run From Start Menu</source>
         <translation>시작 메뉴에서 실행</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="293"/>
+        <location filename="Views/SbieView.cpp" line="294"/>
         <source>Run Windows Explorer</source>
         <translation>Windows 탐색기 실행</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="307"/>
+        <location filename="Views/SbieView.cpp" line="308"/>
         <source>Terminate Programs</source>
         <translation>프로그램 종료</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="308"/>
+        <location filename="Views/SbieView.cpp" line="309"/>
         <source>Quick Recover</source>
         <translation>빠른 복구</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="313"/>
+        <location filename="Views/SbieView.cpp" line="314"/>
         <source>Sandbox Settings</source>
         <translation>샌드박스 설정</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="320"/>
+        <location filename="Views/SbieView.cpp" line="321"/>
         <source>Duplicate Sandbox Config</source>
         <translation>샌드박스 구성 복제</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="321"/>
+        <location filename="Views/SbieView.cpp" line="322"/>
         <source>Export Sandbox</source>
         <translation>샌드박스 내보내기</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="381"/>
+        <location filename="Views/SbieView.cpp" line="382"/>
         <source>Move Group</source>
         <translation>그룹 이동</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="839"/>
+        <location filename="Views/SbieView.cpp" line="830"/>
         <source>Please enter a new name for the Group.</source>
         <translation>그룹의 새 이름을 입력하십시오.</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="886"/>
+        <location filename="Views/SbieView.cpp" line="877"/>
         <source>Move entries by (negative values move up, positive values move down):</source>
         <translation>항목 이동 기준 (음수 값은 위로 이동, 양수 값은 아래로 이동):</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="934"/>
+        <location filename="Views/SbieView.cpp" line="925"/>
         <source>A group can not be its own parent.</source>
         <translation>그룹은 자신의 상위 그룹이 될 수 없습니다.</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1039"/>
+        <location filename="Views/SbieView.cpp" line="1030"/>
         <source>The Sandbox name and Box Group name cannot use the &apos;,()&apos; symbol.</source>
         <translation>샌드박스 이름 및 박스 그룹 이름에는 &apos;,(&apos;) 기호를 사용할 수 없습니다.</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1044"/>
+        <location filename="Views/SbieView.cpp" line="1035"/>
         <source>This name is already used for a Box Group.</source>
         <translation>이 이름은 이미 박스 그룹에 사용되고 있습니다.</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1049"/>
+        <location filename="Views/SbieView.cpp" line="1040"/>
         <source>This name is already used for a Sandbox.</source>
         <translation>이 이름은 샌드박스에 이미 사용되고 있습니다.</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1099"/>
-        <location filename="Views/SbieView.cpp" line="1169"/>
-        <location filename="Views/SbieView.cpp" line="1409"/>
+        <location filename="Views/SbieView.cpp" line="1090"/>
+        <location filename="Views/SbieView.cpp" line="1160"/>
+        <location filename="Views/SbieView.cpp" line="1400"/>
         <source>Don&apos;t show this message again.</source>
         <translation>이 메시지를 다시 표시하지 않습니다.</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1160"/>
-        <location filename="Views/SbieView.cpp" line="1180"/>
-        <location filename="Views/SbieView.cpp" line="1586"/>
+        <location filename="Views/SbieView.cpp" line="1151"/>
+        <location filename="Views/SbieView.cpp" line="1171"/>
+        <location filename="Views/SbieView.cpp" line="1565"/>
         <source>This Sandbox is empty.</source>
         <translation>샌드박스가 비어 있습니다.</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1187"/>
+        <location filename="Views/SbieView.cpp" line="1178"/>
         <source>WARNING: The opened registry editor is not sandboxed, please be careful and only do changes to the pre-selected sandbox locations.</source>
         <translation>경고: 열려 있는 레지스트리 편집기는 샌드박스가 아닙니다. 미리 선택한 샌드박스 위치만 변경하십시오.</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1188"/>
+        <location filename="Views/SbieView.cpp" line="1179"/>
         <source>Don&apos;t show this warning in future</source>
         <translation>앞으로 이 경고를 표시하지 않음</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1244"/>
+        <location filename="Views/SbieView.cpp" line="1235"/>
         <source>Please enter a new name for the duplicated Sandbox.</source>
         <translation>복제된 샌드박스의 새 이름을 입력하십시오.</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1244"/>
+        <location filename="Views/SbieView.cpp" line="1235"/>
         <source>%1 Copy</source>
         <translation>%1 복사</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1283"/>
+        <location filename="Views/SbieView.cpp" line="1274"/>
         <source>Select file name</source>
         <translation>파일 이름 선택</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1283"/>
+        <location filename="Views/SbieView.cpp" line="1274"/>
         <source>7-zip Archive (*.7z)</source>
         <translation>7-zip 압축파일 (*.7z)</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1291"/>
+        <location filename="Views/SbieView.cpp" line="1282"/>
         <source>Exporting: %1</source>
         <translation>내보내기: %1</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1298"/>
+        <location filename="Views/SbieView.cpp" line="1289"/>
         <source>Please enter a new name for the Sandbox.</source>
         <translation>샌드박스의 새 이름을 입력하십시오.</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1319"/>
+        <location filename="Views/SbieView.cpp" line="1310"/>
         <source>Do you really want to remove the selected sandbox(es)?&lt;br /&gt;&lt;br /&gt;Warning: The box content will also be deleted!</source>
         <oldsource>Do you really want to remove the selected sandbox(es)?</oldsource>
         <translation>선택한 샌드박스를 제거하시겠습니까?&lt;br /&gt;&lt;br /&gt;경고: 박스 내용도 삭제됩니다!</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1350"/>
+        <location filename="Views/SbieView.cpp" line="1341"/>
         <source>This Sandbox is already empty.</source>
         <translation>이 샌드박스는 이미 비어 있습니다.</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1360"/>
+        <location filename="Views/SbieView.cpp" line="1351"/>
         <source>Do you want to delete the content of the selected sandbox?</source>
         <translation>선택한 샌드박스의 내용을 삭제하시겠습니까?</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1361"/>
-        <location filename="Views/SbieView.cpp" line="1365"/>
+        <location filename="Views/SbieView.cpp" line="1352"/>
+        <location filename="Views/SbieView.cpp" line="1356"/>
         <source>Also delete all Snapshots</source>
         <translation>또한 모든 스냅샷 삭제</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1364"/>
+        <location filename="Views/SbieView.cpp" line="1355"/>
         <source>Do you really want to delete the content of all selected sandboxes?</source>
         <translation>선택한 모든 샌드박스의 내용을 삭제하시겠습니까?</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1391"/>
+        <location filename="Views/SbieView.cpp" line="1382"/>
         <source>Do you want to terminate all processes in the selected sandbox(es)?</source>
         <translation>선택한 샌드박스의 모든 프로세스를 종료하시겠습니까?</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1392"/>
-        <location filename="Views/SbieView.cpp" line="1485"/>
+        <location filename="Views/SbieView.cpp" line="1383"/>
+        <location filename="Views/SbieView.cpp" line="1474"/>
         <source>Terminate without asking</source>
         <translation>묻지 않고 종료</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1407"/>
+        <location filename="Views/SbieView.cpp" line="1398"/>
         <source>The Sandboxie Start Menu will now be displayed. Select an application from the menu, and Sandboxie will create a new shortcut icon on your real desktop, which you can use to invoke the selected application under the supervision of Sandboxie.</source>
         <oldsource>The Sandboxie Start Menu will now be displayed. Select an application from the menu, and Sandboxie will create a newshortcut icon on your real desktop, which you can use to invoke the selected application under the supervision of Sandboxie.</oldsource>
         <translation>이제 샌드박스 시작 메뉴가 표시됩니다. 메뉴에서 응용프로그램을 선택하면 Sandboxie가 실제 바탕 화면에 새 바로 가기 아이콘을 만듭니다. 이 아이콘을 사용하면 Sandboxie의 감독 하에 선택한 응용프로그램을 호출할 수 있습니다.</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1442"/>
-        <location filename="Views/SbieView.cpp" line="1512"/>
+        <location filename="Views/SbieView.cpp" line="1433"/>
+        <location filename="Views/SbieView.cpp" line="1501"/>
         <source>Create Shortcut to sandbox %1</source>
         <translation>샌드박스 %1 바로 가기 만들기</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1484"/>
+        <location filename="Views/SbieView.cpp" line="1473"/>
         <source>Do you want to terminate %1?</source>
         <oldsource>Do you want to %1 %2?</oldsource>
         <translation>%1을 종료하시겠습니까?</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1484"/>
+        <location filename="Views/SbieView.cpp" line="1473"/>
         <source>the selected processes</source>
         <translation>선택된 과정</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1545"/>
+        <location filename="Views/SbieView.cpp" line="1524"/>
         <source>This box does not have Internet restrictions in place, do you want to enable them?</source>
         <translation>이 박스에는 인터넷 제한이 없습니다. 인터넷 제한을 사용하시겠습니까?</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1629"/>
+        <location filename="Views/SbieView.cpp" line="1608"/>
         <source>This sandbox is disabled, do you want to enable it?</source>
         <translation>이 샌드박스를 사용할 수 없습니다. 사용하시겠습니까?</translation>
     </message>
@@ -4499,27 +4517,27 @@ This file is part of Sandboxie and all changed done to it will be reverted next 
 <context>
     <name>CShellPage</name>
     <message>
-        <location filename="Wizards/SetupWizard.cpp" line="415"/>
+        <location filename="Wizards/SetupWizard.cpp" line="417"/>
         <source>Configure &lt;b&gt;Sandboxie-Plus&lt;/b&gt; shell integration</source>
         <translation>&lt;b&gt;Sandboxie-Plus&lt;/b&gt; 셸 통합 구성</translation>
     </message>
     <message>
-        <location filename="Wizards/SetupWizard.cpp" line="416"/>
+        <location filename="Wizards/SetupWizard.cpp" line="418"/>
         <source>Configure how Sandboxie-Plus should integrate with your system.</source>
         <translation>Sandboxie-Plus를 시스템과 통합하는 방법을 구성합니다.</translation>
     </message>
     <message>
-        <location filename="Wizards/SetupWizard.cpp" line="420"/>
+        <location filename="Wizards/SetupWizard.cpp" line="422"/>
         <source>Start UI with Windows</source>
         <translation>Windows와 함께 UI 시작</translation>
     </message>
     <message>
-        <location filename="Wizards/SetupWizard.cpp" line="425"/>
+        <location filename="Wizards/SetupWizard.cpp" line="427"/>
         <source>Add &apos;Run Sandboxed&apos; to the explorer context menu</source>
         <translation>탐색기의 상황에 맞는 메뉴에 &apos;샌드박스에서 실행&apos; 추가</translation>
     </message>
     <message>
-        <location filename="Wizards/SetupWizard.cpp" line="430"/>
+        <location filename="Wizards/SetupWizard.cpp" line="432"/>
         <source>Add desktop shortcut for starting Web browser under Sandboxie</source>
         <translation>Sandboxie에서 웹 브라우저를 시작하기 위한 바탕 화면 바로 가기 추가</translation>
     </message>
@@ -4654,8 +4672,9 @@ Processes in this box will be running with a custom process token indicating the
     <name>CSupportDialog</name>
     <message>
         <location filename="Windows/SupportDialog.cpp" line="115"/>
-        <source>The installed supporter certificate &lt;b&gt;has expired %1 days ago&lt;/b&gt; and &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-get-cert&quot;&gt;must be renewed&lt;/a&gt;.&lt;br /&gt;&lt;br /&gt;</source>
-        <translation>설치된 후원자 인증서가 &lt;b&gt;%1일 전에 만료&lt;/b&gt; 되었으므로 &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-get-cert&quot;&gt;갱신해야 합니다&lt;/a&gt;.&lt;br /&gt;&lt;br /&gt;</translation>
+        <source>The installed supporter certificate &lt;b&gt;has expired %1 days ago&lt;/b&gt; and &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-renew-cert&quot;&gt;must be renewed&lt;/a&gt;.&lt;br /&gt;&lt;br /&gt;</source>
+        <oldsource>The installed supporter certificate &lt;b&gt;has expired %1 days ago&lt;/b&gt; and &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-get-cert&quot;&gt;must be renewed&lt;/a&gt;.&lt;br /&gt;&lt;br /&gt;</oldsource>
+        <translation type="unfinished">설치된 후원자 인증서가 &lt;b&gt;%1일 전에 만료&lt;/b&gt; 되었으므로 &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-get-cert&quot;&gt;갱신해야 합니다&lt;/a&gt;.&lt;br /&gt;&lt;br /&gt;</translation>
     </message>
     <message>
         <location filename="Windows/SupportDialog.cpp" line="117"/>
@@ -4664,8 +4683,9 @@ Processes in this box will be running with a custom process token indicating the
     </message>
     <message>
         <location filename="Windows/SupportDialog.cpp" line="119"/>
-        <source>&lt;u&gt;Commercial use of Sandboxie past the evaluation period&lt;/u&gt;, requires a valid &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-get-cert&quot;&gt;support certificate&lt;/a&gt;.</source>
-        <translation>&lt;u&gt;평가 기간이 지난 Sandboxie를 상업적으로 사용하려면 &lt;/u&gt;, 유효한 &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-get-cert&quot;&gt;후원 인증서&lt;/a&gt;가 필요합니다.</translation>
+        <source>&lt;u&gt;Commercial use of Sandboxie past the evaluation period&lt;/u&gt;, requires a valid &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-obtain-cert&quot;&gt;support certificate&lt;/a&gt;.</source>
+        <oldsource>&lt;u&gt;Commercial use of Sandboxie past the evaluation period&lt;/u&gt;, requires a valid &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-get-cert&quot;&gt;support certificate&lt;/a&gt;.</oldsource>
+        <translation type="unfinished">&lt;u&gt;평가 기간이 지난 Sandboxie를 상업적으로 사용하려면 &lt;/u&gt;, 유효한 &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-get-cert&quot;&gt;후원 인증서&lt;/a&gt;가 필요합니다.</translation>
     </message>
     <message>
         <location filename="Windows/SupportDialog.cpp" line="126"/>
@@ -4695,13 +4715,15 @@ Processes in this box will be running with a custom process token indicating the
     </message>
     <message>
         <location filename="Windows/SupportDialog.cpp" line="138"/>
-        <source>Please continue &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-get-cert&quot;&gt;supporting the project&lt;/a&gt; by renewing your &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-cert&quot;&gt;supporter certificate&lt;/a&gt; and continue using the &lt;b&gt;enhanced functionality&lt;/b&gt; in new builds.</source>
-        <translation>&lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-cert&quot;&gt; 후원자 인증서&lt;/a&gt;를 갱신하여 &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-get-cert&quot;&gt;프로젝트 지원&lt;/a&gt;을 계속해서 새 빌드에서&lt;b&gt;향상된 기능&lt;/b&gt;을 계속 사용하십시오.</translation>
+        <source>Please continue &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-renew-cert&quot;&gt;supporting the project&lt;/a&gt; by renewing your &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-cert&quot;&gt;supporter certificate&lt;/a&gt; and continue using the &lt;b&gt;enhanced functionality&lt;/b&gt; in new builds.</source>
+        <oldsource>Please continue &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-get-cert&quot;&gt;supporting the project&lt;/a&gt; by renewing your &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-cert&quot;&gt;supporter certificate&lt;/a&gt; and continue using the &lt;b&gt;enhanced functionality&lt;/b&gt; in new builds.</oldsource>
+        <translation type="unfinished">&lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-cert&quot;&gt; 후원자 인증서&lt;/a&gt;를 갱신하여 &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-get-cert&quot;&gt;프로젝트 지원&lt;/a&gt;을 계속해서 새 빌드에서&lt;b&gt;향상된 기능&lt;/b&gt;을 계속 사용하십시오.</translation>
     </message>
     <message>
         <location filename="Windows/SupportDialog.cpp" line="141"/>
-        <source>Sandboxie &lt;u&gt;without&lt;/u&gt; a valid supporter certificate will sometimes &lt;b&gt;&lt;font color=&apos;red&apos;&gt;pause for a few seconds&lt;/font&gt;&lt;/b&gt;, to give you time to contemplate the option of &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-get-cert&quot;&gt;supporting the project&lt;/a&gt;.&lt;br /&gt;&lt;br /&gt;A &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-cert&quot;&gt;supporter certificate&lt;/a&gt; not just removes this reminder, but also enables &lt;b&gt;exclusive enhanced functionality&lt;/b&gt; providing better security and compatibility.</source>
-        <translation>유효한 후원자 인증서가 &lt;u&gt;없는&lt;/u&gt; Sandboxie는 &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-get-cert&quot;&gt;프로젝트 지원&lt;/a&gt; 옵션을 고려할 시간을 주기 위해 &lt;b&gt;&lt;font color=&apos;red&apos;&gt;몇 초 동안 &gt;일시 중지&lt;/font&gt;&lt;/b&gt;되기도 합니다&lt;/a&gt;.&lt;br /&gt;&lt;br /&gt;  &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-cert&quot;&gt;후원자 인증서&lt;/a&gt;는 이러한 주의사항을 제거할 뿐만 아니라 후원자 인증서는 이러한 주의사항을 제거할 뿐만 아니라 향상된 보안 및 호환성을 제공하는 &lt;b&gt;독점적인 고급 기능&lt;/b&gt;을 사용할 수 있습니다.</translation>
+        <source>Sandboxie &lt;u&gt;without&lt;/u&gt; a valid supporter certificate will sometimes &lt;b&gt;&lt;font color=&apos;red&apos;&gt;pause for a few seconds&lt;/font&gt;&lt;/b&gt;. This pause allows you to consider &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-obtain-cert&quot;&gt;purchasing a supporter certificate&lt;/a&gt; or &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-contribute&quot;&gt;earning one by contributing&lt;/a&gt; to the project. &lt;br /&gt;&lt;br /&gt;A &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-cert&quot;&gt;supporter certificate&lt;/a&gt; not just removes this reminder, but also enables &lt;b&gt;exclusive enhanced functionality&lt;/b&gt; providing better security and compatibility.</source>
+        <oldsource>Sandboxie &lt;u&gt;without&lt;/u&gt; a valid supporter certificate will sometimes &lt;b&gt;&lt;font color=&apos;red&apos;&gt;pause for a few seconds&lt;/font&gt;&lt;/b&gt;, to give you time to contemplate the option of &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-get-cert&quot;&gt;supporting the project&lt;/a&gt;.&lt;br /&gt;&lt;br /&gt;A &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-cert&quot;&gt;supporter certificate&lt;/a&gt; not just removes this reminder, but also enables &lt;b&gt;exclusive enhanced functionality&lt;/b&gt; providing better security and compatibility.</oldsource>
+        <translation type="unfinished">유효한 후원자 인증서가 &lt;u&gt;없는&lt;/u&gt; Sandboxie는 &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-get-cert&quot;&gt;프로젝트 지원&lt;/a&gt; 옵션을 고려할 시간을 주기 위해 &lt;b&gt;&lt;font color=&apos;red&apos;&gt;몇 초 동안 &gt;일시 중지&lt;/font&gt;&lt;/b&gt;되기도 합니다&lt;/a&gt;.&lt;br /&gt;&lt;br /&gt;  &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-cert&quot;&gt;후원자 인증서&lt;/a&gt;는 이러한 주의사항을 제거할 뿐만 아니라 후원자 인증서는 이러한 주의사항을 제거할 뿐만 아니라 향상된 보안 및 호환성을 제공하는 &lt;b&gt;독점적인 고급 기능&lt;/b&gt;을 사용할 수 있습니다.</translation>
     </message>
     <message>
         <location filename="Windows/SupportDialog.cpp" line="172"/>
@@ -4989,37 +5011,37 @@ Processes in this box will be running with a custom process token indicating the
 <context>
     <name>CUIPage</name>
     <message>
-        <location filename="Wizards/SetupWizard.cpp" line="300"/>
+        <location filename="Wizards/SetupWizard.cpp" line="302"/>
         <source>Configure &lt;b&gt;Sandboxie-Plus&lt;/b&gt; UI</source>
         <translation>&lt;b&gt;Sandboxie-Plus&lt;/b&gt; UI 구성</translation>
     </message>
     <message>
-        <location filename="Wizards/SetupWizard.cpp" line="301"/>
+        <location filename="Wizards/SetupWizard.cpp" line="303"/>
         <source>Select the user interface style you prefer.</source>
         <translation>원하는 사용자 인터페이스 스타일을 선택합니다.</translation>
     </message>
     <message>
-        <location filename="Wizards/SetupWizard.cpp" line="305"/>
+        <location filename="Wizards/SetupWizard.cpp" line="307"/>
         <source>&amp;Advanced UI for experts</source>
         <translation>전문가를 위한 고급 UI(&amp;A)</translation>
     </message>
     <message>
-        <location filename="Wizards/SetupWizard.cpp" line="310"/>
+        <location filename="Wizards/SetupWizard.cpp" line="312"/>
         <source>&amp;Simple UI for beginners</source>
         <translation>초보자를 위한 간단한 UI(&amp;S)</translation>
     </message>
     <message>
-        <location filename="Wizards/SetupWizard.cpp" line="315"/>
+        <location filename="Wizards/SetupWizard.cpp" line="317"/>
         <source>&amp;Vintage SbieCtrl.exe UI</source>
         <translation>빈티지 SbieCtrl.exe UI(&amp;V)</translation>
     </message>
     <message>
-        <location filename="Wizards/SetupWizard.cpp" line="340"/>
+        <location filename="Wizards/SetupWizard.cpp" line="342"/>
         <source>Use Bright Mode</source>
         <translation>밝은 모드 사용</translation>
     </message>
     <message>
-        <location filename="Wizards/SetupWizard.cpp" line="344"/>
+        <location filename="Wizards/SetupWizard.cpp" line="346"/>
         <source>Use Dark Mode</source>
         <translation>어두운 모드 사용</translation>
     </message>
@@ -5027,22 +5049,22 @@ Processes in this box will be running with a custom process token indicating the
 <context>
     <name>CWFPPage</name>
     <message>
-        <location filename="Wizards/SetupWizard.cpp" line="451"/>
+        <location filename="Wizards/SetupWizard.cpp" line="453"/>
         <source>Configure &lt;b&gt;Sandboxie-Plus&lt;/b&gt; network filtering</source>
         <translation>&lt;b&gt;Sandboxie-Plus&lt;/b&gt; 네트워크 필터링 구성</translation>
     </message>
     <message>
-        <location filename="Wizards/SetupWizard.cpp" line="452"/>
+        <location filename="Wizards/SetupWizard.cpp" line="454"/>
         <source>Sandboxie can use the Windows Filtering Platform (WFP) to restrict network access.</source>
         <translation>Sandboxie는 Windows 필터링 플랫폼 (WFP)를 사용하여 네트워크 액세스를 제한할 수 있습니다.</translation>
     </message>
     <message>
-        <location filename="Wizards/SetupWizard.cpp" line="458"/>
+        <location filename="Wizards/SetupWizard.cpp" line="460"/>
         <source>Using WFP allows Sandboxie to reliably enforce IP/Port based rules for network access. Unlike system level application firewalls, Sandboxie can use different rules in each box for the same application. If you already have a good and reliable application firewall and do not need per box rules, you can leave this option unchecked. Without WFP enabled, Sandboxie will still be able to reliably and entirely block processes from accessing the network. However, this can cause the process to crash, as the driver blocks the required network device endpoints. Even with WFP disabled, Sandboxie offers to set IP/Port based rules, however these will be applied in user mode only and not be enforced by the driver. Hence, without WFP enabled, an intentionally malicious process could bypass those rules, but not the entire network block.</source>
         <translation>WFP를 사용하면 Sandboxie가 네트워크 액세스에 대해 IP/포트 기반 규칙을 안정적으로 적용할 수 있습니다. 시스템 수준 응용 프로그램 방화벽과 달리 샌드박스는 동일한 응용 프로그램에 대해 각 박스에서 서로 다른 규칙을 사용할 수 있습니다. 안정적이고 양호한 응용 프로그램 방화벽이 이미 있고 박스별 규칙이 필요하지 않은 경우 이 옵션을 선택 취소한 상태로 둘 수 있습니다. WFP가 활성화되지 않은 경우에도 Sandboxie는 여전히 신뢰할 수 있고 전적으로 프로세스가 네트워크에 액세스하는 것을 차단할 수 있습니다. 그러나 드라이버가 필요한 네트워크 장치 끝점을 차단하기 때문에 프로세스가 중단될 수 있습니다. WFP가 비활성화된 상태에서도 Sandboxie는 IP/포트 기반 규칙을 설정할 수 있지만 이는 사용자 모드에서만 적용되며 드라이버에 의해 강제되지는 않습니다. 따라서 WFP를 사용하지 않으면 의도적으로 악의적인 프로세스가 이러한 규칙을 무시할 수 있지만 전체 네트워크 블록은 무시할 수 없습니다.</translation>
     </message>
     <message>
-        <location filename="Wizards/SetupWizard.cpp" line="467"/>
+        <location filename="Wizards/SetupWizard.cpp" line="469"/>
         <source>Enable Windows Filtering Platform (WFP) support</source>
         <translation>Windows 필터링 플랫폼 (WFP) 지원 사용</translation>
     </message>
@@ -6691,7 +6713,7 @@ Please note that this values are currently user specific and saved globally for 
 <context>
     <name>QObject</name>
     <message>
-        <location filename="Views/SbieView.cpp" line="1425"/>
+        <location filename="Views/SbieView.cpp" line="1416"/>
         <source>Drive %1</source>
         <translation>드라이브 %1</translation>
     </message>
@@ -6699,27 +6721,27 @@ Please note that this values are currently user specific and saved globally for 
 <context>
     <name>QPlatformTheme</name>
     <message>
-        <location filename="SandMan.cpp" line="3357"/>
+        <location filename="SandMan.cpp" line="3368"/>
         <source>OK</source>
         <translation>확인</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3358"/>
+        <location filename="SandMan.cpp" line="3369"/>
         <source>Apply</source>
         <translation>적용</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3359"/>
+        <location filename="SandMan.cpp" line="3370"/>
         <source>Cancel</source>
         <translation>취소</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3360"/>
+        <location filename="SandMan.cpp" line="3371"/>
         <source>&amp;Yes</source>
         <translation>예(&amp;Y)</translation>
     </message>
     <message>
-        <location filename="SandMan.cpp" line="3361"/>
+        <location filename="SandMan.cpp" line="3372"/>
         <source>&amp;No</source>
         <translation>아니오(&amp;N)</translation>
     </message>
@@ -6839,7 +6861,7 @@ Please note that this values are currently user specific and saved globally for 
         <translation>이 UI 샌드박스에서 URL 열기</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="479"/>
+        <location filename="Forms/SettingsWindow.ui" line="492"/>
         <source>Systray options</source>
         <translation>시스템 트레이 옵션</translation>
     </message>
@@ -6849,22 +6871,22 @@ Please note that this values are currently user specific and saved globally for 
         <translation>UI 언어:</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="381"/>
+        <location filename="Forms/SettingsWindow.ui" line="394"/>
         <source>Shell Integration</source>
         <translation>쉘 통합</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="500"/>
+        <location filename="Forms/SettingsWindow.ui" line="513"/>
         <source>Run Sandboxed - Actions</source>
         <translation>샌드박스에서 실행 - 동작</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="564"/>
+        <location filename="Forms/SettingsWindow.ui" line="577"/>
         <source>Start Sandbox Manager</source>
         <translation>샌드박스 관리자 시작</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="620"/>
+        <location filename="Forms/SettingsWindow.ui" line="633"/>
         <source>Start UI when a sandboxed process is started</source>
         <translation>샌드박스 프로세스가 시작될 때 UI 시작</translation>
     </message>
@@ -6873,12 +6895,12 @@ Please note that this values are currently user specific and saved globally for 
         <translation type="vanished">관련 로그 메시지에 대한 알림 표시</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="613"/>
+        <location filename="Forms/SettingsWindow.ui" line="626"/>
         <source>Start UI with Windows</source>
         <translation>Windows와 함께 UI 시작</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="521"/>
+        <location filename="Forms/SettingsWindow.ui" line="534"/>
         <source>Add &apos;Run Sandboxed&apos; to the explorer context menu</source>
         <translation>탐색기의 상황에 맞는 메뉴에 &apos;샌드박스에서 실행&apos; 추가</translation>
     </message>
@@ -6893,47 +6915,47 @@ Please note that this values are currently user specific and saved globally for 
         <translation>박스화된 모든 프로세스를 종료하기 위한 단축키:</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="399"/>
+        <location filename="Forms/SettingsWindow.ui" line="412"/>
         <source>Show boxes in tray list:</source>
         <translation>트레이 목록에 박스 표시:</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="486"/>
+        <location filename="Forms/SettingsWindow.ui" line="499"/>
         <source>Always use DefaultBox</source>
         <translation>항상 기본 박스 사용</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="514"/>
+        <location filename="Forms/SettingsWindow.ui" line="527"/>
         <source>Add &apos;Run Un-Sandboxed&apos; to the context menu</source>
         <translation>상황에 맞는 메뉴에 &apos;샌드박스 없이 실행&apos; 추가</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="429"/>
+        <location filename="Forms/SettingsWindow.ui" line="442"/>
         <source>Show a tray notification when automatic box operations are started</source>
         <translation>자동 박스 작업이 시작될 때 트레이 알림 표시</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="825"/>
+        <location filename="Forms/SettingsWindow.ui" line="838"/>
         <source>* a partially checked checkbox will leave the behavior to be determined by the view mode.</source>
         <translation>* 부분적으로 선택된 확인란은 보기 모드에서 확인할 동작을 남깁니다.</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1324"/>
+        <location filename="Forms/SettingsWindow.ui" line="1337"/>
         <source>Advanced Config</source>
         <translation>고급 구성</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1358"/>
+        <location filename="Forms/SettingsWindow.ui" line="1371"/>
         <source>Activate Kernel Mode Object Filtering</source>
         <translation>커널 모드 개체 필터링 활성화</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1518"/>
+        <location filename="Forms/SettingsWindow.ui" line="1531"/>
         <source>Sandbox &lt;a href=&quot;sbie://docs/filerootpath&quot;&gt;file system root&lt;/a&gt;: </source>
         <translation>샌드박스 &lt;a href=&quot;sbie://docs/filerootpath&quot;&gt;파일 시스템 루트&lt;/a&gt;: </translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1603"/>
+        <location filename="Forms/SettingsWindow.ui" line="1616"/>
         <source>Clear password when main window becomes hidden</source>
         <translation>기본 창이 숨겨질 때 암호 지우기</translation>
     </message>
@@ -6942,22 +6964,22 @@ Please note that this values are currently user specific and saved globally for 
         <translation type="vanished">개별 사용자 폴더</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1475"/>
+        <location filename="Forms/SettingsWindow.ui" line="1488"/>
         <source>Sandbox &lt;a href=&quot;sbie://docs/ipcrootpath&quot;&gt;ipc root&lt;/a&gt;: </source>
         <translation>샌드박스 &lt;a href=&quot;sbie://docs/ipcrootpath&quot;&gt;ipc 루트&lt;/a&gt;: </translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1398"/>
+        <location filename="Forms/SettingsWindow.ui" line="1411"/>
         <source>Sandbox default</source>
         <translation>샌드박스 기본값</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1589"/>
+        <location filename="Forms/SettingsWindow.ui" line="1602"/>
         <source>Config protection</source>
         <translation>구성 보호</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1468"/>
+        <location filename="Forms/SettingsWindow.ui" line="1481"/>
         <source>...</source>
         <translation>...</translation>
     </message>
@@ -6977,138 +6999,153 @@ Please note that this values are currently user specific and saved globally for 
         <translation>항목 추가</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="247"/>
+        <location filename="Forms/SettingsWindow.ui" line="357"/>
         <source>Show file migration progress when copying large files into a sandbox</source>
         <translation>대용량 파일을 샌드박스에 복사할 때 파일 마이그레이션 진행률 표시</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="255"/>
+        <location filename="Forms/SettingsWindow.ui" line="248"/>
         <source>Message ID</source>
         <translation>메시지 ID</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="260"/>
+        <location filename="Forms/SettingsWindow.ui" line="253"/>
         <source>Message Text (optional)</source>
         <translation>메시지 텍스트 (선택사항)</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="275"/>
+        <location filename="Forms/SettingsWindow.ui" line="268"/>
         <source>SBIE Messages</source>
         <translation>SBIE 메시지</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="301"/>
+        <location filename="Forms/SettingsWindow.ui" line="287"/>
         <source>Delete Entry</source>
         <translation>항목 삭제</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="308"/>
         <source>Don&apos;t show the popup message log for all SBIE messages</source>
-        <translation>모든 SBIE 메시지에 대한 팝업 메시지 로그 표시 안 함</translation>
+        <translation type="vanished">모든 SBIE 메시지에 대한 팝업 메시지 로그 표시 안 함</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="325"/>
+        <location filename="Forms/SettingsWindow.ui" line="301"/>
         <source>Notification Options</source>
         <translation>알림 옵션</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="361"/>
+        <location filename="Forms/SettingsWindow.ui" line="327"/>
         <source>Sandboxie may be issue &lt;a href= &quot;sbie://docs/ sbiemessages&quot;&gt;SBIE Messages&lt;/a&gt; to the Message Log and shown them as Popups. Some messages are informational and notify of a common, or in some cases special, event that has occurred, other messages indicate an error condition.&lt;br /&gt;You can hide selected SBIE messages from being popped up, using the below list:</source>
         <translation>샌드박스는 메시지 로그에 문제 &lt;a href= &quot;sbie://docs/ sbiemessages&quot;&gt;SBIE Messages&lt;/a&gt;가 발생하여 팝업으로 표시될 수 있습니다. 일부 메시지는 정보를 제공하며 일반적으로 발생한 이벤트 또는 경우에 따라 특별한 이벤트를 알려주고 다른 메시지는 오류 상태를 나타냅니다.&lt;br /&gt;아래 목록을 사용하여 선택한 SBIE 메시지가 팝업되지 않도록 숨길 수 있습니다:</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="391"/>
+        <location filename="Forms/SettingsWindow.ui" line="340"/>
+        <source>Disable SBIE messages popups (they will still be logged to the Messages tab)</source>
+        <oldsource>Disable SBIE messages popups (SBIE will still be logged to the log tab)</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Forms/SettingsWindow.ui" line="404"/>
         <source>Windows Shell</source>
         <translation>Windows 셸</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="657"/>
+        <location filename="Forms/SettingsWindow.ui" line="670"/>
         <source>Icon</source>
         <translation>아이콘</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="714"/>
+        <location filename="Forms/SettingsWindow.ui" line="727"/>
         <source>Move Up</source>
         <translation>위로 이동</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="733"/>
+        <location filename="Forms/SettingsWindow.ui" line="746"/>
         <source>Move Down</source>
         <translation>아래로 이동</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="936"/>
+        <location filename="Forms/SettingsWindow.ui" line="949"/>
         <source>Show overlay icons for boxes and processes</source>
         <translation>박스 및 프로세스에 대한 오버레이 아이콘 표시</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="946"/>
+        <location filename="Forms/SettingsWindow.ui" line="959"/>
         <source>Display Options</source>
         <translation>디스플레이 옵션</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1070"/>
+        <location filename="Forms/SettingsWindow.ui" line="1083"/>
         <source>Graphic Options</source>
         <translation>그래픽 옵션</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1378"/>
+        <location filename="Forms/SettingsWindow.ui" line="1228"/>
+        <source>Supporters of the Sandboxie-Plus project can receive a &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-cert&quot;&gt;supporter certificate&lt;/a&gt;. It&apos;s like a license key but for awesome people using open source software. :-)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Forms/SettingsWindow.ui" line="1321"/>
+        <source>Keeping Sandboxie up to date with the rolling releases of Windows and compatible with all web browsers is a never-ending endeavor. You can support the development by &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-contribute&quot;&gt;directly contributing to the project&lt;/a&gt;, showing your support by &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-obtain-cert&quot;&gt;purchasing a supporter certificate&lt;/a&gt;, becoming a patron by &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=patreon&quot;&gt;subscribing on Patreon&lt;/a&gt;, or through a &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=donate&quot;&gt;PayPal donation&lt;/a&gt;.&lt;br /&gt;Your support plays a vital role in the advancement and maintenance of Sandboxie.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Forms/SettingsWindow.ui" line="1391"/>
         <source>Sandbox &lt;a href=&quot;sbie://docs/keyrootpath&quot;&gt;registry root&lt;/a&gt;: </source>
         <translation>샌드박스 &lt;a href=&quot;sbie://docs/keyrootpath&quot;&gt;레지스트리 루트&lt;/a&gt;: </translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1438"/>
+        <location filename="Forms/SettingsWindow.ui" line="1451"/>
         <source>Sandboxing features</source>
         <translation>샌드박스 기능</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1547"/>
+        <location filename="Forms/SettingsWindow.ui" line="1560"/>
         <source>Sandboxie.ini Presets</source>
         <translation>샌드박스.ini 프리셋</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1555"/>
+        <location filename="Forms/SettingsWindow.ui" line="1568"/>
         <source>Change Password</source>
         <translation>암호 변경</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1562"/>
+        <location filename="Forms/SettingsWindow.ui" line="1575"/>
         <source>Password must be entered in order to make changes</source>
         <translation>변경하려면 암호 입력</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1610"/>
+        <location filename="Forms/SettingsWindow.ui" line="1623"/>
         <source>Only Administrator user accounts can make changes</source>
         <translation>관리자 사용자 계정만 변경할 수 있음</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1617"/>
+        <location filename="Forms/SettingsWindow.ui" line="1630"/>
         <source>Watch Sandboxie.ini for changes</source>
         <translation>Sandboxie.ini에서 변경 내용 보기</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1735"/>
+        <location filename="Forms/SettingsWindow.ui" line="1748"/>
         <source>App Templates</source>
         <translation>앱 템플릿</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1745"/>
+        <location filename="Forms/SettingsWindow.ui" line="1758"/>
         <source>App Compatibility</source>
         <translation>앱 호환성</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1596"/>
+        <location filename="Forms/SettingsWindow.ui" line="1609"/>
         <source>Only Administrator user accounts can use Pause Forcing Programs command</source>
         <oldsource>Only Administrator user accounts can use Pause Forced Programs Rules command</oldsource>
         <translation>관리자 사용자 계정만 프로그램 일시 중지 명령을 사용할 수 있음</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1488"/>
+        <location filename="Forms/SettingsWindow.ui" line="1501"/>
         <source>Portable root folder</source>
         <translation>휴대용 루트 폴더</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="282"/>
+        <location filename="Forms/SettingsWindow.ui" line="350"/>
         <source>Show recoverable files as notifications</source>
         <translation>복구 가능한 파일을 알림으로 표시</translation>
     </message>
@@ -7118,17 +7155,17 @@ Please note that this values are currently user specific and saved globally for 
         <translation>일반 옵션</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="587"/>
+        <location filename="Forms/SettingsWindow.ui" line="600"/>
         <source>Show Icon in Systray:</source>
         <translation>시스템 트레이에 아이콘 표시:</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1448"/>
+        <location filename="Forms/SettingsWindow.ui" line="1461"/>
         <source>Use Windows Filtering Platform to restrict network access</source>
         <translation>Windows 필터링 플랫폼을 사용하여 네트워크 액세스 제한</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1455"/>
+        <location filename="Forms/SettingsWindow.ui" line="1468"/>
         <source>Hook selected Win32k system calls to enable GPU acceleration (experimental)</source>
         <translation>선택한 Win32k 시스템 호출을 후크하여 GPU 가속 (실험적) 사용</translation>
     </message>
@@ -7139,57 +7176,57 @@ Please note that this values are currently user specific and saved globally for 
         <translation>각 샌드박스가 차지하는 디스크 공간을 계산하고 표시</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="462"/>
+        <location filename="Forms/SettingsWindow.ui" line="475"/>
         <source>Use Compact Box List</source>
         <translation>압축 박스 목록 사용</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="787"/>
+        <location filename="Forms/SettingsWindow.ui" line="800"/>
         <source>Interface Config</source>
         <translation>인터페이스 구성</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="912"/>
+        <location filename="Forms/SettingsWindow.ui" line="925"/>
         <source>Make Box Icons match the Border Color</source>
         <translation>테두리 색과 일치하는 박스 아이콘 만들기</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="902"/>
+        <location filename="Forms/SettingsWindow.ui" line="915"/>
         <source>Use a Page Tree in the Box Options instead of Nested Tabs *</source>
         <translation>박스 옵션에서 중첩 탭 대신 페이지 트리 사용 *</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="895"/>
+        <location filename="Forms/SettingsWindow.ui" line="908"/>
         <source>Interface Options</source>
         <translation>인터페이스 옵션</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="815"/>
+        <location filename="Forms/SettingsWindow.ui" line="828"/>
         <source>Use large icons in box list *</source>
         <translation>박스 목록에서 큰 아이콘 사용 *</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="957"/>
+        <location filename="Forms/SettingsWindow.ui" line="970"/>
         <source>High DPI Scaling</source>
         <translation>높은 DPI 스케일링</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="878"/>
+        <location filename="Forms/SettingsWindow.ui" line="891"/>
         <source>Don&apos;t show icons in menus *</source>
         <translation>메뉴에 아이콘 표시 안 함 *</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="919"/>
+        <location filename="Forms/SettingsWindow.ui" line="932"/>
         <source>Use Dark Theme</source>
         <translation>어두운 테마 사용</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="967"/>
+        <location filename="Forms/SettingsWindow.ui" line="980"/>
         <source>Font Scaling</source>
         <translation>글꼴 크기 조정</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1029"/>
+        <location filename="Forms/SettingsWindow.ui" line="1042"/>
         <source>(Restart required)</source>
         <translation>(재시작 필요)</translation>
     </message>
@@ -7199,76 +7236,76 @@ Please note that this values are currently user specific and saved globally for 
         <translation>복구 창을 항상 맨 위에 표시</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="855"/>
+        <location filename="Forms/SettingsWindow.ui" line="868"/>
         <source>Show &quot;Pizza&quot; Background in box list *</source>
         <oldsource>Show &quot;Pizza&quot; Background in box list*</oldsource>
         <translation>박스 목록에 &quot;피자&quot; 배경 표시 *</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1043"/>
+        <location filename="Forms/SettingsWindow.ui" line="1056"/>
         <source>%</source>
         <translation>%</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="929"/>
+        <location filename="Forms/SettingsWindow.ui" line="942"/>
         <source>Alternate row background in lists</source>
         <translation>목록의 대체 행 배경</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="805"/>
+        <location filename="Forms/SettingsWindow.ui" line="818"/>
         <source>Use Fusion Theme</source>
         <translation>퓨전 테마 사용</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1508"/>
+        <location filename="Forms/SettingsWindow.ui" line="1521"/>
         <source>Use a Sandboxie login instead of an anonymous token (experimental)</source>
         <translation>선택한 Win32k 시스템 호출을 후크하여 GPU 가속 (실험적) 사용</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1631"/>
+        <location filename="Forms/SettingsWindow.ui" line="1644"/>
         <source>Program Control</source>
         <translation>프로그램 제어</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="652"/>
-        <location filename="Forms/SettingsWindow.ui" line="1663"/>
-        <location filename="Forms/SettingsWindow.ui" line="1773"/>
-        <location filename="Forms/SettingsWindow.ui" line="1906"/>
+        <location filename="Forms/SettingsWindow.ui" line="665"/>
+        <location filename="Forms/SettingsWindow.ui" line="1676"/>
+        <location filename="Forms/SettingsWindow.ui" line="1786"/>
+        <location filename="Forms/SettingsWindow.ui" line="1919"/>
         <source>Name</source>
         <translation>이름</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1668"/>
+        <location filename="Forms/SettingsWindow.ui" line="1681"/>
         <source>Path</source>
         <translation>경로</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1690"/>
+        <location filename="Forms/SettingsWindow.ui" line="1703"/>
         <source>Remove Program</source>
         <translation>프로그램 제거</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1676"/>
+        <location filename="Forms/SettingsWindow.ui" line="1689"/>
         <source>Add Program</source>
         <translation>프로그램 추가</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1711"/>
+        <location filename="Forms/SettingsWindow.ui" line="1724"/>
         <source>When any of the following programs is launched outside any sandbox, Sandboxie will issue message SBIE1301.</source>
         <translation>다음 프로그램 중 하나가 샌드박스 외부에서 실행되면 샌드박스는 메시지 SBIE1301를 발행합니다.</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1721"/>
+        <location filename="Forms/SettingsWindow.ui" line="1734"/>
         <source>Add Folder</source>
         <translation>폴더 추가</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1704"/>
+        <location filename="Forms/SettingsWindow.ui" line="1717"/>
         <source>Prevent the listed programs from starting on this system</source>
         <translation>나열된 프로그램이 이 시스템에서 시작되지 않도록 합니다</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1683"/>
+        <location filename="Forms/SettingsWindow.ui" line="1696"/>
         <source>Issue message 1308 when a program fails to start</source>
         <translation>프로그램이 시작되지 않을 때 메시지 1308 발행</translation>
     </message>
@@ -7278,7 +7315,7 @@ Please note that this values are currently user specific and saved globally for 
         <translation>복구 옵션</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="422"/>
+        <location filename="Forms/SettingsWindow.ui" line="435"/>
         <source>Start Menu Integration</source>
         <translation>시작 메뉴 통합</translation>
     </message>
@@ -7287,79 +7324,79 @@ Please note that this values are currently user specific and saved globally for 
         <translation type="vanished">호스트 시작 메뉴에 박스 통합</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="507"/>
+        <location filename="Forms/SettingsWindow.ui" line="520"/>
         <source>Scan shell folders and offer links in run menu</source>
         <translation>실행 메뉴에서 셸 폴더 검색 및 링크 제공</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="528"/>
+        <location filename="Forms/SettingsWindow.ui" line="541"/>
         <source>Integrate with Host Start Menu</source>
         <translation>호스트 시작 메뉴와 통합</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="845"/>
+        <location filename="Forms/SettingsWindow.ui" line="858"/>
         <source>Use new config dialog layout *</source>
         <translation>새 구성 대화 상자 레이아웃 사용 *</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1641"/>
+        <location filename="Forms/SettingsWindow.ui" line="1654"/>
         <source>Program Alerts</source>
         <translation>프로그램 경고</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1697"/>
+        <location filename="Forms/SettingsWindow.ui" line="1710"/>
         <source>Issue message 1301 when forced processes has been disabled</source>
         <translation>강제 프로세스가 비활성화되면 메시지 1301을 발행</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1334"/>
+        <location filename="Forms/SettingsWindow.ui" line="1347"/>
         <source>Sandboxie Config</source>
         <oldsource>Config Protection</oldsource>
         <translation>Sandboxie Config 구성</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="345"/>
+        <location filename="Forms/SettingsWindow.ui" line="364"/>
         <source>This option also enables asynchronous operation when needed and suspends updates.</source>
         <translation>또한 이 옵션은 필요할 때 비동기식 작업을 활성화하고 업데이트를 일시 중단합니다.</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="348"/>
+        <location filename="Forms/SettingsWindow.ui" line="367"/>
         <source>Suppress pop-up notifications when in game / presentation mode</source>
         <translation>게임/프레젠테이션 모드에서 팝업 알림 표시 안 함</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="797"/>
+        <location filename="Forms/SettingsWindow.ui" line="810"/>
         <source>User Interface</source>
         <translation>사용자 인터페이스</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="630"/>
+        <location filename="Forms/SettingsWindow.ui" line="643"/>
         <source>Run Menu</source>
         <translation>실행 메뉴</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="682"/>
+        <location filename="Forms/SettingsWindow.ui" line="695"/>
         <source>Add program</source>
         <translation>프로그램 추가</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="740"/>
+        <location filename="Forms/SettingsWindow.ui" line="753"/>
         <source>You can configure custom entries for all sandboxes run menus.</source>
         <translation>모든 샌드박스 실행 메뉴에 대한 사용자 정의 항목을 구성할 수 있습니다.</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="762"/>
-        <location filename="Forms/SettingsWindow.ui" line="1853"/>
+        <location filename="Forms/SettingsWindow.ui" line="775"/>
+        <location filename="Forms/SettingsWindow.ui" line="1866"/>
         <source>Remove</source>
         <translation>제거</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="662"/>
+        <location filename="Forms/SettingsWindow.ui" line="675"/>
         <source>Command Line</source>
         <translation>명령 줄</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1084"/>
+        <location filename="Forms/SettingsWindow.ui" line="1097"/>
         <source>Support &amp;&amp; Updates</source>
         <translation>지원 및 업데이트</translation>
     </message>
@@ -7368,7 +7405,7 @@ Please note that this values are currently user specific and saved globally for 
         <translation type="vanished">샌드박스 구성</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1405"/>
+        <location filename="Forms/SettingsWindow.ui" line="1418"/>
         <source>Default sandbox:</source>
         <translation>기본 샌드박스:</translation>
     </message>
@@ -7377,62 +7414,62 @@ Please note that this values are currently user specific and saved globally for 
         <translation type="vanished">호환성</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1765"/>
+        <location filename="Forms/SettingsWindow.ui" line="1778"/>
         <source>In the future, don&apos;t check software compatibility</source>
         <translation>앞으로는 소프트웨어 호환성 검사 안 함</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1781"/>
+        <location filename="Forms/SettingsWindow.ui" line="1794"/>
         <source>Enable</source>
         <translation>사용함</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1801"/>
+        <location filename="Forms/SettingsWindow.ui" line="1814"/>
         <source>Disable</source>
         <translation>사용 안 함</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1808"/>
+        <location filename="Forms/SettingsWindow.ui" line="1821"/>
         <source>Sandboxie has detected the following software applications in your system. Click OK to apply configuration settings, which will improve compatibility with these applications. These configuration settings will have effect in all existing sandboxes and in any new sandboxes.</source>
         <translation>Sandboxie가 시스템에서 다음 소프트웨어 응용 프로그램을 탐지했습니다. 확인을 클릭하여 구성 설정을 적용하면 해당 응용프로그램과의 호환성이 향상됩니다. 이러한 구성 설정은 모든 기존 샌드박스 및 새 샌드박스에 적용됩니다.</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1821"/>
+        <location filename="Forms/SettingsWindow.ui" line="1834"/>
         <source>Local Templates</source>
         <translation>로컬 템플릿</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1872"/>
+        <location filename="Forms/SettingsWindow.ui" line="1885"/>
         <source>Add Template</source>
         <translation>템플릿 추가</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1892"/>
+        <location filename="Forms/SettingsWindow.ui" line="1905"/>
         <source>Text Filter</source>
         <translation>텍스트 필터</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1914"/>
+        <location filename="Forms/SettingsWindow.ui" line="1927"/>
         <source>This list contains user created custom templates for sandbox options</source>
         <translation>이 목록에는 샌드박스 옵션에 대해 사용자가 생성한 사용자 지정 템플릿이 포함되어 있습니다</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1931"/>
+        <location filename="Forms/SettingsWindow.ui" line="1944"/>
         <source>Edit ini Section</source>
         <translation>INI 섹션 편집</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1940"/>
+        <location filename="Forms/SettingsWindow.ui" line="1953"/>
         <source>Save</source>
         <translation>저장</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1947"/>
+        <location filename="Forms/SettingsWindow.ui" line="1960"/>
         <source>Edit ini</source>
         <translation>ini 편집</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1973"/>
+        <location filename="Forms/SettingsWindow.ui" line="1986"/>
         <source>Cancel</source>
         <translation>취소</translation>
     </message>
@@ -7441,12 +7478,12 @@ Please note that this values are currently user specific and saved globally for 
         <translation type="vanished">지원</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1134"/>
+        <location filename="Forms/SettingsWindow.ui" line="1147"/>
         <source>Version Updates</source>
         <translation>버전 업데이트</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1195"/>
+        <location filename="Forms/SettingsWindow.ui" line="1208"/>
         <source>New full versions from the selected release channel.</source>
         <translation>선택한 릴리스 채널의 새 전체 버전입니다.</translation>
     </message>
@@ -7455,7 +7492,7 @@ Please note that this values are currently user specific and saved globally for 
         <translation type="vanished">전체 업데이트</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1131"/>
+        <location filename="Forms/SettingsWindow.ui" line="1144"/>
         <source>Hotpatches for the installed version, updates to the Templates.ini and translations.</source>
         <translation>설치된 버전의 핫패치, Templates.ini 및 변환에 대한 업데이트입니다.</translation>
     </message>
@@ -7464,7 +7501,7 @@ Please note that this values are currently user specific and saved globally for 
         <translation type="vanished">버전 수정사항</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1148"/>
+        <location filename="Forms/SettingsWindow.ui" line="1161"/>
         <source>This supporter certificate has expired, please &lt;a href=&quot;sbie://update/cert&quot;&gt;get an updated certificate&lt;/a&gt;.</source>
         <translation>이 후원자 인증서가 만료되었습니다, &lt;a href=&quot;sbie://update/cert&quot;&gt;업데이트된 인증서를 받으십시오&lt;/a&gt;.</translation>
     </message>
@@ -7477,39 +7514,37 @@ Please note that this values are currently user specific and saved globally for 
         <translation type="vanished">라이브 채널에서 검색</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1185"/>
+        <location filename="Forms/SettingsWindow.ui" line="1198"/>
         <source>The preview channel contains the latest GitHub pre-releases.</source>
         <translation>미리보기 채널에는 최신 GitHub 사전 릴리스가 포함되어 있습니다.</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1198"/>
+        <location filename="Forms/SettingsWindow.ui" line="1211"/>
         <source>New Versions</source>
         <translation>새 버전</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1205"/>
+        <location filename="Forms/SettingsWindow.ui" line="1218"/>
         <source>The stable channel contains the latest stable GitHub releases.</source>
         <translation>안정적인 채널에는 최신 안정적인 GitHub 릴리스가 포함되어 있습니다.</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1208"/>
+        <location filename="Forms/SettingsWindow.ui" line="1221"/>
         <source>Search in the Stable channel</source>
         <translation>안정적인 채널에서 검색</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1308"/>
         <source>Keeping Sandboxie up to date with the rolling releases of Windows and compatible with all web browsers is a never-ending endeavor. Please consider supporting this work with a donation.&lt;br /&gt;You can support the development with a &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-cert&quot;&gt;PayPal donation&lt;/a&gt;, working also with credit cards.&lt;br /&gt;Or you can provide continuous support with a &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=patreon&quot;&gt;Patreon subscription&lt;/a&gt;.</source>
-        <translation>Sandboxie를 Windows의 롤링 릴리스로 최신 상태로 유지하고 모든 웹 브라우저와 호환되도록 하는 것은 결코 끝나지 않는 노력입니다. 기부금으로 이 일을 후원하는 것을 고려해 주세요.&lt;br /&gt; &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=donate&quot;&gt;PayPal 기부금&lt;/a&gt;으로 개발을 지원할 수 있으며, 신용카드도 사용할 수 있습니다.&lt;br /&gt;또는 &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=patreon&quot;&gt;Patreon 구독을 통해 지속적인 지원을 제공할 수 있습니다.&lt;/a&gt;.</translation>
+        <translation type="vanished">Sandboxie를 Windows의 롤링 릴리스로 최신 상태로 유지하고 모든 웹 브라우저와 호환되도록 하는 것은 결코 끝나지 않는 노력입니다. 기부금으로 이 일을 후원하는 것을 고려해 주세요.&lt;br /&gt; &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=donate&quot;&gt;PayPal 기부금&lt;/a&gt;으로 개발을 지원할 수 있으며, 신용카드도 사용할 수 있습니다.&lt;br /&gt;또는 &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=patreon&quot;&gt;Patreon 구독을 통해 지속적인 지원을 제공할 수 있습니다.&lt;/a&gt;.</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1188"/>
+        <location filename="Forms/SettingsWindow.ui" line="1201"/>
         <source>Search in the Preview channel</source>
         <translation>미리 보기 채널에서 검색</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1215"/>
         <source>Supporters of the Sandboxie-Plus project can receive a &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-get-cert&quot;&gt;supporter certificate&lt;/a&gt;. It&apos;s like a license key but for awesome people using open source software. :-)</source>
-        <translation>Sandboxie-Plus 프로젝트의 후원자는 &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-cert&quot;&gt;후원자 인증서&lt;/a&gt;를 받습니다. 라이선스 키와 비슷하지만 오픈 소스 소프트웨어를 사용하는 멋진 사람들을 위한 것입니다. :-)</translation>
+        <translation type="vanished">Sandboxie-Plus 프로젝트의 후원자는 &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-cert&quot;&gt;후원자 인증서&lt;/a&gt;를 받습니다. 라이선스 키와 비슷하지만 오픈 소스 소프트웨어를 사용하는 멋진 사람들을 위한 것입니다. :-)</translation>
     </message>
     <message>
         <source>Download Updates automatically</source>
@@ -7520,17 +7555,17 @@ Please note that this values are currently user specific and saved globally for 
         <translation type="vanished">릴리스 채널에서 검색</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1158"/>
+        <location filename="Forms/SettingsWindow.ui" line="1171"/>
         <source>In the future, don&apos;t notify about certificate expiration</source>
         <translation>이후 인증서 만료에 대해 알리지 않음</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1171"/>
+        <location filename="Forms/SettingsWindow.ui" line="1184"/>
         <source>Enter the support certificate here</source>
         <translation>여기에 후원 인증서를 입력하십시오</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1255"/>
+        <location filename="Forms/SettingsWindow.ui" line="1268"/>
         <source>Support Settings</source>
         <translation>지원 설정</translation>
     </message>
@@ -7539,7 +7574,7 @@ Please note that this values are currently user specific and saved globally for 
         <translation type="vanished">업데이트 자동 설치</translation>
     </message>
     <message>
-        <location filename="Forms/SettingsWindow.ui" line="1228"/>
+        <location filename="Forms/SettingsWindow.ui" line="1241"/>
         <source>Check periodically for updates of Sandboxie-Plus</source>
         <translation>Sandboxie-Plus의 업데이트를 정기적으로 확인합니다</translation>
     </message>

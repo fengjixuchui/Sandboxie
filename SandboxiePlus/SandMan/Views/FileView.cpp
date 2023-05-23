@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "FileView.h"
 #include "SandMan.h"
+#include "../MiscHelpers/Common/Common.h"
 #include "../MiscHelpers/Common/Settings.h"
 #include "../MiscHelpers/Common/TreeItemModel.h"
 #include "../MiscHelpers/Common/OtherFunctions.h"
@@ -13,7 +14,8 @@ CFileView::CFileView(QWidget *parent)
 	m_pMainLayout->setContentsMargins(0,0,0,0);
 	this->setLayout(m_pMainLayout);
 
-    m_pTreeView = new QTreeView();
+    m_pTreeView = new QTreeViewEx();
+    m_pTreeView->setColumnFixed(0, true);
     m_pTreeView->setAlternatingRowColors(theConf->GetBool("Options/AltRowColors", false));
     m_pMainLayout->addWidget(m_pTreeView, 0, 0);
 
@@ -31,10 +33,6 @@ CFileView::CFileView(QWidget *parent)
 	m_pTreeView->setContextMenuPolicy(Qt::CustomContextMenu);
 	connect(m_pTreeView, SIGNAL(customContextMenuRequested( const QPoint& )), this, SLOT(OnFileMenu(const QPoint &)));
 	connect(m_pTreeView, SIGNAL(doubleClicked(const QModelIndex &)), this, SLOT(OnFileDblClick(const QModelIndex &)));
-
-    QByteArray Columns = theConf->GetBlob("MainWindow/FileTree_Columns");
-	if (!Columns.isEmpty())
-		m_pTreeView->header()->restoreState(Columns);
 }
 
 CFileView::~CFileView()
@@ -44,7 +42,8 @@ CFileView::~CFileView()
 
 void CFileView::SaveState()
 {
-    theConf->SetBlob("MainWindow/FileTree_Columns", m_pTreeView->header()->saveState());
+    if(m_pFileModel)
+        theConf->SetBlob("MainWindow/FileTree_Columns", m_pTreeView->header()->saveState());
 }
 
 void CFileView::SetBox(const CSandBoxPtr& pBox)
@@ -66,12 +65,18 @@ void CFileView::SetBox(const CSandBoxPtr& pBox)
     //    m_pTreeView->setEnabled(true);
 
     if (m_pFileModel) {
+        SaveState();
+
         delete m_pFileModel;
         m_pFileModel = NULL;
     }
     if (!Root.isEmpty()) {
         m_pFileModel = new QFileSystemModel(this);
         m_pFileModel->setFilter(QDir::NoDotAndDotDot | QDir::AllDirs | QDir::Files | QDir::Hidden | QDir::System);
+
+        QByteArray Columns = theConf->GetBlob("MainWindow/FileTree_Columns");
+	    if (!Columns.isEmpty())
+		    m_pTreeView->header()->restoreState(Columns);
     }
     m_pTreeView->setModel(m_pFileModel);
 
@@ -101,6 +106,7 @@ void CFileView::OnAboutToBeModified()
 #define MENU_RECOVER_TO_ANY     2
 #define MENU_CREATE_SHORTCUT    3
 #define MENU_CHECK_FILE         4
+#define MENU_PIN_FILE           5
 
 void addSeparatorToShellContextMenu(HMENU hMenu)
 {
@@ -112,18 +118,22 @@ void addSeparatorToShellContextMenu(HMENU hMenu)
     InsertMenuItem(hMenu, 0, TRUE, &menu_item_info);
 }
 
-void addItemToShellContextMenu(HMENU hMenu, const wchar_t *name, int ID)
+void addItemToShellContextMenu(HMENU hMenu, const wchar_t *name, int ID, bool bChecked = false)
 {
     MENUITEMINFO menu_item_info;
     memset(&menu_item_info, 0, sizeof(MENUITEMINFO));
     menu_item_info.cbSize = sizeof(MENUITEMINFO);
     menu_item_info.fMask = MIIM_ID | MIIM_STRING | MIIM_DATA;
+    if (bChecked) {
+        menu_item_info.fMask |= MIIM_STATE;
+        menu_item_info.fState |= MFS_CHECKED;
+    }
     menu_item_info.wID = 0xF000 + ID;
     menu_item_info.dwTypeData = (wchar_t*)name;
     InsertMenuItem(hMenu, 0, TRUE, &menu_item_info);
 }
 
-int openShellContextMenu(const QStringList& Files, void* parentWindow, const CSandBoxPtr& pBox)
+int openShellContextMenu(const QStringList& Files, void* parentWindow, const CSandBoxPtr& pBox, QString* pPin = NULL)
 {
     CComPtr<IShellFolder> pDesktop;
     if (!SUCCEEDED(SHGetDesktopFolder(&pDesktop)))
@@ -176,8 +186,31 @@ int openShellContextMenu(const QStringList& Files, void* parentWindow, const CSa
         addSeparatorToShellContextMenu(hMenu);
 
         std::wstring Str1 = CFileView::tr("Create Shortcut").toStdWString();
-        if (Files.count() == 1) {
+        if (Files.count() == 1) 
+        {
             addItemToShellContextMenu(hMenu, Str1.c_str(), MENU_CREATE_SHORTCUT);
+
+            if (pPin)  
+            {
+                auto pBoxPlus = pBox.objectCast<CSandBoxPlus>();
+                QStringList RunOptions = pBox->GetTextList("RunCommand", true);
+
+                QString FoundPin;
+                QString FileName = Files.first();
+                foreach(const QString & RunOption, RunOptions) {
+		            QString CmdFile = pBoxPlus->GetCommandFile(Split2(RunOption, "|").second);
+		            if(CmdFile.compare(FileName, Qt::CaseInsensitive) == 0) {
+                        FoundPin = RunOption;
+                        break;
+                    }
+                }
+
+                *pPin = FoundPin;
+
+                std::wstring Str5 = CFileView::tr("Pin to Box Run Menu").toStdWString();
+                addItemToShellContextMenu(hMenu, Str5.c_str(), MENU_PIN_FILE, !FoundPin.isEmpty());
+            }
+
             addSeparatorToShellContextMenu(hMenu);
         }
 
@@ -242,7 +275,8 @@ void CFileView::OnFileMenu(const QPoint&)
     if (Files.isEmpty())
         return;
 
-    int iCmd = openShellContextMenu(Files, (void*)this->winId(), m_pBox);
+    QString FoundPin;
+    int iCmd = openShellContextMenu(Files, (void*)this->winId(), m_pBox, &FoundPin);
     if (iCmd == 0)
         return;
 
@@ -290,6 +324,15 @@ void CFileView::OnFileMenu(const QPoint&)
             SB_PROGRESS Status = theGUI->CheckFiles(m_pBox->GetName(), Files);
             if (Status.GetStatus() == OP_ASYNC)
                 theGUI->AddAsyncOp(Status.GetValue());
+            break;
+        }
+        case MENU_PIN_FILE:
+        {
+            auto pBoxPlus = m_pBox.objectCast<CSandBoxPlus>();
+            if (FoundPin.isEmpty())
+				pBoxPlus->InsertText("RunCommand", Split2(Files.first(), "\\", true).second + "|\"" + pBoxPlus->MakeBoxCommand(Files.first()) + "\"");
+            else
+				pBoxPlus->DelValue("RunCommand", FoundPin);
             break;
         }
         case MENU_CREATE_SHORTCUT:

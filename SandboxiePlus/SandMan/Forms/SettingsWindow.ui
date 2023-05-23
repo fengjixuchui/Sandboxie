@@ -241,13 +241,6 @@
                  </property>
                 </widget>
                </item>
-               <item row="3" column="1" colspan="2">
-                <widget class="QCheckBox" name="chkCopyProgress">
-                 <property name="text">
-                  <string>Show file migration progress when copying large files into a sandbox</string>
-                 </property>
-                </widget>
-               </item>
                <item row="8" column="0" rowspan="3" colspan="3">
                 <widget class="QTreeWidget" name="treeMessages">
                  <column>
@@ -276,13 +269,6 @@
                  </property>
                 </widget>
                </item>
-               <item row="4" column="1">
-                <widget class="QCheckBox" name="chkNotifyRecovery">
-                 <property name="text">
-                  <string>Show recoverable files as notifications</string>
-                 </property>
-                </widget>
-               </item>
                <item row="10" column="3">
                 <widget class="QToolButton" name="btnDelMessage">
                  <property name="sizePolicy">
@@ -299,16 +285,6 @@
                  </property>
                  <property name="text">
                   <string>Delete Entry</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="5" column="1" colspan="2">
-                <widget class="QCheckBox" name="chkNoMessages">
-                 <property name="text">
-                  <string>Don't show the popup message log for all SBIE messages</string>
-                 </property>
-                 <property name="checked">
-                  <bool>false</bool>
                  </property>
                 </widget>
                </item>
@@ -339,16 +315,6 @@
                  </property>
                 </spacer>
                </item>
-               <item row="2" column="1" colspan="2">
-                <widget class="QCheckBox" name="chkSilentMode">
-                 <property name="toolTip">
-                  <string>This option also enables asynchronous operation when needed and suspends updates.</string>
-                 </property>
-                 <property name="text">
-                  <string>Suppress pop-up notifications when in game / presentation mode</string>
-                 </property>
-                </widget>
-               </item>
                <item row="7" column="0" colspan="4">
                 <widget class="QLabel" name="label_12">
                  <property name="baseSize">
@@ -367,6 +333,53 @@
                   <bool>true</bool>
                  </property>
                 </widget>
+               </item>
+               <item row="5" column="1" colspan="3">
+                <widget class="QCheckBox" name="chkNoMessages">
+                 <property name="text">
+                  <string>Disable SBIE messages popups (they will still be logged to the Messages tab)</string>
+                 </property>
+                 <property name="checked">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="1" colspan="3">
+                <widget class="QCheckBox" name="chkNotifyRecovery">
+                 <property name="text">
+                  <string>Show recoverable files as notifications</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1" colspan="3">
+                <widget class="QCheckBox" name="chkCopyProgress">
+                 <property name="text">
+                  <string>Show file migration progress when copying large files into a sandbox</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1" colspan="3">
+                <widget class="QCheckBox" name="chkSilentMode">
+                 <property name="toolTip">
+                  <string>This option also enables asynchronous operation when needed and suspends updates.</string>
+                 </property>
+                 <property name="text">
+                  <string>Suppress pop-up notifications when in game / presentation mode</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <spacer name="horizontalSpacer_13">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
                </item>
               </layout>
              </item>
@@ -1212,7 +1225,7 @@
            <item row="3" column="2" colspan="6">
             <widget class="QLabel" name="lblSupportCert">
              <property name="text">
-              <string>Supporters of the Sandboxie-Plus project can receive a &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-get-cert&quot;&gt;supporter certificate&lt;/a&gt;. It's like a license key but for awesome people using open source software. :-)</string>
+              <string>Supporters of the Sandboxie-Plus project can receive a &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-cert&quot;&gt;supporter certificate&lt;/a&gt;. It's like a license key but for awesome people using open source software. :-)</string>
              </property>
              <property name="wordWrap">
               <bool>true</bool>
@@ -1305,7 +1318,7 @@
               </sizepolicy>
              </property>
              <property name="text">
-              <string>Keeping Sandboxie up to date with the rolling releases of Windows and compatible with all web browsers is a never-ending endeavor. Please consider supporting this work with a donation.&lt;br /&gt;You can support the development with a &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-cert&quot;&gt;PayPal donation&lt;/a&gt;, working also with credit cards.&lt;br /&gt;Or you can provide continuous support with a &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=patreon&quot;&gt;Patreon subscription&lt;/a&gt;.</string>
+              <string>Keeping Sandboxie up to date with the rolling releases of Windows and compatible with all web browsers is a never-ending endeavor. You can support the development by &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-contribute&quot;&gt;directly contributing to the project&lt;/a&gt;, showing your support by &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=sbie-obtain-cert&quot;&gt;purchasing a supporter certificate&lt;/a&gt;, becoming a patron by &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=patreon&quot;&gt;subscribing on Patreon&lt;/a&gt;, or through a &lt;a href=&quot;https://sandboxie-plus.com/go.php?to=donate&quot;&gt;PayPal donation&lt;/a&gt;.&lt;br /&gt;Your support plays a vital role in the advancement and maintenance of Sandboxie.</string>
              </property>
              <property name="textFormat">
               <enum>Qt::RichText</enum>

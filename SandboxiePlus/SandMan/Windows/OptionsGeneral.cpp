@@ -892,11 +892,12 @@ void COptionsWindow::OnBrowsePath()
 	if (Value.isEmpty())
 		return;
 
-	QString Name = QInputDialog::getText(this, "Sandboxie-Plus", tr("Please enter a menu title"), QLineEdit::Normal);
+	QString Name = QInputDialog::getText(this, "Sandboxie-Plus", tr("Please enter a menu title"), QLineEdit::Normal, Split2(Value, "\\", true).second);
 	if (Name.isEmpty())
 		return;
 
-	AddRunItem(Name, "", "\"" + Value + "\"");
+	CSandBoxPlus* pBoxEx = qobject_cast<CSandBoxPlus*>(m_pBox.data());
+	AddRunItem(Name, "", "\"" + (pBoxEx ? pBoxEx->MakeBoxCommand(Value) : Value) + "\"");
 	m_GeneralChanged = true;
 	OnOptChanged();
 }

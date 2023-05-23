@@ -123,6 +123,7 @@ CSandBoxPlus::CSandBoxPlus(const QString& BoxName, class CSbieAPI* pAPI) : CSand
 {
 	m_bLogApiFound = false;
 	m_bINetBlocked = false;
+	m_bINetExceptions = false;
 	m_bSharesAllowed = false;
 	m_bDropRights = false;
 	
@@ -337,13 +338,23 @@ void CSandBoxPlus::UpdateDetails()
 			break;
 		}
 	}
-	foreach(const QString& Entry, GetTextList("AllowNetworkAccess", false)) {
-		if (Entry == "!<InternetAccess>,n") {
-			m_bINetBlocked = true;
-			break;
+	if (theGUI->IsWFPEnabled()) {
+		foreach(const QString & Entry, GetTextList("AllowNetworkAccess", false)) {
+			if (Entry == "!<InternetAccess>,n") {
+				m_bINetBlocked = true;
+				break;
+			}
 		}
 	}
-
+	if (m_bINetBlocked) {
+		foreach(const QString& Entry, GetTextList("ProcessGroup", true)) {
+			StrPair NameList = Split2(Entry, ",");
+			if (NameList.first == "<InternetAccess>" && !NameList.second.isEmpty()) {
+				m_bINetExceptions = true;
+				break;
+			}
+		}
+	}
 
 	m_bSharesAllowed = GetBool("BlockNetworkFiles", true) == false;
 
@@ -661,8 +672,12 @@ QString CSandBoxPlus::GetStatusStr() const
 
 	if (m_bLogApiFound)
 		Status.append(tr("API Log"));
-	if (m_bINetBlocked)
-		Status.append(tr("No INet"));
+	if (m_bINetBlocked) {
+		if(m_bINetExceptions)
+			Status.append(tr("No INet (with Exceptions)"));
+		else
+			Status.append(tr("No INet"));
+	}
 	if (m_bSharesAllowed)
 		Status.append(tr("Net Share"));
 	if (m_bDropRights && !m_bSecurityEnhanced)
@@ -724,14 +739,23 @@ void CSandBoxPlus::SetLogApi(bool bEnable)
 
 void CSandBoxPlus::SetINetBlock(bool bEnable)
 {
-	if (bEnable)
-		InsertText("ClosedFilePath", "!<InternetAccess>,InternetAccessDevices");
+	if (bEnable) {
+		if(theGUI->IsWFPEnabled())
+			InsertText("AllowNetworkAccess", "!<InternetAccess>,n");
+		else
+			InsertText("ClosedFilePath", "!<InternetAccess>,InternetAccessDevices");
+	}
 	else
 	{
 		foreach(const QString& Entry, GetTextList("ClosedFilePath", false))
 		{
 			if (Entry.contains("InternetAccessDevices"))
 				DelValue("ClosedFilePath", Entry);
+		}
+		foreach(const QString& Entry, GetTextList("AllowNetworkAccess", false))
+		{
+			if (Entry.contains("!<InternetAccess>,n"))
+				DelValue("AllowNetworkAccess", Entry);
 		}
 	}
 }
@@ -946,6 +970,7 @@ next:
 		m_JobQueue.removeFirst();
 		theAPI->m_JobCount--;
 		if (Status.IsError()) {
+			theAPI->m_JobCount -= m_JobQueue.count();
 			m_JobQueue.clear();
 			theGUI->CheckResults(QList<SB_STATUS>() << Status);
 			return;
@@ -966,12 +991,14 @@ void CSandBoxPlus::OnAsyncFinished()
 	theAPI->m_JobCount--;
 	CSbieProgressPtr pProgress = pJob->GetProgress();
 	if (pProgress->IsCanceled()) {
+		theAPI->m_JobCount -= m_JobQueue.count();
 		m_JobQueue.clear();
 		return;
 	}
 
 	SB_STATUS Status = pProgress->GetStatus();
 	if (Status.IsError()) {
+		theAPI->m_JobCount -= m_JobQueue.count();
 		m_JobQueue.clear();
 		theGUI->CheckResults(QList<SB_STATUS>() << Status, true);
 		return;
@@ -1003,6 +1030,17 @@ void CSandBoxPlus::OnCancelAsync()
 	pProgress->Cancel();
 }
 
+QString CSandBoxPlus::MakeBoxCommand(const QString& FileName)
+{
+	QString BoxFileName = FileName;
+	//if (BoxFileName.indexOf(m_FilePath, Qt::CaseInsensitive) == 0) {
+	//	BoxFileName.remove(0, m_FilePath.length());
+	//	if (BoxFileName.at(0) != '\\')
+	//		BoxFileName.prepend('\\');
+	//}
+	return BoxFileName.replace(m_FilePath, "%BoxRoot%", Qt::CaseInsensitive);
+}
+
 QString CSandBoxPlus::GetCommandFile(const QString& Command)
 {
 	QString Path = Command;
@@ -1014,9 +1052,17 @@ QString CSandBoxPlus::GetCommandFile(const QString& Command)
 		int End = Path.indexOf(" ");
 		if (End != -1) Path.truncate(End);
 	}
+	//if (Path.left(1) == "\\")
+	//	Path.prepend(m_FilePath);
+	return Path.replace("%BoxRoot%", m_FilePath, Qt::CaseInsensitive);
+}
 
-	if (Path.left(1) == "\\")
-		Path.prepend(m_FilePath);
-
-	return Path;
+QString CSandBoxPlus::GetFullCommand(const QString& Command)
+{
+	QString FullCmd = Command;
+	//if(FullCmd.left(1) == "\\")
+	//	FullCmd.prepend(m_FilePath);
+	//else if(FullCmd.left(2) == "\"\\")
+	//	FullCmd.insert(1, m_FilePath);
+	return FullCmd.replace("%BoxRoot%", m_FilePath, Qt::CaseInsensitive);
 }
