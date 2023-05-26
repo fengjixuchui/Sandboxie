@@ -285,14 +285,14 @@ _FX BOOLEAN File_Init_Filter(void)
 
 _FX void File_Unload_Filter(void)
 {
-    if (File_ProtectedRootsLock) {
-        Mem_FreeLockResource(&File_ProtectedRootsLock);
-        File_ProtectedRootsLock = NULL;
-    }
-
     if (File_FilterCookie) {
         FltUnregisterFilter(File_FilterCookie);
         File_FilterCookie = NULL;
+    }
+
+    if (File_ProtectedRootsLock) {
+        Mem_FreeLockResource(&File_ProtectedRootsLock);
+        File_ProtectedRootsLock = NULL;
     }
 }
 
@@ -481,7 +481,7 @@ check:
     // check if there are any protected root folders and restict the access to
     //
 
-    if (Iopb->MajorFunction == IRP_MJ_CREATE /*&& File_ProtectedRoots.count != 0*/) {
+    if (Iopb->MajorFunction == IRP_MJ_CREATE && File_ProtectedRoots.count != 0 && Data->Iopb->TargetFileObject) {
 
         OBJECT_NAME_INFORMATION *Name;
         ULONG NameLength;
@@ -511,12 +511,6 @@ check:
                             status = STATUS_SUCCESS; // its the allowed box
                         }
                     }
-                    else {
-                        if (PsGetCurrentProcessId() == Api_ServiceProcessId)
-                            status = STATUS_SUCCESS; // always allow the service
-                        else if(Session_GetLeadSession(PsGetCurrentProcessId()) != 0)
-                            status = STATUS_SUCCESS; // allow the session leader
-                    }
 
                     break;
                 }
@@ -529,7 +523,13 @@ check:
 
             if (!NT_SUCCESS(status)) {
 
-                if (Conf_Get_Boolean(NULL, L"NotifyBoxProtected", 0, TRUE)) {
+                if (PsGetCurrentProcessId() == Api_ServiceProcessId)
+                    status = STATUS_SUCCESS; // always allow the service
+                else if(Session_GetLeadSession(PsGetCurrentProcessId()) != 0)
+                    status = STATUS_SUCCESS; // allow the session leader    
+                else
+
+                if (Conf_Get_Boolean(NULL, L"NotifyBoxProtected", 0, FALSE)) {
 
                     void *nbuf = 0;
                     ULONG nlen = 0;
@@ -599,7 +599,7 @@ check:
     }
     else if (Iopb->MajorFunction == IRP_MJ_ACQUIRE_FOR_SECTION_SYNCHRONIZATION) {
 
-        if (!proc->image_from_box && proc->protect_host_images) {
+        if (!proc->image_from_box && proc->protect_host_images && Data->Iopb->TargetFileObject) {
 
             //
             // If host image protection is enabled, check if we are in process of creating a new process

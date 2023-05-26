@@ -38,7 +38,7 @@ void CNewBoxWizard::showHelp()
 QString CNewBoxWizard::CreateNewBox(bool bAlowTemp, QWidget* pParent)
 {
 	CNewBoxWizard wizard(bAlowTemp, pParent);
-    if (!wizard.exec())
+    if (!theGUI->SafeExec(&wizard))
         return QString();
 
     QString BoxName = wizard.field("boxName").toString();
@@ -215,6 +215,8 @@ CBoxTypePage::CBoxTypePage(bool bAlowTemp, QWidget *parent)
 
     m_pInfoLabel = new QLabel();
     m_pInfoLabel->setWordWrap(true);
+    //m_pInfoLabel->setOpenExternalLinks(true);
+    connect(m_pInfoLabel, SIGNAL(linkActivated(const QString&)), theGUI, SLOT(OpenUrl(const QString&)));
     layout->addWidget(m_pInfoLabel, row++, 0, 1, 3);
 
     m_pBoxType->setCurrentIndex(3); // default

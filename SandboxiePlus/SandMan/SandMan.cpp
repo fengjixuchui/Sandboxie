@@ -984,6 +984,7 @@ void CSandMan::CreateView(int iViewMode)
 		
 		//m_pMessageLog->GetView()->setItemDelegate(theGUI->GetItemDelegate());
 		((QTreeWidgetEx*)m_pMessageLog->GetView())->setHeaderLabels(tr("Time|Message").split("|"));
+		((QTreeWidgetEx*)m_pMessageLog->GetView())->setColumnFixed(1, true);
 
 		m_pMessageLog->GetMenu()->insertAction(m_pMessageLog->GetMenu()->actions()[0], m_pCleanUpMsgLog);
 		m_pMessageLog->GetMenu()->insertSeparator(m_pMessageLog->GetMenu()->actions()[0]);
@@ -1009,6 +1010,8 @@ void CSandMan::CreateView(int iViewMode)
 
 		//m_pRecoveryLog->GetView()->setItemDelegate(theGUI->GetItemDelegate());
 		((QTreeWidgetEx*)m_pRecoveryLog->GetView())->setHeaderLabels(tr("Time|Box Name|File Path").split("|"));
+		((QTreeWidgetEx*)m_pRecoveryLog->GetView())->setColumnFixed(1, true);
+		((QTreeWidgetEx*)m_pRecoveryLog->GetView())->setColumnFixed(2, true);
 
 		m_pRecoveryLog->GetMenu()->insertAction(m_pRecoveryLog->GetMenu()->actions()[0], m_pCleanUpRecovery);
 		m_pRecoveryLog->GetMenu()->insertSeparator(m_pRecoveryLog->GetMenu()->actions()[0]);
@@ -1282,6 +1285,18 @@ bool CSandMan::IsSilentMode()
 	if (!theConf->GetBool("Options/CheckSilentMode", true))
 		return false;
 	return IsFullScreenMode();
+}
+
+QWidget* g_GUIParent = NULL;
+
+int CSandMan::SafeExec(QDialog* pDialog)
+{
+	QWidget* pPrevParent = g_GUIParent;
+	g_GUIParent = pDialog;
+	SafeShow(pDialog);
+	int ret = pDialog->exec();
+	g_GUIParent = pPrevParent;
+	return ret;
 }
 
 void CSandMan::OnMessage(const QString& MsgData)
@@ -2056,10 +2071,37 @@ void CSandMan::AddLogMessage(const QString& Message)
 	if (!m_pMessageLog)
 		return;
 
+	int last = m_pMessageLog->GetTree()->topLevelItemCount();
+	if (last > 0) {
+		QTreeWidgetItem* pItem = m_pMessageLog->GetTree()->topLevelItem(last-1);
+		if (pItem->data(1, Qt::UserRole).toString() == Message) {
+			int Count = pItem->data(0, Qt::UserRole).toInt();
+			if (Count == 0)
+				Count = 1;
+			Count++;
+			pItem->setData(0, Qt::UserRole, Count);
+			QLabel* pLabel = (QLabel*)m_pMessageLog->GetTree()->itemWidget(pItem, 1);
+			if(pLabel)
+				pLabel->setText(Message + tr(" (%1)").arg(Count));
+			else
+				pItem->setText(1, Message + tr(" (%1)").arg(Count));
+			return;
+		}
+	}
+
 	QTreeWidgetItem* pItem = new QTreeWidgetItem(); // Time|Message
 	pItem->setText(0, QDateTime::currentDateTime().toString("hh:mm:ss.zzz"));
-	pItem->setText(1, Message);
+	pItem->setData(1, Qt::UserRole, Message);
 	m_pMessageLog->GetTree()->addTopLevelItem(pItem);
+	if (Message.contains("</a>")) {
+		QLabel* pLabel = new QLabel(Message);
+		pLabel->setContentsMargins(3, 0, 0, 0);
+		connect(pLabel, SIGNAL(linkActivated(const QString&)), theGUI, SLOT(OpenUrl(const QString&)));
+		m_pMessageLog->GetTree()->setItemWidget(pItem, 1, pLabel);
+	}
+	else
+		pItem->setText(1, Message);
+		
 
 	m_pMessageLog->GetView()->verticalScrollBar()->setValue(m_pMessageLog->GetView()->verticalScrollBar()->maximum());
 }
@@ -2109,7 +2151,14 @@ void CSandMan::OnLogSbieMessage(quint32 MsgCode, const QStringList& MsgData, qui
 		// return;
 	}
 
-	QString Message = MsgCode != 0 ? theAPI->GetSbieMsgStr(MsgCode, m_LanguageId) : (MsgData.size() > 0 ? MsgData[0] : QString());
+	QString Message;
+	if (MsgCode != 0) {
+		Message = theAPI->GetSbieMsgStr(MsgCode, m_LanguageId);
+		Message.insert(8, "</a>");
+		Message.prepend("<a href=\"https://sandboxie-plus.com/go.php?to=sbie-sbie" + QString::number(MsgCode & 0xFFFF) + "\">");
+	}
+	else if(MsgData.size() > 0)
+		Message = MsgData[0];
 
 	for (int i = 1; i < MsgData.size(); i++)
 		Message = Message.arg(MsgData[i]);
@@ -2311,43 +2360,7 @@ void CSandMan::OnSandBoxAction()
 	else if (pAction == m_pNewGroup)
 		GetBoxView()->AddNewGroup();
 	else if (pAction == m_pImportBox)
-	{
-		QString Value = QFileDialog::getOpenFileName(this, tr("Select file name"), "", tr("7-zip Archive (*.7z)"));
-		if (Value.isEmpty())
-			return;
-
-		StrPair PathName = Split2(Value, "/", true);
-		StrPair NameEx = Split2(PathName.second, ".", true);
-		QString Name = NameEx.first;
-
-		CSandBoxPtr pBox;
-		for (;;) {
-			pBox = theAPI->GetBoxByName(Name);
-			if (pBox.isNull())
-				break;
-			Name = QInputDialog::getText(this, "Sandboxie-Plus", tr("This name is already in use, please select an alternative box name"), QLineEdit::Normal, Name);
-			if (Name.isEmpty())
-				return;
-		}
-
-		SB_PROGRESS Status = theAPI->CreateBox(Name);
-		if (!Status.IsError()) {
-			pBox = theAPI->GetBoxByName(Name);
-			if (pBox) {
-				auto pBoxEx = pBox.objectCast<CSandBoxPlus>();
-				Status = pBoxEx->ImportBox(Value);
-			}
-		}
-		if (Status.GetStatus() == OP_ASYNC) {
-			Status = theGUI->AddAsyncOp(Status.GetValue(), true, tr("Importing: %1").arg(Value));
-			if (Status.IsError()) {
-				theGUI->DeleteBoxContent(pBox, CSandMan::eForDelete);
-				pBox->RemoveBox();
-			}
-		}
-		else
-			CSandMan::CheckResults(QList<SB_STATUS>() << Status);
-	}
+		GetBoxView()->ImportSandbox();
 	else if (pAction == m_pRunBoxed)
 		RunSandboxed(QStringList() << "run_dialog");
 }

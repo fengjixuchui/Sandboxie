@@ -5,14 +5,22 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
+## [1.9.5 / 5.64.5] - 2023-05-??
+
+### Added
+- added Turn SBIE message IDs into clickable links [#2953](https://github.com/sandboxie-plus/Sandboxie/issues/2953)
+- added Limiting the number of same log messages [#2856](https://github.com/sandboxie-plus/Sandboxie/issues/2856)
+
+
+### Fixed
+- fixed sbie:// links are not working [#2959](https://github.com/sandboxie-plus/Sandboxie/issues/2959)
+- fixed Sbie Messages, Trace Log, Recovery Log tabs should never hide some columns [#2940](https://github.com/sandboxie-plus/Sandboxie/issues/2940)
+- fixed registerdevicenotificationw DBT_DEVTYP_DEVICEINTERFACE [#2129](https://github.com/sandboxie-plus/Sandboxie/discussions/2129) [#1975](https://github.com/sandboxie-plus/Sandboxie/issues/1975)
 
 
 
 
-
-
-
-## [1.9.4 / 5.64.4] - 2023-05-??
+## [1.9.4 / 5.64.4] - 2023-05-24
 
 ### Added
 - added more documentation links to the Plus UI
@@ -42,6 +50,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - fixed Name column in the sandbox view should never be hidden [#2933](https://github.com/sandboxie-plus/Sandboxie/issues/2933)
 - fixed File Panel does not share the right-click options provided in the sandbox view columns [#2934](https://github.com/sandboxie-plus/Sandboxie/issues/2934)
 - fixed Checkboxes issue of NetworkEnableWFP and EnableObjectFiltering settings [#2935](https://github.com/sandboxie-plus/Sandboxie/issues/2935)
+- fixed Unquoted service path [#537](https://github.com/sandboxie-plus/Sandboxie/issues/537)
+- fixed Running the Insert chart in Word in the sandbox fails [#2863](https://github.com/sandboxie-plus/Sandboxie/issues/2863)
+- fixed An error occurred in the switch sandbox type preset configuration [#2941](https://github.com/sandboxie-plus/Sandboxie/issues/2941)
+- fixed Unable to open excel (thanks lmou523) [#2890](https://github.com/sandboxie-plus/Sandboxie/issues/2890)
+
 
 
 
