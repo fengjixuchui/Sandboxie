@@ -4,8 +4,18 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
+## [1.9.6 / 5.64.6] - 2023-05-??
 
-## [1.9.5 / 5.64.5] - 2023-05-??
+### Changed
+- Don't close submenus on mouse-leave [#2963](https://github.com/sandboxie-plus/Sandboxie/issues/2963)
+
+### Fixed
+- fixed an issue with token manipulation in the SbieDrv driver
+
+
+
+
+## [1.9.5 / 5.64.5] - 2023-05-26
 
 ### Added
 - added Turn SBIE message IDs into clickable links [#2953](https://github.com/sandboxie-plus/Sandboxie/issues/2953)
@@ -16,6 +26,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - fixed sbie:// links are not working [#2959](https://github.com/sandboxie-plus/Sandboxie/issues/2959)
 - fixed Sbie Messages, Trace Log, Recovery Log tabs should never hide some columns [#2940](https://github.com/sandboxie-plus/Sandboxie/issues/2940)
 - fixed registerdevicenotificationw DBT_DEVTYP_DEVICEINTERFACE [#2129](https://github.com/sandboxie-plus/Sandboxie/discussions/2129) [#1975](https://github.com/sandboxie-plus/Sandboxie/issues/1975)
+- fixed a BSOD issue likely introduced in 1.9.4 (reported by 7starsseeker) [#2958](https://github.com/sandboxie-plus/Sandboxie/issues/2958)
 
 
 
