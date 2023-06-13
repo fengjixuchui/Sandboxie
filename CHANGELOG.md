@@ -4,14 +4,44 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
-## [1.9.6 / 5.64.6] - 2023-05-??
+
+## [1.9.7 / 5.64.7] - 2023-06-09
+
+### Added
+- added configurable toolbar items (thanks typpos) [#2961](https://github.com/sandboxie-plus/Sandboxie/pull/2961)
+- added new icons for Plus UI (thanks typpos) [#3010](https://github.com/sandboxie-plus/Sandboxie/pull/3010) [#3011](https://github.com/sandboxie-plus/Sandboxie/pull/3011)
 
 ### Changed
-- Don't close submenus on mouse-leave [#2963](https://github.com/sandboxie-plus/Sandboxie/issues/2963)
+- minor update to the BlockSoftwareUpdaters template (thanks APMichael) [#2991](https://github.com/sandboxie-plus/Sandboxie/pull/2991)
+
+### Fixed
+- fixed empty lines when using "Copy Panel" in Plus UI [#2995](https://github.com/sandboxie-plus/Sandboxie/issues/2995)
+- fixed Plus installer does not honor IniPath value when updating the current installed version (thanks offhub) [#2994](https://github.com/sandboxie-plus/Sandboxie/issues/2994)
+- fixed timestamp on crash dumps
+- fixed Firefox 114 crashes in security enhanced box, when start restrictions are enabled (thanks offhub) [#3019](https://github.com/sandboxie-plus/Sandboxie/issues/3019)
+- fixed a bug when there is no GUI proxy (thanks lmou523) [#3020](https://github.com/sandboxie-plus/Sandboxie/pull/3020)
+
+
+
+## [1.9.6 / 5.64.6] - 2023-05-30
+
+### Added
+- added full stack trace to all trace messages
+  - activating the Trace Log tab also turns on the Keep Terminated feature by default [#2988](https://github.com/sandboxie-plus/Sandboxie/issues/2988#issuecomment-1567787776)
+- added option to launch the default notepad editor as non-admin [#2987](https://github.com/sandboxie-plus/Sandboxie/issues/2987)
 
 ### Fixed
 - fixed an issue with token manipulation in the SbieDrv driver
-
+- fixed "Reset all GUI options" does not reset all GUI sections as expected [#2967](https://github.com/sandboxie-plus/Sandboxie/issues/2967)
+- fixed sbie:// links below the Box Type presets [#2959](https://github.com/sandboxie-plus/Sandboxie/issues/2959#issuecomment-1565264161)
+- fixed "Reset all GUI options" makes all sandbox names disappear [#2972](https://github.com/sandboxie-plus/Sandboxie/issues/2972)
+- fixed A game can't be launched properly from "Run from Start Menu" [#2969](https://github.com/sandboxie-plus/Sandboxie/issues/2969)
+- fixed drag and drop issue with Microsoft Excel data grid [9455e96](https://github.com/sandboxie-plus/Sandboxie/commit/9455e96a699cbc665f791e191f2a13bb40783ab0)
+  - additional feedback for other drag and drop scenarios can be provided in [#856](https://github.com/sandboxie-plus/Sandboxie/issues/856)
+- fixed regression: DLL loading problem (Entry Point Not Found) [#2980](https://github.com/sandboxie-plus/Sandboxie/issues/2980)
+- fixed Sandboxie does not mark deleted files or registry keys while virtualization scheme v2 is active (1.9.4/1.9.5) [#2984](https://github.com/sandboxie-plus/Sandboxie/issues/2984)
+- fixed SandMan: Timestamp of the Sandboxie.ini [#2985](https://github.com/sandboxie-plus/Sandboxie/issues/2985)
+- fixed crash after pressing the button "Show NT Object Tree" several times (Plus UI) [#2943](https://github.com/sandboxie-plus/Sandboxie/issues/2943)
 
 
 
@@ -21,13 +51,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - added Turn SBIE message IDs into clickable links [#2953](https://github.com/sandboxie-plus/Sandboxie/issues/2953)
 - added Limiting the number of same log messages [#2856](https://github.com/sandboxie-plus/Sandboxie/issues/2856)
 
-
 ### Fixed
-- fixed sbie:// links are not working [#2959](https://github.com/sandboxie-plus/Sandboxie/issues/2959)
+- fixed sbie:// links not working properly [#2959](https://github.com/sandboxie-plus/Sandboxie/issues/2959)
 - fixed Sbie Messages, Trace Log, Recovery Log tabs should never hide some columns [#2940](https://github.com/sandboxie-plus/Sandboxie/issues/2940)
-- fixed registerdevicenotificationw DBT_DEVTYP_DEVICEINTERFACE [#2129](https://github.com/sandboxie-plus/Sandboxie/discussions/2129) [#1975](https://github.com/sandboxie-plus/Sandboxie/issues/1975)
+- fixed the RegisterDeviceNotificationW function DBT_DEVTYP_DEVICEINTERFACE [#2129](https://github.com/sandboxie-plus/Sandboxie/discussions/2129) [#1975](https://github.com/sandboxie-plus/Sandboxie/issues/1975)
 - fixed a BSOD issue likely introduced in 1.9.4 (reported by 7starsseeker) [#2958](https://github.com/sandboxie-plus/Sandboxie/issues/2958)
-
 
 
 
@@ -56,17 +84,15 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - fixed RecoverFolder shows GUID instead of folder name [#2918](https://github.com/sandboxie-plus/Sandboxie/issues/2918)
 - fixed System tray icon hourglass overlay gets stuck when operation is stopped [#2869](https://github.com/sandboxie-plus/Sandboxie/issues/2869)
 - fixed File Panel doesn't allow to adjust columns size in a permanent way [#2930](https://github.com/sandboxie-plus/Sandboxie/issues/2930)
-- fixed Renaming a box with sandboxed run entries can break those entries. [#2921](https://github.com/sandboxie-plus/Sandboxie/issues/2921)
+- fixed Renaming a box with sandboxed run entries can break those entries [#2921](https://github.com/sandboxie-plus/Sandboxie/issues/2921)
 - fixed WFP not enabled after Setup Wizard and other issues [#2915](https://github.com/sandboxie-plus/Sandboxie/issues/2915)
 - fixed Name column in the sandbox view should never be hidden [#2933](https://github.com/sandboxie-plus/Sandboxie/issues/2933)
 - fixed File Panel does not share the right-click options provided in the sandbox view columns [#2934](https://github.com/sandboxie-plus/Sandboxie/issues/2934)
 - fixed Checkboxes issue of NetworkEnableWFP and EnableObjectFiltering settings [#2935](https://github.com/sandboxie-plus/Sandboxie/issues/2935)
 - fixed Unquoted service path [#537](https://github.com/sandboxie-plus/Sandboxie/issues/537)
-- fixed Running the Insert chart in Word in the sandbox fails [#2863](https://github.com/sandboxie-plus/Sandboxie/issues/2863)
+- fixed Running the Insert chart in Microsoft Word in the sandbox fails [#2863](https://github.com/sandboxie-plus/Sandboxie/issues/2863)
 - fixed An error occurred in the switch sandbox type preset configuration [#2941](https://github.com/sandboxie-plus/Sandboxie/issues/2941)
-- fixed Unable to open excel (thanks lmou523) [#2890](https://github.com/sandboxie-plus/Sandboxie/issues/2890)
-
-
+- fixed Unable to open Microsoft Excel (thanks lmou523) [#2890](https://github.com/sandboxie-plus/Sandboxie/issues/2890)
 
 
 
@@ -76,7 +102,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - added global setting to disable overlay icons
 - added ability to specify Sandboxie.ini location in registry
   - open "HKLM\SYSTEM\CurrentControlSet\Services\SbieDrv" and set "IniPath" [#2837](https://github.com/sandboxie-plus/Sandboxie/issues/2837)
-  - use a REG_SZ string for the path, like "\??\C:\my_path\my_sandboxie.ini"
+  - use a REG_SZ string for the path, like "\\??\C:\my_path\my_sandboxie.ini"
 
 ### Changed
 - improved handling of DLL injection failure
@@ -85,7 +111,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 - fixed issue with command lines [#2858](https://github.com/sandboxie-plus/Sandboxie/issues/2858)
 - fixed issue with always on top in the recovery window [#2885](https://github.com/sandboxie-plus/Sandboxie/issues/2885)
-
 
 
 
@@ -117,6 +142,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - fixed issue with TLS support using Qt6 [#2682](https://github.com/sandboxie-plus/Sandboxie/issues/2682)
 - added template preset for Spotify [#2673](https://github.com/sandboxie-plus/Sandboxie/issues/2673)
 - added missing localisation to finder [#2845](https://github.com/sandboxie-plus/Sandboxie/issues/2845)
+
 
 
 ## [1.9.0 / 5.64.0] - 2023-04-17
@@ -253,7 +279,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
-
 ## [1.7.2 / 5.62.2] - 2023-02-05
 
 ### Changed
@@ -304,7 +329,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
-
 ## [1.7.0 / 5.62.0] - 2023-01-27
 
 
@@ -316,14 +340,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - added SBIE2113/SBIE2114/SBIE2115 message to indicate when files are not migrated due to presets
 - added 'NoParallelLoading=y' to disable parallel loading of dlls to debug loader issues
 
-### changed
+### Changed
 - moved SeparateUserFolders checkbox from global settings to per box options
 
-### fixed
+### Fixed
 - resolved SbieDll.dll incompatibility with shadow stack and enabled /CETCOMPAT for SbieDll.dll [#2559](https://github.com/sandboxie-plus/Sandboxie/issues/2559)
 - added missing registry hooks to improve compatibility with newer applications
 - fixed permission issue with registry entries in privacy mode boxes
-
 
 
 
@@ -359,9 +382,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
-
-
-
 ## [1.6.5 / 5.61.5] - 2023-01-10
 
 ### Added
@@ -375,7 +395,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - fixed issue with Microsoft Edge in a security enhanced box [#2571](https://github.com/sandboxie-plus/Sandboxie/issues/2571)
 - opened OpenIpcPath=\\{BEC19D6F-D7B2-41A8-860C-8787BB964F2D} on ARM64 systems
 - fixed incompatibility with Windows 11 21H2 ARM64 [#2431](https://github.com/sandboxie-plus/Sandboxie/issues/2431)
-
 
 
 
@@ -423,7 +442,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
-
 ## [1.6.2 / 5.61.2] - 2022-12-19
 
 ### Added
@@ -439,7 +457,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 - fixed support setting page not showing version updates properly
-
 
 
 
@@ -493,7 +510,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
-
 ## [1.5.3 / 5.60.3] - 2022-11-08
 
 ### Added
@@ -514,8 +530,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - fixed BSOD issue when driver initialization fails (introduced in 1.5.1) [#2431](https://github.com/sandboxie-plus/Sandboxie/issues/2431)
 - fixed fake paths being listed even if true paths do not exist [#2403](https://github.com/sandboxie-plus/Sandboxie/issues/2403)
 - fixed issue with Firefox 106.x requesting write access to plugin executables [#2391](https://github.com/sandboxie-plus/Sandboxie/issues/2391) [#2411](https://github.com/sandboxie-plus/Sandboxie/issues/2411)
-
-
 
 
 
@@ -561,7 +575,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
   - Note: ARM32 on ARM64 is not implemented and will terminate with message SBIE2338
   - Note: when Sandboxie is running, it disables the use of CHPE binaries for x86 processes globally - as required for the forced process functionality. This can be disabled by adding the global option "DisableCHPE=n" to the Sandboxie.ini, which will terminate x86 processes started outside the sandbox with message SBIE2338, instead of being forced
 
-### fixed
+### Changed
+- reworked API compatibility check
+- breakout process is now available for all users
+
+### Fixed
 - fixed issue with Win32 hooks in x86 applications
 - avoid window overlap when editing templates [#2339](https://github.com/sandboxie-plus/Sandboxie/pull/2339) (thanks okrc)
 - fixed incorrect write of OpenWinClass UI setting [#2347](https://github.com/sandboxie-plus/Sandboxie/pull/2347) (thanks okrc)
@@ -569,11 +587,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - fixed Edge WebView2 compatibility issue [#2350](https://github.com/sandboxie-plus/Sandboxie/issues/2350)
 - added provisional workaround for Firefox 106 content process sandbox issue
 - fixed bug with renaming sandboxes [#2358](https://github.com/sandboxie-plus/Sandboxie/pull/2358) (thanks okrc)
-
-### Changed
-- reworked API compatibility check
-- breakout process is now available for all users
-
 
 
 
@@ -623,7 +636,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - added new miscellaneous tab in the advanced options tab allowing to configure specific processes and other advanced options
 - added "SeparateUserFolders=y" and "SandboxieLogon=y" to the sandbox options dialog
 - added icons to the section labels on the option pages
-
 
 ### Changed
 - prepared for Qt 6.3.1
@@ -797,7 +809,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - the access view list now adds the trailing "*" to file and key paths the same way the driver does [2039](https://github.com/sandboxie-plus/Sandboxie/issues/2039)
 - setup of shell integration is now done by SandMan, not the installer
 - uninstaller can now remove the sandbox folders [#1235](https://github.com/sandboxie-plus/Sandboxie/pull/1235)
-
 
 
 
@@ -1465,22 +1476,18 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - added Privacy enhanced mode, sandboxes with "UsePrivacyMode=y" will not allow read access to locations containing user data
   - all locations except generic Windows system paths will need to be opened explicitly for read and/or write access
   - using "NormalFilePath=...", "NormalKeyPath=...", "NormalIpcPath=..." allows to open locations to be readable and sandboxed
-
 - added new app compartment mode of operation, it is enabled by adding "NoSecurityIsolation=y" to the box config
   - in this mode, security is traded in for compatibility, it should not be used for untrusted applications
   - Note: in this mode, file and registry filtering are still in place, hence processes run without administrative privileges
   - it is reasonably safe, all filtering can be disabled with "NoSecurityFiltering=y"
-
 - added experimental use of ObRegisterCallbacks to filter object creation and duplication
   - this filtering is independent from the regular SbieDrv's syscall-based filtering, hence it also applies to app compartments
   - with it enabled, an application running in a compartment will not be able to manipulate processes running outside the sandbox
   - Note: this feature improves the security of non-isolated app compartment boxes
   - to enable this feature, set "EnableObjectFiltering=y" in the global section and reload the driver
   - when globally activated, the filtering can be disabled for individual boxes with "DisableObjectFilter=y"
-
 - added "DontOpenForBoxed=n", this option disables the discrimination of boxed processes for open file and open key directives
   - this behaviour does not really improve security anyway, but may be annoying, also app compartments always disable this
-
 - added setting to entirely open access to the COM infrastructure
 
 ### Changed
@@ -1601,10 +1608,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - removed the ability to sort the trace log as it took too much CPU
 
 
+
 ## [0.9.7e / 5.52.5] - 2021-10-09
 
 ### Changed
 - reworked the settings handling once again, now the driver maintains the order when enumerating, but for good performance there is a Hash Map held in parallel for quick exact lookups
+
 
 
 ## [0.9.7d / 5.52.4] - 2021-10-06
@@ -1613,10 +1622,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - fixed yet another ini issue with the SbieCtrl
 
 
+
 ## [0.9.7c / 5.52.3] - 2021-10-05
 
 ### Fixed
 - fixed yet another handling bug with SbieApi_EnumBoxesEx
+
 
 
 ## [0.9.7b / 5.52.2] - 2021-10-04
@@ -2152,7 +2163,6 @@ Fixed issue with Windows 7
   - with "FakeAdminRights=y" and "DropAdminRights=y" installers should still work
 - added RPC support for SSDP API (the Simple Service Discovery Protocol), you can enable it with "OpenUPnP=y"
 
-
 ### Changed
 - SbieCrypto no longer triggers message 1313
 - changed enum process API; now more than 511 processes per box can be enumerated (no limit)
@@ -2610,7 +2620,7 @@ Fixed issue with Windows 7
 - moved function hooking mechanism from SbieDrv to SbieDll
 - introduced a new driverless method to resolve wow64 ntdll base address
 
-### removed
+### Removed
 - removed support for Windows Vista x64
 
 
@@ -2819,7 +2829,6 @@ Fixed issue with Windows 7
 - created a new Qt based UI names SandMan (Sandboxie Manager)
 - Resource Monitor now shows the PID
 - added basic API call log using updated BSA LogApiDll
-
 
 ### Changed
 - reworked Resource Monitor to work with multiple event consumers

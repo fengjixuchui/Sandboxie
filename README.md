@@ -7,6 +7,8 @@
 
 Sandboxie is a sandbox-based isolation software for 32-bit and 64-bit Windows NT-based operating systems. It creates a sandbox-like isolated operating environment in which applications can be run or installed without permanently modifying local & mapped drives or the Windows registry. An isolated virtual environment allows controlled testing of untrusted programs and web surfing.<br>
 
+Sandboxie allows you to create virtually unlimited sandboxes to isolate programs from the host and each other, while also allowing you to run as many programs simultaneously in a single box as you wish.
+
 |  System requirements  |      Release notes     |      Security policy      |      Contribution guidelines   |
 |         :---:         |          :---:         |          :---:            |          :---:                 |
 | Windows 7 or higher, 32-bit or 64-bit. |  [CHANGELOG.md](./CHANGELOG.md)  |   [SECURITY.md](./SECURITY.md)  |  [CONTRIBUTING.md](./CONTRIBUTING.md)  |
@@ -27,6 +29,7 @@ Sandboxie Plus has a modern Qt-based UI, which supports all new features that ha
   * Portable mode - you can run the installer and choose to extract all files to a directory
   * Additional UI options to block access for Windows components like printer spooler and clipboard
   * More customization options for Start/Run and Internet access restrictions
+  * Privacy mode sandboxes that protect user data from illegitimate access
   * Global hotkey to terminate all boxed processes
   * A network firewall per sandbox which supports Windows Filtering Platform (WFP)
   * The list of sandboxes can be searched with the shortcut key Ctrl+F
@@ -96,13 +99,14 @@ If you find Sandboxie useful, then feel free to contribute through our [Contribu
 - hg421 - Security analysis & PoCs / Code reviews
 - hx1997 - Security analysis & PoC
 - mpheath - Author of Plus installer / Code fixes / Collaborator
-- offhub - Documentation additions / Collaborator
+- offhub - Documentation additions / Code fixes / Collaborator
 - isaak654 - Templates / Documentation / Code fixes / Collaborator
+- typpos - UI additions / Documentation / Code fixes
 - okrc - Code fixes
 - Sapour - Code fixes
 - lmou523 - Code fixes
+- weihongx9315 - Code fix
 - stephtr - CI / Certification
-- typpos - UI suggestions / Documentation / Code reviews
 - Dyras - Templates additions
 - cricri-pingouin - UI fixes
 - Valinwolf - UI / Icons
@@ -111,7 +115,6 @@ If you find Sandboxie useful, then feel free to contribute through our [Contribu
 - NewKidOnTheBlock - Changelog fixes
 - Naeemh1 - Documentation additions
 - APMichael - Templates additions
-- weihongx9315 - Windows Credentials fix
 - 1mm0rt41PC - Documentation additions
 - Luro223 - Documentation additions
 - lwcorp - Documentation additions
