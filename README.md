@@ -105,19 +105,21 @@ If you find Sandboxie useful, then feel free to contribute through our [Contribu
 - okrc - Code fixes
 - Sapour - Code fixes
 - lmou523 - Code fixes
+- sredna - Code fixes for Classic installer
 - weihongx9315 - Code fix
+- yfdyh000 - Localization support for Plus installer
 - stephtr - CI / Certification
 - Dyras - Templates additions
 - cricri-pingouin - UI fixes
 - Valinwolf - UI / Icons
 - daveout - UI / Icons
-- yfdyh000 - Localization support for Plus installer
 - NewKidOnTheBlock - Changelog fixes
 - Naeemh1 - Documentation additions
 - APMichael - Templates additions
 - 1mm0rt41PC - Documentation additions
 - Luro223 - Documentation additions
 - lwcorp - Documentation additions
+- wilders-soccerfan - Documentation additions
 
 ## 🌏 Translators
 
