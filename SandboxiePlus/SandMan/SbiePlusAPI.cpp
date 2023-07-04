@@ -92,16 +92,16 @@ void CSbiePlusAPI::StopMonitor()
 	m_BoxMonitor->Stop();
 }
 
-SB_STATUS CSbiePlusAPI::RunStart(const QString& BoxName, const QString& Command, bool Elevated, const QString& WorkingDir, QProcess* pProcess)
+SB_RESULT(quint32) CSbiePlusAPI::RunStart(const QString& BoxName, const QString& Command, bool Elevated, const QString& WorkingDir, QProcess* pProcess)
 {
 	if (!pProcess)
 		pProcess = new QProcess(this);
-	SB_STATUS Status = CSbieAPI::RunStart(BoxName, Command, Elevated, WorkingDir, pProcess);
+	SB_RESULT(quint32) Status = CSbieAPI::RunStart(BoxName, Command, Elevated, WorkingDir, pProcess);
 	if (pProcess->parent() == this) {
 		if (!Status.IsError()) {
 			connect(pProcess, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(OnStartFinished()));
 			m_PendingStarts.insert(pProcess->processId());
-			return SB_OK;
+			return Status;
 		}
 		delete pProcess;
 	}
@@ -228,7 +228,7 @@ void CSandBoxPlus::ExportBoxAsync(const CSbieProgressPtr& pProgress, const QStri
 	}
 
 	SB_STATUS Status = SB_OK;
-	if (!Archive.Update(&Files)) 
+	if (!Archive.Update(&Files, true, theConf->GetInt("Options/ExportCompression", 5)))  // 0, 1 - 9
 		Status = SB_ERR((ESbieMsgCodes)SBX_7zCreateFailed);
 	
 	//if(!Status.IsError() && !pProgress->IsCanceled())
@@ -549,22 +549,22 @@ void CSandBoxPlus::SetBoxPaths(const QString& FilePath, const QString& RegPath, 
 		return;
 	}
 
-	m_IsEmpty = IsEmpty();
-
-	if (bPathChanged && theConf->GetBool("Options/WatchBoxSize", false) && m_TotalSize == -1)
-		((CSbiePlusAPI*)theAPI)->m_BoxMonitor->ScanBox(this);
+	if(bPathChanged)
+		UpdateSize(false);
 
 	if (theConf->GetBool("Options/ScanStartMenu", true))
 		ScanStartMenu();
 }
 
-void CSandBoxPlus::UpdateSize()
+void CSandBoxPlus::UpdateSize(bool bReset)
 {
-	m_TotalSize = -1;
-	if(theConf->GetBool("Options/WatchBoxSize", false))
-		((CSbiePlusAPI*)theAPI)->m_BoxMonitor->ScanBox(this);
+	if(bReset)
+		m_TotalSize = -1;
 
 	m_IsEmpty = IsEmpty();
+
+	if(theConf->GetBool("Options/WatchBoxSize", false) && m_TotalSize == -1)
+		((CSbiePlusAPI*)theAPI)->m_BoxMonitor->ScanBox(this);
 }
 
 void CSandBoxPlus::SetSize(quint64 Size)
@@ -600,6 +600,28 @@ void CSandBoxPlus::CloseBox()
 		ScanStartMenu();
 }
 
+SB_STATUS CSandBoxPlus::RenameBox(const QString& NewName)
+{
+	if (GetBool("IsShadow"))
+		return RenameSection(NewName);
+
+	BeginModifyingBox(); 
+
+	SB_STATUS Status = CSandBox::RenameBox(NewName); 
+
+	ConnectEndSlot(Status); 
+
+	return Status; 
+}
+
+SB_STATUS CSandBoxPlus::RemoveBox()
+{
+	if (GetBool("IsShadow"))
+		return RemoveSection();
+
+	return CSandBox::RemoveBox();
+}
+
 void CSandBoxPlus::ConnectEndSlot(const SB_PROGRESS& Status)
 {
 	CSbieProgressPtr pProgress = Status.GetValue();
@@ -626,6 +648,13 @@ void CSandBoxPlus::EndModifyingBox()
 	UpdateSize();
 	if (theConf->GetBool("Options/ScanStartMenu", true))
 		ScanStartMenu();
+}
+
+bool CSandBoxPlus::IsEmpty() const
+{
+	if (!CSandBox::IsEmpty())
+		return false;
+	return true;
 }
 
 bool CSandBoxPlus::CheckUnsecureConfig() const
@@ -975,7 +1004,7 @@ next:
 		if (Status.IsError()) {
 			theAPI->m_JobCount -= m_JobQueue.count();
 			m_JobQueue.clear();
-			theGUI->CheckResults(QList<SB_STATUS>() << Status);
+			theGUI->CheckResults(QList<SB_STATUS>() << Status, theGUI);
 			return;
 		}
 		if (!m_JobQueue.isEmpty())
@@ -1003,7 +1032,7 @@ void CSandBoxPlus::OnAsyncFinished()
 	if (Status.IsError()) {
 		theAPI->m_JobCount -= m_JobQueue.count();
 		m_JobQueue.clear();
-		theGUI->CheckResults(QList<SB_STATUS>() << Status, true);
+		theGUI->CheckResults(QList<SB_STATUS>() << Status, theGUI, true);
 		return;
 	}
 	else
@@ -1068,4 +1097,153 @@ QString CSandBoxPlus::GetFullCommand(const QString& Command)
 	//else if(FullCmd.left(2) == "\"\\")
 	//	FullCmd.insert(1, m_FilePath);
 	return FullCmd.replace("%BoxRoot%", m_FilePath, Qt::CaseInsensitive);
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+// CSbieTemplatesEx
+//
+
+#include <ntstatus.h>
+#define WIN32_NO_STATUS
+typedef long NTSTATUS;
+#include <Windows.h>
+//#include <Winternl.h>
+
+#include "..\..\Sandboxie\common\win32_ntddk.h"
+
+#define MAX_KEY_NAME 255
+#define MAX_VALUE_NAME 16383
+#define MAX_VALUE_DATA 1024000
+
+#include <comdef.h>
+#include <wuapi.h>
+
+void CSbieTemplatesEx::CollectUpdates()
+{
+	IUpdateSession* updateSession = NULL;
+	IUpdateSearcher* updateSearcher = NULL;
+	ISearchResult* searchResult = NULL;
+	IUpdateCollection* updates = NULL;
+	HRESULT res;
+
+	res = CoInitializeEx(NULL, 0);
+	if (FAILED(res)) {
+		theGUI->OnLogMessage(tr("Failed to initialize COM"));
+		goto cleanup;
+	}
+
+	res = CoCreateInstance(CLSID_UpdateSession, NULL, CLSCTX_INPROC_SERVER, IID_IUpdateSession, (LPVOID*)&updateSession);
+	if (FAILED(res)) {
+		theGUI->OnLogMessage(tr("Failed to create update session"));
+		goto cleanup;
+	}
+
+	res = updateSession->CreateUpdateSearcher(&updateSearcher);
+	if (FAILED(res)) {
+		theGUI->OnLogMessage(tr("Failed to create update searcher"));
+		goto cleanup;
+	}
+
+	res = updateSearcher->put_IncludePotentiallySupersededUpdates(VARIANT_TRUE);
+	if (FAILED(res)) {
+		theGUI->OnLogMessage(tr("Failed to set search options"));
+		goto cleanup;
+	}
+
+	{BSTR criteria = SysAllocString(L"IsInstalled=1"); // or IsHidden=1
+	res = updateSearcher->Search(criteria, &searchResult);
+	SysFreeString(criteria); }
+	if (FAILED(res)) {
+		theGUI->OnLogMessage(tr("Failed to search for updates"));
+		goto cleanup;
+	}
+
+	res = searchResult->get_Updates(&updates);
+	if (FAILED(res)) {
+		theGUI->OnLogMessage(tr("Failed to retrieve update list from search result"));
+		goto cleanup;
+	}
+
+	LONG updateCount;
+	res = updates->get_Count(&updateCount);
+	if (FAILED(res)) {
+		theGUI->OnLogMessage(tr("Failed to get update count"));
+		goto cleanup;
+	}
+
+
+	for (LONG i = 0L; i < updateCount; ++i)
+	{
+		QVariantMap entry;
+
+		IUpdate* update = NULL;
+		res = updates->get_Item(i, &update);
+		if (!FAILED(res))
+		{
+			IStringCollection* updateKBIDs = NULL;
+			res = update->get_KBArticleIDs(&updateKBIDs);
+			if (SUCCEEDED(res)) {
+				LONG kbIDCount;
+				res = updateKBIDs->get_Count(&kbIDCount);
+				if (SUCCEEDED(res)) {
+					QVariantList kb;
+					for (LONG j = 0L; j < kbIDCount; ++j) {
+						BSTR kbID;
+						res = updateKBIDs->get_Item(j, &kbID);
+						if (FAILED(res))
+							continue;
+						kb.append("KB" + QString::fromWCharArray(kbID));
+						SysFreeString(kbID);
+					}
+					entry["kb"] = kb;
+				}
+				updateKBIDs->Release();
+			}
+
+			BSTR updateTitle;
+			res = update->get_Title(&updateTitle);
+			if (!FAILED(res)) {
+				entry["title"] = QString::fromWCharArray(updateTitle);
+				SysFreeString(updateTitle);
+			}
+
+			update->Release();
+		}
+		m_Updates.append(entry);
+	}
+
+cleanup:
+	if (updates != NULL) updates->Release();
+	if (searchResult != NULL) searchResult->Release();
+	if (updateSearcher != NULL) updateSearcher->Release();
+	if (updateSession != NULL) updateSession->Release();
+
+	CoUninitialize();
+}
+
+void CSbieTemplatesEx::Reset()
+{
+	CSbieTemplates::Reset();
+	m_Updates.clear();
+}
+
+QList<QVariantMap> CSbieTemplatesEx::GetUpdates()
+{
+	if (m_Updates.isEmpty())
+		CollectUpdates();
+
+	return m_Updates;
+}
+
+bool CSbieTemplatesEx::CheckUpdates(const QString& value)
+{
+	if (m_Updates.isEmpty())
+		CollectUpdates();
+
+	auto I = std::find_if(m_Updates.begin(), m_Updates.end(), [value](const QVariantMap& cur)->bool {
+		return cur["kb"].toStringList().contains(value, Qt::CaseInsensitive);
+	});
+	bool bRet = (I != m_Updates.end());
+	return bRet;
 }

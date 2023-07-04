@@ -12,6 +12,8 @@
 #include "../MiscHelpers/Archive/ArchiveFS.h"
 #include <QJsonDocument>
 #include "../Wizards/TemplateWizard.h"
+#include "../AddonManager.h"
+#include <qfontdialog.h>
 
 
 #include <windows.h>
@@ -111,6 +113,8 @@ quint32 g_FeatureFlags = 0;
 QByteArray g_Certificate;
 SCertInfo g_CertInfo = { 0 };
 
+void COptionsWindow__AddCertIcon(QWidget* pOriginalWidget);
+
 CSettingsWindow::CSettingsWindow(QWidget* parent)
 	: CConfigDialog(parent)
 {
@@ -144,11 +148,12 @@ CSettingsWindow::CSettingsWindow(QWidget* parent)
 	ui.tabs->setTabIcon(0, CSandMan::GetIcon("Config"));
 	ui.tabs->setTabIcon(1, CSandMan::GetIcon("Shell"));
 	ui.tabs->setTabIcon(2, CSandMan::GetIcon("Design"));
-	ui.tabs->setTabIcon(3, CSandMan::GetIcon("Support"));
-	ui.tabs->setTabIcon(4, CSandMan::GetIcon("Advanced"));
-	ui.tabs->setTabIcon(5, CSandMan::GetIcon("Control"));
-	ui.tabs->setTabIcon(6, CSandMan::GetIcon("Compatibility"));
-	ui.tabs->setTabIcon(7, CSandMan::GetIcon("Editor"));
+	ui.tabs->setTabIcon(3, CSandMan::GetIcon("Plugins"));
+	ui.tabs->setTabIcon(4, CSandMan::GetIcon("Support"));
+	ui.tabs->setTabIcon(5, CSandMan::GetIcon("Advanced"));
+	ui.tabs->setTabIcon(6, CSandMan::GetIcon("Control"));
+	ui.tabs->setTabIcon(7, CSandMan::GetIcon("Compatibility"));
+	ui.tabs->setTabIcon(8, CSandMan::GetIcon("Editor"));
 
 	ui.tabsGeneral->setCurrentIndex(0);
 	ui.tabsGeneral->setTabIcon(0, CSandMan::GetIcon("Presets"));
@@ -161,6 +166,14 @@ CSettingsWindow::CSettingsWindow(QWidget* parent)
 	ui.tabsGUI->setCurrentIndex(0);
 	ui.tabsGUI->setTabIcon(0, CSandMan::GetIcon("Interface"));
 	ui.tabsGUI->setTabIcon(1, CSandMan::GetIcon("Monitor"));
+
+	ui.tabsAddons->setCurrentIndex(0);
+	ui.tabsAddons->setTabIcon(0, CSandMan::GetIcon("Plugin"));
+	//ui.tabsAddons->setTabIcon(1, CSandMan::GetIcon("Qube"));
+
+	ui.tabsSupport->setCurrentIndex(0);
+	ui.tabsSupport->setTabIcon(0, CSandMan::GetIcon("Cert"));
+	ui.tabsSupport->setTabIcon(1, CSandMan::GetIcon("ReloadIni"));
 
 	ui.tabsAdvanced->setCurrentIndex(0);
 	ui.tabsAdvanced->setTabIcon(0, CSandMan::GetIcon("Options"));
@@ -216,10 +229,9 @@ CSettingsWindow::CSettingsWindow(QWidget* parent)
 		ui.uiLang->addItem(tr("Auto Detection"), "");
 		ui.uiLang->addItem(tr("No Translation"), "native");
 
-		C7zFileEngineHandler LangFS(QApplication::applicationDirPath() + "/translations.7z", "lang", this);
-
 		QString langDir;
-		if (LangFS.IsOpen())
+		C7zFileEngineHandler LangFS("lang", this);
+		if (LangFS.Open(QApplication::applicationDirPath() + "/translations.7z"))
 			langDir = LangFS.Prefix() + "/";
 		else
 			langDir = QApplication::applicationDirPath() + "/translations/";
@@ -249,6 +261,11 @@ CSettingsWindow::CSettingsWindow(QWidget* parent)
 	ui.cmbDPI->addItem(tr("None"), 0);
 	ui.cmbDPI->addItem(tr("Native"), 1);
 	ui.cmbDPI->addItem(tr("Qt"), 2);
+
+	ui.cmbInterval->addItem(tr("Every Day"), 1 * 24 * 60 * 60);
+	ui.cmbInterval->addItem(tr("Every Week"), 7 * 24 * 60 * 60);
+	ui.cmbInterval->addItem(tr("Every 2 Weeks"), 14 * 24 * 60 * 60);
+	ui.cmbInterval->addItem(tr("Every 30 days"), 30 * 24 * 60 * 60);
 
 	ui.cmbUpdate->addItem(tr("Ignore"), "ignore");
 	ui.cmbUpdate->addItem(tr("Notify"), "notify");
@@ -352,6 +369,21 @@ CSettingsWindow::CSettingsWindow(QWidget* parent)
 	m_RunChanged = false;
 	//
 
+	// Addons
+	QObject::connect(theGUI->GetAddonManager(), &CAddonManager::DataUpdated, this, [=]() {
+		ui.lblUpdateAddons->setVisible(false);
+		OnLoadAddon();
+	});
+
+	connect(ui.btnInstallAddon, SIGNAL(clicked(bool)), this, SLOT(OnInstallAddon()));
+	connect(ui.btnRemoveAddon, SIGNAL(clicked(bool)), this, SLOT(OnRemoveAddon()));
+
+	connect(ui.lblUpdateAddons, &QLabel::linkActivated, this, [=]() {
+		theGUI->GetAddonManager()->UpdateAddons();
+	});
+
+	//
+
 	// Advanced Config
 	connect(ui.cmbDefault, SIGNAL(currentIndexChanged(int)), this, SLOT(OnGeneralChanged()));
 	connect(ui.chkAutoRoot, SIGNAL(stateChanged(int)), this, SLOT(OnRootChanged())); // not sbie ini
@@ -419,7 +451,7 @@ CSettingsWindow::CSettingsWindow(QWidget* parent)
 	connect(ui.lblSupport, SIGNAL(linkActivated(const QString&)), theGUI, SLOT(OpenUrl(const QString&)));
 	connect(ui.lblSupportCert, SIGNAL(linkActivated(const QString&)), theGUI, SLOT(OpenUrl(const QString&)));
 	connect(ui.lblCertExp, SIGNAL(linkActivated(const QString&)), theGUI, SLOT(OpenUrl(const QString&)));
-	//connect(ui.lblInsiderInfo, SIGNAL(linkActivated(const QString&)), theGUI, SLOT(OpenUrl(const QString&)));
+	connect(ui.lblInsiderInfo, SIGNAL(linkActivated(const QString&)), theGUI, SLOT(OpenUrl(const QString&)));
 
 	m_CertChanged = false;
 	connect(ui.txtCertificate, SIGNAL(textChanged()), this, SLOT(CertChanged()));
@@ -433,27 +465,44 @@ CSettingsWindow::CSettingsWindow(QWidget* parent)
 		"SIGNATURE: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
 	);
 
+	connect(ui.chkNoCheck, SIGNAL(stateChanged(int)), this, SLOT(OnOptChanged()));
+
+	//
+
 	connect(ui.lblCurrent, SIGNAL(linkActivated(const QString&)), this, SLOT(OnUpdate(const QString&)));
 	connect(ui.lblStable, SIGNAL(linkActivated(const QString&)), this, SLOT(OnUpdate(const QString&)));
 	connect(ui.lblPreview, SIGNAL(linkActivated(const QString&)), this, SLOT(OnUpdate(const QString&)));
-	//connect(ui.lblInsider, SIGNAL(linkActivated(const QString&)), this, SLOT(OnUpdate(const QString&)));
+	connect(ui.lblInsider, SIGNAL(linkActivated(const QString&)), this, SLOT(OnUpdate(const QString&)));
 	//connect(ui.lblInsiderInfo, SIGNAL(linkActivated(const QString&)), this, SLOT(OnUpdate(const QString&)));
 
 	connect(ui.chkAutoUpdate, SIGNAL(toggled(bool)), this, SLOT(UpdateUpdater()));
 
+	connect(ui.cmbInterval, SIGNAL(currentIndexChanged(int)), this, SLOT(OnOptChanged()));
+
 	connect(ui.radStable, SIGNAL(toggled(bool)), this, SLOT(UpdateUpdater()));
 	connect(ui.radPreview, SIGNAL(toggled(bool)), this, SLOT(UpdateUpdater()));
-	//connect(ui.radInsider, SIGNAL(toggled(bool)), this, SLOT(UpdateUpdater()));
+	connect(ui.radInsider, SIGNAL(toggled(bool)), this, SLOT(UpdateUpdater()));
 
 	connect(ui.cmbUpdate, SIGNAL(currentIndexChanged(int)), this, SLOT(OnOptChanged()));
 	connect(ui.cmbRelease, SIGNAL(currentIndexChanged(int)), this, SLOT(OnOptChanged()));
 
-	connect(ui.chkNoCheck, SIGNAL(stateChanged(int)), this, SLOT(OnOptChanged()));
+	connect(ui.chkUpdateIssues, SIGNAL(toggled(bool)), this, SLOT(OnOptChanged()));
+	connect(ui.chkUpdateAddons, SIGNAL(toggled(bool)), this, SLOT(OnOptChanged()));
+
 	//
 
 	connect(ui.tabs, SIGNAL(currentChanged(int)), this, SLOT(OnTab()));
 
 	// Ini Edit
+
+	ui.btnSelectIniFont->setIcon(CSandMan::GetIcon("Font"));
+	ui.btnSelectIniFont->setToolTip(tr("Select font"));
+	ui.btnResetIniFont->setIcon(CSandMan::GetIcon("ResetFont"));
+	ui.btnResetIniFont->setToolTip(tr("Reset font"));
+	ApplyIniEditFont();
+
+	connect(ui.btnSelectIniFont, SIGNAL(clicked(bool)), this, SLOT(OnSelectIniEditFont()));
+	connect(ui.btnResetIniFont, SIGNAL(clicked(bool)), this, SLOT(OnResetIniEditFont()));
 	connect(ui.btnEditIni, SIGNAL(clicked(bool)), this, SLOT(OnEditIni()));
 	connect(ui.btnSaveIni, SIGNAL(clicked(bool)), this, SLOT(OnSaveIni()));
 	connect(ui.btnCancelEdit, SIGNAL(clicked(bool)), this, SLOT(OnCancelEdit()));
@@ -463,6 +512,9 @@ CSettingsWindow::CSettingsWindow(QWidget* parent)
 	connect(ui.buttonBox->button(QDialogButtonBox::Ok), SIGNAL(clicked(bool)), this, SLOT(ok()));
 	connect(ui.buttonBox->button(QDialogButtonBox::Apply), SIGNAL(clicked(bool)), this, SLOT(apply()));
 	connect(ui.buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
+
+	//COptionsWindow__AddCertIcon(ui.chkUpdateTemplates);
+	COptionsWindow__AddCertIcon(ui.chkUpdateIssues);
 
 	this->installEventFilter(this); // prevent enter from closing the dialog
 
@@ -494,6 +546,30 @@ CSettingsWindow::CSettingsWindow(QWidget* parent)
 		this->addAction(pSetTree);
 	}
 	m_pSearch->setPlaceholderText(tr("Search for settings"));
+}
+
+void CSettingsWindow::ApplyIniEditFont()
+{
+	QFont font; // defaults to application font
+	auto fontName = theConf->GetString("UIConfig/IniFont", "").trimmed();	
+	if (!fontName.isEmpty()) bool dummy = font.fromString(fontName); // ignore fromString() fail
+	ui.txtIniSection->setFont(font);
+	ui.lblIniEditFont->setText(tr("%0, %1 pt").arg(font.family()).arg(font.pointSizeF())); // tr: example: "Calibri, 9.5 pt"
+}
+
+void CSettingsWindow::OnSelectIniEditFont()
+{
+	bool ok;
+	auto newFont = QFontDialog::getFont(&ok, ui.txtIniSection->font(), this);
+	if (!ok) return;
+	theConf->SetValue("UIConfig/IniFont", newFont.toString());
+	ApplyIniEditFont();
+}
+
+void CSettingsWindow::OnResetIniEditFont()
+{
+	theConf->DelValue("UIConfig/IniFont");
+	ApplyIniEditFont();
 }
 
 void CSettingsWindow::OnSetTree()
@@ -693,7 +769,7 @@ void CSettingsWindow::OnDelCommand()
 	OnRunChanged();
 }
 
-Qt::CheckState CSettingsWindow__IsContextMenu()
+Qt::CheckState CSettingsWindow::IsContextMenu()
 {
 	//QSettings Package("HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\PackagedCom\\Package", QSettings::NativeFormat);
 	QSettings Package("HKEY_CURRENT_USER\\Software\\Classes\\PackagedCom\\Package", QSettings::NativeFormat);
@@ -710,7 +786,7 @@ Qt::CheckState CSettingsWindow__IsContextMenu()
 	return Qt::Unchecked; // not set up
 }
 
-void CSettingsWindow__AddContextMenu(bool bAlwaysClassic)
+void CSettingsWindow::AddContextMenu(bool bAlwaysClassic)
 {
 	QSettings CurrentVersion("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion", QSettings::NativeFormat);
 	if (CurrentVersion.value("CurrentBuild").toInt() >= 22000 && !bAlwaysClassic) // Windows 11
@@ -731,7 +807,7 @@ void CSettingsWindow__AddContextMenu(bool bAlwaysClassic)
 			QApplication::applicationDirPath().replace("/", "\\") + "\\Start.exe");
 }
 
-void CSettingsWindow__RemoveContextMenu()
+void CSettingsWindow::RemoveContextMenu()
 {
 	QSettings CurrentVersion("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion", QSettings::NativeFormat);
 	if (CurrentVersion.value("CurrentBuild").toInt() >= 22000) // Windows 11
@@ -745,11 +821,13 @@ void CSettingsWindow__RemoveContextMenu()
 	CSbieUtils::RemoveContextMenu();
 }
 
-void CSettingsWindow__AddBrowserIcon()
+bool CSettingsWindow::AddBrowserIcon()
 {
 	QString Path = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation).replace("/", "\\");
 	Path += "\\" + CSettingsWindow::tr("Sandboxed Web Browser") + ".lnk";
-	CSbieUtils::CreateShortcut(theAPI, Path, "", "", "default_browser");
+	QString StartExe = theAPI->GetSbiePath() + "\\SandMan.exe";
+	QString BoxName = theAPI->GetGlobalSettings()->GetText("DefaultBox", "DefaultBox");
+	return CSbieUtils::CreateShortcut(StartExe, Path, "", BoxName, "default_browser");
 }
 
 void CSettingsWindow::LoadSettings()
@@ -771,7 +849,7 @@ void CSettingsWindow::LoadSettings()
 		ui.chkSvcStart->setEnabled(false);
 	}
 
-	ui.chkShellMenu->setCheckState(CSettingsWindow__IsContextMenu());
+	ui.chkShellMenu->setCheckState(IsContextMenu());
 	ui.chkShellMenu2->setChecked(CSbieUtils::HasContextMenu2());
 	ui.chkAlwaysDefault->setChecked(theConf->GetBool("Options/RunInDefaultBox", false));
 
@@ -817,6 +895,7 @@ void CSettingsWindow::LoadSettings()
 	ui.chkCompactTray->setChecked(theConf->GetBool("Options/CompactTray", false));
 	ui.chkBoxOpsNotify->setChecked(theConf->GetBool("Options/AutoBoxOpsNotify", false));
 
+	OnLoadAddon();
 
 	if (theAPI->IsConnected())
 	{
@@ -926,14 +1005,24 @@ void CSettingsWindow::LoadSettings()
 
 	UpdateCert();
 
+
+	ui.chkNoCheck->setChecked(theConf->GetBool("Options/NoSupportCheck", false));
+	if(ui.chkNoCheck->isCheckable() && !g_CertInfo.expired)
+		ui.chkNoCheck->setVisible(false); // hide if not relevant
+
 	ui.chkAutoUpdate->setCheckState(CSettingsWindow__Int2Chk(theConf->GetInt("Options/CheckForUpdates", 2)));
-	//ui.chkAutoDownload->setCheckState(CSettingsWindow__Int2Chk(theConf->GetInt("Options/DownloadUpdates", 0)));
-	//ui.chkAutoInstall->setCheckState(CSettingsWindow__Int2Chk(theConf->GetInt("Options/InstallUpdates", 0)));
+
+	int UpdateInterval = theConf->GetInt("Options/UpdateInterval", UPDATE_INTERVAL);
+	int pos = ui.cmbInterval->findData(UpdateInterval);
+	if (pos == -1)
+		ui.cmbInterval->setCurrentText(QString::number(UpdateInterval));
+	else
+		ui.cmbInterval->setCurrentIndex(pos);
 
 	QString ReleaseChannel = theConf->GetString("Options/ReleaseChannel", "stable");
 	ui.radStable->setChecked(ReleaseChannel == "stable");
 	ui.radPreview->setChecked(ReleaseChannel == "preview");
-	//ui.radInsider->setChecked(ReleaseChannel == "insider");
+	ui.radInsider->setChecked(ReleaseChannel == "insider");
 
 	m_HoldChange = true;
 	UpdateUpdater();
@@ -942,10 +1031,12 @@ void CSettingsWindow::LoadSettings()
 	ui.cmbUpdate->setCurrentIndex(ui.cmbUpdate->findData(theConf->GetString("Options/OnNewUpdate", "ignore")));
 	ui.cmbRelease->setCurrentIndex(ui.cmbRelease->findData(theConf->GetString("Options/OnNewRelease", "download")));
 
+	//ui.chkUpdateTemplates->setCheckState(CSettingsWindow__Int2Chk(theConf->GetInt("Options/CheckForTemplates", 2)));
+	ui.chkUpdateAddons->setCheckState(CSettingsWindow__Int2Chk(theConf->GetInt("Options/CheckForAddons", 2)));
+	ui.chkUpdateIssues->setCheckState(CSettingsWindow__Int2Chk(theConf->GetInt("Options/CheckForIssues", 2)));
 
-	ui.chkNoCheck->setChecked(theConf->GetBool("Options/NoSupportCheck", false));
-	if(ui.chkNoCheck->isCheckable() && !g_CertInfo.expired)
-		ui.chkNoCheck->setVisible(false); // hide if not relevant
+	//ui.chkUpdateTemplates->setEnabled(g_CertInfo.valid && !g_CertInfo.expired);
+	ui.chkUpdateIssues->setEnabled(g_CertInfo.valid && !g_CertInfo.expired);
 }
 
 void CSettingsWindow::UpdateCert()
@@ -988,19 +1079,21 @@ void CSettingsWindow::UpdateCert()
 		ui.txtCertificate->setPalette(palette);
 	}
 
-	//ui.radInsider->setEnabled(g_CertInfo.insider);
+	ui.radInsider->setEnabled(g_CertInfo.insider);
 }
 
 void CSettingsWindow::UpdateUpdater()
 {
 	//ui.radLive->setEnabled(false);
 	if (!ui.chkAutoUpdate->isChecked()) {
+		ui.cmbInterval->setEnabled(false);
 		ui.cmbUpdate->setEnabled(false);
 		ui.cmbRelease->setEnabled(false);
 		ui.lblRevision->setText(QString());
 	}
 	else {
-		if (ui.radStable->isChecked() && (!g_CertInfo.valid)) {
+		ui.cmbInterval->setEnabled(true);
+		if (ui.radStable->isChecked() && (!g_CertInfo.valid || g_CertInfo.expired)) {
 			ui.cmbUpdate->setEnabled(false);
 			ui.cmbUpdate->setCurrentIndex(ui.cmbUpdate->findData("ignore"));
 			ui.lblRevision->setText(tr("Supporter certificate required"));
@@ -1096,14 +1189,14 @@ void CSettingsWindow::SaveSettings()
 			theAPI->GetUserSettings()->SetBool("SbieCtrl_EnableAutoStart", false);
 	}
 
-	if (ui.chkShellMenu->checkState() != CSettingsWindow__IsContextMenu())
+	if (ui.chkShellMenu->checkState() != IsContextMenu())
 	{
 		if (ui.chkShellMenu->isChecked()) {
 			CSecretCheckBox* SecretCheckBox = qobject_cast<CSecretCheckBox*>(ui.chkShellMenu);
-			CSettingsWindow__AddContextMenu(SecretCheckBox && SecretCheckBox->IsSecretSet());
+			AddContextMenu(SecretCheckBox && SecretCheckBox->IsSecretSet());
 		}
 		else
-			CSettingsWindow__RemoveContextMenu();
+			RemoveContextMenu();
 	}
 
 	if (ui.chkShellMenu2->isChecked() != CSbieUtils::HasContextMenu2()) {
@@ -1285,7 +1378,7 @@ void CSettingsWindow::SaveSettings()
 		}
 		catch (SB_STATUS Status)
 		{
-			theGUI->CheckResults(QList<SB_STATUS>() << Status);
+			theGUI->CheckResults(QList<SB_STATUS>() << Status, theGUI);
 		}
 	}
 
@@ -1321,23 +1414,32 @@ void CSettingsWindow::SaveSettings()
 		m_CertChanged = false;
 	}
 
+	theConf->SetValue("Options/NoSupportCheck", ui.chkNoCheck->isChecked());
+
 	theConf->SetValue("Options/CheckForUpdates", CSettingsWindow__Chk2Int(ui.chkAutoUpdate->checkState()));
-	//theConf->SetValue("Options/DownloadUpdates", CSettingsWindow__Chk2Int(ui.chkAutoDownload->checkState()));
-	//theConf->SetValue("Options/InstallUpdates", CSettingsWindow__Chk2Int(ui.chkAutoInstall->checkState()));
+
+	int UpdateInterval = ui.cmbInterval->currentData().toInt();
+	if (!UpdateInterval)
+		UpdateInterval = ui.cmbInterval->currentText().toInt();
+	if (!UpdateInterval)
+		UpdateInterval = UPDATE_INTERVAL;
+	theConf->SetValue("Options/UpdateInterval", UpdateInterval);
 
 	QString ReleaseChannel;
 	if (ui.radStable->isChecked())
 		ReleaseChannel = "stable";
 	else if (ui.radPreview->isChecked())
 		ReleaseChannel = "preview";
-	//else if (ui.radInsider->isChecked())
-	//	ReleaseChannel = "insider";
+	else if (ui.radInsider->isChecked())
+		ReleaseChannel = "insider";
 	if(!ReleaseChannel.isEmpty()) theConf->SetValue("Options/ReleaseChannel", ReleaseChannel);
 
 	theConf->SetValue("Options/OnNewUpdate", ui.cmbUpdate->currentData());
 	theConf->SetValue("Options/OnNewRelease", ui.cmbRelease->currentData());
 
-	theConf->SetValue("Options/NoSupportCheck", ui.chkNoCheck->isChecked());
+	//theConf->SetValue("Options/CheckForTemplates", CSettingsWindow__Chk2Int(ui.chkUpdateTemplates->checkState()));
+	theConf->SetValue("Options/CheckForAddons", CSettingsWindow__Chk2Int(ui.chkUpdateAddons->checkState()));
+	theConf->SetValue("Options/CheckForIssues", CSettingsWindow__Chk2Int(ui.chkUpdateIssues->checkState()));
 
 	emit OptionsChanged(m_bRebuildUI);
 }
@@ -1435,6 +1537,49 @@ void CSettingsWindow::OnOptChanged()
 	ui.buttonBox->button(QDialogButtonBox::Apply)->setEnabled(true);
 }
 
+void CSettingsWindow::OnLoadAddon()
+{
+	ui.treeAddons->clear();
+	foreach(const CAddonPtr pAddon, theGUI->GetAddonManager()->GetAddons()) {
+
+		QTreeWidgetItem* pItem = new QTreeWidgetItem;
+		pItem->setText(0, pAddon->GetLocalizedEntry("name"));
+		if(!pAddon->Data["mandatory"].toBool())
+			pItem->setData(0, Qt::UserRole, pAddon->Id);
+		pItem->setIcon(0, pAddon->Data.contains("icon") ? CSandMan::GetIcon(pAddon->Data["icon"].toString()) : CSandMan::GetIcon("Addon"));
+		pItem->setText(1, pAddon->Installed ? tr("Installed") : "");
+		pItem->setText(2, pAddon->GetLocalizedEntry("description"));
+
+		ui.treeAddons->addTopLevelItem(pItem);
+	}
+}
+
+void CSettingsWindow::OnInstallAddon()
+{
+	QTreeWidgetItem* pItem = ui.treeAddons->currentItem();
+	if (!pItem)
+		return;
+
+	QString Id = pItem->data(0, Qt::UserRole).toString();
+	SB_PROGRESS Status = theGUI->GetAddonManager()->TryInstallAddon(Id, this);
+	if (Status.GetStatus() == OP_ASYNC) connect(Status.GetValue().data(), SIGNAL(Finished()), this, SLOT(OnLoadAddon()));
+}
+
+void CSettingsWindow::OnRemoveAddon()
+{
+	QTreeWidgetItem* pItem = ui.treeAddons->currentItem();
+	if (!pItem)
+		return;
+	
+	QString Id = pItem->data(0, Qt::UserRole).toString();
+	if (Id.isEmpty()) {
+		QMessageBox::warning(this, "Sandboxie-Plus", tr("This Addon is mandatory and can not be removed."));
+		return;
+	}
+	SB_PROGRESS Status = theGUI->GetAddonManager()->TryRemoveAddon(Id, this);
+	if (Status.GetStatus() == OP_ASYNC) connect(Status.GetValue().data(), SIGNAL(Finished()), this, SLOT(OnLoadAddon()));
+}
+
 void CSettingsWindow::OnBrowse()
 {
 	QString Value = QFileDialog::getExistingDirectory(this, tr("Select Directory")).replace("/", "\\");
@@ -1469,6 +1614,13 @@ void CSettingsWindow::OnTab(QWidget* pTab)
 				ui.lblCurrent->setText(tr("<a href=\"check\">Check Now</a>"));
 		}
 	}
+	else if (pTab == ui.tabAddons)
+	{
+		if (theConf->GetInt("Options/CheckForAddons", 2) == 1) {
+			ui.lblUpdateAddons->setVisible(false);
+			theGUI->GetAddonManager()->UpdateAddonsWhenNotCached();
+		}
+	}
 	else if (pTab == ui.tabEdit)
 	{
 		LoadIniSection();
@@ -1477,50 +1629,53 @@ void CSettingsWindow::OnTab(QWidget* pTab)
 	else if (pTab == ui.tabCompat && m_CompatLoaded != 1 && theAPI->IsConnected())
 	{
 		if(m_CompatLoaded == 0)
-			theGUI->GetCompat()->RunCheck();
-
-		ui.treeCompat->clear();
-
-		bool bNew = false;
-
-		QMap<QString, int> Templates = theGUI->GetCompat()->GetTemplates();
-		for (QMap<QString, int>::iterator I = Templates.begin(); I != Templates.end(); ++I)
-		{
-			if (I.value() == CSbieTemplates::eNone)
-				continue;
-
-			QSharedPointer<CSbieIni> pTemplate = QSharedPointer<CSbieIni>(new CSbieIni("Template_" + I.key(), theAPI));
-
-			QString Title = pTemplate->GetText("Tmpl.Title", "", false, true, true);
-			if (Title.left(1) == "#")
-			{
-				int End = Title.mid(1).indexOf(",");
-				if (End == -1) End = Title.length() - 1;
-				int MsgNum = Title.mid(1, End).toInt();
-				Title = theAPI->GetSbieMsgStr(MsgNum, theGUI->m_LanguageId).arg(Title.mid(End + 2)).arg("");
-			}
-			//if (Title.isEmpty()) Title = Name;
-
-			QTreeWidgetItem* pItem = new QTreeWidgetItem();
-			pItem->setText(0, Title);
-			pItem->setData(0, Qt::UserRole, "Template_" + I.key());
-			if((I.value() & CSbieTemplates::eDisabled) != 0)
-				pItem->setCheckState(0, Qt::Unchecked);
-			else if((I.value() & CSbieTemplates::eEnabled) != 0)
-				pItem->setCheckState(0, Qt::Checked);
-			else {
-				pItem->setCheckState(0, Qt::PartiallyChecked);
-				bNew = true;
-			}
-			ui.treeCompat->addTopLevelItem(pItem);
-		}
-
-		m_CompatLoaded = 1;
-		if(bNew)
-			OnCompatChanged();
-
-		LoadTemplates();
+			theGUI->CheckCompat(this, "OnCompat");
 	}
+}
+
+void CSettingsWindow::OnCompat()
+{
+	ui.treeCompat->clear();
+
+	bool bNew = false;
+
+	QMap<QString, int> Templates = theGUI->GetCompat()->GetTemplates();
+	for (QMap<QString, int>::iterator I = Templates.begin(); I != Templates.end(); ++I)
+	{
+		if (I.value() == CSbieTemplates::eNone)
+			continue;
+
+		QSharedPointer<CSbieIni> pTemplate = QSharedPointer<CSbieIni>(new CSbieIni("Template_" + I.key(), theAPI));
+
+		QString Title = pTemplate->GetText("Tmpl.Title", "", false, true, true);
+		if (Title.left(1) == "#")
+		{
+			int End = Title.mid(1).indexOf(",");
+			if (End == -1) End = Title.length() - 1;
+			int MsgNum = Title.mid(1, End).toInt();
+			Title = theAPI->GetSbieMsgStr(MsgNum, theGUI->m_LanguageId).arg(Title.mid(End + 2)).arg("");
+		}
+		//if (Title.isEmpty()) Title = Name;
+
+		QTreeWidgetItem* pItem = new QTreeWidgetItem();
+		pItem->setText(0, Title);
+		pItem->setData(0, Qt::UserRole, "Template_" + I.key());
+		if((I.value() & CSbieTemplates::eDisabled) != 0)
+			pItem->setCheckState(0, Qt::Unchecked);
+		else if((I.value() & CSbieTemplates::eEnabled) != 0)
+			pItem->setCheckState(0, Qt::Checked);
+		else {
+			pItem->setCheckState(0, Qt::PartiallyChecked);
+			bNew = true;
+		}
+		ui.treeCompat->addTopLevelItem(pItem);
+	}
+
+	m_CompatLoaded = 1;
+	if(bNew)
+		OnCompatChanged();
+
+	LoadTemplates();
 }
 
 void CSettingsWindow::OnProtectionChange()
@@ -1824,8 +1979,8 @@ void CSettingsWindow::OnUpdateData(const QVariantMap& Data, const QVariantMap& P
 	ui.lblCurrent->setText(tr("%1 (Current)").arg(Version));
 	ui.lblStable->setText(CSettingsWindow__MkVersion("stable", Releases));
 	ui.lblPreview->setText(CSettingsWindow__MkVersion("preview", Releases));
-	//if(ui.radInsider->isEnabled())
-	//	ui.lblInsider->setText(CSettingsWindow__MkVersion("insider", Releases));
+	if(ui.radInsider->isEnabled())
+		ui.lblInsider->setText(CSettingsWindow__MkVersion("insider", Releases));
 }
 
 void CSettingsWindow::OnUpdate(const QString& Channel)

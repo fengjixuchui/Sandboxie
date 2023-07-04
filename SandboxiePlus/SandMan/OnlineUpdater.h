@@ -5,6 +5,8 @@
 
 #include "SbiePlusAPI.h"
 
+#define UPDATE_INTERVAL (7 * 24 * 60 * 60)
+
 class CGetUpdatesJob : public QObject
 {
 	Q_OBJECT
@@ -18,7 +20,8 @@ protected:
 	QVariantMap	m_Params;
 
 signals:
-	void		UpdateData(const QVariantMap& Data, const QVariantMap& Params);
+	void				UpdateData(const QVariantMap& Data, const QVariantMap& Params);
+	void				Download(const QString& Path, const QVariantMap& Params);
 };
 
 
@@ -31,6 +34,10 @@ public:
 	void				Process();
 
 	void				GetUpdates(QObject* receiver, const char* member, const QVariantMap& Params = QVariantMap());
+	void				DownloadFile(const QString& Url, QObject* receiver, const char* member, const QVariantMap& Params = QVariantMap());
+
+	QVariantMap			GetUpdateData() { return m_UpdateData; }
+	QDateTime			GetLastUpdateTime() { return m_LastUpdate; }
 
 	void				UpdateCert(bool bWait = false);
 
@@ -50,14 +57,18 @@ public:
 
 	QString				GetUpdateDir(bool bCreate = false);
 
+	static quint32		CurrentVersion();
+	static quint32		VersionToInt(const QString& VersionStr);
+
 private slots:
 	void				OnUpdateCheck();
 
+	void				OnFileDownload();
+
 	void				OnDownloadProgress(qint64 bytes, qint64 bytesTotal);
+	void				OnInstallerDownload(const QString& Path, const QVariantMap& Params);
 
 	void				OnUpdateData(const QVariantMap& Data, const QVariantMap& Params);
-
-	void				OnInstallerDownload();
 
 	void				OnPrepareOutput();
 	void				OnPrepareError();
@@ -98,5 +109,6 @@ protected:
 		ePendingInstall
 	}					m_CheckMode;
 	QVariantMap			m_UpdateData;
+	QDateTime			m_LastUpdate;
 	QProcess*			m_pUpdaterUtil;
 };

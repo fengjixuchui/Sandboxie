@@ -7,6 +7,36 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
+
+
+## [1.10.0 / 5.65.0] - 2023-07-??
+
+### Added
+- added scriptable troubleshooting wizard [#1875](https://github.com/sandboxie-plus/Sandboxie/issues/1875)
+- added addon manager which helps to install additional and third-party components, available addons:
+  - [ImDisk Toolkit](https://sourceforge.net/projects/imdisk-toolkit/) - used to create RAM Disks and other virtual drives
+  - [V4 Script Debugger](https://github.com/DavidXanatos/NeoScriptTools) - used to debug troubleshooting scripts
+  - [Microsoft Debug Help Library](https://learn.microsoft.com/en-us/windows/win32/debug/debug-help-library) - used for the stack trace feature introduced in 1.9.6
+  - [signcheck.exe](https://learn.microsoft.com/en-us/sysinternals/downloads/sigcheck) - used to scan files on VirusTotal before recovering them
+  - [SbieHide.dll](https://github.com/VeroFess/SbieHide) - a third-party DLL to hide SbieDll.dll
+  - [LogAPI.dll](https://bsa.isoftware.nl/) - an API logging library used for Buster Sandbox Analyzer
+- added option to set the update interval to 1, 7, 14 and 30 days
+
+### Changed
+- setup wizard has now a dedicated update configuration page
+- split the support page into Sandboxie Support and Sandboxie Updater tabs
+- when the troubleshooting.7z file is available, the script engine will be used to match compatibility templates
+  - this allows a better granularity in template selection by using the AppCompatibility.js script
+
+### Fixed
+- fixed uninstall issue in the Sandboxie Classic installer [d1863ff](https://github.com/sandboxie-plus/Sandboxie/commit/d1863ffadfe105c695de71c9e841c2fd568116fe)
+- added workaround for Chrome not starting on Windows 11 with KB5027231 [#3040](https://github.com/sandboxie-plus/Sandboxie/issues/3040)
+
+### Removed
+- cleaned up duplicate code (thanks lmou523) [#3067](https://github.com/sandboxie-plus/Sandboxie/pull/3067)
+
+
+
 ## [1.9.8 / 5.64.8] - 2023-06-21
 
 ### Changed
