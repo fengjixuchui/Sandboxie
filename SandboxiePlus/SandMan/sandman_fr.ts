@@ -5687,8 +5687,10 @@ Les processus dans ce bac seront lanc√©s avec un jeton de processus personnalis√
     <name>CSupportDialog</name>
     <message>
         <location filename="Windows/SupportDialog.cpp" line="43"/>
-        <source>This Insider build requires a special certificate of type GREAT_PATREON, PERSONAL-HUGE, or CONTRIBUTOR.<byte value="xd"/>
-If you are a great patreaon supporter already, sandboxie can check online for an update of your certificate.</source>
+        <source>This Insider build requires a special certificate of type GREAT_PATREON, PERSONAL-HUGE, or CONTRIBUTOR.
+If you are a Great Supporter on Patreon already, Sandboxie can check online for an update of your certificate.</source>
+        <oldsource>This Insider build requires a special certificate of type GREAT_PATREON, PERSONAL-HUGE, or CONTRIBUTOR.
+If you are a great patreaon supporter already, sandboxie can check online for an update of your certificate.</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
