@@ -64,18 +64,6 @@ public:
 
 	static void LoadCertificate(QString CertPath = QString());
 
-	enum ETabs {
-		eOptions = 0,
-		eShell,
-		eGuiConfig,
-		eAdvanced,
-		eProgCtrl,
-		eConfigLock,
-		eSoftCompat,
-		eEditIni,
-		eSupport
-	};
-
 signals:
 	void OptionsChanged(bool bRebuildUI = false);
 	void Closed();
@@ -84,7 +72,7 @@ public slots:
 	void ok();
 	void apply();
 
-	void showTab(int Tab, bool bExclusive = false);
+	void showTab(const QString& Name, bool bExclusive = false);
 
 private slots:
 	void OnTab();
@@ -204,25 +192,7 @@ void WindowsMoveFile(const QString& from, const QString& to);
 extern quint32 g_FeatureFlags;
 
 extern QByteArray g_Certificate;
-union SCertInfo {
-    quint64	State;
-    struct {
-        quint32
-            valid     : 1,      // certificate is active
-            expired   : 1,      // certificate is expired but may be active
-            outdated  : 1,      // certificate is expired, not anymore valid for the current build
-            business  : 1,      // certificate is suitable for business use
-            evaluation: 1,      // evaluation certificate
-            grace_period: 1,    // the certificate is expired and or outdated but we keep it valid for 1 extra month to allof wor a seamless renewal
-            reservd_1 : 2,
-            reservd_2 : 8,
-            reservd_3 : 8,
-			reservd_4 : 7,
-			insider   : 1;
-		qint32 
-			expirers_in_sec : 30, 
-			unused_1        : 1, // skim a couple high bits to use as flags flag, 0x3fffffff -> is 34 years count down is enough
-			about_to_expire : 1; 
-    };
-};
+
+#include "..\..\Sandboxie\core\drv\verify.h"
+
 extern SCertInfo g_CertInfo;

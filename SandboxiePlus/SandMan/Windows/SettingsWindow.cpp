@@ -591,32 +591,18 @@ CSettingsWindow::~CSettingsWindow()
 		theConf->SetBlob("SettingsWindow/" + pTree->objectName() + "_Columns", pTree->header()->saveState());
 }
 
-void CSettingsWindow::showTab(int Tab, bool bExclusive)
+void CSettingsWindow::showTab(const QString& Name, bool bExclusive)
 {
-	QWidget* pWidget = NULL;
-	switch (Tab)
-	{
-	case eOptions: pWidget = ui.tabGeneral; break;
-	case eShell: pWidget = ui.tabWindows; break;
-	case eGuiConfig: pWidget = ui.tabGUI; break;
-	case eAdvanced: pWidget = ui.tabSandbox; break;
-	case eProgCtrl: pWidget = ui.tabAlert; break;
-	case eConfigLock: pWidget = ui.tabLock; break;
-	case eSoftCompat: pWidget = ui.tabAppCompat; break;
-	case eEditIni: pWidget = ui.tabEdit; break;
-	case eSupport: pWidget = ui.tabSupport; break;
-	}
+	QWidget* pWidget = this->findChild<QWidget*>("tab" + Name);
 
 	if (ui.tabs) {
 		
 		for (int i = 0; i < ui.tabs->count(); i++) {
 			QGridLayout* pGrid = qobject_cast<QGridLayout*>(ui.tabs->widget(i)->layout());
 			QTabWidget* pSubTabs = pGrid ? qobject_cast<QTabWidget*>(pGrid->itemAt(0)->widget()) : NULL;
-			if (!pSubTabs) {
-				if(ui.tabs->widget(i) == pWidget)
-					ui.tabs->setCurrentIndex(i);
-			}
-			else {
+			if(ui.tabs->widget(i) == pWidget)
+				ui.tabs->setCurrentIndex(i);
+			else if(pSubTabs) {
 				for (int j = 0; j < pSubTabs->count(); j++) {
 					if (pSubTabs->widget(j) == pWidget) {
 						ui.tabs->setCurrentIndex(i);
@@ -1039,8 +1025,8 @@ void CSettingsWindow::LoadSettings()
 	ui.chkUpdateAddons->setCheckState(CSettingsWindow__Int2Chk(theConf->GetInt("Options/CheckForAddons", 2)));
 	ui.chkUpdateIssues->setCheckState(CSettingsWindow__Int2Chk(theConf->GetInt("Options/CheckForIssues", 2)));
 
-	//ui.chkUpdateTemplates->setEnabled(g_CertInfo.valid && !g_CertInfo.expired);
-	ui.chkUpdateIssues->setEnabled(g_CertInfo.valid && !g_CertInfo.expired);
+	//ui.chkUpdateTemplates->setEnabled(g_CertInfo.active && !g_CertInfo.expired);
+	ui.chkUpdateIssues->setEnabled(g_CertInfo.active && !g_CertInfo.expired);
 }
 
 void CSettingsWindow::UpdateCert()
@@ -1057,18 +1043,18 @@ void CSettingsWindow::UpdateCert()
 		if (g_CertInfo.expired) {
 			palette.setColor(QPalette::Base, QColor(255, 255, 192));
 			QString infoMsg = tr("This supporter certificate has expired, please <a href=\"sbie://update/cert\">get an updated certificate</a>.");
-			if (g_CertInfo.valid) {
+			if (g_CertInfo.active) {
 				if (g_CertInfo.grace_period)
-					infoMsg.append(tr("<br /><font color='red'>Plus features will be disabled in %1 days.</font>").arg(30 + g_CertInfo.expirers_in_sec / (60*60*24)));
+					infoMsg.append(tr("<br /><font color='red'>Plus features will be disabled in %1 days.</font>").arg((g_CertInfo.expirers_in_sec + 30*60*60*24) / (60*60*24)));
 				else if (!g_CertInfo.outdated) // must be an expiren medium or large cert on an old build
-					infoMsg.append(tr("<br /><font color='red'>For this build Plus features remain enabled.</font>"));
+					infoMsg.append(tr("<br /><font color='red'>For the current build Plus features remain enabled</font>, but you no longer have access to Sandboxie-Live services, including compatibility updates and the troubleshooting database."));
 			} else
 				infoMsg.append(tr("<br />Plus features are no longer enabled."));
 			ui.lblCertExp->setText(infoMsg);
 			ui.lblCertExp->setVisible(true);
 		}
 		else {
-			if (g_CertInfo.about_to_expire) {
+			if (g_CertInfo.expirers_in_sec > 0 && g_CertInfo.expirers_in_sec < (60 * 60 * 24 * 30)) {
 				ui.lblCertExp->setText(tr("This supporter certificate will <font color='red'>expire in %1 days</font>, please <a href=\"sbie://update/cert\">get an updated certificate</a>.").arg(g_CertInfo.expirers_in_sec / (60*60*24)));
 				ui.lblCertExp->setVisible(true);
 			}
@@ -1083,7 +1069,7 @@ void CSettingsWindow::UpdateCert()
 		ui.txtCertificate->setPalette(palette);
 	}
 
-	ui.radInsider->setEnabled(g_CertInfo.insider);
+	ui.radInsider->setEnabled(CERT_IS_INSIDER(g_CertInfo));
 }
 
 void CSettingsWindow::UpdateUpdater()
@@ -1097,7 +1083,7 @@ void CSettingsWindow::UpdateUpdater()
 	}
 	else {
 		ui.cmbInterval->setEnabled(true);
-		if (ui.radStable->isChecked() && (!g_CertInfo.valid || g_CertInfo.expired)) {
+		if (ui.radStable->isChecked() && (!g_CertInfo.active || g_CertInfo.expired)) {
 			ui.cmbUpdate->setEnabled(false);
 			ui.cmbUpdate->setCurrentIndex(ui.cmbUpdate->findData("ignore"));
 			ui.lblRevision->setText(tr("Supporter certificate required"));
@@ -1493,10 +1479,12 @@ bool CSettingsWindow::ApplyCertificate(const QByteArray &Certificate, QWidget* w
 		theGUI->UpdateCertState();
 
 		if (g_CertInfo.expired || g_CertInfo.outdated) {
-			if(g_CertInfo.expired)
-				QMessageBox::information(widget, "Sandboxie-Plus", tr("This certificate is unfortunately expired."));
+			if(g_CertInfo.outdated)
+				QMessageBox::information(widget, "Sandboxie-Plus", tr("This certificate is unfortunately not valid for the current build, you need to get a new certificate or downgrade to an earlier build."));
+			else if(g_CertInfo.active && !g_CertInfo.grace_period)
+				QMessageBox::information(widget, "Sandboxie-Plus", tr("Although this certificate has expired, for the currently installed version plus features remain enabled. However, you will no longer have access to Sandboxie-Live services, including compatibility updates and the online troubleshooting database."));
 			else
-				QMessageBox::information(widget, "Sandboxie-Plus", tr("This certificate is unfortunately outdated."));
+				QMessageBox::information(widget, "Sandboxie-Plus", tr("This certificate has unfortunately expired, you need to get a new certificate."));
 		}
 		else {
 			QMessageBox::information(widget, "Sandboxie-Plus", tr("Thank you for supporting the development of Sandboxie-Plus."));
@@ -2035,13 +2023,6 @@ void CSettingsWindow::CertChanged()
 
 void CSettingsWindow::LoadCertificate(QString CertPath)
 {
-#ifdef _DEBUG
-	if (GetKeyState(VK_CONTROL) & 0x8000) {
-		g_Certificate.clear();
-		return;
-	}
-#endif
-
 	if (theAPI && theAPI->IsConnected())
 		CertPath = theAPI->GetSbiePath() + "\\Certificate.dat";
 		
