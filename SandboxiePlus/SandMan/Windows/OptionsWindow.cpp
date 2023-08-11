@@ -181,9 +181,6 @@ COptionsWindow::COptionsWindow(const QSharedPointer<CSbieIni>& pBox, const QStri
 	this->setWindowTitle(tr("Sandboxie Plus - '%1' Options").arg(QString(Name).replace("_", " ")));
 
 	ui.tabs->setTabPosition(QTabWidget::West);
-	ui.tabs->tabBar()->setStyle(new CustomTabStyle(ui.tabs->tabBar()->style()));
-	ui.tabs->tabBar()->setProperty("isSidebar", true);
-
 
 	ui.tabs->setCurrentIndex(0);
 	ui.tabs->setTabIcon(0, CSandMan::GetIcon("Config"));
@@ -889,7 +886,7 @@ void COptionsWindow::WriteTextSafe(const QString& Name, const QString& Value)
 			List.removeAt(i--);
 	}
 
-	// Prepand the global entry
+	// Prepend the global entry
 	if (!Value.isEmpty()) List.append(Value);
 
 	WriteTextList(Name, List);

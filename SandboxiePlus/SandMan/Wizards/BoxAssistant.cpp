@@ -21,6 +21,7 @@
 #include "../Views/TraceView.h"
 #include "../AddonManager.h"
 
+#include "../CustomStyles.h"
 
 CBoxAssistant::CBoxAssistant(QWidget *parent)
     : QWizard(parent)
@@ -251,7 +252,7 @@ void CBeginPage::initializePage()
     auto AddIssue = [&](QVariantMap Issue) {
         QPushButton* pIssue = new QPushButton(theGUI->GetScripts()->Tr(Issue["name"].toString()));
         pIssue->setProperty("issue", Issue);
-        connect(pIssue, SIGNAL(pressed()), this, SLOT(OnCategory()));
+        connect(pIssue, SIGNAL(clicked(bool)), this, SLOT(OnCategory()));
         pIssue->setIcon(CSandMan::GetIcon(Issue["icon"].toString()));
         pIssue->setIconSize(QSize(32, 32));
         pIssue->setProperty("leftButton", true);

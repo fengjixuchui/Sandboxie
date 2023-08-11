@@ -1470,7 +1470,7 @@ void CSbieView::OnSandBoxAction(QAction* Action, const QList<CSandBoxPtr>& SandB
 		if (!CSbieUtils::GetStartMenuShortcut(theAPI, BoxName, LinkPath, IconPath, IconIndex, WorkDir))
 			return;
 		
-		CreateShortcut(LinkPath, BoxName, IconPath, IconIndex, WorkDir);
+		CreateShortcutEx(LinkPath, BoxName, "", IconPath, IconIndex, WorkDir);
 	}
 	else // custom run menu command
 	{
@@ -1487,19 +1487,20 @@ void CSbieView::OnSandBoxAction(QAction* Action, const QList<CSandBoxPtr>& SandB
 	theGUI->CheckResults(Results, this);
 }
 
-bool CSbieView::CreateShortcut(const QString& LinkPath, const QString& BoxName, const QString &IconPath, int IconIndex, const QString &WorkDir)
+bool CSbieView::CreateShortcutEx(const QString& LinkPath, const QString& BoxName, QString LinkName, const QString &IconPath, int IconIndex, const QString &WorkDir)
 {
-	QString LinkName;
-	int pos = LinkPath.lastIndexOf(L'\\');
-	if (pos == -1)
-		return false;
-	if (pos == 2 && LinkPath.length() == 3)
-		LinkName = QObject::tr("Drive %1").arg(LinkPath.left(1));
-	else {
-		LinkName = LinkPath.mid(pos + 1);
-		pos = LinkName.indexOf(QRegularExpression("[" + QRegularExpression::escape("\":;,*?.") + "]"));
-		if (pos != -1)
-			LinkName = LinkName.left(pos);
+	if (LinkName.isEmpty()) {
+		int pos = LinkPath.lastIndexOf(L'\\');
+		if (pos == -1)
+			return false;
+		if (pos == 2 && LinkPath.length() == 3)
+			LinkName = QObject::tr("Drive %1").arg(LinkPath.left(1));
+		else {
+			LinkName = LinkPath.mid(pos + 1);
+			pos = LinkName.indexOf(QRegularExpression("[" + QRegularExpression::escape("\":;,*?.") + "]"));
+			if (pos != -1)
+				LinkName = LinkName.left(pos);
+		}
 	}
 
 	QString Path = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation).replace("/", "\\");
@@ -1820,7 +1821,13 @@ void CSbieView::OnMenuContextMenu(const QPoint& point)
 		}
 		else
 			m_pCtxPinToRun->setData(FoundPin);
-		m_pCtxMkLink->setData(LinkTarget);
+
+		m_pCtxMkLink->setData(pBoxPlus->GetFullCommand(LinkTarget));
+		m_pCtxMkLink->setProperty("Name", pAction->text());
+		m_pCtxMkLink->setProperty("Icon", pBoxPlus->GetFullCommand(pAction->property("Icon").toString()));
+		m_pCtxMkLink->setProperty("IconIndex", pAction->property("IconIndex"));
+		m_pCtxMkLink->setProperty("WorkingDir", pBoxPlus->GetFullCommand(pAction->property("WorkingDir").toString()));
+
 		m_pCtxMenu->exec(QCursor::pos());
 	}
 }
@@ -1844,9 +1851,13 @@ void CSbieView::OnMenuContextAction()
 	else if (pAction == m_pCtxMkLink)
 	{
 		QString LinkTarget = m_pCtxMkLink->data().toString();
+		QString LinkName = m_pCtxMkLink->property("Name").toString();
+		QString Icon = m_pCtxMkLink->property("Icon").toString();
+		int IconIndex = m_pCtxMkLink->property("IconIndex").toInt();
+		QString WorkingDir = m_pCtxMkLink->property("WorkingDir").toString();
 		QString BoxName = pBoxPlus->GetName();
 
-		CreateShortcut(LinkTarget, BoxName);
+		CreateShortcutEx(LinkTarget, BoxName, LinkName, Icon, IconIndex, WorkingDir);
 	}
 }
 
@@ -1857,8 +1868,12 @@ void CSbieView::UpdateStartMenu(CSandBoxPlus* pBoxEx)
 		QMenu* pMenu = GetMenuFolder(Link.Folder, m_pMenuRunStart, m_MenuFolders);
 
 		QAction* pAction = pMenu->addAction(Link.Name, this, SLOT(OnSandBoxAction()));
-		QIcon Icon = LoadWindowsIcon(Link.Icon, Link.IconIndex);
-		if(Icon.isNull()) Icon = m_IconProvider.icon(QFileInfo(Link.Target));
+		QIcon Icon;
+		if (!Link.Icon.isEmpty()) 
+			Icon = LoadWindowsIcon(Link.Icon, Link.IconIndex);
+		else if (Link.Target.contains("://")) 
+			Icon = theGUI->GetIcon("Internet");
+		if (Icon.isNull()) Icon = m_IconProvider.icon(QFileInfo(Link.Target));
 		pAction->setIcon(Icon);
 		QString Command;
 		if(Link.Target.contains(" "))
@@ -1868,7 +1883,7 @@ void CSbieView::UpdateStartMenu(CSandBoxPlus* pBoxEx)
 		if(!Link.Arguments.isEmpty())
 			Command += " " + Link.Arguments;
 		pAction->setData(Command);
-		pAction->setProperty("Icon", Link.Icon);
+		if(!Link.Icon.isEmpty()) pAction->setProperty("Icon", Link.Icon);
 		pAction->setProperty("IconIndex", Link.IconIndex);
 		pAction->setProperty("WorkingDir", Link.WorkDir);
 	}
@@ -1896,16 +1911,36 @@ void CSbieView::UpdateRunMenu(const CSandBoxPtr& pBox)
 		} else
 			pMenu = GetMenuFolder(FolderName.first.replace("\\", "/"), m_pMenuRun, m_RunFolders);
 
-		StrPair IconIndex = Split2(Entry["Icon"].toString(), ",", true);
+		StrPair FileIndex = Split2(Entry["Icon"].toString(), ",", true);
+
+		QString CmdFile = pBoxEx->GetCommandFile(Entry["Command"].toString());
+
+		QString IconFile;
+		int IconIndex = 0;
+		if (FileIndex.first.isEmpty()) {
+			if (!CmdFile.contains("://"))
+				IconFile = CmdFile;
+		}
+		else if (FileIndex.second.isEmpty()) {
+			IconFile = CmdFile;
+			IconIndex = FileIndex.first.toInt();
+		}
+		else {
+			IconFile = FileIndex.first.replace("%BoxRoot%", pBoxEx->GetFileRoot(), Qt::CaseInsensitive);
+			IconIndex = FileIndex.second.toInt();
+		}
 
 		QAction* pAction = pMenu->addAction(FolderName.second, this, SLOT(OnSandBoxAction()));
-		if (IconIndex.first.isEmpty())
-			pAction->setIcon(m_IconProvider.icon(QFileInfo(pBoxEx->GetCommandFile(Entry["Command"].toString()))));
-		else if(IconIndex.second.isEmpty())
-			pAction->setIcon(LoadWindowsIcon(pBoxEx->GetCommandFile(Entry["Command"].toString()), IconIndex.first.toInt()));
-		else
-			pAction->setIcon(LoadWindowsIcon(IconIndex.first.replace("%BoxRoot%", pBoxEx->GetFileRoot(), Qt::CaseInsensitive), IconIndex.second.toInt()));
+		QIcon Icon;
+		if (!IconFile.isEmpty()) 
+			Icon = LoadWindowsIcon(IconFile, IconIndex);
+		else if (CmdFile.contains("://"))
+			Icon = theGUI->GetIcon("Internet");
+		if (Icon.isNull()) Icon = m_IconProvider.icon(QFileInfo(CmdFile));
+		pAction->setIcon(Icon);
 		pAction->setData(Entry["Command"].toString());
+		pAction->setProperty("Icon", IconFile);
+		pAction->setProperty("IconIndex", IconIndex);
 		pAction->setProperty("WorkingDir", Entry["WorkingDir"]);
 	}
 
