@@ -507,6 +507,8 @@ void CSandBoxPlus::ScanStartMenu()
 				bChanged = true;
 
 			pLink->Target = Link["Path"].toString();
+			if(pLink->Target.mid(1,2) != ":\\")
+				pLink->Url = true;
 			pLink->Arguments = Link["Arguments"].toString();
 			pLink->Icon = Link["IconPath"].toString();
 			pLink->IconIndex = Link["IconIndex"].toInt();
@@ -537,6 +539,8 @@ void CSandBoxPlus::ScanStartMenu()
 			//pLink->Arguments = ;
 			pLink->Icon = ReadIni(L"InternetShortcut", L"IconFile");
 			pLink->IconIndex = ReadIni(L"InternetShortcut", L"IconIndex").toInt();
+			if (pLink->Icon.isEmpty())
+				pLink->IconIndex = -1;
 			//pLink->WorkDir = ;
 		}
 
