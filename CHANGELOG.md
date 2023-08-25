@@ -4,7 +4,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
-## [1.11.0 / 5.66.0] - 2023-08-??
+## [1.11.1 / 5.66.1] - 2023-08-??
+
+### Changed
+- changed the new optin layout to now be the default for non vintage views (can be changed back in the settings)
+
+
+
+## [1.11.0 / 5.66.0] - 2023-08-25
 
 ### Added
 - added ImDisk driver integration, allowing to create boxes residing in a ramdisk
