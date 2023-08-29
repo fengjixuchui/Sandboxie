@@ -6,8 +6,17 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.11.1 / 5.66.1] - 2023-08-??
 
+### Added
+- added 'RamDiskLetter=R:\' option allowing to mount the ramdisk root to a drive letter
+
 ### Changed
 - changed the new optin layout to now be the default for non vintage views (can be changed back in the settings)
+
+### Fixed
+- fixed issue when re creating rambox junction
+- fixed Side logo cut-off in all wizards [#3227](https://github.com/sandboxie-plus/Sandboxie/issues/3227)
+- fixed Text cut-off in box creation wizard [#3226](https://github.com/sandboxie-plus/Sandboxie/issues/3226)
+- fixed windows 7 compatybility issue with ImBox.exe
 
 
 
