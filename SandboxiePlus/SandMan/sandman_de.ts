@@ -1540,11 +1540,10 @@ Notiz: Die Updateprüfung ist oft zeitversetzt zu den letzten GitHub-Veröffentl
     <message>
         <location filename="Windows/OptionsGeneral.cpp" line="1173"/>
         <source>Image Password Changed</source>
-        <translation>Abbildpasswort geändert></translation>
+        <translation>Abbildpasswort geändert</translation>
     </message>
     <message>
         <location filename="Windows/OptionsGeneral.cpp" line="1182"/>
-        <location filename="Windows/OptionsGeneral.cpp" line="1197"/>
         <source>Backup Image Header for %1</source>
         <translation>Sichere Abbildheader für %1</translation>
     </message>
@@ -1552,6 +1551,11 @@ Notiz: Die Updateprüfung ist oft zeitversetzt zu den letzten GitHub-Veröffentl
         <location filename="Windows/OptionsGeneral.cpp" line="1190"/>
         <source>Image Header Backuped</source>
         <translation>Abbildheader gesichert</translation>
+    </message>
+    <message>
+        <location filename="Windows/OptionsGeneral.cpp" line="1197"/>
+        <source>Restore Image Header for %1</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Windows/OptionsGeneral.cpp" line="1205"/>
@@ -5043,10 +5047,6 @@ This file is part of Sandboxie and all change done to it will be reverted next t
         <location filename="Windows/SettingsWindow.cpp" line="1231"/>
         <source>Type %1</source>
         <translation>Typ %1</translation>
-    </message>
-    <message>
-        <source>Standard</source>
-        <translation type="vanished">Standard</translation>
     </message>
     <message>
         <location filename="Windows/SettingsWindow.cpp" line="1259"/>
