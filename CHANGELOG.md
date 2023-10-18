@@ -7,21 +7,36 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
+## [1.11.5 / 5.66.5] - 2023-10-
+
+### Added
+- added "get_cert SBIEX-XXXXX-XXXXX-XXXXX-XXXXX" command to UpdUtil.exe allowing to get a cert by serial using command line
+
+### Changed
+- improved suspend process ahndling [#3375](https://github.com/sandboxie-plus/Sandboxie/issues/3375)
+
+### Fixed
+- fixed issue with auto updater not offering version updates
+- fixed issue with new symlink handling code [#3340](https://github.com/sandboxie-plus/Sandboxie/issues/3340)
+
+
+
+
 ## [1.11.4 / 5.66.4] - 2023-10-06
 
 
 ### Changed
 - improved behaviour with Lock All Encrypted Boxes option [#3350](https://github.com/sandboxie-plus/Sandboxie/issues/3350)
-- fixed typo in option name: 'NoRestartOnPAC' becomes 'NoRestartOnPCA' [0e175ee](https://github.com/sandboxie-plus/Sandboxie/commit/0e175eedfde50198a3fa7bdef3a91fdbad5f5226)
+- fixed typo: 'NoRestartOnPAC' option becomes 'NoRestartOnPCA' [0e175ee](https://github.com/sandboxie-plus/Sandboxie/commit/0e175eedfde50198a3fa7bdef3a91fdbad5f5226)
 
 ### Fixed
 - fixed issue with unmounting protected images [#3347](https://github.com/sandboxie-plus/Sandboxie/issues/3347)
 - fixed issue with highlighting not being able to be turned off in the Sbie Messages tab [#3338](https://github.com/sandboxie-plus/Sandboxie/issues/3338)
 - fixed issue with programs installed in the sandbox not being displayed via Run from Start Menu [#3334](https://github.com/sandboxie-plus/Sandboxie/issues/3334)
 - fixed issue with NtQueryDirectoryObject [#3310](https://github.com/sandboxie-plus/Sandboxie/issues/3310)
-- fixed Some GUI functions use the wrong box path if the FileRootPath value starts with Volume{GUID} [#3345](https://github.com/sandboxie-plus/Sandboxie/issues/3345)
-- fixed  If a program is run on RAM and Encrypted boxes when the sandbox root folder is not present, the programs will not run [#3349](https://github.com/sandboxie-plus/Sandboxie/issues/3349)
-- fixed Process Restrictions enable/disable not working correctly [#3355](https://github.com/sandboxie-plus/Sandboxie/issues/3355)
+- fixed some GUI functions using the wrong box path if the FileRootPath value starts with Volume{GUID} [#3345](https://github.com/sandboxie-plus/Sandboxie/issues/3345)
+- fixed programs not running when they are kept in RAM and encrypted boxes if the sandbox root folder is not present [#3349](https://github.com/sandboxie-plus/Sandboxie/issues/3349)
+- fixed Process Restrictions toggle not working correctly [#3355](https://github.com/sandboxie-plus/Sandboxie/issues/3355)
 
 
 
