@@ -103,8 +103,7 @@ CSettingsWindow::CSettingsWindow(QWidget* parent)
 	//flags &= ~Qt::WindowCloseButtonHint;
 	setWindowFlags(flags);
 
-	bool bAlwaysOnTop = theConf->GetBool("Options/AlwaysOnTop", false);
-	this->setWindowFlag(Qt::WindowStaysOnTopHint, bAlwaysOnTop);
+	this->setWindowFlag(Qt::WindowStaysOnTopHint, theGUI->IsAlwaysOnTop());
 
 	ui.setupUi(this);
 	this->setWindowTitle(tr("Sandboxie Plus - Global Settings"));
@@ -295,6 +294,10 @@ CSettingsWindow::CSettingsWindow(QWidget* parent)
 	connect(ui.chkMonitorSize, SIGNAL(stateChanged(int)), this, SLOT(OnOptChanged()));
 	connect(ui.chkPanic, SIGNAL(stateChanged(int)), this, SLOT(OnOptChanged()));
 	connect(ui.keyPanic, SIGNAL(keySequenceChanged(const QKeySequence &)), this, SLOT(OnOptChanged()));
+	connect(ui.chkTop, SIGNAL(stateChanged(int)), this, SLOT(OnOptChanged()));
+	connect(ui.keyTop, SIGNAL(keySequenceChanged(const QKeySequence &)), this, SLOT(OnOptChanged()));
+	connect(ui.chkPauseForce, SIGNAL(stateChanged(int)), this, SLOT(OnOptChanged()));
+	connect(ui.keyPauseForce, SIGNAL(keySequenceChanged(const QKeySequence &)), this, SLOT(OnOptChanged()));
 	connect(ui.chkAsyncBoxOps, SIGNAL(stateChanged(int)), this, SLOT(OnOptChanged()));
 
 	connect(ui.chkSilentMode, SIGNAL(stateChanged(int)), this, SLOT(OnOptChanged()));
@@ -909,6 +912,12 @@ void CSettingsWindow::LoadSettings()
 	ui.chkPanic->setChecked(theConf->GetBool("Options/EnablePanicKey", false));
 	ui.keyPanic->setKeySequence(QKeySequence(theConf->GetString("Options/PanicKeySequence", "Shift+Pause")));
 
+	ui.chkTop->setChecked(theConf->GetBool("Options/EnableTopMostKey", false));
+	ui.keyTop->setKeySequence(QKeySequence(theConf->GetString("Options/TopMostKeySequence", "Alt+Pause")));
+
+	ui.chkPauseForce->setChecked(theConf->GetBool("Options/EnablePauseForceKey", false));
+	ui.keyPauseForce->setKeySequence(QKeySequence(theConf->GetString("Options/PauseForceKeySequence", "Ctrl+Alt+F")));
+
 	ui.chkMonitorSize->setChecked(theConf->GetBool("Options/WatchBoxSize", false));
 
 	ui.chkWatchConfig->setChecked(theConf->GetBool("Options/WatchIni", true));
@@ -1260,7 +1269,7 @@ void CSettingsWindow::OnGetCert()
 	SB_PROGRESS Status = theGUI->m_pUpdater->GetSupportCert(ui.txtSerial->text(), this, SLOT(OnCertData(const QByteArray&, const QVariantMap&)));
 	if (Status.GetStatus() == OP_ASYNC) {
 		theGUI->AddAsyncOp(Status.GetValue());
-		Status.GetValue()->ShowMessage(tr("Retreiving certificate..."));
+		Status.GetValue()->ShowMessage(tr("Retrieving certificate..."));
 	}
 }
 
@@ -1502,6 +1511,12 @@ void CSettingsWindow::SaveSettings()
 
 	theConf->SetValue("Options/EnablePanicKey", ui.chkPanic->isChecked());
 	theConf->SetValue("Options/PanicKeySequence", ui.keyPanic->keySequence().toString());
+
+	theConf->SetValue("Options/EnableTopMostKey", ui.chkTop->isChecked());
+	theConf->SetValue("Options/TopMostKeySequence", ui.keyTop->keySequence().toString());
+
+	theConf->SetValue("Options/EnablePauseForceKey", ui.chkPauseForce->isChecked());
+	theConf->SetValue("Options/PauseForceKeySequence", ui.keyPauseForce->keySequence().toString());
 	
 	theConf->SetValue("Options/WatchBoxSize", ui.chkMonitorSize->isChecked());
 

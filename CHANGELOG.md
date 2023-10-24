@@ -10,20 +10,30 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [1.12.0 / 5.67.0] - 2023-10-
 
 ### Added
-- added "get_cert SBIEX-XXXXX-XXXXX-XXXXX-XXXXX" command to UpdUtil.exe allowing to get a cert by serial using command line
-- added mechanism to revoke leaked or refunded certificates
-- added mechanism to automatically set USB drives as forced folders
+- added mechanism to automatically set USB drives as forced folders (Requires a supporter certificate)
 - added troubleshooting script for issue [#3318](https://github.com/sandboxie-plus/Sandboxie/issues/3318) with parental controls
 - started german translation of the troubleshooting scripts ...\SandboxiePlus\SandMan\Troubleshooting\lang_de.json [#3293](https://github.com/sandboxie-plus/Sandboxie/issues/3293)
+- added "get_cert SBIEX-XXXXX-XXXXX-XXXXX-XXXXX" command to UpdUtil.exe allowing to get a cert by serial using command line
+- added mechanism to revoke leaked or refunded certificates
+- added new global hot key to bring sandman in fron as top most ALT+Break [#3320](https://github.com/sandboxie-plus/Sandboxie/issues/3320)
+- added Exclude specific boxes from 'Terminate all processes' [#3108](https://github.com/sandboxie-plus/Sandboxie/issues/3108)
+  - Note: press the panic button hot key 3 times with less then 1 second between clicks to Terminate All with NO exceptions
+- added Customizable global hotkey that toggles the state of "pause forced programs" [#2441](https://github.com/sandboxie-plus/Sandboxie/issues/2441)
+- added Warn or prevent broad "forced folder" settings [#650](https://github.com/sandboxie-plus/Sandboxie/issues/650)
+- added CheckExpectFile function to Plus [#768](https://github.com/sandboxie-plus/Sandboxie/issues/768)
 
 ### Changed
 - improved suspend process ahndling [#3375](https://github.com/sandboxie-plus/Sandboxie/issues/3375)
 - improved handling of issue reports
+- updated reminder schedule
 
 ### Fixed
 - fixed issue with auto updater not offering version updates
 - fixed issue with new symlink handling code [#3340](https://github.com/sandboxie-plus/Sandboxie/issues/3340)
+- fixed issue with Scm_StartServiceCtrlDispatcherX not behaving correctly when nor tun as service [#1246](https://github.com/sandboxie-plus/Sandboxie/issues/1246)
 
+### Removed
+- removed obsolete /nosbiectrl switch [#3391](https://github.com/sandboxie-plus/Sandboxie/issues/3391)
 
 
 

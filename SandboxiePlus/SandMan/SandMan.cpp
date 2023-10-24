@@ -172,6 +172,7 @@ CSandMan::CSandMan(QWidget *parent)
 		QMessageBox::critical(this, "Sandboxie-Plus", tr("WARNING: Sandboxie-Plus.ini in %1 cannot be written to, settings will not be saved.").arg(theConf->GetConfigDir()));
 	}
 
+	m_bOnTop = false;
 	m_bExit = false;
 
 	m_ImDiskReady = true;
@@ -1358,6 +1359,12 @@ void CSandMan::changeEvent(QEvent* e)
 	{
         if (isMinimized()) 
 		{
+			if (m_bOnTop) {
+				m_bOnTop = false;
+				this->setWindowFlag(Qt::WindowStaysOnTopHint, m_bOnTop);
+				SafeShow(this);
+			}
+
             if (m_pTrayIcon->isVisible() && theConf->GetBool("Options/MinimizeToTray", false))
 			{
 				StoreState();
@@ -2551,7 +2558,9 @@ void CSandMan::CheckSupport()
 	}
 }
 
-#define HK_PANIC 1
+#define HK_PANIC	1
+#define HK_TOP		2
+#define HK_FORCE	3
 
 void CSandMan::SetupHotKeys()
 {
@@ -2559,14 +2568,48 @@ void CSandMan::SetupHotKeys()
 
 	if (theConf->GetBool("Options/EnablePanicKey", false))
 		m_pHotkeyManager->registerHotkey(theConf->GetString("Options/PanicKeySequence", "Shift+Pause"), HK_PANIC);
+
+	if (theConf->GetBool("Options/EnableTopMostKey", false))
+		m_pHotkeyManager->registerHotkey(theConf->GetString("Options/TopMostSequence", "Alt+Pause"), HK_TOP);
+
+	if (theConf->GetBool("Options/EnablePauseForceKey", false))
+		m_pHotkeyManager->registerHotkey(theConf->GetString("Options/PauseForceKeySequence", "Ctrl+Alt+F"), HK_FORCE);
 }
 
 void CSandMan::OnHotKey(size_t id)
 {
 	switch (id)
 	{
-	case HK_PANIC: 
-		theAPI->TerminateAll();
+	case HK_PANIC:
+	{
+		// terminate with no exceptions when clicked 3 times
+		static quint64 LastClickTick = 0;
+		static int LastClickCount = 0;
+		if (GetCurTick() - LastClickTick > 1000)
+			LastClickCount = 0;
+		LastClickCount++;
+		if(LastClickCount != 2) // skip second click as it may take more than a second
+			theAPI->TerminateAll(LastClickCount >= 3);
+		LastClickTick = GetCurTick();
+		break;
+	}
+
+	case HK_TOP:
+		if (this->isActiveWindow() && m_bOnTop)
+			m_bOnTop = false;
+		else {
+			m_bOnTop = true;
+			QTimer::singleShot(100, [this]() {
+				this->setWindowState((this->windowState() & ~Qt::WindowMinimized) | Qt::WindowActive);
+				SetForegroundWindow(MainWndHandle);
+			});
+		}
+		this->setWindowFlag(Qt::WindowStaysOnTopHint, m_bOnTop);
+		SafeShow(this);
+		break;
+
+	case HK_FORCE:
+		theAPI->DisableForceProcess(!theAPI->AreForceProcessDisabled());
 		break;
 	}
 }
@@ -3156,7 +3199,7 @@ SB_RESULT(void*) CSandMan::StopSbie(bool andRemove)
 	SB_RESULT(void*) Status;
 
 	if (theAPI->IsConnected()) {
-		Status = theAPI->TerminateAll();
+		Status = theAPI->TerminateAll(true);
 		theAPI->Disconnect();
 	}
 	if (!Status.IsError()) {
@@ -3285,6 +3328,8 @@ void CSandMan::OnViewMode(QAction* pAction)
 
 void CSandMan::OnAlwaysTop()
 {
+	m_bOnTop = false;
+
 	StoreState();
 	bool bAlwaysOnTop = m_pWndTopMost->isChecked();
 	theConf->SetValue("Options/AlwaysOnTop", bAlwaysOnTop);
@@ -3294,6 +3339,11 @@ void CSandMan::OnAlwaysTop()
 
 	m_pPopUpWindow->setWindowFlag(Qt::WindowStaysOnTopHint, bAlwaysOnTop);
 	m_pProgressDialog->setWindowFlag(Qt::WindowStaysOnTopHint, bAlwaysOnTop);
+}
+
+bool CSandMan::IsAlwaysOnTop() const
+{
+	return m_bOnTop || theConf->GetBool("Options/AlwaysOnTop", false);
 }
 
 void CSandMan::OnRefresh()
