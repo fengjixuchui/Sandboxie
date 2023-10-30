@@ -7,7 +7,20 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
-## [1.12.0 / 5.67.0] - 2023-10-
+
+## [1.12.1 / 5.67.1] - 2023-10-
+
+### Changed
+- improved open url dialog box [#3401](https://github.com/sandboxie-plus/Sandboxie/issues/3401)
+- improved suspended process detection
+
+### Fixed
+- fixed issue with key to bring sandman in fron as top most
+- fixed issue with ThreadSuspendCount failing for already terminated threads [#3375](https://github.com/sandboxie-plus/Sandboxie/issues/3375)
+- fixed message text [#3408](https://github.com/sandboxie-plus/Sandboxie/issues/3408)
+
+
+## [1.12.0 / 5.67.0] - 2023-10-25
 
 ### Added
 - added mechanism to automatically set USB drives as forced folders (Requires a supporter certificate)
@@ -30,7 +43,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 - fixed issue with auto updater not offering version updates
 - fixed issue with new symlink handling code [#3340](https://github.com/sandboxie-plus/Sandboxie/issues/3340)
-- fixed issue with Scm_StartServiceCtrlDispatcherX not behaving correctly when nor tun as service [#1246](https://github.com/sandboxie-plus/Sandboxie/issues/1246)
+- fixed issue with Scm_StartServiceCtrlDispatcherX not behaving correctly when not run as service [#1246](https://github.com/sandboxie-plus/Sandboxie/issues/1246) [#3297](https://github.com/sandboxie-plus/Sandboxie/issues/3297)
+- fixed Issue with configuring the original folder of a symbolic link created using mklink to OpenPipePath [#3207](https://github.com/sandboxie-plus/Sandboxie/issues/3207)
 
 ### Removed
 - removed obsolete /nosbiectrl switch [#3391](https://github.com/sandboxie-plus/Sandboxie/issues/3391)
@@ -667,6 +681,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 - added user mode system call tracing, now syscalls can be logged in compartment boxes as well as all Win32k syscalls
+- added nt object view to trace log
 
 ### Changed
 - reworked trace log model, now it can load more than a million entries in less than one second
