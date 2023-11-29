@@ -18,7 +18,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
-## [1.12.2 / 5.67.2] - 2023-11-
+## [1.12.2 / 5.67.2] - 2023-11-28
 
 ### Added
 - added options dialog when exporting a box [#3409](https://github.com/sandboxie-plus/Sandboxie/issues/3409)
@@ -33,6 +33,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - fixed UNEXPECTED_KERNEL_MODE_TRAP BSOD when opening any web link from sandboxed Microsoft 365 app (e.g. Outlook, Word) [#3427](https://github.com/sandboxie-plus/Sandboxie/issues/3427)
 - fixed issue with force process warning message
 - fixed online updater does not respect portable mode [#3406](https://github.com/sandboxie-plus/Sandboxie/issues/3406)
+- fixed Snapshot feature does not work on encrypted boxes [#3439](https://github.com/sandboxie-plus/Sandboxie/issues/3439)
 
 
 
@@ -44,7 +45,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 - fixed issue with key to bring SandMan in front as top most
-- fixed issue with ThreadSuspendCount failing for already terminated threads [25054d0](https://github.com/sandboxie-plus/Sandboxie/commit/25054d0b2bd34c12471eefdf6ba9550e50ef02e5)
+- fixed issue with ThreadSuspendCount failing for already terminated threads [25054d0](https://github.com/sandboxie-plus/Sandboxie/commit/25054d0b2bd34c12471eefdf6ba9550e50ef02e5) [#3375](https://github.com/sandboxie-plus/Sandboxie/issues/3375)
 - fixed message text [#3408](https://github.com/sandboxie-plus/Sandboxie/issues/3408)
 - fixed warning issue with Firefox 120.0: `SBIE2205 Service not implemented: CredWriteA` [#3441](https://github.com/sandboxie-plus/Sandboxie/issues/3441)
 - fixed outdated Chromium paths [#3436](https://github.com/sandboxie-plus/Sandboxie/pull/3436)
