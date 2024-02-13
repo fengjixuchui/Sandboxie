@@ -930,7 +930,6 @@ _FX NTSTATUS File_GetName(
     BOOLEAN have_tilde;
     BOOLEAN convert_links_again;
     BOOLEAN is_boxed_path;
-    BOOLEAN free_true_path;
 
 #ifdef WOW64_FS_REDIR
     BOOLEAN convert_wow64_link = (File_Wow64FileLink) ? TRUE : FALSE;
@@ -961,8 +960,6 @@ _FX NTSTATUS File_GetName(
 
     drive = NULL;
     guid = NULL;
-
-    free_true_path = FALSE;
 
     //
     // if a root handle is specified, we query the full name of the
@@ -1355,16 +1352,17 @@ check_sandbox_prefix:
 
         if(File_FindBoxPrefix(TruePath))
             is_boxed_path = TRUE;
+        
+        name = Dll_GetTlsNameBuffer(
+                TlsData, TRUE_NAME_BUFFER, (length + 1) * sizeof(WCHAR));
+        wmemcpy(name, TruePath, length + 1);
+
+        Dll_Free(TruePath);
+
+        TruePath = name;
+        *OutTruePath = TruePath;
+
         if (is_boxed_path) {
-
-            name = Dll_GetTlsNameBuffer(
-                    TlsData, TRUE_NAME_BUFFER, (length + 1) * sizeof(WCHAR));
-            wmemcpy(name, TruePath, length + 1);
-
-            Dll_Free(TruePath);
-
-            TruePath = name;
-            *OutTruePath = TruePath;
             convert_links_again = FALSE;
 
             goto check_sandbox_prefix;
@@ -1374,8 +1372,6 @@ check_sandbox_prefix:
         // otherwise test the reparsed path for open/closed paths and
         // then continue to create the copy path
         //
-
-        free_true_path = TRUE;
 
         if (OutFlags) {
             ULONG mp_flags = File_MatchPath(TruePath, OutFlags);
@@ -1434,9 +1430,6 @@ check_sandbox_prefix:
         name[0] = L'\\';
         name[1] = L'\0';
     }
-
-    if (free_true_path)
-        Dll_Free(TruePath);
 
     //
     // debugging helper
@@ -4071,7 +4064,7 @@ _FX NTSTATUS File_GetFileType(
     *FileType = 0;
 
     P_NtQueryFullAttributesFile pNtQueryFullAttributesFile = __sys_NtQueryFullAttributesFile;
-    // special case for File_InitRecoverFolders as its called bfore we hook those functions
+    // special case for File_InitRecoverFolders as it's called before we hook those functions
     if (!pNtQueryFullAttributesFile)
         pNtQueryFullAttributesFile = NtQueryFullAttributesFile;
 
