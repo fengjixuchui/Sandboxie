@@ -806,11 +806,11 @@ _FX PROCESS *Process_Create(
     }
 
     //
-    // If we dont have valid Dyndata we force NoSecurityIsolation=y on all boxes
-    // and isseu a security warning MSG_1207
+    // If we don't have valid Dyndata, we force NoSecurityIsolation=y on all boxes
+    // and issue a security warning MSG_1207
     //
 
-    if (!Dyndata_Active) {
+    if (!Dyndata_Active && !proc->bAppCompartment) {
 
         proc->bAppCompartment = TRUE;
 
