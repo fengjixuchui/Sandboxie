@@ -104,6 +104,7 @@ void COptionsWindow::CreateAdvanced()
 	connect(ui.chkShowHostProcTmpl, SIGNAL(clicked(bool)), this, SLOT(OnShowHostProcTmpl()));
 	connect(ui.chkConfidential, SIGNAL(clicked(bool)), this, SLOT(OnConfidentialChanged()));
 	connect(ui.chkLessConfidential, SIGNAL(clicked(bool)), this, SLOT(OnLessConfidentialChanged()));
+	connect(ui.chkProtectWindow, SIGNAL(clicked(bool)), this, SLOT(OnAdvancedChanged()));
 	connect(ui.chkNotifyProtect, SIGNAL(clicked(bool)), this, SLOT(OnAdvancedChanged()));
 
 	connect(ui.treeInjectDll, SIGNAL(itemChanged(QTreeWidgetItem *, int)), this, SLOT(OnToggleInjectDll(QTreeWidgetItem *, int)));
@@ -262,6 +263,7 @@ void COptionsWindow::LoadAdvanced()
 	ui.chkLessConfidential->setChecked(m_BoxTemplates.contains("LessConfidentialBox"));
 	ui.chkNotifyProtect->setChecked(m_pBox->GetBool("NotifyBoxProtected", false));
 
+	ui.chkProtectWindow->setChecked(m_pBox->GetBool("IsProtectScreen"));
 
 	QStringList Users = m_pBox->GetText("Enabled").split(",");
 	ui.lstUsers->clear();
@@ -465,6 +467,8 @@ void COptionsWindow::SaveAdvanced()
 	WriteAdvancedCheck(ui.chkConfidential, "ConfidentialBox", "y", "");
 	WriteAdvancedCheck(ui.chkNotifyProtect, "NotifyBoxProtected", "y", "");
 
+	WriteAdvancedCheck(ui.chkProtectWindow, "IsProtectScreen", "y", "n");
+
 	QStringList Users;
 	for (int i = 0; i < ui.lstUsers->count(); i++)
 		Users.append(ui.lstUsers->item(i)->text());
@@ -516,6 +520,9 @@ void COptionsWindow::UpdateBoxIsolation()
 
 	ui.chkCloseClipBoard->setEnabled(!ui.chkNoSecurityIsolation->isChecked());
 	ui.chkVmRead->setEnabled(!ui.chkNoSecurityIsolation->isChecked());
+
+	//ui.chkBlockCapture->setEnabled(!ui.chkNoSecurityIsolation->isChecked());
+	ui.chkProtectPower->setEnabled(!ui.chkNoSecurityIsolation->isChecked());
 
 	ui.chkCloseForBox->setEnabled(!ui.chkNoSecurityIsolation->isChecked());
 	ui.chkNoOpenForBox->setEnabled(!ui.chkNoSecurityIsolation->isChecked());
