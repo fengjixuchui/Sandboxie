@@ -6,6 +6,22 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
+
+
+## [1.13.6 / 5.68.6] - 2024-04-
+
+### Added
+- Added "BlockInterferenceControl=y" option to prevent sandboxed processes from forcing windows on top and moving the mounse pointer (thanks Yeyixiao)
+  - Note: this option may cause issues in games hence do not enable it for gaming boxes.
+
+### Fixed
+- fixed When I change the BlockDNS and BlockPorts options, the Apply button is not activated [#3807](https://github.com/sandboxie-plus/Sandboxie/issues/3807)
+- fixed troubleshooting wizard broke with new qt [#3810](https://github.com/sandboxie-plus/Sandboxie/discussions/3810)
+- fixed Settings dialog now showing the right ram disk letter
+- fixed issues with updater broke with new qt due to missing SSL support [3810](https://github.com/sandboxie-plus/Sandboxie/discussions/3810)
+
+
+
 ## [1.13.5 / 5.68.5] - 2024-04-10
 
 ### Added
